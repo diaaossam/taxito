@@ -1,0 +1,52 @@
+import 'package:equatable/equatable.dart';
+
+class ServerException extends Equatable implements Exception {
+  final String? message;
+  final int? statusCode;
+
+  const ServerException([this.message, this.statusCode]);
+
+  @override
+  List<Object?> get props => [message, statusCode];
+
+  @override
+  String toString() {
+    return '$message';
+  }
+}
+
+class FetchDataException extends ServerException {
+  const FetchDataException([message]) : super("Error During Communication");
+}
+
+class BadRequestException extends ServerException {
+  const BadRequestException([message]) : super("Bad Request");
+}
+
+class BadResponseException extends ServerException {
+  const BadResponseException([message]) : super(message);
+}
+
+class UnauthorizedException extends ServerException {
+  const UnauthorizedException([message]) : super("Unauthorized");
+}
+
+class NotFoundException extends ServerException {
+  const NotFoundException([message]) : super(message);
+}
+
+class ConflictException extends ServerException {
+  const ConflictException([message]) : super("Conflict Occurred");
+}
+
+class InternalServerErrorException extends ServerException {
+  const InternalServerErrorException([message])
+      : super("Internal Server Error");
+}
+
+class NoInternetConnectionException extends ServerException {
+  const NoInternetConnectionException([message])
+      : super("No Internet Connection");
+}
+
+class CacheException implements Exception {}
