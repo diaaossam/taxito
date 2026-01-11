@@ -1,0 +1,6 @@
+class LocationPickerState {}
+class LocationPickerInitial extends LocationPickerState{}
+class InitLocationServiceLoading extends LocationPickerState{}
+class InitLocationServiceSuccess extends LocationPickerState{}
+class InitLocationServiceFailure extends LocationPickerState{}
+class ChangeUserLocationOnMapState extends LocationPickerState{}

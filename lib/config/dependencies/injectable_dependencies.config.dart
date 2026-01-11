@@ -251,6 +251,288 @@ import '../../features/captain/start/presentation/cubit/start/start_cubit.dart'
 import '../../features/captain/user/presentation/bloc/profile/profile_bloc.dart'
     as _i119;
 import '../../features/captain/user/presentation/bloc/user_bloc.dart' as _i544;
+import '../../features/user/app/controller/pick_image/register_pick_image_cubit.dart'
+    as _i1031;
+import '../../features/user/app/data/datasources/app_remote_data_source.dart'
+    as _i282;
+import '../../features/user/app/data/repositories/app_repository.dart' as _i542;
+import '../../features/user/app/domain/use_case/delete_image_use_case.dart'
+    as _i174;
+import '../../features/user/app/domain/use_case/generate_deep_link_use_case.dart'
+    as _i18;
+import '../../features/user/app/domain/use_case/upload_image_use_case.dart'
+    as _i659;
+import '../../features/user/auth/data/datasources/auth_remote_data_source.dart'
+    as _i511;
+import '../../features/user/auth/data/repositories/auth_repo_impl.dart'
+    as _i384;
+import '../../features/user/auth/domain/repositories/auth_repository.dart'
+    as _i7;
+import '../../features/user/auth/domain/usecases/delete_account_use_case.dart'
+    as _i728;
+import '../../features/user/auth/domain/usecases/get_user_data_use_case.dart'
+    as _i477;
+import '../../features/user/auth/domain/usecases/log_out_use_case.dart'
+    as _i543;
+import '../../features/user/auth/domain/usecases/login_user_use_case.dart'
+    as _i665;
+import '../../features/user/auth/domain/usecases/update_user_data_use_case.dart'
+    as _i145;
+import '../../features/user/auth/domain/usecases/verify_otp_use_case.dart'
+    as _i333;
+import '../../features/user/auth/presentation/cubit/login_cubit/login_cubit.dart'
+    as _i661;
+import '../../features/user/auth/presentation/cubit/logout/logout_cubit.dart'
+    as _i460;
+import '../../features/user/auth/presentation/cubit/otp/otp_bloc.dart' as _i1;
+import '../../features/user/auth/presentation/cubit/update/update_bloc.dart'
+    as _i787;
+import '../../features/user/chat/data/datasources/chats_remote_data_source.dart'
+    as _i31;
+import '../../features/user/chat/data/repositories/chats_repository_impl.dart'
+    as _i618;
+import '../../features/user/chat/domain/repositories/chats_repoitory.dart'
+    as _i623;
+import '../../features/user/chat/domain/usecases/get_chat_message_use_case.dart'
+    as _i515;
+import '../../features/user/chat/domain/usecases/send_chat_use_case.dart'
+    as _i1027;
+import '../../features/user/chat/presentation/bloc/message/message_bloc.dart'
+    as _i347;
+import '../../features/user/location/data/datasources/location_remote_data_source.dart'
+    as _i708;
+import '../../features/user/location/data/repositories/location_repository_impl.dart'
+    as _i121;
+import '../../features/user/location/domain/repositories/location_repository.dart'
+    as _i124;
+import '../../features/user/location/domain/usecases/add_new_address_use_case.dart'
+    as _i354;
+import '../../features/user/location/domain/usecases/delete_address_use_case.dart'
+    as _i9;
+import '../../features/user/location/domain/usecases/get_address_use_case.dart'
+    as _i60;
+import '../../features/user/location/domain/usecases/get_details_by_latlng_use_case.dart'
+    as _i481;
+import '../../features/user/location/domain/usecases/get_google_suggestion_use_case.dart'
+    as _i763;
+import '../../features/user/location/domain/usecases/get_governorates_use_case.dart'
+    as _i684;
+import '../../features/user/location/domain/usecases/get_place_details_by_place_id_use_case.dart'
+    as _i50;
+import '../../features/user/location/domain/usecases/get_regions_use_case.dart'
+    as _i710;
+import '../../features/user/location/domain/usecases/make_address_default_use_case.dart'
+    as _i1036;
+import '../../features/user/location/presentation/cubit/add_new_address/add_new_address_cubit.dart'
+    as _i273;
+import '../../features/user/location/presentation/cubit/globale_location/global_location_cubit.dart'
+    as _i858;
+import '../../features/user/location/presentation/cubit/location_cubit.dart'
+    as _i511;
+import '../../features/user/location/presentation/cubit/location_picker/location_picker_cubit.dart'
+    as _i645;
+import '../../features/user/location/presentation/cubit/my_address/my_address_cubit.dart'
+    as _i1035;
+import '../../features/user/main/data/datasources/main_remote_data_source.dart'
+    as _i14;
+import '../../features/user/main/data/repositories/main_repository_impl.dart'
+    as _i450;
+import '../../features/user/main/domain/usecases/get_banners_use_case.dart'
+    as _i609;
+import '../../features/user/main/domain/usecases/get_brand_use_case.dart'
+    as _i31;
+import '../../features/user/main/domain/usecases/get_main_category_use_case.dart'
+    as _i45;
+import '../../features/user/main/domain/usecases/update_device_token.dart'
+    as _i2;
+import '../../features/user/main/presentation/cubit/banner/banners_cubit.dart'
+    as _i347;
+import '../../features/user/main/presentation/cubit/main/main_cubit.dart'
+    as _i760;
+import '../../features/user/notifications/data/datasources/notification_remote_data_source.dart'
+    as _i419;
+import '../../features/user/notifications/data/repositories/notification_repository_impl.dart'
+    as _i602;
+import '../../features/user/notifications/domain/usecases/get_notification_count_use_case.dart'
+    as _i941;
+import '../../features/user/notifications/domain/usecases/get_notification_list_use_case.dart'
+    as _i804;
+import '../../features/user/notifications/domain/usecases/mark_all_as_read_use_case.dart'
+    as _i973;
+import '../../features/user/notifications/presentation/cubit/notifications_cubit.dart'
+    as _i329;
+import '../../features/user/order/data/datasources/order_locale_data_source.dart'
+    as _i291;
+import '../../features/user/order/data/datasources/order_remote_data_source.dart'
+    as _i342;
+import '../../features/user/order/data/repositories/order_repo_impl.dart'
+    as _i492;
+import '../../features/user/order/domain/repositories/order_repository.dart'
+    as _i205;
+import '../../features/user/order/domain/usecases/add_product_to_cart_use_case.dart'
+    as _i326;
+import '../../features/user/order/domain/usecases/apply_promo_code_use_case.dart'
+    as _i586;
+import '../../features/user/order/domain/usecases/delete_order_use_case.dart'
+    as _i507;
+import '../../features/user/order/domain/usecases/delete_product_from_cart_list.dart'
+    as _i1007;
+import '../../features/user/order/domain/usecases/get_cart_list_use_case.dart'
+    as _i204;
+import '../../features/user/order/domain/usecases/get_delivery_cost_use_case.dart'
+    as _i748;
+import '../../features/user/order/domain/usecases/get_order_details_use_case.dart'
+    as _i646;
+import '../../features/user/order/domain/usecases/get_order_list_use_case.dart'
+    as _i55;
+import '../../features/user/order/domain/usecases/order_place_use_case.dart'
+    as _i364;
+import '../../features/user/order/domain/usecases/set_quantity_use_case.dart'
+    as _i18;
+import '../../features/user/order/presentation/bloc/cart/cart_cubit.dart'
+    as _i462;
+import '../../features/user/order/presentation/bloc/orders/orders_cubit.dart'
+    as _i881;
+import '../../features/user/order/presentation/bloc/rating/rating_cubit.dart'
+    as _i847;
+import '../../features/user/order/presentation/bloc/track/track_order_cubit.dart'
+    as _i121;
+import '../../features/user/payment/data/datasources/payment_remote_data_source.dart'
+    as _i785;
+import '../../features/user/payment/data/repositories/payment_repository_impl.dart'
+    as _i19;
+import '../../features/user/payment/domain/usecases/add_balance_use_case.dart'
+    as _i49;
+import '../../features/user/payment/domain/usecases/get_current_balance_use_case.dart'
+    as _i659;
+import '../../features/user/payment/domain/usecases/get_transaction_use_case.dart'
+    as _i303;
+import '../../features/user/payment/presentation/bloc/balance/balance_cubit.dart'
+    as _i709;
+import '../../features/user/payment/presentation/bloc/wallet/wallet_cubit.dart'
+    as _i23;
+import '../../features/user/product/data/datasources/product_remote_data_source.dart'
+    as _i953;
+import '../../features/user/product/data/repositories/product_repository_impl.dart'
+    as _i312;
+import '../../features/user/product/domain/repositories/product_repository.dart'
+    as _i576;
+import '../../features/user/product/domain/usecases/get_favourite_use_case.dart'
+    as _i428;
+import '../../features/user/product/domain/usecases/get_product_details_use_case.dart'
+    as _i352;
+import '../../features/user/product/domain/usecases/get_products_use_case.dart'
+    as _i67;
+import '../../features/user/product/domain/usecases/get_suppliers_product_use_case.dart'
+    as _i786;
+import '../../features/user/product/domain/usecases/submit_review_use_case.dart'
+    as _i208;
+import '../../features/user/product/domain/usecases/toggle_wishlist_use_case.dart'
+    as _i789;
+import '../../features/user/product/presentation/cubit/favourite/favourite_cubit.dart'
+    as _i1025;
+import '../../features/user/product/presentation/cubit/product/product_cubit.dart'
+    as _i910;
+import '../../features/user/product/presentation/cubit/product_details/product_details_cubit.dart'
+    as _i1065;
+import '../../features/user/search/presentation/cubit/filter/filter_cubit.dart'
+    as _i715;
+import '../../features/user/settings/data/datasources/settings_remote_data_source.dart'
+    as _i563;
+import '../../features/user/settings/data/repositories/settings_repo_impl.dart'
+    as _i662;
+import '../../features/user/settings/domain/usecases/change_lang_code_use_case.dart'
+    as _i1010;
+import '../../features/user/settings/domain/usecases/get_all_suggestion_types_use_case.dart'
+    as _i40;
+import '../../features/user/settings/domain/usecases/get_app_settings_use_case.dart'
+    as _i353;
+import '../../features/user/settings/domain/usecases/get_deletion_reasons_use_case.dart'
+    as _i82;
+import '../../features/user/settings/domain/usecases/get_faq_use_case.dart'
+    as _i791;
+import '../../features/user/settings/domain/usecases/get_page_use_case.dart'
+    as _i787;
+import '../../features/user/settings/domain/usecases/send_suggestion_use_case.dart'
+    as _i434;
+import '../../features/user/settings/presentation/bloc/faqs/faqs_question_cubit.dart'
+    as _i868;
+import '../../features/user/settings/presentation/bloc/pages/pages_bloc.dart'
+    as _i733;
+import '../../features/user/settings/presentation/bloc/settings_bloc.dart'
+    as _i201;
+import '../../features/user/settings/presentation/bloc/user_suggestion/user_suggestion_bloc.dart'
+    as _i643;
+import '../../features/user/start/data/datasources/init_remote_data_source.dart'
+    as _i395;
+import '../../features/user/start/data/repositories/init_repo_impl.dart'
+    as _i27;
+import '../../features/user/start/domain/usecases/get_intro_use_case.dart'
+    as _i850;
+import '../../features/user/start/domain/usecases/init_app_use_case.dart'
+    as _i730;
+import '../../features/user/start/presentation/cubit/boarding/on_boarding_cubit.dart'
+    as _i476;
+import '../../features/user/start/presentation/cubit/start/start_cubit.dart'
+    as _i922;
+import '../../features/user/supplier/data/datasources/supplier_remote_data_source.dart'
+    as _i275;
+import '../../features/user/supplier/data/repositories/suppliers_repository_impl.dart'
+    as _i532;
+import '../../features/user/supplier/domain/usecases/get_supplier_category_use_case.dart'
+    as _i260;
+import '../../features/user/supplier/domain/usecases/get_supplier_details_category_use_case.dart'
+    as _i548;
+import '../../features/user/supplier/presentation/cubit/supplier_cubit.dart'
+    as _i380;
+import '../../features/user/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart'
+    as _i761;
+import '../../features/user/trip/data/datasources/trip_remote_data_source.dart'
+    as _i844;
+import '../../features/user/trip/data/repositories/trip_repository_impl.dart'
+    as _i359;
+import '../../features/user/trip/domain/repositories/trip_repository.dart'
+    as _i742;
+import '../../features/user/trip/domain/usecases/cancel_trip_use_case.dart'
+    as _i991;
+import '../../features/user/trip/domain/usecases/get_all_trips_history_use_case.dart'
+    as _i453;
+import '../../features/user/trip/domain/usecases/get_trip_by_id_use_case.dart'
+    as _i623;
+import '../../features/user/trip/domain/usecases/get_trip_by_uuid_use_case.dart'
+    as _i1003;
+import '../../features/user/trip/domain/usecases/get_user_driver_use_case.dart'
+    as _i45;
+import '../../features/user/trip/domain/usecases/make_trip_use_case.dart'
+    as _i840;
+import '../../features/user/trip/domain/usecases/report_trip_issue_use_case.dart'
+    as _i238;
+import '../../features/user/trip/domain/usecases/search_trip_use_case.dart'
+    as _i284;
+import '../../features/user/trip/domain/usecases/send_payment_request_use_case.dart'
+    as _i13;
+import '../../features/user/trip/domain/usecases/send_trip_review_use_case.dart'
+    as _i86;
+import '../../features/user/trip/presentation/bloc/accepted_user_trip/accepted_user_trip_cubit.dart'
+    as _i181;
+import '../../features/user/trip/presentation/bloc/driver_history/trip_history_details_cubit.dart'
+    as _i492;
+import '../../features/user/trip/presentation/bloc/report_issue/report_issue_bloc.dart'
+    as _i374;
+import '../../features/user/trip/presentation/bloc/request_trip/request_trip_info_bloc.dart'
+    as _i930;
+import '../../features/user/trip/presentation/bloc/searching_for_driver/searching_for_driver_bloc.dart'
+    as _i743;
+import '../../features/user/trip/presentation/bloc/trip_actions_cubit.dart'
+    as _i325;
+import '../../features/user/trip/presentation/bloc/trip_history/trip_history_cubit.dart'
+    as _i475;
+import '../../features/user/trip/presentation/bloc/trip_info/trip_bloc.dart'
+    as _i351;
+import '../../features/user/trip/presentation/bloc/trip_payment_user/trip_payment_user_cubit.dart'
+    as _i658;
+import '../../features/user/trip/presentation/bloc/trip_rating/trip_rating_bloc.dart'
+    as _i563;
 import '../../features/vendor/attributes/data/datasources/attributes_remote_data_source.dart'
     as _i748;
 import '../../features/vendor/attributes/data/repositories/attributes_repository_impl.dart'
@@ -409,18 +691,227 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i183.ImagePicker>(() => registerModule.imagePicker);
     gh.factory<_i791.PolyLineHelper>(() => _i791.PolyLineHelper());
     gh.factory<_i665.ApiErrorHandler>(() => _i665.ApiErrorHandler());
+    gh.factory<_i645.LocationPickerCubit>(() => _i645.LocationPickerCubit());
     gh.factory<_i248.LocationCubit>(() => _i248.LocationCubit());
     gh.lazySingleton<_i985.SocketService>(() => _i985.SocketService());
+    gh.factory<_i661.LoginCubit>(() => _i661.LoginCubit(gh<InvalidType>()));
     gh.factory<_i1035.NetworkInfo>(() => _i1035.NetworkInfoImpl());
+    gh.lazySingleton<_i850.GetIntroDataUseCase>(
+      () => _i850.GetIntroDataUseCase(initRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i730.InitAppUseCase>(
+      () => _i730.InitAppUseCase(initRepository: gh<InvalidType>()),
+    );
     gh.factory<_i913.GlobalCubit>(
       () => _i913.GlobalCubit(gh<_i460.SharedPreferences>()),
+    );
+    gh.lazySingleton<_i260.GetSupplierCategoryUseCase>(
+      () => _i260.GetSupplierCategoryUseCase(
+        suppliersRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i548.GetSupplierDetailsCategoryUseCase>(
+      () => _i548.GetSupplierDetailsCategoryUseCase(
+        suppliersRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i542.AppRepositoryImpl>(
+      () => _i542.AppRepositoryImpl(appRemoteDataSource: gh<InvalidType>()),
+    );
+    gh.factory<_i23.WalletCubit>(
+      () => _i23.WalletCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
+    gh.factory<_i325.TripActionsCubit>(
+      () => _i325.TripActionsCubit(gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i532.SuppliersRepositoryImpl>(
+      () => _i532.SuppliersRepositoryImpl(
+        suppliersRemoteDataSource: gh<InvalidType>(),
+      ),
+    );
+    gh.factory<_i174.DeleteImageUseCase>(
+      () => _i174.DeleteImageUseCase(appRepository: gh<InvalidType>()),
+    );
+    gh.factory<_i18.GenerateDeepLink>(
+      () => _i18.GenerateDeepLink(appRepository: gh<InvalidType>()),
+    );
+    gh.factory<_i659.UploadImageUseCase>(
+      () => _i659.UploadImageUseCase(appRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i354.AddNewAddressUseCase>(
+      () => _i354.AddNewAddressUseCase(locationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i9.DeleteAddressUseCase>(
+      () => _i9.DeleteAddressUseCase(locationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i60.GetAddressUseCase>(
+      () => _i60.GetAddressUseCase(locationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i684.GetGovernoratesUseCase>(
+      () => _i684.GetGovernoratesUseCase(locationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i710.GetRegionUseCase>(
+      () => _i710.GetRegionUseCase(locationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i1036.MakeAddressDefaultUseCase>(
+      () => _i1036.MakeAddressDefaultUseCase(
+        locationRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i49.AddBalanceUseCase>(
+      () => _i49.AddBalanceUseCase(paymentRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i659.GetCurrentBalanceUseCase>(
+      () =>
+          _i659.GetCurrentBalanceUseCase(paymentRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i303.GetTransactionUseCase>(
+      () => _i303.GetTransactionUseCase(paymentRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i789.ToggleWishlistUseCase>(
+      () => _i789.ToggleWishlistUseCase(
+        productRepository: gh<_i576.ProductRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i511.AuthRemoteDataSource>(
+      () => _i511.AuthRemoteDataSourceImpl(
+        dioConsumer: gh<InvalidType>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+        tokenRepository: gh<InvalidType>(),
+        deviceHelper: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i384.AuthRepositoryImpl>(
+      () => _i384.AuthRepositoryImpl(authRemoteDataSource: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i476.OnBoardingCubit>(
+      () => _i476.OnBoardingCubit(
+        gh<InvalidType>(),
+        gh<_i460.SharedPreferences>(),
+      ),
+    );
+    gh.lazySingleton<_i609.GetBannersUseCase>(
+      () => _i609.GetBannersUseCase(mainRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i31.GetBrandUseCase>(
+      () => _i31.GetBrandUseCase(mainRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i45.GetMainCategoryUseCase>(
+      () => _i45.GetMainCategoryUseCase(mainRepository: gh<InvalidType>()),
+    );
+    gh.factory<_i121.TrackOrderCubit>(
+      () => _i121.TrackOrderCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
+    gh.factory<_i1065.ProductDetailsCubit>(
+      () => _i1065.ProductDetailsCubit(gh<InvalidType>(), gh<InvalidType>()),
     );
     gh.factory<_i864.AnalyticsProvider>(
       () => _i864.FirebaseAnalyticsProvider(gh<_i398.FirebaseAnalytics>()),
     );
+    gh.factory<_i1025.FavouriteCubit>(
+      () => _i1025.FavouriteCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
+    gh.factory<_i787.UpdateBloc>(
+      () => _i787.UpdateBloc(gh<InvalidType>(), gh<InvalidType>()),
+    );
     gh.factory<_i620.DeviceHelper>(() => _i620.DeviceHelperImpl());
+    gh.lazySingleton<_i662.SettingsRepositoryImpl>(
+      () => _i662.SettingsRepositoryImpl(
+        settingsRemoteDataSource: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i1010.ChangeLangCodeUseCase>(
+      () => _i1010.ChangeLangCodeUseCase(settingsRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i40.GetAllSuggestionTypeUseCase>(
+      () => _i40.GetAllSuggestionTypeUseCase(
+        settingsRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i353.GetAppSettingsUseCase>(
+      () => _i353.GetAppSettingsUseCase(settingsRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i82.GetDeletionReasonsUseCase>(
+      () =>
+          _i82.GetDeletionReasonsUseCase(settingsRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i791.GetAllFaqsUseCase>(
+      () => _i791.GetAllFaqsUseCase(settingsRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i787.GetPageUseCase>(
+      () => _i787.GetPageUseCase(settingsRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i434.SendSuggestionsTypeUseCase>(
+      () => _i434.SendSuggestionsTypeUseCase(
+        settingsRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i728.DeleteAccountUseCase>(
+      () => _i728.DeleteAccountUseCase(authRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i543.LogOutUseCase>(
+      () => _i543.LogOutUseCase(authRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i665.LoginUserUseCase>(
+      () => _i665.LoginUserUseCase(authRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i145.UpdateUserDataUseCase>(
+      () => _i145.UpdateUserDataUseCase(authRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i333.VerifyOtpUseCase>(
+      () => _i333.VerifyOtpUseCase(authRepository: gh<InvalidType>()),
+    );
+    gh.factory<_i273.AddNewAddressCubit>(
+      () => _i273.AddNewAddressCubit(gh<InvalidType>()),
+    );
+    gh.factory<_i643.UserSuggestionBloc>(
+      () => _i643.UserSuggestionBloc(
+        gh<InvalidType>(),
+        gh<_i434.SendSuggestionsTypeUseCase>(),
+      ),
+    );
+    gh.factory<_i709.BalanceCubit>(() => _i709.BalanceCubit(gh<InvalidType>()));
+    gh.factory<_i910.ProductCubit>(
+      () => _i910.ProductCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i953.ProductRemoteDataSource>(
+      () => _i953.ProductRemoteDatasourceImpl(dioConsumer: gh<InvalidType>()),
+    );
+    gh.factory<_i868.FaqsQuestionCubit>(
+      () => _i868.FaqsQuestionCubit(gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i708.LocationRemoteDataSource>(
+      () => _i708.LocationRemoteDataSourceImpl(
+        dioConsumer: gh<InvalidType>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
+    );
     gh.factory<_i277.TripHistoryDetailsCubit>(
       () => _i277.TripHistoryDetailsCubit(gh<_i791.PolyLineHelper>()),
+    );
+    gh.factory<_i492.TripHistoryDetailsCubit>(
+      () => _i492.TripHistoryDetailsCubit(gh<_i791.PolyLineHelper>()),
+    );
+    gh.lazySingleton<_i785.PaymentRemoteDataSource>(
+      () => _i785.PaymentRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i1031.PickImageCubit>(
+      () => _i1031.PickImageCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i282.AppRemoteDataSource>(
+      () => _i282.AppRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i342.OrderRemoteDataSource>(
+      () => _i342.OrderRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
+    );
+    gh.factory<_i380.SupplierCubit>(
+      () => _i380.SupplierCubit(gh<InvalidType>()),
+    );
+    gh.factory<_i761.SupplierDetailsBloc>(
+      () => _i761.SupplierDetailsBloc(gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i477.GetUserDataUseCase>(
+      () => _i477.GetUserDataUseCase(authRepository: gh<_i7.AuthRepository>()),
     );
     gh.lazySingleton<_i82.DioConsumer>(
       () => _i82.DioConsumer(
@@ -428,10 +919,30 @@ extension GetItInjectableX on _i174.GetIt {
         apiErrorHandler: gh<_i665.ApiErrorHandler>(),
       ),
     );
+    gh.factory<_i922.StartCubit>(() => _i922.StartCubit(gh<InvalidType>()));
+    gh.factory<_i460.LogoutCubit>(() => _i460.LogoutCubit(gh<InvalidType>()));
+    gh.factory<_i329.NotificationsCubit>(
+      () => _i329.NotificationsCubit(
+        gh<InvalidType>(),
+        gh<InvalidType>(),
+        gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i941.GetNotificationsCount>(
+      () => _i941.GetNotificationsCount(repository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i312.ProductRepositoryImpl>(
+      () => _i312.ProductRepositoryImpl(
+        productRemoteDataSource: gh<InvalidType>(),
+      ),
+    );
     gh.factory<_i967.DriverMainRemoteDataSource>(
       () => _i967.DriverMainRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
+    );
+    gh.factory<_i844.TripRemoteDataSource>(
+      () => _i844.TripRemoteDataSourceImpl(dioConsumer: gh<_i82.DioConsumer>()),
     );
     gh.lazySingleton<_i748.AttributesRemoteDataSource>(
       () => _i748.AttributesRemoteDataSourceImpl(
@@ -454,6 +965,7 @@ extension GetItInjectableX on _i174.GetIt {
         socketService: gh<_i985.SocketService>(),
       ),
     );
+    gh.factory<_i201.SettingsBloc>(() => _i201.SettingsBloc(gh<InvalidType>()));
     gh.factory<_i734.TokenRepository>(
       () => _i734.TokenRepositoryImp(
         secureStorage: gh<_i558.FlutterSecureStorage>(),
@@ -464,9 +976,29 @@ extension GetItInjectableX on _i174.GetIt {
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
+    gh.lazySingleton<_i14.MainRemoteDataSource>(
+      () => _i14.MainRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
+    );
     gh.lazySingleton<_i997.CategoriesRemoteDataSource>(
       () => _i997.CategoriesRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
+      ),
+    );
+    gh.lazySingleton<_i2.UpdateDeviceToken>(
+      () => _i2.UpdateDeviceToken(gh<InvalidType>()),
+    );
+    gh.factory<_i31.ChatsRemoteDataSource>(
+      () => _i31.ChatsRemoteDataSourceImpl(
+        dioConsumer: gh<InvalidType>(),
+        socketService: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i450.MainRepositoryImpl>(
+      () => _i450.MainRepositoryImpl(mainRemoteDataSource: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i419.NotificationRemoteDataSource>(
+      () => _i419.NotificationRemoteDataSourceImpl(
+        dioConsumer: gh<InvalidType>(),
       ),
     );
     gh.factory<_i279.ProductRemoteDataSource>(
@@ -474,23 +1006,96 @@ extension GetItInjectableX on _i174.GetIt {
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
+    gh.factory<_i715.FilterCubit>(() => _i715.FilterCubit(gh<InvalidType>()));
+    gh.factory<_i1.OtpBloc>(
+      () => _i1.OtpBloc(gh<InvalidType>(), gh<InvalidType>()),
+    );
     gh.lazySingleton<_i11.CategoriesRepository>(
       () => _i10.CategoriesRepositoryImpl(
         remoteDataSource: gh<_i997.CategoriesRemoteDataSource>(),
       ),
+    );
+    gh.lazySingleton<_i428.GetFavouriteUseCase>(
+      () => _i428.GetFavouriteUseCase(productRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i352.GetProductDetailsUseCase>(
+      () =>
+          _i352.GetProductDetailsUseCase(productRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i67.GetProductUseCase>(
+      () => _i67.GetProductUseCase(productRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i786.GetSuppliersProductUseCase>(
+      () => _i786.GetSuppliersProductUseCase(
+        productRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i208.SubmitReviewUseCase>(
+      () => _i208.SubmitReviewUseCase(productRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i275.SuppliersRemoteDataSource>(
+      () => _i275.SuppliersRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i19.PaymentRepositoryImpl>(
+      () => _i19.PaymentRepositoryImpl(
+        paymentRemoteDataSource: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i395.InitRemoteDataSource>(
+      () => _i395.RegisterRemoteDataSourceImpl(
+        dioConsumer: gh<InvalidType>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+        tokenRepository: gh<InvalidType>(),
+        authRemoteDataSource: gh<InvalidType>(),
+      ),
+    );
+    gh.factory<_i742.TripRepository>(
+      () => _i359.TripRepositoryImpl(
+        tripRemoteDataSource: gh<_i844.TripRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i347.BannersCubit>(
+      () => _i347.BannersCubit(gh<InvalidType>(), gh<InvalidType>()),
     );
     gh.lazySingleton<_i577.SettingsRemoteDataSource>(
       () => _i577.SettingsRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
+    gh.factory<_i453.GetAllTripsHistoryUseCase>(
+      () => _i453.GetAllTripsHistoryUseCase(gh<_i742.TripRepository>()),
+    );
+    gh.factory<_i238.ReportTripIssueUseCase>(
+      () => _i238.ReportTripIssueUseCase(gh<_i742.TripRepository>()),
+    );
+    gh.factory<_i86.SendTripReviewUseCase>(
+      () => _i86.SendTripReviewUseCase(gh<_i742.TripRepository>()),
+    );
     gh.lazySingleton<_i676.AppRemoteDataSource>(
       () => _i676.AppRemoteDataSourceImpl(dioConsumer: gh<_i82.DioConsumer>()),
+    );
+    gh.factory<_i586.ApplyPromoCodeUseCase>(
+      () => _i586.ApplyPromoCodeUseCase(orderRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i507.DeleteOrderUseCase>(
+      () => _i507.DeleteOrderUseCase(orderRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i748.GetDeliveryCostUseCase>(
+      () => _i748.GetDeliveryCostUseCase(orderRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i646.GetOrderDetailsUseCase>(
+      () => _i646.GetOrderDetailsUseCase(orderRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i55.GetOrderListUseCase>(
+      () => _i55.GetOrderListUseCase(orderRepository: gh<InvalidType>()),
     );
     gh.factory<_i444.LocationRemoteDataSource>(
       () => _i444.LocationRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
+    );
+    gh.lazySingleton<_i27.InitRepoImpl>(
+      () => _i27.InitRepoImpl(initRemoteDataSource: gh<InvalidType>()),
     );
     gh.factory<_i700.DriverTripRepository>(
       () => _i649.DriverRepositoryRepository(
@@ -501,6 +1106,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1068.DriverMainRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
+    );
+    gh.factory<_i374.ReportIssueBloc>(
+      () => _i374.ReportIssueBloc(gh<_i238.ReportTripIssueUseCase>()),
     );
     gh.factory<_i581.ChatsRemoteDataSource>(
       () => _i581.ChatsRemoteDataSourceImpl(
@@ -513,10 +1121,29 @@ extension GetItInjectableX on _i174.GetIt {
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
+    gh.lazySingleton<_i602.NotificationRepositoryImpl>(
+      () => _i602.NotificationRepositoryImpl(
+        networkInfo: gh<InvalidType>(),
+        remoteMainDataSource: gh<InvalidType>(),
+      ),
+    );
+    gh.factory<_i733.PagesBloc>(() => _i733.PagesBloc(gh<InvalidType>()));
     gh.factory<_i449.LocationRemoteDataSource>(
       () => _i449.LocationRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
+    );
+    gh.lazySingleton<_i804.GetNotificationListUseCase>(
+      () => _i804.GetNotificationListUseCase(
+        notificationRepository: gh<InvalidType>(),
+      ),
+    );
+    gh.lazySingleton<_i973.MarkAllAsReadUseCase>(
+      () =>
+          _i973.MarkAllAsReadUseCase(notificationRepository: gh<InvalidType>()),
+    );
+    gh.lazySingleton<_i563.SettingsRemoteDataSource>(
+      () => _i563.SettingsRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
     );
     gh.lazySingleton<_i81.AppRepository>(
       () => _i657.AppRepositoryImpl(
@@ -586,9 +1213,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.UploadImageUseCase>(
       () => _i656.UploadImageUseCase(appRepository: gh<_i81.AppRepository>()),
     );
+    gh.lazySingleton<_i124.LocationRepository>(
+      () => _i121.LocationRepositoryImpl(
+        locationRemoteDataSource: gh<_i708.LocationRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i752.DriverMainRepository>(
       () => _i547.DriverMainRepositoryImpl(
         mainRemoteDataSource: gh<_i967.DriverMainRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i858.GlobalLocationCubit>(
+      () => _i858.GlobalLocationCubit(
+        gh<InvalidType>(),
+        gh<_i710.GetRegionUseCase>(),
       ),
     );
     gh.lazySingleton<_i30.SettingsRepository>(
@@ -596,10 +1234,21 @@ extension GetItInjectableX on _i174.GetIt {
         settingsRemoteDataSource: gh<_i577.SettingsRemoteDataSource>(),
       ),
     );
+    gh.factory<_i881.OrdersCubit>(
+      () => _i881.OrdersCubit(gh<_i55.GetOrderListUseCase>()),
+    );
     gh.lazySingleton<_i988.PickImageCubit>(
       () => _i988.PickImageCubit(
         gh<_i656.UploadImageUseCase>(),
         gh<_i440.DeleteImageUseCase>(),
+      ),
+    );
+    gh.factory<_i1035.MyAddressCubit>(
+      () => _i1035.MyAddressCubit(
+        gh<InvalidType>(),
+        gh<_i1036.MakeAddressDefaultUseCase>(),
+        gh<InvalidType>(),
+        gh<InvalidType>(),
       ),
     );
     gh.lazySingleton<_i305.GetCategoriesUseCase>(
@@ -656,15 +1305,57 @@ extension GetItInjectableX on _i174.GetIt {
         driverTripRepository: gh<_i700.DriverTripRepository>(),
       ),
     );
+    gh.factory<_i623.ChatsRepository>(
+      () => _i618.ChatsRepositoryImpl(
+        chatsRemoteDataSource: gh<_i31.ChatsRemoteDataSource>(),
+        networkInfo: gh<InvalidType>(),
+      ),
+    );
+    gh.factory<_i481.GetPlaceDetailsByLatlng>(
+      () => _i481.GetPlaceDetailsByLatlng(
+        locationRepository: gh<_i124.LocationRepository>(),
+      ),
+    );
+    gh.factory<_i763.GetGoogleSuggestUseCase>(
+      () => _i763.GetGoogleSuggestUseCase(
+        locationRepository: gh<_i124.LocationRepository>(),
+      ),
+    );
+    gh.factory<_i50.GetPlaceDetailsByPlaceIdUseCase>(
+      () => _i50.GetPlaceDetailsByPlaceIdUseCase(
+        locationRepository: gh<_i124.LocationRepository>(),
+      ),
+    );
+    gh.factory<_i760.MainCubit>(
+      () => _i760.MainCubit(gh<_i2.UpdateDeviceToken>()),
+    );
     gh.factory<_i411.LocationRepository>(
       () => _i598.LocationRepositoryImpl(
         locationRemoteDataSource: gh<_i444.LocationRemoteDataSource>(),
         locationLocalDataSource: gh<_i298.LocationLocalDataSource>(),
       ),
     );
+    gh.factory<_i475.TripHistoryCubit>(
+      () => _i475.TripHistoryCubit(gh<_i453.GetAllTripsHistoryUseCase>()),
+    );
     gh.factory<_i315.ToggleAvailabilityUseCase>(
       () => _i315.ToggleAvailabilityUseCase(
         mainRepository: gh<_i752.DriverMainRepository>(),
+      ),
+    );
+    gh.factory<_i991.CancelTripUseCase>(
+      () => _i991.CancelTripUseCase(tripRepository: gh<_i742.TripRepository>()),
+    );
+    gh.factory<_i45.GetUserDriverUseCase>(
+      () =>
+          _i45.GetUserDriverUseCase(tripRepository: gh<_i742.TripRepository>()),
+    );
+    gh.factory<_i840.MakeTripUseCase>(
+      () => _i840.MakeTripUseCase(tripRepository: gh<_i742.TripRepository>()),
+    );
+    gh.lazySingleton<_i13.SendUserPaymentRequestUseCase>(
+      () => _i13.SendUserPaymentRequestUseCase(
+        tripRepository: gh<_i742.TripRepository>(),
       ),
     );
     gh.factory<_i698.AuthRemoteDataSource>(
@@ -682,6 +1373,33 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i945.PendingTripsUseCase(
         repository: gh<_i700.DriverTripRepository>(),
       ),
+    );
+    gh.factory<_i658.TripPaymentUserCubit>(
+      () => _i658.TripPaymentUserCubit(
+        gh<InvalidType>(),
+        gh<_i13.SendUserPaymentRequestUseCase>(),
+      ),
+    );
+    gh.factory<_i515.GetChatMessagesUseCase>(
+      () => _i515.GetChatMessagesUseCase(
+        chatsRepository: gh<_i623.ChatsRepository>(),
+      ),
+    );
+    gh.factory<_i1027.SendChatUseCase>(
+      () =>
+          _i1027.SendChatUseCase(chatsRepository: gh<_i623.ChatsRepository>()),
+    );
+    gh.factory<_i847.RatingCubit>(
+      () => _i847.RatingCubit(gh<_i208.SubmitReviewUseCase>()),
+    );
+    gh.lazySingleton<_i291.OrderLocaleDataSource>(
+      () => _i291.OrderLocaleDataSourceImpl(
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+        remoteDataSource: gh<_i342.OrderRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i563.TripRatingBloc>(
+      () => _i563.TripRatingBloc(gh<_i86.SendTripReviewUseCase>()),
     );
     gh.lazySingleton<_i380.DeliveryRemoteDataSource>(
       () => _i380.DeliveryRemoteDataSourceImpl(
@@ -743,11 +1461,24 @@ extension GetItInjectableX on _i174.GetIt {
         remoteMainDataSource: gh<_i904.NotificationRemoteDataSource>(),
       ),
     );
+    gh.lazySingleton<_i284.SearchTripUseCase>(
+      () => _i284.SearchTripUseCase(repository: gh<_i742.TripRepository>()),
+    );
     gh.factory<_i56.AuthRemoteDataSource>(
       () => _i56.AuthRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
         tokenRepository: gh<_i734.TokenRepository>(),
         deviceHelper: gh<_i620.DeviceHelper>(),
+      ),
+    );
+    gh.lazySingleton<_i623.GetTripByIdUseCase>(
+      () => _i623.GetTripByIdUseCase(
+        driverTripRepository: gh<_i742.TripRepository>(),
+      ),
+    );
+    gh.factory<_i1003.GetTripByUUidUseCase>(
+      () => _i1003.GetTripByUUidUseCase(
+        driverTripRepository: gh<_i742.TripRepository>(),
       ),
     );
     gh.factory<_i547.DriverMainRepository>(
@@ -762,6 +1493,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i931.TripCubit(
         gh<_i425.GetTripByIdUseCase>(),
         gh<_i985.SocketService>(),
+      ),
+    );
+    gh.factory<_i511.LocationCubit>(
+      () => _i511.LocationCubit(
+        gh<_i763.GetGoogleSuggestUseCase>(),
+        gh<_i50.GetPlaceDetailsByPlaceIdUseCase>(),
       ),
     );
     gh.factory<_i333.GetGovernoratesUseCase>(
@@ -822,6 +1559,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i122.SendChatUseCase>(
       () => _i122.SendChatUseCase(chatsRepository: gh<_i466.ChatsRepository>()),
     );
+    gh.factory<_i930.RequestTripBloc>(
+      () => _i930.RequestTripBloc(
+        gh<_i840.MakeTripUseCase>(),
+        gh<_i985.SocketService>(),
+      ),
+    );
     gh.factory<_i185.CategoryDetailsCubit>(
       () => _i185.CategoryDetailsCubit(gh<_i66.ProductRepository>()),
     );
@@ -841,6 +1584,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i985.SocketService>(),
         gh<_i979.UpdateDriverLocationUseCase>(),
         gh<_i791.PolyLineHelper>(),
+      ),
+    );
+    gh.lazySingleton<_i205.OrderRepository>(
+      () => _i492.OrderRepoImpl(
+        orderLocaleDataSource: gh<_i291.OrderLocaleDataSource>(),
+        orderRemoteDataSource: gh<_i342.OrderRemoteDataSource>(),
       ),
     );
     gh.factory<_i194.AcceptedDriverCubit>(
@@ -870,6 +1619,15 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i770.DeleteCategoryUseCase>(),
       ),
     );
+    gh.factory<_i743.SearchingForDriverBloc>(
+      () => _i743.SearchingForDriverBloc(
+        gh<_i991.CancelTripUseCase>(),
+        gh<_i985.SocketService>(),
+        gh<_i623.GetTripByIdUseCase>(),
+        gh<_i284.SearchTripUseCase>(),
+        gh<_i1003.GetTripByUUidUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i907.GetNotificationListUseCase>(
       () => _i907.GetNotificationListUseCase(
         notificationRepository: gh<_i779.NotificationRepository>(),
@@ -883,6 +1641,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i381.DriverMainRepository>(
       () => _i63.DriverMainRepositoryImpl(
         mainRemoteDataSource: gh<_i843.DriverMainRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i347.MessageBloc>(
+      () => _i347.MessageBloc(
+        gh<_i1027.SendChatUseCase>(),
+        gh<_i515.GetChatMessagesUseCase>(),
+        gh<InvalidType>(),
+        gh<_i460.SharedPreferences>(),
       ),
     );
     gh.factory<_i234.DriverTripActionsCubit>(
@@ -916,6 +1682,14 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i946.AuthRepositoryImpl(
         authRemoteDataSource: gh<_i698.AuthRemoteDataSource>(),
         captain: gh<_i56.AuthRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i351.TripBloc>(
+      () => _i351.TripBloc(
+        gh<_i481.GetPlaceDetailsByLatlng>(),
+        gh<_i791.PolyLineHelper>(),
+        gh<_i45.GetUserDriverUseCase>(),
+        gh<_i1003.GetTripByUUidUseCase>(),
       ),
     );
     gh.lazySingleton<_i577.GetSupplierCategoryUseCase>(
@@ -999,6 +1773,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1033.AvailitiablityCubit>(
       () => _i1033.AvailitiablityCubit(gh<_i239.ToggleAvailabilityUseCase>()),
     );
+    gh.factory<_i181.AcceptedUserTripCubit>(
+      () => _i181.AcceptedUserTripCubit(
+        gh<_i985.SocketService>(),
+        gh<_i623.GetTripByIdUseCase>(),
+      ),
+    );
     gh.factory<_i34.AttributesCubit>(
       () => _i34.AttributesCubit(
         gh<_i1050.GetAttributesUseCase>(),
@@ -1020,6 +1800,27 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i818.InitRepoImpl(
         initRemoteDataSource: gh<_i389.InitRemoteDataSource>(),
       ),
+    );
+    gh.lazySingleton<_i326.AddProductToCartUseCase>(
+      () => _i326.AddProductToCartUseCase(
+        orderRepository: gh<_i205.OrderRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i1007.DeleteProductToCartUseCase>(
+      () => _i1007.DeleteProductToCartUseCase(
+        orderRepository: gh<_i205.OrderRepository>(),
+      ),
+    );
+    gh.lazySingleton<_i204.GetCartListUse>(
+      () => _i204.GetCartListUse(orderRepository: gh<_i205.OrderRepository>()),
+    );
+    gh.lazySingleton<_i364.OrderPlaceUseCase>(
+      () =>
+          _i364.OrderPlaceUseCase(orderRepository: gh<_i205.OrderRepository>()),
+    );
+    gh.lazySingleton<_i18.SetQuantityUseCase>(
+      () =>
+          _i18.SetQuantityUseCase(orderRepository: gh<_i205.OrderRepository>()),
     );
     gh.lazySingleton<_i854.GetAllDeliveryOrdersUseCase>(
       () => _i854.GetAllDeliveryOrdersUseCase(
@@ -1164,6 +1965,17 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i505.DeleteCubit>(
       () => _i505.DeleteCubit(gh<_i106.DeleteAccountUseCase>()),
+    );
+    gh.factory<_i462.CartCubit>(
+      () => _i462.CartCubit(
+        gh<_i326.AddProductToCartUseCase>(),
+        gh<_i204.GetCartListUse>(),
+        gh<_i1007.DeleteProductToCartUseCase>(),
+        gh<_i18.SetQuantityUseCase>(),
+        gh<_i364.OrderPlaceUseCase>(),
+        gh<InvalidType>(),
+        gh<_i460.SharedPreferences>(),
+      ),
     );
     gh.factory<_i1008.LogoutCubit>(
       () => _i1008.LogoutCubit(gh<_i1020.LogOutUseCase>()),

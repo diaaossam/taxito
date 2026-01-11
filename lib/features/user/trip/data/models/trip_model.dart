@@ -1,0 +1,234 @@
+import 'package:aslol/core/enum/payment_type.dart';
+import 'package:aslol/features/trip/data/models/rate_model.dart';
+
+import '../../../../core/enum/trip_status_enum.dart';
+import '../../../app/data/models/generic_model.dart';
+import '../../../auth/data/models/response/user_model.dart';
+import '../../../location/data/models/response/main_location_data.dart';
+
+class TripModel {
+  TripModel(
+      {this.id,
+      this.uuid,
+      this.tripCode,
+      this.startDate,
+      this.startTime,
+      this.from,
+      this.to,
+      this.tripType,
+      this.driver,
+      this.user,
+      this.distance,
+      this.duration,
+      this.totalPrice,
+      this.status,
+      this.paymentStatus,
+      this.paymentMethod,
+      this.cancelReason,
+      this.canceledBy,
+      this.tripCancelReason,
+      this.cancelledAt,
+      this.acceptedAt,
+      this.driverStartedAt,
+      this.driverArrivedAt,
+      this.startedAt,
+      this.completedAt,
+      this.rate,
+      this.hasProblem,
+      this.problemDescription,
+      this.createdAt,
+      this.updatedAt,
+      this.chatId,
+      this.driverAcceptConfirmation,
+      this.userSentRequestConfirmPayment,
+      this.priceCalculationType,
+      this.isSchedule,
+      this.remaining_price,
+      this.distanceOfDriver});
+
+  TripModel.fromJson(dynamic json) {
+    id = json['id'];
+    uuid = json['uuid'];
+    tripCode = json['trip_code'] is num
+        ? json['trip_code']
+        : num.parse(json['trip_code']);
+    startDate = json['start_date'];
+    startTime = json['start_time'];
+    from =
+        json['from'] != null ? MainLocationData.fromJson(json['from']) : null;
+    to = json['to'] != null ? MainLocationData.fromJson(json['to']) : null;
+    tripType = json['trip_type'] != null
+        ? GenericModel.fromJson(json['trip_type'])
+        : null;
+    rate = json['rate'] != null ? RateModel.fromJson(json['rate']) : null;
+    driver = json['driver'] != null ? UserModel.fromJson(json['driver']) : null;
+    user = json['user'] != null ? UserModel.fromJson(json['user']) : null;
+    distance = json['distance'];
+    duration = json['duration'];
+    totalPrice = json['total_price'];
+    chatId =
+        json['chat_id'] != null ? ChatId.fromJson(json: json['chat_id']) : null;
+    status = json['status'] != null
+        ? handleStringToTripStatusEnum(data: json['status'])
+        : null;
+    paymentStatus = json['payment_status'];
+    paymentMethod = json['payment_method'] != null
+        ? handleStringToPayment(payment: json['payment_method'])
+        : null;
+    cancelReason = json['cancel_reason'] != null
+        ? GenericModel.fromJson(json['cancel_reason'])
+        : null;
+    canceledBy = json['canceled_by'];
+    tripCancelReason = json['trip_cancel_reason'] != null
+        ? GenericModel.fromJson(json['trip_cancel_reason'])
+        : null;
+    cancelledAt = json['cancelled_at'] != null
+        ? DateTime.parse(json['cancelled_at'])
+        : null;
+    acceptedAt = json['accepted_at'] != null
+        ? DateTime.parse(json['accepted_at'])
+        : null;
+    driverStartedAt = json['driver_started_at'] != null
+        ? DateTime.parse(json['driver_started_at'])
+        : null;
+    driverArrivedAt = json['driver_started_at'] != null
+        ? DateTime.parse(json['driver_started_at'])
+        : null;
+    startedAt =
+        json['started_at'] != null ? DateTime.parse(json['started_at']) : null;
+    completedAt = json['completed_at'] != null
+        ? DateTime.parse(json['completed_at'])
+        : null;
+    hasProblem = json['has_problem'];
+    problemDescription = json['problem_description'];
+    createdAt =
+        json['created_at'] != null ? DateTime.parse(json['created_at']) : null;
+    updatedAt =
+        json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null;
+    remaining_price = json['remaining_price'];
+    isSchedule = json['is_scheduled'];
+    userSentRequestConfirmPayment = json['user_sent_request_confirm_payment'];
+    driverAcceptConfirmation = json['driver_accept_confirmation'];
+    priceCalculationType = json['price_calculation_type'];
+  }
+
+  num? id;
+  String? uuid;
+  num? tripCode;
+  String? startDate;
+  String? startTime;
+  MainLocationData? from;
+  MainLocationData? to;
+  GenericModel? tripType;
+  UserModel? driver;
+  UserModel? user;
+  num? distance;
+  num? distanceOfDriver;
+  num? duration;
+  num? totalPrice;
+  TripStatusEnum? status;
+  String? paymentStatus;
+  PaymentType? paymentMethod;
+  ChatId? chatId;
+  GenericModel? cancelReason;
+  String? canceledBy;
+  GenericModel? tripCancelReason;
+  DateTime? cancelledAt;
+  DateTime? acceptedAt;
+  DateTime? driverStartedAt;
+  DateTime? driverArrivedAt;
+  DateTime? startedAt;
+  DateTime? completedAt;
+  RateModel? rate;
+  bool? hasProblem;
+  dynamic problemDescription;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  num? remaining_price;
+  num? isSchedule;
+  num? userSentRequestConfirmPayment;
+  num? driverAcceptConfirmation;
+  String? priceCalculationType;
+}
+
+class ChatId {
+  final num? id;
+  final String? uuid;
+
+  ChatId({this.id, this.uuid});
+
+  factory ChatId.fromJson({required dynamic json}) {
+    return ChatId(
+      id: json['id'],
+      uuid: json['uuid'],
+    );
+  }
+}
+
+extension TripModelCopyWith on TripModel {
+  TripModel copyWith({
+    num? id,
+    String? uuid,
+    num? tripCode,
+    String? startDate,
+    String? startTime,
+    MainLocationData? from,
+    MainLocationData? to,
+    GenericModel? tripType,
+    UserModel? driver,
+    UserModel? user,
+    num? distance,
+    num? duration,
+    num? totalPrice,
+    TripStatusEnum? status,
+    String? paymentStatus,
+    PaymentType? paymentMethod,
+    GenericModel? cancelReason,
+    String? canceledBy,
+    RateModel? rate,
+    GenericModel? tripCancelReason,
+    DateTime? cancelledAt,
+    DateTime? acceptedAt,
+    DateTime? driverStartedAt,
+    DateTime? driverArrivedAt,
+    DateTime? startedAt,
+    DateTime? completedAt,
+    bool? hasProblem,
+    dynamic problemDescription,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return TripModel(
+      id: id ?? this.id,
+      uuid: uuid ?? this.uuid,
+      tripCode: tripCode ?? this.tripCode,
+      startDate: startDate ?? this.startDate,
+      startTime: startTime ?? this.startTime,
+      from: from ?? this.from,
+      to: to ?? this.to,
+      tripType: tripType ?? this.tripType,
+      driver: driver ?? this.driver,
+      user: user ?? this.user,
+      distance: distance ?? this.distance,
+      duration: duration ?? this.duration,
+      totalPrice: totalPrice ?? this.totalPrice,
+      status: status ?? this.status,
+      paymentStatus: paymentStatus ?? this.paymentStatus,
+      paymentMethod: paymentMethod ?? this.paymentMethod,
+      cancelReason: cancelReason ?? this.cancelReason,
+      canceledBy: canceledBy ?? this.canceledBy,
+      tripCancelReason: tripCancelReason ?? this.tripCancelReason,
+      cancelledAt: cancelledAt ?? this.cancelledAt,
+      acceptedAt: acceptedAt ?? this.acceptedAt,
+      driverStartedAt: driverStartedAt ?? this.driverStartedAt,
+      driverArrivedAt: driverArrivedAt ?? this.driverArrivedAt,
+      startedAt: startedAt ?? this.startedAt,
+      completedAt: completedAt ?? this.completedAt,
+      rate: rate ?? this.rate,
+      hasProblem: hasProblem ?? this.hasProblem,
+      problemDescription: problemDescription ?? this.problemDescription,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+}
