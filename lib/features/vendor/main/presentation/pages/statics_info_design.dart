@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../order/presentation/cubit/statics/statics_cubit.dart';
 
 class StaticsInfoDesign extends StatelessWidget {

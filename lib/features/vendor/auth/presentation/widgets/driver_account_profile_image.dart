@@ -1,14 +1,14 @@
 import 'dart:io';
-import 'package:taxito/core/extensions/app_localizations_extension.dart';
-import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import '../../../../core/utils/app_size.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../../widgets/image_picker/app_image.dart';
-import '../../../../widgets/image_picker/media_form_field.dart';
-import '../../../../widgets/image_picker/pick_image_sheet.dart';
+import '../../../../../core/extensions/app_localizations_extension.dart';
+import '../../../../../core/extensions/color_extensions.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../widgets/image_picker/media_form_field.dart';
+import '../../../../../widgets/image_picker/pick_image_sheet.dart';
 
 class DriverAccountProfileImage extends StatelessWidget {
   final Function(File) onProfileReceived;

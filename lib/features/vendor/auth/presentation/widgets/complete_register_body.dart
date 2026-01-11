@@ -1,21 +1,21 @@
-import 'package:taxito/core/extensions/app_localizations_extension.dart';
-import 'package:taxito/core/extensions/navigation.dart';
-import 'package:taxito/core/extensions/sliver_padding.dart';
-import 'package:taxito/core/extensions/validitor_extention.dart';
-import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/auth/data/models/response/user_model_helper.dart';
-import 'package:taxito/features/location/data/models/location_entity.dart';
-import 'package:taxito/features/main/presentation/pages/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../../../core/utils/app_constant.dart';
-import '../../../../widgets/app_multi_select.dart';
-import '../../../../widgets/custom_button.dart';
-import '../../../../widgets/custom_text_form_field.dart';
+import '../../../../../core/extensions/app_localizations_extension.dart';
+import '../../../../../core/extensions/navigation.dart';
+import '../../../../../core/extensions/sliver_padding.dart';
+import '../../../../../core/extensions/validitor_extention.dart';
+import '../../../../../core/utils/app_constant.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../widgets/app_multi_select.dart';
+import '../../../../../widgets/custom_button.dart';
+import '../../../../../widgets/custom_text_form_field.dart';
+import '../../../location/data/models/location_entity.dart';
+import '../../../main/presentation/pages/main_layout.dart';
+import '../../data/models/response/user_model_helper.dart';
 import '../../domain/entity/register_params.dart';
 import '../cubit/complete_register/complete_register_bloc.dart';
 import 'driver_account_profile_image.dart';
@@ -47,10 +47,8 @@ class _RegisterBodyState extends State<RegisterBody> {
             DriverAccountProfileImage(
               onCoverReceived: (p0) => setState(() => coverPath = p0.path),
               onProfileReceived: (p0) => setState(() => profilePath = p0.path),
-              initialCover:
-                  coverPath ?? UserDataService().getUserData()?.coverImage,
-              initialImage:
-                  profilePath ?? UserDataService().getUserData()?.profileImage,
+              initialCover: coverPath ?? UserDataService().getUserData()?.coverImage,
+              initialImage: profilePath ?? UserDataService().getUserData()?.profileImage,
             ).toSliverPadding(),
             CustomTextFormField(
               name: "firstName",

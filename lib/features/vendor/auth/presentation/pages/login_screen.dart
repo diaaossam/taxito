@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../config/dependencies/injectable_dependencies.dart';
+import 'package:taxito/core/enum/user_type.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../captain/auth/presentation/widgets/auth_app_bar.dart';
+import '../../../../captain/auth/presentation/widgets/login/login_body.dart';
 import '../cubit/login_cubit/login_cubit.dart';
-import '../widgets/auth_app_bar.dart';
-import '../widgets/login/login_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,10 +16,8 @@ class LoginScreen extends StatelessWidget {
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
           return const Scaffold(
-            appBar: CustomAuthAppBar(
-              showBack: false,
-            ),
-            body: LoginBodyWidget(),
+            appBar: CustomAuthAppBar(showBack: false),
+            body: LoginBodyWidget(userType: UserType.supplier),
           );
         },
       ),

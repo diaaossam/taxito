@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'package:taxito/core/extensions/app_localizations_extension.dart';
-import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/widgets/image_picker/media_form_field.dart';
-import 'package:taxito/widgets/image_picker/pick_image_sheet.dart';
-import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../widgets/app_text.dart';
-import '../../../../widgets/loading/loading_widget.dart';
+
+import '../../../../../core/extensions/app_localizations_extension.dart';
+import '../../../../../core/extensions/color_extensions.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/image_picker/media_form_field.dart';
+import '../../../../../widgets/image_picker/pick_image_sheet.dart';
+import '../../../../../widgets/loading/loading_widget.dart';
 
 class IdPhotoPicker extends StatefulWidget {
   final String? initialImage;

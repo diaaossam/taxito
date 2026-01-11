@@ -277,34 +277,18 @@ import '../../features/vendor/auth/data/repositories/auth_repo_impl.dart'
     as _i946;
 import '../../features/vendor/auth/domain/repositories/auth_repository.dart'
     as _i1062;
-import '../../features/vendor/auth/domain/usecases/delete_account_use_case.dart'
-    as _i793;
 import '../../features/vendor/auth/domain/usecases/get_supplier_category_use_case.dart'
     as _i577;
 import '../../features/vendor/auth/domain/usecases/get_user_data_use_case.dart'
     as _i314;
-import '../../features/vendor/auth/domain/usecases/log_out_use_case.dart'
-    as _i228;
 import '../../features/vendor/auth/domain/usecases/login_user_use_case.dart'
     as _i919;
 import '../../features/vendor/auth/domain/usecases/register_user_use_case.dart'
     as _i466;
-import '../../features/vendor/auth/domain/usecases/resend_otp_use_case.dart'
-    as _i402;
-import '../../features/vendor/auth/domain/usecases/update_fcm_use_case.dart'
-    as _i835;
-import '../../features/vendor/auth/domain/usecases/verify_otp_use_case.dart'
-    as _i475;
 import '../../features/vendor/auth/presentation/cubit/complete_register/complete_register_bloc.dart'
     as _i734;
-import '../../features/vendor/auth/presentation/cubit/delete_account/delete_cubit.dart'
-    as _i576;
 import '../../features/vendor/auth/presentation/cubit/login_cubit/login_cubit.dart'
     as _i129;
-import '../../features/vendor/auth/presentation/cubit/logout/logout_cubit.dart'
-    as _i95;
-import '../../features/vendor/auth/presentation/cubit/otp/otp_bloc.dart'
-    as _i172;
 import '../../features/vendor/auth/presentation/cubit/update/update_bloc.dart'
     as _i1045;
 import '../../features/vendor/categories/data/datasources/categories_remote_data_source.dart'
@@ -435,16 +419,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i864.FirebaseAnalyticsProvider(gh<_i398.FirebaseAnalytics>()),
     );
     gh.factory<_i620.DeviceHelper>(() => _i620.DeviceHelperImpl());
-    gh.lazySingleton<_i577.GetSupplierCategoryUseCase>(
-      () => _i577.GetSupplierCategoryUseCase(authRepository: gh<InvalidType>()),
-    );
-    gh.lazySingleton<_i314.GetUserDataUseCase>(
-      () => _i314.GetUserDataUseCase(authRepository: gh<InvalidType>()),
-    );
-    gh.factory<_i1068.DriverMainRemoteDataSource>(
-      () =>
-          _i1068.DriverMainRemoteDataSourceImpl(dioConsumer: gh<InvalidType>()),
-    );
     gh.factory<_i277.TripHistoryDetailsCubit>(
       () => _i277.TripHistoryDetailsCubit(gh<_i791.PolyLineHelper>()),
     );
@@ -495,11 +469,6 @@ extension GetItInjectableX on _i174.GetIt {
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
-    gh.factory<_i547.DriverMainRepository>(
-      () => _i281.DriverMainRepositoryImpl(
-        mainRemoteDataSource: gh<_i1068.DriverMainRemoteDataSource>(),
-      ),
-    );
     gh.factory<_i279.ProductRemoteDataSource>(
       () => _i279.ProductRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
@@ -526,6 +495,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i700.DriverTripRepository>(
       () => _i649.DriverRepositoryRepository(
         driverTripRemoteDataSource: gh<_i731.DriverTripRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i1068.DriverMainRemoteDataSource>(
+      () => _i1068.DriverMainRemoteDataSourceImpl(
+        dioConsumer: gh<_i82.DioConsumer>(),
       ),
     );
     gh.factory<_i581.ChatsRemoteDataSource>(
@@ -647,11 +621,6 @@ extension GetItInjectableX on _i174.GetIt {
         repository: gh<_i11.CategoriesRepository>(),
       ),
     );
-    gh.factory<_i239.ToggleAvailabilityUseCase>(
-      () => _i239.ToggleAvailabilityUseCase(
-        mainRepository: gh<_i547.DriverMainRepository>(),
-      ),
-    );
     gh.lazySingleton<_i372.UpdateTripStatusUseCase>(
       () => _i372.UpdateTripStatusUseCase(
         driverTripRepository: gh<_i700.DriverTripRepository>(),
@@ -698,6 +667,14 @@ extension GetItInjectableX on _i174.GetIt {
         mainRepository: gh<_i752.DriverMainRepository>(),
       ),
     );
+    gh.factory<_i698.AuthRemoteDataSource>(
+      () => _i698.AuthRemoteDataSourceImpl(
+        dioConsumer: gh<_i82.DioConsumer>(),
+        tokenRepository: gh<_i734.TokenRepository>(),
+        deviceHelper: gh<_i620.DeviceHelper>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
+    );
     gh.factory<_i707.GetAllTripsHistoryUseCase>(
       () => _i707.GetAllTripsHistoryUseCase(gh<_i700.DriverTripRepository>()),
     );
@@ -717,21 +694,10 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i353.AcceptDriverPaymentRequestUseCase>(),
       ),
     );
-    gh.factory<_i698.AuthRemoteDataSource>(
-      () => _i698.AuthRemoteDataSourceImpl(
-        dioConsumer: gh<InvalidType>(),
-        tokenRepository: gh<_i734.TokenRepository>(),
-        deviceHelper: gh<InvalidType>(),
-        sharedPreferences: gh<_i460.SharedPreferences>(),
-      ),
-    );
     gh.lazySingleton<_i359.DeliveryRemoteDataSource>(
       () => _i359.DeliveryRemoteDataSourceImpl(
         dioConsumer: gh<_i82.DioConsumer>(),
       ),
-    );
-    gh.factory<_i1033.AvailitiablityCubit>(
-      () => _i1033.AvailitiablityCubit(gh<_i239.ToggleAvailabilityUseCase>()),
     );
     gh.lazySingleton<_i769.UploadSubAttributeUseCase>(
       () => _i769.UploadSubAttributeUseCase(
@@ -784,6 +750,11 @@ extension GetItInjectableX on _i174.GetIt {
         deviceHelper: gh<_i620.DeviceHelper>(),
       ),
     );
+    gh.factory<_i547.DriverMainRepository>(
+      () => _i281.DriverMainRepositoryImpl(
+        mainRemoteDataSource: gh<_i1068.DriverMainRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i639.AvailitiablityCubit>(
       () => _i639.AvailitiablityCubit(gh<_i315.ToggleAvailabilityUseCase>()),
     );
@@ -791,11 +762,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i931.TripCubit(
         gh<_i425.GetTripByIdUseCase>(),
         gh<_i985.SocketService>(),
-      ),
-    );
-    gh.factory<_i1062.AuthRepository>(
-      () => _i946.AuthRepositoryImpl(
-        authRemoteDataSource: gh<_i698.AuthRemoteDataSource>(),
       ),
     );
     gh.factory<_i333.GetGovernoratesUseCase>(
@@ -844,9 +810,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i438.TripHistoryCubit>(
       () => _i438.TripHistoryCubit(gh<_i707.GetAllTripsHistoryUseCase>()),
-    );
-    gh.factory<_i835.UpdateFcmUseCase>(
-      () => _i835.UpdateFcmUseCase(gh<_i1062.AuthRepository>()),
     );
     gh.factory<_i581.LocationCubit>(
       () => _i581.LocationCubit(gh<_i547.GetPlaceDetailsByPlaceIdUseCase>()),
@@ -922,9 +885,6 @@ extension GetItInjectableX on _i174.GetIt {
         mainRemoteDataSource: gh<_i843.DriverMainRemoteDataSource>(),
       ),
     );
-    gh.factory<_i288.DeliveryMainCubit>(
-      () => _i288.DeliveryMainCubit(gh<_i835.UpdateFcmUseCase>()),
-    );
     gh.factory<_i234.DriverTripActionsCubit>(
       () => _i234.DriverTripActionsCubit(
         gh<_i399.AcceptTripUseCase>(),
@@ -944,16 +904,28 @@ extension GetItInjectableX on _i174.GetIt {
         authRemoteDataSource: gh<_i56.AuthRemoteDataSource>(),
       ),
     );
+    gh.factory<_i239.ToggleAvailabilityUseCase>(
+      () => _i239.ToggleAvailabilityUseCase(
+        mainRepository: gh<_i547.DriverMainRepository>(),
+      ),
+    );
     gh.factory<_i398.FaqsQuestionCubit>(
       () => _i398.FaqsQuestionCubit(gh<_i545.GetAllFaqsUseCase>()),
     );
-    gh.factory<_i793.DeleteAccountUseCase>(
-      () => _i793.DeleteAccountUseCase(
+    gh.factory<_i1062.AuthRepository>(
+      () => _i946.AuthRepositoryImpl(
+        authRemoteDataSource: gh<_i698.AuthRemoteDataSource>(),
+        captain: gh<_i56.AuthRemoteDataSource>(),
+      ),
+    );
+    gh.lazySingleton<_i577.GetSupplierCategoryUseCase>(
+      () => _i577.GetSupplierCategoryUseCase(
         authRepository: gh<_i1062.AuthRepository>(),
       ),
     );
-    gh.factory<_i228.LogOutUseCase>(
-      () => _i228.LogOutUseCase(authRepository: gh<_i1062.AuthRepository>()),
+    gh.lazySingleton<_i314.GetUserDataUseCase>(
+      () =>
+          _i314.GetUserDataUseCase(authRepository: gh<_i1062.AuthRepository>()),
     );
     gh.factory<_i919.LoginUserUseCase>(
       () => _i919.LoginUserUseCase(authRepository: gh<_i1062.AuthRepository>()),
@@ -962,12 +934,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i466.RegisterUserUseCase(
         authRepository: gh<_i1062.AuthRepository>(),
       ),
-    );
-    gh.factory<_i402.ResendOtpUseCase>(
-      () => _i402.ResendOtpUseCase(authRepository: gh<_i1062.AuthRepository>()),
-    );
-    gh.factory<_i475.VerifyOtpUseCase>(
-      () => _i475.VerifyOtpUseCase(authRepository: gh<_i1062.AuthRepository>()),
     );
     gh.factory<_i990.SettingsBloc>(
       () => _i990.SettingsBloc(gh<_i1067.GetAppSettingsUseCase>()),
@@ -1030,6 +996,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i230.GetRegionUseCase>(),
       ),
     );
+    gh.factory<_i1033.AvailitiablityCubit>(
+      () => _i1033.AvailitiablityCubit(gh<_i239.ToggleAvailabilityUseCase>()),
+    );
     gh.factory<_i34.AttributesCubit>(
       () => _i34.AttributesCubit(
         gh<_i1050.GetAttributesUseCase>(),
@@ -1047,26 +1016,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i129.LoginCubit>(
       () => _i129.LoginCubit(gh<_i919.LoginUserUseCase>()),
     );
-    gh.factory<_i576.DeleteCubit>(
-      () => _i576.DeleteCubit(gh<_i793.DeleteAccountUseCase>()),
-    );
     gh.lazySingleton<_i704.InitRepository>(
       () => _i818.InitRepoImpl(
         initRemoteDataSource: gh<_i389.InitRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_i734.CompleteRegisterBloc>(
-      () => _i734.CompleteRegisterBloc(
-        gh<_i466.RegisterUserUseCase>(),
-        gh<InvalidType>(),
-        gh<_i793.DeleteAccountUseCase>(),
-      ),
-    );
-    gh.factory<_i172.OtpBloc>(
-      () => _i172.OtpBloc(
-        gh<_i475.VerifyOtpUseCase>(),
-        gh<InvalidType>(),
-        gh<_i402.ResendOtpUseCase>(),
       ),
     );
     gh.lazySingleton<_i854.GetAllDeliveryOrdersUseCase>(
@@ -1158,14 +1110,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i212.DriverMainCubit>(
       () => _i212.DriverMainCubit(gh<_i131.UpdateFcmUseCase>()),
     );
+    gh.factory<_i288.DeliveryMainCubit>(
+      () => _i288.DeliveryMainCubit(gh<_i131.UpdateFcmUseCase>()),
+    );
     gh.factory<_i407.DeliveryOrderCubit>(
       () => _i407.DeliveryOrderCubit(
         gh<_i854.GetAllDeliveryOrdersUseCase>(),
         gh<_i985.SocketService>(),
       ),
-    );
-    gh.factory<_i95.LogoutCubit>(
-      () => _i95.LogoutCubit(gh<_i228.LogOutUseCase>()),
     );
     gh.factory<_i1045.UpdateBloc>(
       () => _i1045.UpdateBloc(gh<_i466.RegisterUserUseCase>()),
@@ -1201,6 +1153,13 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i17.UpdateDeliveryOrderUseCase>(),
         gh<_i985.SocketService>(),
         gh<_i495.GetOrderDetailsUseCase>(),
+      ),
+    );
+    gh.factory<_i734.CompleteRegisterBloc>(
+      () => _i734.CompleteRegisterBloc(
+        gh<_i466.RegisterUserUseCase>(),
+        gh<_i577.GetSupplierCategoryUseCase>(),
+        gh<_i106.DeleteAccountUseCase>(),
       ),
     );
     gh.factory<_i505.DeleteCubit>(

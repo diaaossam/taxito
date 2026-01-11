@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/features/captain/settings/settings_helper.dart';
+import 'package:taxito/features/vendor/auth/presentation/pages/login_screen.dart'
+    hide LoginScreen;
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../core/bloc/global_cubit/global_cubit.dart';
 import '../../../../../core/bloc/global_cubit/global_state.dart';
@@ -12,6 +15,9 @@ import '../../../../../core/utils/app_constant.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
+import '../../../../captain/auth/presentation/cubit/logout/logout_cubit.dart';
+import '../../../../captain/auth/presentation/pages/login_screen.dart';
+import '../../../../captain/auth/presentation/widgets/info_card.dart';
 import '../../../../captain/notifications/presentation/cubit/notifications_cubit.dart';
 import '../../../../captain/notifications/presentation/pages/notification_screen.dart';
 import '../../../../captain/settings/domain/entities/settings_entity.dart';
@@ -21,9 +27,6 @@ import '../../../../captain/settings/presentation/pages/choose_language_screen.d
 import '../../../../captain/settings/presentation/pages/customer_service_screen.dart';
 import '../../../../captain/settings/presentation/widgets/copywrite_widget.dart';
 import '../../../../captain/settings/presentation/widgets/settings/settings_item_design.dart';
-import '../../../auth/presentation/cubit/logout/logout_cubit.dart';
-import '../../../auth/presentation/pages/login_screen.dart';
-import '../../../auth/presentation/widgets/info_card.dart';
 import '../../../main/presentation/cubit/delivery_main/delivery_main_cubit.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -144,7 +147,9 @@ class SettingsScreen extends StatelessWidget {
                     child: BlocConsumer<LogoutCubit, LogoutState>(
                       listener: (context, state) {
                         if (state is LogoutUserSuccess) {
-                          context.navigateTo(const LoginScreen());
+                          context.navigateTo(
+                            LoginScreen(userType: UserType.supplier),
+                          );
                         }
                         if (state is LogoutUserError) {
                           AppConstant.showCustomSnakeBar(

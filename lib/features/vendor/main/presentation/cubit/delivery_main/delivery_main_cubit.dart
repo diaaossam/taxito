@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../auth/domain/usecases/update_fcm_use_case.dart';
+
+import '../../../../../captain/auth/domain/usecases/update_fcm_use_case.dart';
 
 part 'delivery_main_state.dart';
 

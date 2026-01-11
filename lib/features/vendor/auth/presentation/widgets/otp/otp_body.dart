@@ -1,20 +1,21 @@
-import 'package:taxito/core/extensions/app_localizations_extension.dart';
-import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/core/extensions/navigation.dart';
-import 'package:taxito/core/extensions/widget_ext.dart';
-import 'package:taxito/features/auth/presentation/pages/supplier_register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../../../core/utils/app_constant.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/custom_button.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+import 'package:taxito/core/enum/user_type.dart';
+import '../../../../../../core/extensions/app_localizations_extension.dart';
+import '../../../../../../core/extensions/color_extensions.dart';
+import '../../../../../../core/extensions/navigation.dart';
+import '../../../../../../core/extensions/widget_ext.dart';
+import '../../../../../../core/utils/app_constant.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/custom_button.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../captain/auth/presentation/cubit/otp/otp_bloc.dart';
+import '../../../../../captain/auth/presentation/widgets/otp/otp_counter.dart';
 import '../../../../main/presentation/pages/main_layout.dart';
-import '../../cubit/otp/otp_bloc.dart';
-import 'otp_counter.dart';
+import '../../pages/supplier_register.dart';
 
 class OtpVerficationWidget extends StatefulWidget {
   final String phoneNumber;
@@ -123,7 +124,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                       phone: widget.phoneNumber, otpCode: otp))),
               SizedBox(height: SizeConfig.bodyHeight * .04),
               OtpTimerDesign(
-                phoneNumber: widget.phoneNumber,
+                phoneNumber: widget.phoneNumber, userType: UserType.supplier,
               ),
             ],
           ).scrollable(),

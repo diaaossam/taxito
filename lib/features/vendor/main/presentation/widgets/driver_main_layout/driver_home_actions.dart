@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/enum/choose_enum.dart';
-import '../../../../../core/utils/app_size.dart';
+
+import '../../../../../../core/enum/choose_enum.dart';
+import '../../../../../../core/utils/app_size.dart';
 
 class DriverHomeActions extends StatelessWidget {
   final Function(ChooseEnum) callbackAvailability;
@@ -16,12 +17,7 @@ class DriverHomeActions extends StatelessWidget {
         padding: screenPadding(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              width: 10,
-            ),
-
-          ],
+          children: [const SizedBox(width: 10)],
         ),
       ),
     );

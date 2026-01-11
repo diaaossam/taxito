@@ -1,11 +1,10 @@
-import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
-import '../../../../widgets/app_drop_down.dart';
-import '../../../../widgets/app_text.dart';
+import '../../../../../core/extensions/app_localizations_extension.dart';
+import '../../../../../widgets/app_drop_down.dart';
+import '../../../../../widgets/app_text.dart';
 import '../../../location/presentation/cubit/governorate/governorate_bloc.dart';
 import '../../../location/presentation/widget/location_picket_widget.dart';
 import '../../data/models/response/user_model_helper.dart';
