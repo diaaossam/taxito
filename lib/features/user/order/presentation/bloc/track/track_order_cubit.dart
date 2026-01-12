@@ -1,6 +1,6 @@
-import 'package:aslol/features/order/data/models/orders.dart';
-import 'package:aslol/features/order/domain/usecases/delete_order_use_case.dart';
-import 'package:aslol/features/order/domain/usecases/get_order_details_use_case.dart';
+import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/features/user/order/domain/usecases/delete_order_use_case.dart';
+import 'package:taxito/features/user/order/domain/usecases/get_order_details_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

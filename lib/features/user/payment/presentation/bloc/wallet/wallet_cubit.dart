@@ -1,6 +1,6 @@
-import 'package:aslol/features/payment/data/models/transaction_model.dart';
-import 'package:aslol/features/payment/domain/usecases/get_current_balance_use_case.dart';
-import 'package:aslol/features/payment/domain/usecases/get_transaction_use_case.dart';
+import 'package:taxito/features/user/payment/data/models/transaction_model.dart';
+import 'package:taxito/features/user/payment/domain/usecases/get_current_balance_use_case.dart';
+import 'package:taxito/features/user/payment/domain/usecases/get_transaction_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';

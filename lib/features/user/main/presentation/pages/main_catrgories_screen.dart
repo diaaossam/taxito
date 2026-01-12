@@ -1,11 +1,11 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/food/presentation/widgets/main_categories/main_categories_body.dart';
-import 'package:aslol/features/main/presentation/cubit/banner/banners_cubit.dart';
-import 'package:aslol/widgets/custom_app_bar.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/food/presentation/widgets/main_categories/main_categories_body.dart';
+import 'package:taxito/features/user/main/presentation/cubit/banner/banners_cubit.dart';
+import 'package:taxito/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
 
 class MainCatergoriesScreen extends StatelessWidget {
   const MainCatergoriesScreen({super.key});

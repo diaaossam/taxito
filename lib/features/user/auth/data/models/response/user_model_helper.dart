@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aslol/features/user/presentation/bloc/user_bloc.dart';
+import '../../../../../captain/user/presentation/bloc/user_bloc.dart';
 import 'user_model.dart';
 
 class UserDataService {
@@ -25,10 +25,6 @@ class UserDataService {
     return _user;
   }
 
-  Future<void> reloadUserData({required BuildContext context}) async {
-    final user = await context.read<UserBloc>().getUserData(userId: null);
-    _user = user;
-  }
 
   void updateUserData(UserModel updatedUser) {
     if (_user != null) {

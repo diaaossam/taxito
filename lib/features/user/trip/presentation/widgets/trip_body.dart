@@ -1,17 +1,17 @@
-import 'package:aslol/core/bloc/socket/socket_cubit.dart';
-import 'package:aslol/features/trip/presentation/widgets/google_map_widget.dart';
-import 'package:aslol/widgets/loading/loading_widget.dart';
-import 'package:aslol/widgets/location_permission_error_widget.dart';
+import 'package:taxito/core/bloc/socket/socket_cubit.dart';
+import 'package:taxito/features/user/trip/presentation/widgets/google_map_widget.dart';
+import 'package:taxito/widgets/loading/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../../../config/helper/keyboard.dart';
-import '../../../../core/enum/trip_status_enum.dart';
-import '../../../../core/utils/app_size.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../../widgets/app_failure.dart';
+import '../../../../../config/helper/keyboard.dart';
+import '../../../../../core/enum/trip_status_enum.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../widgets/app_failure.dart';
+import '../../../../../widgets/location_permission_error_widget.dart';
 import '../../data/models/trip_model.dart';
 import '../bloc/accepted_user_trip/accepted_user_trip_cubit.dart';
 import '../bloc/trip_info/trip_bloc.dart';
@@ -21,10 +21,7 @@ import 'request_trip/request_trip_design.dart';
 class TripBody extends StatefulWidget {
   final TripModel? tripModel;
 
-  const TripBody({
-    super.key,
-    this.tripModel,
-  });
+  const TripBody({super.key, this.tripModel});
 
   @override
   State<TripBody> createState() => _TripBodyState();
@@ -34,17 +31,18 @@ class _TripBodyState extends State<TripBody> {
   double requestHeight = SizeConfig.bodyHeight * .35;
   int index = 0;
   final GlobalKey<RequestTripDesignState> requestKey =
-  GlobalKey<RequestTripDesignState>();
+      GlobalKey<RequestTripDesignState>();
 
   @override
   void initState() {
     context.read<SocketCubit>().initSocketConnection();
     if (widget.tripModel != null) {
       if (widget.tripModel?.status == TripStatusEnum.delivered) {
-        context.read<AcceptedUserTripCubit>().joinUserToTripRoom(model: widget.tripModel!);
+        context.read<AcceptedUserTripCubit>().joinUserToTripRoom(
+          model: widget.tripModel!,
+        );
         index = 3;
-      }
-      else {
+      } else {
         if (widget.tripModel?.driver != null) {
           index = 2;
         }
@@ -91,10 +89,13 @@ class _TripBodyState extends State<TripBody> {
                     child: GoogleMapWidget(
                       myLocationCallback: () async {
                         final position = await Geolocator.getCurrentPosition();
-                        final newLatLng =
-                            LatLng(position.latitude, position.longitude);
-                        bloc.googleMapController
-                            ?.animateCamera(CameraUpdate.newLatLng(newLatLng));
+                        final newLatLng = LatLng(
+                          position.latitude,
+                          position.longitude,
+                        );
+                        bloc.googleMapController?.animateCamera(
+                          CameraUpdate.newLatLng(newLatLng),
+                        );
                       },
                       polylines: bloc.polyines,
                       onCameraMove: (cameraPosition) {
@@ -116,29 +117,32 @@ class _TripBodyState extends State<TripBody> {
                     ),
                   ),
                   Positioned(
-                      bottom: 0.0,
-                      child: RequestTripDesign(
-                        height: requestHeight,
-                        initialIndex: index,
-                        onChangeIndex: (p0) => setState(() => index = p0),
-                        tripModel: widget.tripModel,
-                        key: requestKey,
-                      )),
+                    bottom: 0.0,
+                    child: RequestTripDesign(
+                      height: requestHeight,
+                      initialIndex: index,
+                      onChangeIndex: (p0) => setState(() => index = p0),
+                      tripModel: widget.tripModel,
+                      key: requestKey,
+                    ),
+                  ),
                   if (index != 2 && index != 3)
                     Positioned(
-                        top: 30.0,
-                        right: 20,
-                        child: InkWell(
-                          onTap: () => requestKey.currentState?.onWillPop(),
-                          child: Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                border: Border.all(color: Colors.black)),
-                            child: SvgPicture.asset(Assets.icons.arrowBack),
+                      top: 30.0,
+                      right: 20,
+                      child: InkWell(
+                        onTap: () => requestKey.currentState?.onWillPop(),
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black),
                           ),
-                        )),
+                          child: SvgPicture.asset(Assets.icons.arrowBack),
+                        ),
+                      ),
+                    ),
                 ],
               );
             } else {

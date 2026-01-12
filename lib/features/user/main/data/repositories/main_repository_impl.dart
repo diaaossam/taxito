@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:aslol/core/services/network/error/failures.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/features/main/data/datasources/main_remote_data_source.dart';
-import 'package:aslol/features/main/domain/repositories/main_repository.dart';
+import 'package:taxito/core/services/network/error/failures.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/features/user/main/data/datasources/main_remote_data_source.dart';
+import 'package:taxito/features/user/main/domain/repositories/main_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: MainRepository)

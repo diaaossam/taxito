@@ -1,14 +1,14 @@
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/custom_divider_design.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/custom_divider_design.dart';
 import '../../../data/models/orders.dart';
 
 class PaymentPriceOrder extends StatelessWidget {
@@ -20,54 +20,55 @@ class PaymentPriceOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          horizontal: SizeConfig.screenWidth * .02,
-          vertical: SizeConfig.bodyHeight * .02),
+        horizontal: SizeConfig.screenWidth * .02,
+        vertical: SizeConfig.bodyHeight * .02,
+      ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          color: context.colorScheme.surface),
+        borderRadius: BorderRadius.circular(14),
+        color: context.colorScheme.surface,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
             text: context.localizations.paymentType,
-          fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.bold,
             textSize: 14,
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .02,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           Container(
             padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.screenWidth * .04,
-                vertical: SizeConfig.bodyHeight * .015),
+              horizontal: SizeConfig.screenWidth * .04,
+              vertical: SizeConfig.bodyHeight * .015,
+            ),
             decoration: BoxDecoration(
-                color: context.colorScheme.outline,
-                borderRadius: BorderRadius.circular(10)),
+              color: context.colorScheme.outline,
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: Row(
               children: [
                 AppImage.asset(
                   getPaymentData(
-                      context: context, type: orders.paymentMethod!)['image'],
+                    context: context,
+                    type: orders.paymentMethod!,
+                  )['image'],
                   height: 40,
                   width: 40,
                 ),
-                SizedBox(
-                  width: 10.w,
-                ),
+                SizedBox(width: 10.w),
                 AppText(
-                    text: getPaymentData(
-                        context: context, type: orders.paymentMethod!)['title'])
+                  text: getPaymentData(
+                    context: context,
+                    type: orders.paymentMethod!,
+                  )['title'],
+                ),
               ],
             ),
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .02,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           const CustomDividerDesign(),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .02,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           Padding(
             padding: screenPadding(),
             child: AppText(
@@ -76,98 +77,99 @@ class PaymentPriceOrder extends StatelessWidget {
               textSize: 14,
             ),
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .01,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .01),
           Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.screenWidth * .03,
-                  vertical: SizeConfig.bodyHeight * .025),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(12)),
-              child: Padding(
-                padding: screenPadding(),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AppText(
-                            text: context.localizations.productPrice,
-                          ),
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.screenWidth * .03,
+              vertical: SizeConfig.bodyHeight * .025,
+            ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            child: Padding(
+              padding: screenPadding(),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AppText(
+                          text: context.localizations.productPrice,
                         ),
-                        AppText(
-                          text:
-                              "${orders.totalPrice} ${context.localizations.iqd}",
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ],
-                    ),
-                    15.verticalSpace,
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AppText(
-                            text: context.localizations.shippingCost,
-                          ),
-                        ),
-                        AppText(
-                          text:
-                              "${orders.shippingCost} ${context.localizations.iqd}",
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ],
-                    ),
-                    15.verticalSpace,
-                    if (orders.discountAmount != null &&
-                        orders.discountAmount != 0) ...{
-                      Row(
-                        children: [
-                          Expanded(
-                            child: AppText(
-                              color: context.colorScheme.error,
-                              text: context.localizations.discount,
-                            ),
-                          ),
-                          AppText(
-                            color: context.colorScheme.error,
-                            text:
-                                "${orders.discountAmount} ${context.localizations.iqd}",
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ],
                       ),
-                      15.verticalSpace,
-                    },
+                      AppText(
+                        text:
+                            "${orders.totalPrice} ${context.localizations.iqd}",
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ],
+                  ),
+                  15.verticalSpace,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AppText(
+                          text: context.localizations.shippingCost,
+                        ),
+                      ),
+                      AppText(
+                        text:
+                            "${orders.shippingCost} ${context.localizations.iqd}",
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ],
+                  ),
+                  15.verticalSpace,
+                  if (orders.discountAmount != null &&
+                      orders.discountAmount != 0) ...{
                     Row(
                       children: [
                         Expanded(
                           child: AppText(
-                            text: context.localizations.totalPrice,
-                            fontWeight: FontWeight.w700,
-                            textSize: 15,
-                            color: context.colorScheme.tertiary,
+                            color: context.colorScheme.error,
+                            text: context.localizations.discount,
                           ),
                         ),
                         AppText(
+                          color: context.colorScheme.error,
                           text:
-                              "${orders.finalPrice} ${context.localizations.iqd}",
+                              "${orders.discountAmount} ${context.localizations.iqd}",
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                    15.verticalSpace,
+                  },
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AppText(
+                          text: context.localizations.totalPrice,
                           fontWeight: FontWeight.w700,
                           textSize: 15,
                           color: context.colorScheme.tertiary,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              )),
+                      ),
+                      AppText(
+                        text:
+                            "${orders.finalPrice} ${context.localizations.iqd}",
+                        fontWeight: FontWeight.w700,
+                        textSize: 15,
+                        color: context.colorScheme.tertiary,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Map<String, dynamic> getPaymentData(
-      {required PaymentType type, required BuildContext context}) {
+  Map<String, dynamic> getPaymentData({
+    required PaymentType type,
+    required BuildContext context,
+  }) {
     Map<String, dynamic> map = {};
     switch (type) {
       case PaymentType.cash:

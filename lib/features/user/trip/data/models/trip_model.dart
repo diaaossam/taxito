@@ -1,50 +1,50 @@
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/features/trip/data/models/rate_model.dart';
-
-import '../../../../core/enum/trip_status_enum.dart';
-import '../../../app/data/models/generic_model.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import 'package:taxito/features/user/trip/data/models/rate_model.dart';
+import '../../../../../core/enum/trip_status_enum.dart';
+import '../../../../captain/app/data/models/generic_model.dart';
 import '../../../auth/data/models/response/user_model.dart';
 import '../../../location/data/models/response/main_location_data.dart';
 
 class TripModel {
-  TripModel(
-      {this.id,
-      this.uuid,
-      this.tripCode,
-      this.startDate,
-      this.startTime,
-      this.from,
-      this.to,
-      this.tripType,
-      this.driver,
-      this.user,
-      this.distance,
-      this.duration,
-      this.totalPrice,
-      this.status,
-      this.paymentStatus,
-      this.paymentMethod,
-      this.cancelReason,
-      this.canceledBy,
-      this.tripCancelReason,
-      this.cancelledAt,
-      this.acceptedAt,
-      this.driverStartedAt,
-      this.driverArrivedAt,
-      this.startedAt,
-      this.completedAt,
-      this.rate,
-      this.hasProblem,
-      this.problemDescription,
-      this.createdAt,
-      this.updatedAt,
-      this.chatId,
-      this.driverAcceptConfirmation,
-      this.userSentRequestConfirmPayment,
-      this.priceCalculationType,
-      this.isSchedule,
-      this.remaining_price,
-      this.distanceOfDriver});
+  TripModel({
+    this.id,
+    this.uuid,
+    this.tripCode,
+    this.startDate,
+    this.startTime,
+    this.from,
+    this.to,
+    this.tripType,
+    this.driver,
+    this.user,
+    this.distance,
+    this.duration,
+    this.totalPrice,
+    this.status,
+    this.paymentStatus,
+    this.paymentMethod,
+    this.cancelReason,
+    this.canceledBy,
+    this.tripCancelReason,
+    this.cancelledAt,
+    this.acceptedAt,
+    this.driverStartedAt,
+    this.driverArrivedAt,
+    this.startedAt,
+    this.completedAt,
+    this.rate,
+    this.hasProblem,
+    this.problemDescription,
+    this.createdAt,
+    this.updatedAt,
+    this.chatId,
+    this.driverAcceptConfirmation,
+    this.userSentRequestConfirmPayment,
+    this.priceCalculationType,
+    this.isSchedule,
+    this.remaining_price,
+    this.distanceOfDriver,
+  });
 
   TripModel.fromJson(dynamic json) {
     id = json['id'];
@@ -54,8 +54,9 @@ class TripModel {
         : num.parse(json['trip_code']);
     startDate = json['start_date'];
     startTime = json['start_time'];
-    from =
-        json['from'] != null ? MainLocationData.fromJson(json['from']) : null;
+    from = json['from'] != null
+        ? MainLocationData.fromJson(json['from'])
+        : null;
     to = json['to'] != null ? MainLocationData.fromJson(json['to']) : null;
     tripType = json['trip_type'] != null
         ? GenericModel.fromJson(json['trip_type'])
@@ -66,8 +67,9 @@ class TripModel {
     distance = json['distance'];
     duration = json['duration'];
     totalPrice = json['total_price'];
-    chatId =
-        json['chat_id'] != null ? ChatId.fromJson(json: json['chat_id']) : null;
+    chatId = json['chat_id'] != null
+        ? ChatId.fromJson(json: json['chat_id'])
+        : null;
     status = json['status'] != null
         ? handleStringToTripStatusEnum(data: json['status'])
         : null;
@@ -94,17 +96,20 @@ class TripModel {
     driverArrivedAt = json['driver_started_at'] != null
         ? DateTime.parse(json['driver_started_at'])
         : null;
-    startedAt =
-        json['started_at'] != null ? DateTime.parse(json['started_at']) : null;
+    startedAt = json['started_at'] != null
+        ? DateTime.parse(json['started_at'])
+        : null;
     completedAt = json['completed_at'] != null
         ? DateTime.parse(json['completed_at'])
         : null;
     hasProblem = json['has_problem'];
     problemDescription = json['problem_description'];
-    createdAt =
-        json['created_at'] != null ? DateTime.parse(json['created_at']) : null;
-    updatedAt =
-        json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null;
+    createdAt = json['created_at'] != null
+        ? DateTime.parse(json['created_at'])
+        : null;
+    updatedAt = json['updated_at'] != null
+        ? DateTime.parse(json['updated_at'])
+        : null;
     remaining_price = json['remaining_price'];
     isSchedule = json['is_scheduled'];
     userSentRequestConfirmPayment = json['user_sent_request_confirm_payment'];
@@ -158,10 +163,7 @@ class ChatId {
   ChatId({this.id, this.uuid});
 
   factory ChatId.fromJson({required dynamic json}) {
-    return ChatId(
-      id: json['id'],
-      uuid: json['uuid'],
-    );
+    return ChatId(id: json['id'], uuid: json['uuid']);
   }
 }
 

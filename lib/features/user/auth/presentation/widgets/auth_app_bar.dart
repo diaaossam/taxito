@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/back_widget.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/back_widget.dart';
 
 class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? pressIcon;

@@ -1,5 +1,5 @@
-import 'package:aslol/core/services/network/error/failures.dart';
-import 'package:aslol/core/services/network/success_response.dart';
+import 'package:taxito/core/services/network/error/failures.dart';
+import 'package:taxito/core/services/network/success_response.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class PaymentRepository {

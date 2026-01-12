@@ -1,23 +1,27 @@
-import 'package:aslol/core/enum/payment_type.dart';
+import 'package:taxito/core/enum/payment_type.dart';
 
-import '../../../../gen/assets.gen.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../generated/l10n.dart';
 
 class PaymentModel {
   final PaymentType paymentMethod;
   final String icon;
   final String title;
 
-  PaymentModel(
-      {required this.paymentMethod, required this.icon, required this.title});
+  PaymentModel({
+    required this.paymentMethod,
+    required this.icon,
+    required this.title,
+  });
 
   static List<PaymentModel> paymentList() {
     return [
       PaymentModel(
-          paymentMethod: PaymentType.cash,
-          icon: Assets.images.cash.path,
-          title: S.current.cash),
-/*      PaymentModel(
+        paymentMethod: PaymentType.cash,
+        icon: Assets.images.cash.path,
+        title: S.current.cash,
+      ),
+      /*      PaymentModel(
           paymentMethod: PaymentMethod.zainCash,
           icon: Assets.images.zainCash.path,
           title: S.current.zainCash),

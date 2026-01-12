@@ -1,10 +1,10 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/features/order/domain/repositories/order_repository.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/features/user/order/domain/repositories/order_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/services/network/error/failures.dart';
-import '../../../../core/services/network/success_response.dart';
+import '../../../../../core/services/network/error/failures.dart';
+import '../../../../../core/services/network/success_response.dart';
 
 @LazySingleton()
 class GetOrderListUseCase {

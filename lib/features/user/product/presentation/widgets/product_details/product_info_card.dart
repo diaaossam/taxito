@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/order/data/models/cart_model.dart';
-import 'package:aslol/features/order/order_helper.dart';
-import 'package:aslol/features/product/data/models/product_model.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/order/data/models/cart_model.dart';
+import 'package:taxito/features/user/order/order_helper.dart';
+import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

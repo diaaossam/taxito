@@ -1,19 +1,19 @@
-import 'package:aslol/config/helper/token_repository.dart';
-import 'package:aslol/features/auth/data/models/response/user_model_helper.dart';
+import 'package:taxito/config/helper/token_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:aslol/config/helper/device_helper.dart';
-import 'package:aslol/core/services/network/dio_consumer.dart';
-import 'package:aslol/core/services/network/end_points.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/core/utils/api_config.dart';
-import 'package:aslol/core/utils/app_strings.dart';
-import 'package:aslol/features/auth/data/models/response/user_model.dart';
-import 'package:aslol/features/auth/data/models/request/otp_params.dart';
-import 'package:aslol/features/auth/domain/entity/register_params.dart';
+import 'package:taxito/config/helper/device_helper.dart';
+import 'package:taxito/core/services/network/dio_consumer.dart';
+import 'package:taxito/core/services/network/end_points.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/core/utils/app_strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../captain/auth/data/models/request/otp_params.dart';
+import '../../domain/entity/register_params.dart';
 import '../models/request/login_params.dart';
+import '../models/response/user_model.dart';
+import '../models/response/user_model_helper.dart';
 
 abstract class AuthRemoteDataSource {
   Future<ApiSuccessResponse> verifyOtp({required OtpParams otpParams});
@@ -36,16 +36,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final DeviceHelper deviceHelper;
   final TokenRepository tokenRepository;
 
-  AuthRemoteDataSourceImpl(
-      {required this.dioConsumer,
-      required this.sharedPreferences,
-      required this.tokenRepository,
-      required this.deviceHelper});
+  AuthRemoteDataSourceImpl({
+    required this.dioConsumer,
+    required this.sharedPreferences,
+    required this.tokenRepository,
+    required this.deviceHelper,
+  });
 
   @override
   Future<ApiSuccessResponse> verifyOtp({required OtpParams otpParams}) async {
     final response = await dioConsumer.post(
-        path: EndPoints.verifyUser, body: otpParams.toJson());
+      path: EndPoints.verifyUser,
+      body: otpParams.toJson(),
+    );
     String accessToken = response['data']['access_token'];
     UserModel userModel = UserModel.fromJson(response['data']['auth']);
     UserDataService().setUserData(userModel);
@@ -74,8 +77,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> loginUser({required LoginParams params}) async {
-    final response =
-        await dioConsumer.post(path: EndPoints.loginUser, body: params.map());
+    final response = await dioConsumer.post(
+      path: EndPoints.loginUser,
+      body: params.map(),
+    );
     return ApiSuccessResponse(data: response['data']);
   }
 
@@ -90,16 +95,21 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<ApiSuccessResponse> updateUserData(
-      {required RegisterParams params}) async {
-   final String ? token = await tokenRepository.token;
+  Future<ApiSuccessResponse> updateUserData({
+    required RegisterParams params,
+  }) async {
+    final String? token = await tokenRepository.token;
     Map<String, dynamic> map = {};
     map.addAll(params.toJson());
     if (params.imagePath != null) {
-      map.addAll({"profile_image": await MultipartFile.fromFile(params.imagePath ?? "")});
+      map.addAll({
+        "profile_image": await MultipartFile.fromFile(params.imagePath ?? ""),
+      });
     }
     final response = await dioConsumer.post(
-        path: EndPoints.update, body: map, isFromData: true);
+      path: EndPoints.update,
+      data: FormData.fromMap(map),
+    );
 
     final user = await getUserData();
     UserDataService().setUserData(user.data);

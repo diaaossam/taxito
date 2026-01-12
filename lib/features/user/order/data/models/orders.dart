@@ -1,8 +1,8 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/features/auth/data/models/response/user_model.dart';
-import 'package:aslol/features/location/data/models/response/my_address.dart';
-import 'package:aslol/features/product/data/models/product_model.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import '../../../../captain/delivery_order/data/models/response/my_address.dart';
+import '../../../auth/data/models/response/user_model.dart';
+import '../../../product/data/models/product_model.dart';
 
 class Orders {
   Orders({
@@ -38,10 +38,12 @@ class Orders {
     shippingCost = json['shipping_cost'];
     finalPrice = json['final_price'];
     notes = json['notes'];
-    address =
-        json['address'] != null ? MyAddress.fromJson(json['address']) : null;
-    supplier =
-        json['supplier'] != null ? UserModel.fromJson(json['supplier']) : null;
+    address = json['address'] != null
+        ? MyAddress.fromJson(json['address'])
+        : null;
+    supplier = json['supplier'] != null
+        ? UserModel.fromJson(json['supplier'])
+        : null;
     status = json['status'] != null
         ? handleStringToOrderType(code: json['status'])
         : null;
@@ -96,25 +98,24 @@ class Orders {
     DateTime? createdAt,
     List<Items>? items,
     List<StatusLogs>? statusLogs,
-  }) =>
-      Orders(
-        id: id ?? this.id,
-        orderNumber: orderNumber ?? this.orderNumber,
-        paymentMethod: paymentMethod ?? this.paymentMethod,
-        totalPrice: totalPrice ?? this.totalPrice,
-        totalQty: totalQty ?? this.totalQty,
-        discountAmount: discountAmount ?? this.discountAmount,
-        discountCode: discountCode ?? this.discountCode,
-        shippingCost: shippingCost ?? this.shippingCost,
-        finalPrice: finalPrice ?? this.finalPrice,
-        notes: notes ?? this.notes,
-        address: address ?? this.address,
-        status: status ?? this.status,
-        driver: driver ?? this.driver,
-        createdAt: createdAt ?? this.createdAt,
-        items: items ?? this.items,
-        statusLogs: statusLogs ?? this.statusLogs,
-      );
+  }) => Orders(
+    id: id ?? this.id,
+    orderNumber: orderNumber ?? this.orderNumber,
+    paymentMethod: paymentMethod ?? this.paymentMethod,
+    totalPrice: totalPrice ?? this.totalPrice,
+    totalQty: totalQty ?? this.totalQty,
+    discountAmount: discountAmount ?? this.discountAmount,
+    discountCode: discountCode ?? this.discountCode,
+    shippingCost: shippingCost ?? this.shippingCost,
+    finalPrice: finalPrice ?? this.finalPrice,
+    notes: notes ?? this.notes,
+    address: address ?? this.address,
+    status: status ?? this.status,
+    driver: driver ?? this.driver,
+    createdAt: createdAt ?? this.createdAt,
+    items: items ?? this.items,
+    statusLogs: statusLogs ?? this.statusLogs,
+  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -143,11 +144,7 @@ class Orders {
 }
 
 class StatusLogs {
-  StatusLogs({
-    this.id,
-    this.status,
-    this.createdAt,
-  });
+  StatusLogs({this.id, this.status, this.createdAt});
 
   StatusLogs.fromJson(dynamic json) {
     id = json['id'];
@@ -161,11 +158,7 @@ class StatusLogs {
   OrderType? status;
   DateTime? createdAt;
 
-  StatusLogs copyWith({
-    num? id,
-    OrderType? status,
-    DateTime? createdAt,
-  }) =>
+  StatusLogs copyWith({num? id, OrderType? status, DateTime? createdAt}) =>
       StatusLogs(
         id: id ?? this.id,
         status: status ?? this.status,
@@ -196,8 +189,9 @@ class Items {
   });
 
   Items.fromJson(dynamic json) {
-    product =
-        json['product'] != null ? ProductModel.fromJson(json['product']) : null;
+    product = json['product'] != null
+        ? ProductModel.fromJson(json['product'])
+        : null;
     isProductDeleted = json['is_product_deleted'];
     isProductActive = json['is_product_active'];
     isProductRated = json['is_product_rated'];
@@ -230,19 +224,18 @@ class Items {
     num? price,
     num? totalPrice,
     List<dynamic>? attributes,
-  }) =>
-      Items(
-        product: product ?? this.product,
-        isProductDeleted: isProductDeleted ?? this.isProductDeleted,
-        isProductActive: isProductActive ?? this.isProductActive,
-        isProductRated: isProductRated ?? this.isProductRated,
-        productRate: productRate ?? this.productRate,
-        notes: notes ?? this.notes,
-        qty: qty ?? this.qty,
-        price: price ?? this.price,
-        totalPrice: totalPrice ?? this.totalPrice,
-        attributes: attributes ?? this.attributes,
-      );
+  }) => Items(
+    product: product ?? this.product,
+    isProductDeleted: isProductDeleted ?? this.isProductDeleted,
+    isProductActive: isProductActive ?? this.isProductActive,
+    isProductRated: isProductRated ?? this.isProductRated,
+    productRate: productRate ?? this.productRate,
+    notes: notes ?? this.notes,
+    qty: qty ?? this.qty,
+    price: price ?? this.price,
+    totalPrice: totalPrice ?? this.totalPrice,
+    attributes: attributes ?? this.attributes,
+  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

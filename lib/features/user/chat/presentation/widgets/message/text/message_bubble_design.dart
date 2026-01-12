@@ -1,7 +1,7 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../core/utils/app_size.dart';
-import '../../../../../../widgets/app_text.dart';
+import '../../../../../../../core/utils/app_size.dart';
+import '../../../../../../../widgets/app_text.dart';
 import '../../../../../trip/data/models/trip_model.dart';
 import '../../../../data/models/message_model.dart';
 

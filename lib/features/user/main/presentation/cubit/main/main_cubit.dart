@@ -1,12 +1,12 @@
-import 'package:aslol/features/order/presentation/pages/cart_screen.dart';
-import 'package:aslol/features/order/presentation/pages/orders_screen.dart';
-import 'package:aslol/features/product/presentation/pages/all_products_screen.dart';
-import 'package:aslol/features/trip/presentation/pages/driver_history_screen.dart';
+import 'package:taxito/features/user/order/presentation/pages/cart_screen.dart';
+import 'package:taxito/features/user/order/presentation/pages/orders_screen.dart';
+import 'package:taxito/features/user/product/presentation/pages/all_products_screen.dart';
+import 'package:taxito/features/user/trip/presentation/pages/driver_history_screen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:aslol/features/main/presentation/pages/home_screen.dart';
-import 'package:aslol/features/settings/presentation/pages/settings_screen.dart';
+import 'package:taxito/features/user/main/presentation/pages/home_screen.dart';
+import 'package:taxito/features/user/settings/presentation/pages/settings_screen.dart';
 
 import '../../../domain/usecases/update_device_token.dart';
 

@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../widgets/app_text.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../widgets/app_text.dart';
 
 class CategoriesShimmer extends StatelessWidget {
   const CategoriesShimmer({super.key});
@@ -65,17 +65,9 @@ class CategoriesShimmer extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Container(
-                      width: 60,
-                      height: 12,
-                      color: Colors.grey[300],
-                    ),
+                    Container(width: 60, height: 12, color: Colors.grey[300]),
                     const SizedBox(height: 4),
-                    Container(
-                      width: 40,
-                      height: 12,
-                      color: Colors.grey[300],
-                    ),
+                    Container(width: 40, height: 12, color: Colors.grey[300]),
                   ],
                 ),
               ),

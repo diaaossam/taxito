@@ -1,16 +1,16 @@
-import 'package:aslol/features/app/data/models/generic_model.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/features/product/data/models/product_model.dart';
-import 'package:aslol/features/product/presentation/cubit/favourite/favourite_cubit.dart';
-import 'package:aslol/features/product/presentation/cubit/product/product_cubit.dart';
-import 'package:aslol/features/product/presentation/widgets/product_card_grid.dart';
-import 'package:aslol/features/supplier/data/models/response/supplier_model.dart';
-import 'package:aslol/features/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/features/user/product/presentation/cubit/favourite/favourite_cubit.dart';
+import 'package:taxito/features/user/product/presentation/cubit/product/product_cubit.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_card_grid.dart';
+import 'package:taxito/features/user/supplier/data/models/response/supplier_model.dart';
+import 'package:taxito/features/user/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import '../../../../core/utils/app_constant.dart';
+import '../../../../../core/utils/app_constant.dart';
+import '../../../../captain/app/data/models/generic_model.dart';
 
 class SupplierProductGrid extends StatefulWidget {
   final SupplierModel model;

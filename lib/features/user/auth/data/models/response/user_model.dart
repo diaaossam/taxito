@@ -1,30 +1,30 @@
-import 'package:aslol/features/trip/data/models/trip_model.dart';
-
-import '../../../../../core/enum/gender.dart';
-import '../../../../location/data/models/response/my_address.dart';
+import 'package:taxito/features/user/trip/data/models/trip_model.dart';
+import '../../../../../../core/enum/gender.dart';
+import '../../../../../captain/delivery_order/data/models/response/my_address.dart';
 
 class UserModel {
-  UserModel(
-      {this.id,
-      this.name,
-      this.phone,
-      this.email,
-      this.jobTitle,
-      this.gender,
-      this.firstName,
-      this.lastName,
-      this.profileImage,
-      this.defaultLang,
-      this.carPlateNumber,
-      this.image,
-      this.isProfileCompleted,
-      this.currentAddress,
-      this.status,
-      this.createdAt,
-      this.logo,
-      this.tripModel,
-      this.points,
-      this.code});
+  UserModel({
+    this.id,
+    this.name,
+    this.phone,
+    this.email,
+    this.jobTitle,
+    this.gender,
+    this.firstName,
+    this.lastName,
+    this.profileImage,
+    this.defaultLang,
+    this.carPlateNumber,
+    this.image,
+    this.isProfileCompleted,
+    this.currentAddress,
+    this.status,
+    this.createdAt,
+    this.logo,
+    this.tripModel,
+    this.points,
+    this.code,
+  });
 
   UserModel.fromJson(dynamic json) {
     id = json['id'];
@@ -49,10 +49,11 @@ class UserModel {
     status = json['status'];
     createdAt = json['created_at'];
     latitude = json['latitude'] != null ? double.parse(json['latitude']) : null;
-    longitude =
-        json['longitude'] != null ? double.parse(json['longitude']) : null;
+    longitude = json['longitude'] != null
+        ? double.parse(json['longitude'])
+        : null;
     address = json['address'] ?? "";
-    points = json['points'].toString() ;
+    points = json['points'].toString();
     code = json['point_code'] ?? "XMSKS44";
   }
 

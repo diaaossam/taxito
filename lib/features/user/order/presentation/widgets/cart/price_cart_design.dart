@@ -1,18 +1,19 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/api_config.dart';
-import 'package:aslol/features/order/order_helper.dart';
-import 'package:aslol/features/order/presentation/bloc/cart/cart_cubit.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/features/user/order/order_helper.dart';
+import 'package:taxito/features/user/order/presentation/bloc/cart/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../widgets/app_text.dart';
 
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../widgets/app_text.dart';
 
 class PriceCartDesign extends StatelessWidget {
-  final num ? shippingCost;
-  const PriceCartDesign({super.key,  this.shippingCost});
+  final num? shippingCost;
+
+  const PriceCartDesign({super.key, this.shippingCost});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,13 @@ class PriceCartDesign extends StatelessWidget {
         final bloc = context.read<CartCubit>();
         return Container(
           decoration: BoxDecoration(
-              color: context.colorScheme.surface,
-              borderRadius: BorderRadius.circular(16)),
+            color: context.colorScheme.surface,
+            borderRadius: BorderRadius.circular(16),
+          ),
           padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.screenWidth * .02,
-              vertical: SizeConfig.bodyHeight * .02),
+            horizontal: SizeConfig.screenWidth * .02,
+            vertical: SizeConfig.bodyHeight * .02,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,13 +45,11 @@ class PriceCartDesign extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: AppText(
-                            text: context.localizations.total,
-                          ),
+                          child: AppText(text: context.localizations.total),
                         ),
                         AppText(
                           text:
-                          "${formatPrice(price: bloc.amount.toString())} ${context.localizations.iqd}",
+                              "${formatPrice(price: bloc.amount.toString())} ${context.localizations.iqd}",
                           fontWeight: FontWeight.w600,
                         ),
                       ],
@@ -63,7 +64,8 @@ class PriceCartDesign extends StatelessWidget {
                             ),
                           ),
                           AppText(
-                            text: "${formatPrice(price: shippingCost.toString())} ${context.localizations.iqd}",
+                            text:
+                                "${formatPrice(price: shippingCost.toString())} ${context.localizations.iqd}",
                             fontWeight: FontWeight.w600,
                           ),
                         ],
@@ -82,7 +84,7 @@ class PriceCartDesign extends StatelessWidget {
                           AppText(
                             color: context.colorScheme.error,
                             text:
-                            " - ${formatPrice(price: bloc.couponDiscount.toString())} ${context.localizations.iqd}",
+                                " - ${formatPrice(price: bloc.couponDiscount.toString())} ${context.localizations.iqd}",
                             fontWeight: FontWeight.w600,
                           ),
                         ],
@@ -101,7 +103,7 @@ class PriceCartDesign extends StatelessWidget {
                           AppText(
                             color: context.colorScheme.error,
                             text:
-                            " - ${formatPrice(price: bloc.pointDiscount.toString())} ${context.localizations.iqd}",
+                                " - ${formatPrice(price: bloc.pointDiscount.toString())} ${context.localizations.iqd}",
                             fontWeight: FontWeight.w600,
                           ),
                         ],
@@ -120,12 +122,12 @@ class PriceCartDesign extends StatelessWidget {
                         ),
                         AppText(
                           text: _setUpPrice(
-                              amount: bloc.amount,
-                              context: context,
-                              couponDiscount: bloc.couponDiscount,
-                              pointDiscount: bloc.pointDiscount,
-                              deleivery: (shippingCost ??
-                                  0)),
+                            amount: bloc.amount,
+                            context: context,
+                            couponDiscount: bloc.couponDiscount,
+                            pointDiscount: bloc.pointDiscount,
+                            deleivery: (shippingCost ?? 0),
+                          ),
                           fontWeight: FontWeight.w700,
                           textSize: 15,
                           color: context.colorScheme.tertiary,
@@ -134,7 +136,7 @@ class PriceCartDesign extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         );
@@ -142,13 +144,13 @@ class PriceCartDesign extends StatelessWidget {
     );
   }
 
-  _setUpPrice(
-      {required num amount,
-        required num deleivery,
-        required BuildContext context,
-        required num couponDiscount,
-        required num pointDiscount,
-        }) {
+  _setUpPrice({
+    required num amount,
+    required num deleivery,
+    required BuildContext context,
+    required num couponDiscount,
+    required num pointDiscount,
+  }) {
     return "${formatPrice(price: (amount + deleivery - couponDiscount - pointDiscount).toString())} ${context.localizations.iqd}";
   }
 }

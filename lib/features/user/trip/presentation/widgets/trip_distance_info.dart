@@ -1,13 +1,13 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/trip/data/models/trip_model.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/trip/data/models/trip_model.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/app_size.dart';
+import '../../../../../core/utils/app_size.dart';
 
 class TripDistanceInfo extends StatelessWidget {
   final TripModel tripModel;
@@ -20,13 +20,15 @@ class TripDistanceInfo extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-          vertical: SizeConfig.bodyHeight * .02,
-          horizontal: SizeConfig.screenWidth * .02),
+        vertical: SizeConfig.bodyHeight * .02,
+        horizontal: SizeConfig.screenWidth * .02,
+      ),
       margin: EdgeInsets.only(top: 10.h),
       decoration: BoxDecoration(
-          border: Border.all(color: context.colorScheme.outline),
-          color: color ?? context.colorScheme.inversePrimary,
-          borderRadius: BorderRadius.circular(10)),
+        border: Border.all(color: context.colorScheme.outline),
+        color: color ?? context.colorScheme.inversePrimary,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,9 +89,7 @@ class TripDistanceInfo extends StatelessWidget {
               10.verticalSpace,
               Row(
                 children: [
-                  AppImage.asset(
-                    Assets.icons.coin,
-                  ),
+                  AppImage.asset(Assets.icons.coin),
                   4.horizontalSpace,
                   AppText(text: context.localizations.totalPrice1),
                 ],

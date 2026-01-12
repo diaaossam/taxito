@@ -1,7 +1,7 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

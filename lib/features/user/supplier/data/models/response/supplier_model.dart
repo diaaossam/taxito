@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:aslol/features/app/data/models/generic_model.dart';
+import '../../../../../captain/app/data/models/generic_model.dart';
 
 class SupplierModel {
   SupplierModel({
@@ -31,8 +31,9 @@ class SupplierModel {
     province = json['province'] != null
         ? GenericModel.fromJson(json['province'])
         : null;
-    region =
-        json['region'] != null ? GenericModel.fromJson(json['region']) : null;
+    region = json['region'] != null
+        ? GenericModel.fromJson(json['region'])
+        : null;
     logo = json['logo'];
     coverImage = json['cover_image'];
     deliveryPriceFrom = json['delivery_price_from'];
@@ -78,25 +79,24 @@ class SupplierModel {
     num? distance,
     num? duration,
     bool? isAddedToFavourite,
-  }) =>
-      SupplierModel(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        about: about ?? this.about,
-        phone: phone ?? this.phone,
-        email: email ?? this.email,
-        province: province ?? this.province,
-        region: region ?? this.region,
-        logo: logo ?? this.logo,
-        coverImage: coverImage ?? this.coverImage,
-        deliveryPriceFrom: deliveryPriceFrom ?? this.deliveryPriceFrom,
-        deliveryPriceTo: deliveryPriceTo ?? this.deliveryPriceTo,
-        reviewsCount: reviewsCount ?? this.reviewsCount,
-        reviewsAverage: reviewsAverage ?? this.reviewsAverage,
-        distance: distance ?? this.distance,
-        duration: duration ?? this.duration,
-        isAddedToFavourite: isAddedToFavourite ?? this.isAddedToFavourite,
-      );
+  }) => SupplierModel(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    about: about ?? this.about,
+    phone: phone ?? this.phone,
+    email: email ?? this.email,
+    province: province ?? this.province,
+    region: region ?? this.region,
+    logo: logo ?? this.logo,
+    coverImage: coverImage ?? this.coverImage,
+    deliveryPriceFrom: deliveryPriceFrom ?? this.deliveryPriceFrom,
+    deliveryPriceTo: deliveryPriceTo ?? this.deliveryPriceTo,
+    reviewsCount: reviewsCount ?? this.reviewsCount,
+    reviewsAverage: reviewsAverage ?? this.reviewsAverage,
+    distance: distance ?? this.distance,
+    duration: duration ?? this.duration,
+    isAddedToFavourite: isAddedToFavourite ?? this.isAddedToFavourite,
+  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

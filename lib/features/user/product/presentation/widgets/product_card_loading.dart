@@ -1,5 +1,5 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';

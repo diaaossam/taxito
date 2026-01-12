@@ -1,9 +1,8 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/widgets/custom_app_bar.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../bloc/wallet/wallet_cubit.dart';
 import '../widgets/my_wallet_body.dart';
 

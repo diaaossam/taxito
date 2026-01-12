@@ -1,4 +1,4 @@
-import 'package:aslol/features/payment/domain/usecases/add_balance_use_case.dart';
+import 'package:taxito/features/user/payment/domain/usecases/add_balance_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

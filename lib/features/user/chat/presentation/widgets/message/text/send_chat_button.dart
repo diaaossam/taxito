@@ -1,12 +1,11 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/validitor_extention.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/validitor_extention.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../../../../core/utils/app_size.dart';
-import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../../core/utils/app_size.dart';
+import '../../../../../../../gen/assets.gen.dart';
 import '../../../../../trip/data/models/trip_model.dart';
 import '../../../../domain/entities/send_chat_params.dart';
 import '../../../bloc/message/message_bloc.dart';

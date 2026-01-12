@@ -1,14 +1,13 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/trip/trip_helper.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/trip/trip_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../core/utils/app_constant.dart';
-import '../../../../core/utils/app_size.dart';
-import '../../../../widgets/custom_app_bar.dart';
-import '../../../../widgets/custom_button.dart';
-import '../../../../widgets/custom_text_form_field.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/utils/app_constant.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../widgets/custom_app_bar.dart';
+import '../../../../../widgets/custom_button.dart';
+import '../../../../../widgets/custom_text_form_field.dart';
 import '../../data/models/trip_model.dart';
 import '../bloc/report_issue/report_issue_bloc.dart';
 

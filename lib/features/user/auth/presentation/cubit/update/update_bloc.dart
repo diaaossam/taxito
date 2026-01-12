@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:aslol/features/auth/domain/entity/register_params.dart';
-import 'package:aslol/features/auth/domain/usecases/delete_account_use_case.dart';
+import 'package:taxito/features/user/auth/domain/entity/register_params.dart';
+import 'package:taxito/features/user/auth/domain/usecases/delete_account_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:aslol/features/auth/domain/usecases/update_user_data_use_case.dart';
+import 'package:taxito/features/user/auth/domain/usecases/update_user_data_use_case.dart';
 import 'package:injectable/injectable.dart';
 
 part 'update_event.dart';

@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/widgets/custom_app_bar.dart';
-import 'package:aslol/widgets/custom_text_form_field.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/widgets/custom_app_bar.dart';
+import 'package:taxito/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../../widgets/image_picker/app_image.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../product/data/models/product_model.dart';
 import '../../../product/presentation/cubit/product/product_cubit.dart';
 import '../widgets/filter_icon.dart';
@@ -25,7 +25,8 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   ProductParams params = const ProductParams(pageKey: 1);
-  final PagingController<int, ProductModel> productsController = PagingController(firstPageKey: 1);
+  final PagingController<int, ProductModel> productsController =
+      PagingController(firstPageKey: 1);
   bool isFiltering = false;
   Timer? _debounce;
 
@@ -35,18 +36,16 @@ class _SearchScreenState extends State<SearchScreen> {
       params = widget.params!;
     }
     final productBloc = context.read<ProductCubit>();
-    productsController.addPageRequestListener(
-      (pageKey) {
-        if (!isFiltering) {
-          params = params.copyWith(pageKey: pageKey);
-          productBloc.fetchPage(
-            params: params,
-            pageKey: pageKey,
-            pagingController: productsController,
-          );
-        }
-      },
-    );
+    productsController.addPageRequestListener((pageKey) {
+      if (!isFiltering) {
+        params = params.copyWith(pageKey: pageKey);
+        productBloc.fetchPage(
+          params: params,
+          pageKey: pageKey,
+          pagingController: productsController,
+        );
+      }
+    });
     super.initState();
   }
 
@@ -101,9 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ],
       ),
-      body: SearchBody(
-        pagingController: productsController,
-      ),
+      body: SearchBody(pagingController: productsController),
     );
   }
 }

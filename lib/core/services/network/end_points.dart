@@ -85,4 +85,65 @@ class EndPoints {
   static const String supplierCategoriesV2 = "supplier/categories";
   static const String supplierAttributes = "supplier/attributes";
   static const String products = "supplier/products";
+
+
+
+
+
+
+
+
+  ///////// Auth ////////////////////////
+
+  static const String update = "user/profile";
+
+
+
+
+
+  //////////////////// Chats ///////////////////////
+
+  static const String addresses = "user/addresses";
+  static const String makeAddressDefault = "user/make-default-address";
+  static const String userProducts = "home";
+  static const String validateCoupon = "user/verify-coupon-code";
+  static const String userOrders = "user/orders";
+  static const String cancelOrders = "user/cancel-orders";
+  static const String favourites = "user/favourites";
+  static const String rateOrder = "user/rate-order";
+  static const String checkOrderPoints = "check-order-points";
+  static const String suppliers = "suppliers";
+  static const String shippingCosts = "user/shipping-costs";
+  static const String transaction = "user/transactions";
+  static const String currentWallet = "user/current-wallet";
+
+  //////////////////// Trip ///////////////////////
+  static const String tripPrice = "user/get-trip-price";
+  static const String sendPaymentRequestToDriver = "user/pay-trip";
+  static const String tripTypes = "trip-types";
+  static const String userTrips = "user/trips";
+  static String cancelUserTrip(num id) => "user/trips/$id/cancel";
+  static const String rateTrip = "user/trips/";
+  static const String sendProblem = "user/trips";
+  static String getTrips = "user/trips";
+  static String userDrivers = "user/drivers";
+  static String getTripByUUid = "user/trip-by-uuid/";
+  static String getTripUserById = "user/trips";
+
+  static String chatMessage = "user/chats";
+  static String searchForDriver = "user/search-for-drivers/";
+  static String checkProduct = "user/check-products";
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

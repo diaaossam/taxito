@@ -1,33 +1,33 @@
 import 'dart:io';
-import 'package:aslol/core/enum/gender.dart';
-import 'package:aslol/core/enum/login_user_type.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/core/extensions/validitor_extention.dart';
-import 'package:aslol/core/utils/app_constant.dart';
-import 'package:aslol/features/auth/data/models/response/user_model_helper.dart';
-import 'package:aslol/widgets/app_drop_down.dart';
-import 'package:aslol/widgets/custom_button.dart';
-import 'package:aslol/widgets/custom_text_form_field.dart';
-import 'package:aslol/widgets/image_picker/media_form_field.dart';
+import 'package:taxito/core/enum/gender.dart';
+import 'package:taxito/core/enum/user_type.dart' hide usersType;
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/core/extensions/validitor_extention.dart';
+import 'package:taxito/core/utils/app_constant.dart';
+import 'package:taxito/widgets/app_drop_down.dart';
+import 'package:taxito/widgets/custom_button.dart';
+import 'package:taxito/widgets/custom_text_form_field.dart';
+import 'package:taxito/widgets/image_picker/media_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/widget_ext.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/widget_ext.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
+import '../../../../../../core/enum/login_user_type.dart';
+import '../../../../../captain/auth/presentation/pages/login_screen.dart';
+import '../../../../../captain/auth/presentation/widgets/phone_field_widget.dart';
+import '../../../../../captain/settings/settings_helper.dart';
 import '../../../../location/presentation/pages/auth_location_screen.dart';
-import '../../../../settings/settings_helper.dart';
+import '../../../data/models/response/user_model_helper.dart';
 import '../../../domain/entity/register_params.dart';
 import '../../cubit/update/update_bloc.dart';
-import '../../pages/login_screen.dart';
 import '../already_have_account.dart';
-import '../phone_field_widget.dart';
 
 class RegisterBody extends StatefulWidget {
   final String? phone;
@@ -59,36 +59,37 @@ class _RegisterBodyState extends State<RegisterBody> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 AppText(
-                  text:isUpdate ? context.localizations.updateProfileData:  context.localizations.loginTitle,
+                  text: isUpdate
+                      ? context.localizations.updateProfileData
+                      : context.localizations.loginTitle,
                   fontWeight: FontWeight.w600,
                   maxLines: 1,
                   textSize: 22,
                 ),
                 5.horizontalSpace,
-                if(!isUpdate)
+                if (!isUpdate)
                   AppText(
-                  text: context.localizations.loginTitle2,
-                  fontWeight: FontWeight.w600,
-                  color: context.colorScheme.primary,
-                  textSize: 22,
-                ),
+                    text: context.localizations.loginTitle2,
+                    fontWeight: FontWeight.w600,
+                    color: context.colorScheme.primary,
+                    textSize: 22,
+                  ),
               ],
             ),
             SizedBox(height: SizeConfig.bodyHeight * .02),
-            if(!isUpdate)
-
+            if (!isUpdate)
               AppText.hint(
-              text:context.localizations.registerBody,
-              maxLines: 6,
-              textSize: 13,
-              fontWeight: FontWeight.w400,
-            ),
+                text: context.localizations.registerBody,
+                maxLines: 6,
+                textSize: 13,
+                fontWeight: FontWeight.w400,
+              ),
             SizedBox(height: SizeConfig.bodyHeight * .02),
             Center(
               child: MediaFormField(
                 height: SizeConfig.screenWidth * .33,
                 width: SizeConfig.screenWidth * .33,
-                initialImage: UserDataService().getUserData()?.image,
+                initialImage: UserDataService().getUserData()?.profileImage,
                 onDataReceived: (File file) =>
                     setState(() => profilePath = file.path),
               ),
@@ -99,12 +100,14 @@ class _RegisterBodyState extends State<RegisterBody> {
               initialValue: UserDataService().getUserData()?.name,
               hintText: context.localizations.name,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
             ),
             SizedBox(height: SizeConfig.bodyHeight * .02),
             PhoneFieldWidget(
               phone: widget.phone ?? UserDataService().getUserData()?.phone,
-              enabled: widget.phone == null &&
+              readOnly:
+                  widget.phone == null &&
                   UserDataService().getUserData()?.phone == null,
             ),
             SizedBox(height: SizeConfig.bodyHeight * .02),
@@ -119,7 +122,8 @@ class _RegisterBodyState extends State<RegisterBody> {
               name: 'gender',
               initialValue: UserDataService().getUserData()?.gender,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
               hint: context.localizations.gender,
               label: context.localizations.gender,
               items: genders
@@ -127,9 +131,10 @@ class _RegisterBodyState extends State<RegisterBody> {
                     (e) => DropdownMenuItem(
                       value: e,
                       child: AppText(
-                          text: e == Gender.male
-                              ? context.localizations.male
-                              : context.localizations.female),
+                        text: e == Gender.male
+                            ? context.localizations.male
+                            : context.localizations.female,
+                      ),
                     ),
                   )
                   .toList(),
@@ -137,19 +142,24 @@ class _RegisterBodyState extends State<RegisterBody> {
             SizedBox(height: SizeConfig.bodyHeight * .02),
             AppDropDown(
               name: 'student',
-               hint: context.localizations.studentOrEmployee,
-               label: context.localizations.studentOrEmployee,
-              initialValue: UserDataService().getUserData()?.jobTitle == "student" ? LoginUserType.student : LoginUserType.employee,
+              hint: context.localizations.studentOrEmployee,
+              label: context.localizations.studentOrEmployee,
+              initialValue:
+                  UserDataService().getUserData()?.jobTitle == "student"
+                  ? LoginUserType.student
+                  : LoginUserType.employee,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
               items: usersType
                   .map<DropdownMenuItem>(
                     (e) => DropdownMenuItem(
                       value: e,
                       child: AppText(
-                          text: e == LoginUserType.employee
-                              ? context.localizations.employee
-                              : context.localizations.student),
+                        text: e == LoginUserType.employee
+                            ? context.localizations.employee
+                            : context.localizations.student,
+                      ),
                     ),
                   )
                   .toList(),
@@ -159,7 +169,10 @@ class _RegisterBodyState extends State<RegisterBody> {
               listener: (context, state) {
                 if (state is UpdateUserDataFailure) {
                   AppConstant.showCustomSnakeBar(
-                      context, state.errorMsg, false);
+                    context,
+                    state.errorMsg,
+                    false,
+                  );
                 }
                 if (state is UpdateUserDataSuccess) {
                   if (isUpdate) {
@@ -173,31 +186,34 @@ class _RegisterBodyState extends State<RegisterBody> {
               },
               builder: (context, state) {
                 return CustomButton(
-                    isLoading: state is UpdateUserDataLoading,
-                    text: isUpdate
-                        ? context.localizations.edit
-                        : context.localizations.createNewAccount,
-                    press: () {
-                      if (!_formKey.currentState!.saveAndValidate()) {
-                        return;
-                      }
-                      if (profilePath == null && !isUpdate) {
-                        AppConstant.showToast(
-                            msg: context.localizations.noImageFound,
-                            gravity: ToastGravity.TOP);
-                        return;
-                      }
-                      RegisterParams params = RegisterParams(
-                          name: _formKey.fieldValue("name"),
-                          phone: widget.phone ?? _formKey.fieldValue("phone"),
-                          email: _formKey.fieldValue("email"),
-                          gender: _formKey.fieldValue("gender").name,
-                          jobTitle: _formKey.fieldValue("student").name,
-                          imagePath: profilePath);
-                      context
-                          .read<UpdateBloc>()
-                          .add(UpdateUserDataEvent(params: params));
-                    });
+                  isLoading: state is UpdateUserDataLoading,
+                  text: isUpdate
+                      ? context.localizations.edit
+                      : context.localizations.createNewAccount,
+                  press: () {
+                    if (!_formKey.currentState!.saveAndValidate()) {
+                      return;
+                    }
+                    if (profilePath == null && !isUpdate) {
+                      AppConstant.showToast(
+                        msg: context.localizations.noImageFound,
+                        gravity: ToastGravity.TOP,
+                      );
+                      return;
+                    }
+                    RegisterParams params = RegisterParams(
+                      name: _formKey.fieldValue("name"),
+                      phone: widget.phone ?? _formKey.fieldValue("phone"),
+                      email: _formKey.fieldValue("email"),
+                      gender: _formKey.fieldValue("gender").name,
+                      jobTitle: _formKey.fieldValue("student").name,
+                      imagePath: profilePath,
+                    );
+                    context.read<UpdateBloc>().add(
+                      UpdateUserDataEvent(params: params),
+                    );
+                  },
+                );
               },
             ),
             SizedBox(height: SizeConfig.bodyHeight * .04),
@@ -208,29 +224,33 @@ class _RegisterBodyState extends State<RegisterBody> {
                 listener: (context, state) {
                   if (state is DeleteUserDataFailure) {
                     AppConstant.showCustomSnakeBar(
-                        context, state.errorMsg, false);
+                      context,
+                      state.errorMsg,
+                      false,
+                    );
                   } else if (state is DeleteUserDataSuccess) {
-                    context.navigateToAndFinish(const LoginScreen());
+                    context.navigateToAndFinish(
+                      const LoginScreen(userType: UserType.user),
+                    );
                   }
                 },
                 builder: (context, state) {
                   return InkWell(
-                      onTap: () => SettingsHelper().showAppDialog(
-                        context: context,
-                        isAccept: (value) {
-                          if (value) {
-                            context
-                                .read<UpdateBloc>()
-                                .add(DeleteUserDataEvent());
-                          }
-                        },
-                        title: context.localizations.deleteAccountBody,
-                      ),
-                      child: AppText(
-                        text: context.localizations.deleteAccount,
-                        color: context.colorScheme.error,
-                        fontWeight: FontWeight.w600,
-                      ));
+                    onTap: () => SettingsHelper().showAppDialog(
+                      context: context,
+                      isAccept: (value) {
+                        if (value) {
+                          context.read<UpdateBloc>().add(DeleteUserDataEvent());
+                        }
+                      },
+                      title: context.localizations.deleteAccountBody,
+                    ),
+                    child: AppText(
+                      text: context.localizations.deleteAccount,
+                      color: context.colorScheme.error,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  );
                 },
               ),
           ],

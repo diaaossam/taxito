@@ -1,14 +1,14 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/custom_text_form_field.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/custom_text_form_field.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
 import '../../../data/models/orders.dart';
 
 class DeliveryRatingWidget extends StatefulWidget {
@@ -35,9 +35,10 @@ class _DeliveryRatingWidgetState extends State<DeliveryRatingWidget> {
 
     final response = {
       "rate_type": "delivery",
-      if (_currentNote != null && _currentNote!.isNotEmpty)"review": _currentNote,
-      "id":widget.orders.id,
-      if (_currentRating != null) "rating": _currentRating.toString()
+      if (_currentNote != null && _currentNote!.isNotEmpty)
+        "review": _currentNote,
+      "id": widget.orders.id,
+      if (_currentRating != null) "rating": _currentRating.toString(),
     };
     widget.ratingResponse(response);
   }
@@ -50,17 +51,13 @@ class _DeliveryRatingWidgetState extends State<DeliveryRatingWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-            height: SizeConfig.bodyHeight * .04,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .04),
           AppText(
             text: context.localizations.rateDriverBody,
             fontWeight: FontWeight.bold,
             textSize: 14,
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .02,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           Row(
             children: [
               ClipRRect(
@@ -101,8 +98,9 @@ class _DeliveryRatingWidgetState extends State<DeliveryRatingWidget> {
                         allowHalfRating: false,
                         itemCount: 5,
                         itemSize: 20,
-                        itemPadding:
-                            const EdgeInsets.symmetric(horizontal: 4.0),
+                        itemPadding: const EdgeInsets.symmetric(
+                          horizontal: 4.0,
+                        ),
                         itemBuilder: (context, _) =>
                             AppImage.asset(Assets.icons.star),
                         onRatingUpdate: (value) {

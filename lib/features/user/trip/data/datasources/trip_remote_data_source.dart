@@ -69,7 +69,7 @@ class TripRemoteDataSourceImpl implements TripRemoteDataSource {
   @override
   Future<ApiSuccessResponse> cancelTrip({required num id}) async {
     final response = await dioConsumer.post(
-      path: EndPoints.cancelTrip(id),
+      path: EndPoints.cancelUserTrip(id),
       body: {"trip_cancel_reason_id": 1},
     );
     return ApiSuccessResponse();
@@ -149,7 +149,7 @@ class TripRemoteDataSourceImpl implements TripRemoteDataSource {
   @override
   Future<ApiSuccessResponse> getTripById({required num id}) async {
     final response = await dioConsumer.get(
-      path: "${EndPoints.getTripById}/$id",
+      path: "${EndPoints.getTripUserById}/$id",
     );
     TripModel tripModel = TripModel.fromJson(response['data']);
     return ApiSuccessResponse(data: tripModel, response: response['data']);

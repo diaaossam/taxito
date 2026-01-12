@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../data/models/trip_model.dart';
 import '../bloc/accepted_user_trip/accepted_user_trip_cubit.dart';
 import '../bloc/request_trip/request_trip_info_bloc.dart';

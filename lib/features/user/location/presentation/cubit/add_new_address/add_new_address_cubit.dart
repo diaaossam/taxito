@@ -1,12 +1,12 @@
-import 'package:aslol/core/services/location/location_manager.dart';
-import 'package:aslol/features/location/data/models/requests/location_params.dart';
-import 'package:aslol/features/location/domain/usecases/add_new_address_use_case.dart';
+import 'package:taxito/core/services/location/location_manager.dart';
+import 'package:taxito/features/user/location/data/models/requests/location_params.dart';
+import 'package:taxito/features/user/location/domain/usecases/add_new_address_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../core/services/location/location_permission_service.dart';
+import '../../../../../../core/services/location/location_permission_service.dart';
 
 part 'add_new_address_state.dart';
 
@@ -21,7 +21,7 @@ class AddNewAddressCubit extends Cubit<AddNewAddressState> {
     emit(AddNewAddressLoading());
     LatLng? lng;
     if (saved.lat == null || saved.lng == null) {
-      lng = await LocationPermissionService().requestPermissionAndLocation();
+      lng = (await LocationPermissionService().requestPermissionAndLocation()).location;
     }
 
     final address = await LocationManager.getMyAddress(

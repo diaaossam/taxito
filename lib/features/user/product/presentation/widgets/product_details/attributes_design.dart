@@ -1,8 +1,8 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/data/models/attributes_model.dart';
-import 'package:aslol/features/product/presentation/cubit/product_details/product_details_cubit.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/data/models/attributes_model.dart';
+import 'package:taxito/features/user/product/presentation/cubit/product_details/product_details_cubit.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
 
 class EmptyTripsHistoryWidget extends StatelessWidget {
   const EmptyTripsHistoryWidget({super.key});
@@ -15,18 +15,14 @@ class EmptyTripsHistoryWidget extends StatelessWidget {
       opacity: 0.2,
       child: Column(
         children: [
-          SizedBox(
-            height: SizeConfig.bodyHeight * .2,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .2),
           AppImage.asset(
             Assets.icons.tripHistory,
             color: Colors.black,
             height: SizeConfig.bodyHeight * .2,
             width: 100,
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .04,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .04),
           AppText(
             text: context.localizations.noTrips,
             textSize: 20,

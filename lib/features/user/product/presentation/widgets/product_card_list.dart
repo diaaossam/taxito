@@ -1,10 +1,10 @@
 import 'package:animations/animations.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/presentation/widgets/product_details/like_button.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_details/like_button.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../widgets/app_text.dart';
+import '../../../../../widgets/app_text.dart';
 import '../../data/models/product_model.dart';
 import '../pages/product_details.dart';
 
@@ -15,14 +15,15 @@ class ProductCardList extends StatelessWidget {
   final Widget? child;
   final EdgeInsetsGeometry? margin;
 
-  const ProductCardList(
-      {super.key,
-      required this.productModel,
-      this.imageHeight,
-      this.imageWidth,
-      this.onTap,
-      this.child,
-      this.margin});
+  const ProductCardList({
+    super.key,
+    required this.productModel,
+    this.imageHeight,
+    this.imageWidth,
+    this.onTap,
+    this.child,
+    this.margin,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +63,19 @@ class ProductCardList extends StatelessWidget {
                       ),
                       10.horizontalSpace,
                       LikeButtonDesign(
-                          boxShadow: [
-                            BoxShadow(
-                                spreadRadius: 2,
-                                offset: const Offset(2, 2),
-                                blurRadius: 5,
-                                color: const Color(0xff2E3651).withValues(alpha: 0.15))
-                          ],
-                          onTapped: (p0) {},
-                          isLiked: productModel.isAddedToFavourite ?? false)
+                        boxShadow: [
+                          BoxShadow(
+                            spreadRadius: 2,
+                            offset: const Offset(2, 2),
+                            blurRadius: 5,
+                            color: const Color(
+                              0xff2E3651,
+                            ).withValues(alpha: 0.15),
+                          ),
+                        ],
+                        onTapped: (p0) {},
+                        isLiked: productModel.isAddedToFavourite ?? false,
+                      ),
                     ],
                   ),
                 ],

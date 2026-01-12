@@ -1,4 +1,4 @@
-import 'package:aslol/features/product/data/models/product_model.dart';
+import 'package:taxito/features/user/product/data/models/product_model.dart';
 
 import '../../../supplier/data/models/response/supplier_model.dart';
 

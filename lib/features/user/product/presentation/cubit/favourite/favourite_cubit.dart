@@ -1,5 +1,5 @@
-import 'package:aslol/features/product/domain/usecases/get_favourite_use_case.dart';
-import 'package:aslol/features/product/domain/usecases/toggle_wishlist_use_case.dart';
+import 'package:taxito/features/user/product/domain/usecases/get_favourite_use_case.dart';
+import 'package:taxito/features/user/product/domain/usecases/toggle_wishlist_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

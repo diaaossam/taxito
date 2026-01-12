@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:aslol/features/auth/domain/usecases/log_out_use_case.dart';
+import 'package:taxito/features/user/auth/domain/usecases/log_out_use_case.dart';
 import 'package:meta/meta.dart';
 
 part 'logout_state.dart';

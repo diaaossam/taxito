@@ -1,17 +1,17 @@
 import 'dart:io';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/location/domain/entities/location_entity.dart';
-import 'package:aslol/widgets/app_failure.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/custom_button.dart';
-import 'package:aslol/widgets/loading/loading_widget.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/location/domain/entities/location_entity.dart';
+import 'package:taxito/widgets/app_failure.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/custom_button.dart';
+import 'package:taxito/widgets/loading/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:open_settings_plus/core/open_settings_plus.dart';
-import '../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../core/services/location/location_manager.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/services/location/location_manager.dart';
 import '../cubit/location_picker/location_picker_cubit.dart';
 import '../cubit/location_picker/location_picker_state.dart';
 
@@ -24,8 +24,9 @@ class PickLocationScreen extends StatelessWidget {
       create: (context) => sl<LocationPickerCubit>()..initLocationService(),
       child: BlocBuilder<LocationPickerCubit, LocationPickerState>(
         builder: (context, state) {
-          LocationPickerCubit cubit =
-              BlocProvider.of<LocationPickerCubit>(context);
+          LocationPickerCubit cubit = BlocProvider.of<LocationPickerCubit>(
+            context,
+          );
           if (state is InitLocationServiceSuccess ||
               state is ChangeUserLocationOnMapState) {
             return Scaffold(
@@ -49,28 +50,35 @@ class PickLocationScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: SizeConfig.bodyHeight * .1,
-                          horizontal: SizeConfig.screenWidth * .06),
+                        vertical: SizeConfig.bodyHeight * .1,
+                        horizontal: SizeConfig.screenWidth * .06,
+                      ),
                       child: CustomButton(
-                          text: context.localizations.saveLocation,
-                          press: () async {
-                            String address = await LocationManager.getMyAddress(latLng: cubit.currentLocation!);
-                            LocationEntity locationEntity = LocationEntity(
-                                address: address.isEmpty
-                                    ? context.localizations
-                                        .locationPickedSuccessFully
-                                    : address,
-                                lat: cubit.currentLocation!.latitude,
-                                lon: cubit.currentLocation!.longitude);
-                            Navigator.pop(context, locationEntity);
-                          }),
+                        text: context.localizations.saveLocation,
+                        press: () async {
+                          String address = await LocationManager.getMyAddress(
+                            latLng: cubit.currentLocation!,
+                          );
+                          LocationEntity locationEntity = LocationEntity(
+                            address: address.isEmpty
+                                ? context
+                                      .localizations
+                                      .locationPickedSuccessFully
+                                : address,
+                            lat: cubit.currentLocation!.latitude,
+                            lon: cubit.currentLocation!.longitude,
+                          );
+                          Navigator.pop(context, locationEntity);
+                        },
+                      ),
                     ),
                     Positioned(
                       top: 8,
                       child: Container(
                         height: SizeConfig.bodyHeight * .07,
                         padding: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.screenWidth * .01),
+                          horizontal: SizeConfig.screenWidth * .01,
+                        ),
                         width: SizeConfig.screenWidth,
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -80,10 +88,12 @@ class PickLocationScreen extends StatelessWidget {
                           child: Center(
                             child: AppText(
                               align: TextAlign.start,
-                                text: cubit.address.isEmpty
-                                    ? context.localizations
+                              text: cubit.address.isEmpty
+                                  ? context
+                                        .localizations
                                         .locationPickedSuccessFully
-                                    : cubit.address),
+                                  : cubit.address,
+                            ),
                           ),
                         ),
                       ),
@@ -105,9 +115,7 @@ class PickLocationScreen extends StatelessWidget {
               ),
             );
           } else {
-            return const Scaffold(
-              body: LoadingWidget(),
-            );
+            return const Scaffold(body: LoadingWidget());
           }
         },
       ),

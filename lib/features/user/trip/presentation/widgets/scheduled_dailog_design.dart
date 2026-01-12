@@ -1,7 +1,7 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/main/presentation/pages/main_layout.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';

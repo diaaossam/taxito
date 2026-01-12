@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:aslol/core/services/network/dio_consumer.dart';
-import 'package:aslol/core/services/network/end_points.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/features/notifications/data/models/notification_model.dart';
+import 'package:taxito/core/services/network/dio_consumer.dart';
+import 'package:taxito/core/services/network/end_points.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/features/user/notifications/data/models/notification_model.dart';
 
 abstract class NotificationRemoteDataSource {
   Future<List<NotificationModel>> getNotificationList({required int pageKey});

@@ -1,17 +1,17 @@
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/trip/presentation/pages/choose_location_screen.dart';
-import 'package:aslol/features/trip/presentation/pages/pay_trip_design.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/custom_button.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/trip/presentation/pages/choose_location_screen.dart';
+import 'package:taxito/features/user/trip/presentation/pages/pay_trip_design.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-import '../../gen/assets.gen.dart';
-import '../../widgets/image_picker/app_image.dart';
+import '../../../gen/assets.gen.dart';
+import '../../../widgets/image_picker/app_image.dart';
 import '../location/data/models/response/main_location_data.dart';
 import 'data/models/trip_model.dart';
 import 'presentation/widgets/rate_driver_page/pending_user_payment_dialog.dart';

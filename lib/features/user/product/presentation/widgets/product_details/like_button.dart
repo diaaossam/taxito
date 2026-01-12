@@ -1,6 +1,6 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 

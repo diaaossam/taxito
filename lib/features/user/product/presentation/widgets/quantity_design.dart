@@ -1,7 +1,7 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

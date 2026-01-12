@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../widgets/custom_app_bar.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../widgets/custom_app_bar.dart';
 import '../../../location/presentation/cubit/location_cubit.dart';
 import '../widgets/choose_location/choose_location_body.dart';
 

@@ -1,16 +1,15 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/trip/presentation/bloc/trip_history/trip_history_cubit.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/trip/presentation/bloc/trip_history/trip_history_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../core/enum/trip_status_enum.dart';
-import '../../../../core/utils/app_size.dart';
-import '../../../../widgets/app_text.dart';
-import '../../../../widgets/custom_sliver_app_bar.dart';
+import '../../../../../core/enum/trip_status_enum.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/custom_sliver_app_bar.dart';
 import '../widgets/trips_history/driver_trips_history.dart';
 
 class TripHistoryScreen extends StatefulWidget {

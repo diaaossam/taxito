@@ -1,6 +1,6 @@
-import 'package:aslol/core/extensions/widget_ext.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/presentation/widgets/product_details/cart_button_design.dart';
+import 'package:taxito/core/extensions/widget_ext.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_details/cart_button_design.dart';
 import 'package:flutter/material.dart';
 import '../../../data/models/product_model.dart';
 import '../type_note_widget.dart';

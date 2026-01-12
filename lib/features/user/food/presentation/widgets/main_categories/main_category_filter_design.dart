@@ -1,35 +1,42 @@
-import 'package:aslol/config/theme/theme_helper.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/main/data/models/banners_model.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/config/theme/theme_helper.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/main/data/models/banners_model.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_size.dart';
+import '../../../../../../core/utils/app_size.dart';
 
 class MainCategoryFilterItem extends StatelessWidget {
   final BannersModel bannersModel;
   final bool isSelected;
 
-  const MainCategoryFilterItem(
-      {super.key, required this.bannersModel, required this.isSelected});
+  const MainCategoryFilterItem({
+    super.key,
+    required this.bannersModel,
+    required this.isSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          horizontal: SizeConfig.screenWidth * .03, vertical: 10),
+        horizontal: SizeConfig.screenWidth * .03,
+        vertical: 10,
+      ),
       decoration: BoxDecoration(
+        color: isSelected
+            ? context.colorScheme.onPrimary
+            : const Color(0xffF8F8F8),
+        border: Border.all(
           color: isSelected
-              ? context.colorScheme.onPrimary
-              : const Color(0xffF8F8F8),
-          border: Border.all(
-              color: isSelected
-                  ? context.colorScheme.primary
-                  : context.colorScheme.outline),
-          borderRadius: BorderRadius.circular(14)),
+              ? context.colorScheme.primary
+              : context.colorScheme.outline,
+        ),
+        borderRadius: BorderRadius.circular(14),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min, // ✅ ده مهم جداً
         children: [

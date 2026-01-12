@@ -42,9 +42,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
           if (state.data.isProfileCompleted == 1) {
             context.navigateToAndFinish(const SupplierMainLayout());
           } else {
-            context.navigateTo(const RegisterScreen(
-              isUpdate: false,
-            ));
+            context.navigateTo(const RegisterScreen(isUpdate: false));
           }
         } else if (state is VerifyOtpFailureState) {
           AppConstant.showCustomSnakeBar(context, state.errorMsg, false);
@@ -63,9 +61,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                 height: SizeConfig.bodyHeight * .25,
                 width: SizeConfig.bodyHeight * .3,
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .06,
-              ),
+              SizedBox(height: SizeConfig.bodyHeight * .06),
               AppText(
                 text: context.localizations.otpTitle,
                 fontWeight: FontWeight.bold,
@@ -73,9 +69,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                 textSize: 22,
                 color: context.colorScheme.onSurface,
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ),
+              SizedBox(height: SizeConfig.bodyHeight * .02),
               AppText(
                 text: context.localizations.verificationCode,
                 maxLines: 2,
@@ -117,14 +111,21 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
               ),
               SizedBox(height: SizeConfig.bodyHeight * .06),
               CustomButton(
-                  isActive: otp.length == 6,
-                  isLoading: state is VerifyOtpLoadingState,
-                  text: context.localizations.verifyCode,
-                  press: () => context.read<OtpBloc>().add(VerifyOtpCodeEvent(
-                      phone: widget.phoneNumber, otpCode: otp))),
+                isActive: otp.length == 6,
+                isLoading: state is VerifyOtpLoadingState,
+                text: context.localizations.verifyCode,
+                press: () => context.read<OtpBloc>().add(
+                  VerifyOtpCodeEvent(
+                    userType: UserType.supplier,
+                    phone: widget.phoneNumber,
+                    otpCode: otp,
+                  ),
+                ),
+              ),
               SizedBox(height: SizeConfig.bodyHeight * .04),
               OtpTimerDesign(
-                phoneNumber: widget.phoneNumber, userType: UserType.supplier,
+                phoneNumber: widget.phoneNumber,
+                userType: UserType.supplier,
               ),
             ],
           ).scrollable(),

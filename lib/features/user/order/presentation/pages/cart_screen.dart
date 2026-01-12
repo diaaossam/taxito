@@ -1,11 +1,12 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/main/presentation/cubit/main/main_cubit.dart';
-import 'package:aslol/features/order/presentation/widgets/cart/cart_body.dart';
-import 'package:aslol/features/product/presentation/cubit/favourite/favourite_cubit.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/main/presentation/cubit/main/main_cubit.dart';
+import 'package:taxito/features/user/order/presentation/widgets/cart/cart_body.dart';
+import 'package:taxito/features/user/product/presentation/cubit/favourite/favourite_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../widgets/custom_app_bar.dart';
+
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../widgets/custom_app_bar.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

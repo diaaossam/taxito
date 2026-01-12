@@ -20,29 +20,35 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
   final ResendOtpUseCase resendOtpUseCase;
 
   OtpBloc(this.verifyOtpUseCase, this.deviceHelper, this.resendOtpUseCase)
-      : super(OtpInitial()) {
+    : super(OtpInitial()) {
     on<VerifyOtpCodeEvent>((event, emit) async {
       emit(VerifyOtpLoadingState());
       OtpParams otpParams = OtpParams(
-          otp: event.otpCode,
-          phoneNumber: event.phone,
-          deviceToken: await deviceHelper.deviceToken,
-          deviceType: deviceHelper.devicePlatform);
+        otp: event.otpCode,
+        phoneNumber: event.phone,
+        userType: event.userType,
+        deviceToken: await deviceHelper.deviceToken,
+        deviceType: deviceHelper.devicePlatform,
+      );
       final response = await verifyOtpUseCase(otpParams: otpParams);
-      emit(response.fold((l) => VerifyOtpFailureState(errorMsg: l.msg), (r) {
-        return VerifyOtpSuccessState(data: r.data);
-      }));
+      emit(
+        response.fold((l) => VerifyOtpFailureState(errorMsg: l.msg), (r) {
+          return VerifyOtpSuccessState(data: r.data);
+        }),
+      );
     });
-    on<ResendOtpCodeEvent>(
-      (event, emit) async {
-        emit(ResendOtpLoadingState());
-        final response = await resendOtpUseCase(
-            phone: event.phone, userType: event.userType);
-        emit(response.fold(
+    on<ResendOtpCodeEvent>((event, emit) async {
+      emit(ResendOtpLoadingState());
+      final response = await resendOtpUseCase(
+        phone: event.phone,
+        userType: event.userType,
+      );
+      emit(
+        response.fold(
           (l) => ResendOtpFailureState(errorMsg: l.msg),
           (r) => ResendOtpSuccessState(),
-        ));
-      },
-    );
+        ),
+      );
+    });
   }
 }

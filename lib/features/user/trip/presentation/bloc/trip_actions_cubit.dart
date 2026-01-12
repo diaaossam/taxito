@@ -1,4 +1,4 @@
-import 'package:aslol/features/trip/domain/usecases/cancel_trip_use_case.dart';
+import 'package:taxito/features/user/trip/domain/usecases/cancel_trip_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

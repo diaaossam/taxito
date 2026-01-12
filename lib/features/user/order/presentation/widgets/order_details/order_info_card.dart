@@ -1,16 +1,17 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/order/data/models/orders.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/order/data/models/orders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/enum/order_type.dart';
-import '../../../../../widgets/app_text.dart';
+import '../../../../../../core/enum/order_type.dart';
+import '../../../../../../widgets/app_text.dart';
 import '../../../order_helper.dart';
 
 class OrderInfoCard extends StatelessWidget {
   final Orders orders;
+
   const OrderInfoCard({super.key, required this.orders});
 
   @override
@@ -22,7 +23,7 @@ class OrderInfoCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: SizeConfig.bodyHeight*.02,),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,23 +50,26 @@ class OrderInfoCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.bodyHeight*.02,),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppText(
-                text: "${orders.finalPrice.toString()} ${context.localizations.iqd}",
+                text:
+                    "${orders.finalPrice.toString()} ${context.localizations.iqd}",
                 textSize: 13,
                 fontWeight: FontWeight.w700,
               ),
               AppText(
                 color: context.colorScheme.shadow,
                 textSize: 12,
-                text: OrderHelper().formatDateTime(orders.createdAt ?? DateTime.now()),
+                text: OrderHelper().formatDateTime(
+                  orders.createdAt ?? DateTime.now(),
+                ),
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.bodyHeight*.02,),
+          SizedBox(height: SizeConfig.bodyHeight * .02),
         ],
       ),
     );

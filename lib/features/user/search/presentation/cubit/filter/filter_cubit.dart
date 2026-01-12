@@ -1,12 +1,14 @@
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/features/main/data/models/banners_model.dart';
-import 'package:aslol/features/main/domain/usecases/get_main_category_use_case.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/features/user/main/data/models/banners_model.dart';
+import 'package:taxito/features/user/main/domain/usecases/get_main_category_use_case.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../../core/services/network/error/failures.dart';
+
+import '../../../../../../core/services/network/error/failures.dart';
+
 part 'filter_state.dart';
 
 @Injectable()
@@ -23,13 +25,9 @@ class FilterCubit extends Cubit<FilterState> {
   Future<void> _getAllFilters() async {
     emit(FilterLoading());
     try {
-      final results = await Future.wait([
-        getMainCategoryUseCase(),
-      ]);
+      final results = await Future.wait([getMainCategoryUseCase()]);
       mainCategories = extractOrThrow(results[0]);
-      emit(FilterLoaded(
-        mainCategories: mainCategories,
-      ));
+      emit(FilterLoaded(mainCategories: mainCategories));
     } catch (e) {
       emit(FilterFailure(msg: e.toString()));
     }

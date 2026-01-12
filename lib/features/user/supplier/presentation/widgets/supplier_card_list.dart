@@ -1,15 +1,16 @@
 import 'package:animations/animations.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/presentation/widgets/product_details/like_button.dart';
-import 'package:aslol/features/supplier/data/models/response/supplier_model.dart';
-import 'package:aslol/features/supplier/presentation/pages/supplier_details_screen.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_details/like_button.dart';
+import 'package:taxito/features/user/supplier/data/models/response/supplier_model.dart';
+import 'package:taxito/features/user/supplier/presentation/pages/supplier_details_screen.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../widgets/app_text.dart';
-import '../../../../widgets/info_design_item.dart';
+
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/info_design_item.dart';
 
 class SupplierCardList extends StatelessWidget {
   final SupplierModel supplierModel;
@@ -62,16 +63,19 @@ class SupplierCardList extends StatelessWidget {
                       ),
                       10.horizontalSpace,
                       LikeButtonDesign(
-                          boxShadow: [
-                            BoxShadow(
-                                spreadRadius: 2,
-                                offset: const Offset(2, 2),
-                                blurRadius: 5,
-                                color: const Color(0xff2E3651)
-                                    .withValues(alpha: 0.15))
-                          ],
-                          onTapped: onTapped,
-                          isLiked: supplierModel.isAddedToFavourite ?? false)
+                        boxShadow: [
+                          BoxShadow(
+                            spreadRadius: 2,
+                            offset: const Offset(2, 2),
+                            blurRadius: 5,
+                            color: const Color(
+                              0xff2E3651,
+                            ).withValues(alpha: 0.15),
+                          ),
+                        ],
+                        onTapped: onTapped,
+                        isLiked: supplierModel.isAddedToFavourite ?? false,
+                      ),
                     ],
                   ),
                   10.verticalSpace,
@@ -79,7 +83,8 @@ class SupplierCardList extends StatelessWidget {
                     children: [
                       InfoDesignItem(
                         icon: Assets.icons.clock,
-                        title: "${supplierModel.duration} ${context.localizations.minute}",
+                        title:
+                            "${supplierModel.duration} ${context.localizations.minute}",
                       ),
                       15.horizontalSpace,
                       InfoDesignItem(
@@ -101,9 +106,8 @@ class SupplierCardList extends StatelessWidget {
           ],
         ),
       ),
-      openBuilder: (context, action) => SupplierDetailsScreen(
-        supplierModel: supplierModel,
-      ),
+      openBuilder: (context, action) =>
+          SupplierDetailsScreen(supplierModel: supplierModel),
     );
   }
 }

@@ -1,18 +1,17 @@
 import 'dart:convert';
 
-import 'package:aslol/core/services/network/dio_consumer.dart';
-import 'package:aslol/core/services/network/end_points.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/core/utils/app_strings.dart';
-import 'package:aslol/features/app/data/models/generic_model.dart';
-import 'package:aslol/features/location/data/models/response/my_address.dart';
+import 'package:taxito/core/services/network/dio_consumer.dart';
+import 'package:taxito/core/services/network/end_points.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/core/utils/app_strings.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:aslol/config/environment/environment_helper.dart' as env;
+import 'package:taxito/config/environment/environment_helper.dart' as env;
 import 'package:uuid/uuid.dart';
-
-import '../../../../core/utils/api_config.dart';
+import '../../../../../core/utils/api_config.dart';
+import '../../../../captain/app/data/models/generic_model.dart';
+import '../../../../captain/delivery_order/data/models/response/my_address.dart';
 import '../models/requests/location_params.dart';
 import '../models/response/location_details_model.dart';
 import '../models/response/main_location_data.dart';
@@ -23,8 +22,10 @@ abstract class LocationRemoteDataSource {
 
   Future<ApiSuccessResponse> getRegion({required num id});
 
-  Future<ApiSuccessResponse> addNewAddress(
-      {required SavedLocationParams params, num? id});
+  Future<ApiSuccessResponse> addNewAddress({
+    required SavedLocationParams params,
+    num? id,
+  });
 
   Future<ApiSuccessResponse> getMyAddress();
 
@@ -34,8 +35,9 @@ abstract class LocationRemoteDataSource {
 
   Future<ApiSuccessResponse> fetchGoogleSuggestion({required String query});
 
-  Future<ApiSuccessResponse> getPlaceDetailsByPlaceId(
-      {required SuggestionModel suggestionModel});
+  Future<ApiSuccessResponse> getPlaceDetailsByPlaceId({
+    required SuggestionModel suggestionModel,
+  });
 
   Future<ApiSuccessResponse> getPlaceDetailsByLatlng({required LatLng latlng});
 }
@@ -46,20 +48,25 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   final SharedPreferences sharedPreferences;
   var uuid = const Uuid();
 
-  LocationRemoteDataSourceImpl(
-      {required this.dioConsumer, required this.sharedPreferences});
+  LocationRemoteDataSourceImpl({
+    required this.dioConsumer,
+    required this.sharedPreferences,
+  });
 
   @override
-  Future<ApiSuccessResponse> fetchGoogleSuggestion(
-      {required String query}) async {
+  Future<ApiSuccessResponse> fetchGoogleSuggestion({
+    required String query,
+  }) async {
     List<SuggestionModel> suggestions = [];
-    final response =
-        await dioConsumer.get(path: EndPoints.mapSuggestions, params: {
-      'q': query,
-      'access_token': env.Environment.googleApiKey,
-      'session_token': uuid.v4(),
-      "country": "IQ"
-    });
+    final response = await dioConsumer.get(
+      path: EndPoints.mapSuggestions,
+      params: {
+        'q': query,
+        'access_token': env.Environment.googleApiKey,
+        'session_token': uuid.v4(),
+        "country": "IQ",
+      },
+    );
     suggestions = response['suggestions']
         .map<SuggestionModel>((element) => SuggestionModel.fromJson(element))
         .toList();
@@ -71,15 +78,17 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
     required SuggestionModel suggestionModel,
   }) async {
     final response = await dioConsumer.get(
-        path: "${EndPoints.placeLocation}/${suggestionModel.mapboxId}",
-        params: {
-          'session_token': uuid.v4(),
-          "access_token": env.Environment.googleApiKey
-        });
+      path: "${EndPoints.placeLocation}/${suggestionModel.mapboxId}",
+      params: {
+        'session_token': uuid.v4(),
+        "access_token": env.Environment.googleApiKey,
+      },
+    );
 
     List<LocationDetailsModel> list = response['features']
         .map<LocationDetailsModel>(
-            (element) => LocationDetailsModel.fromJson(element))
+          (element) => LocationDetailsModel.fromJson(element),
+        )
         .toList();
 
     LatLng latLng = LatLng(
@@ -98,12 +107,14 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   }
 
   @override
-  Future<ApiSuccessResponse> getPlaceDetailsByLatlng(
-      {required LatLng latlng}) async {
+  Future<ApiSuccessResponse> getPlaceDetailsByLatlng({
+    required LatLng latlng,
+  }) async {
     final response = await dioConsumer.get(
-        path:
-            "${EndPoints.addressBaseUrl}/${latlng.longitude},${latlng.latitude}.json",
-        params: {"access_token": env.Environment.googleApiKey});
+      path:
+          "${EndPoints.addressBaseUrl}/${latlng.longitude},${latlng.latitude}.json",
+      params: {"access_token": env.Environment.googleApiKey},
+    );
     if (response['features'].isNotEmpty) {
       return ApiSuccessResponse(data: response['features'][0]['place_name']);
     } else {
@@ -113,8 +124,10 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> getGovernorates() async {
-    final response =
-        await dioConsumer.get(path: EndPoints.provinces, body: {"perPage": 60});
+    final response = await dioConsumer.get(
+      path: EndPoints.provinces,
+      body: {"perPage": 60},
+    );
     final List<GenericModel> list = response['data']
         .map<GenericModel>((element) => GenericModel.fromJson(element))
         .toList();
@@ -124,7 +137,9 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   @override
   Future<ApiSuccessResponse> getRegion({required num id}) async {
     final response = await dioConsumer.get(
-        path: EndPoints.region, params: {"province_id": id, "perPage": 30});
+      path: EndPoints.region,
+      params: {"province_id": id, "perPage": 30},
+    );
     final List<GenericModel> list = response['data']
         .map<GenericModel>((element) => GenericModel.fromJson(element))
         .toList();
@@ -132,15 +147,21 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   }
 
   @override
-  Future<ApiSuccessResponse> addNewAddress(
-      {required SavedLocationParams params, num? id}) async {
+  Future<ApiSuccessResponse> addNewAddress({
+    required SavedLocationParams params,
+    num? id,
+  }) async {
     if (id != null) {
       final response = await dioConsumer.put(
-          path: "${EndPoints.addresses}/$id", body: params.toJson());
+        path: "${EndPoints.addresses}/$id",
+        body: params.toJson(),
+      );
       return ApiSuccessResponse(message: response['message']);
     } else {
       final response = await dioConsumer.post(
-          path: EndPoints.addresses, body: params.toJson());
+        path: EndPoints.addresses,
+        body: params.toJson(),
+      );
       return ApiSuccessResponse(message: response['message']);
     }
   }
@@ -149,7 +170,7 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   Future<ApiSuccessResponse> getMyAddress() async {
     final response = await dioConsumer.get(path: EndPoints.addresses);
     List<MyAddress> list = [];
-    response['data'].forEach((element)async{
+    response['data'].forEach((element) async {
       final data = MyAddress.fromJson(element);
       list.add(data);
       if (data.isDefault == true) {
@@ -167,10 +188,12 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   }
 
   @override
-  Future<ApiSuccessResponse> makeAddressDefault(
-      {required MyAddress myAddress}) async {
+  Future<ApiSuccessResponse> makeAddressDefault({
+    required MyAddress myAddress,
+  }) async {
     final response = await dioConsumer.post(
-        path: "${EndPoints.makeAddressDefault}/${myAddress.id}");
+      path: "${EndPoints.makeAddressDefault}/${myAddress.id}",
+    );
     final String location = json.encode(myAddress.toJson());
     sharedPreferences.setString(AppStrings.location, location);
     await ApiConfig().init();
@@ -179,12 +202,11 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> deleteAddress({required num id}) async {
-    final response =
-        await dioConsumer.delete(path: "${EndPoints.addresses}/$id");
+    final response = await dioConsumer.delete(
+      path: "${EndPoints.addresses}/$id",
+    );
     if (id == ApiConfig.myAddress?.id) {
-      sharedPreferences.remove(
-        AppStrings.location,
-      );
+      sharedPreferences.remove(AppStrings.location);
       await ApiConfig().init();
     }
     return ApiSuccessResponse(message: response['message']);

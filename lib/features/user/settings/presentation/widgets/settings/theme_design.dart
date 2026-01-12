@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:aslol/config/theme/theme_helper.dart';
-import 'package:aslol/core/bloc/global_cubit/global_cubit.dart';
-import 'package:aslol/core/bloc/global_cubit/global_state.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/config/theme/theme_helper.dart';
+import 'package:taxito/core/bloc/global_cubit/global_cubit.dart';
+import 'package:taxito/core/bloc/global_cubit/global_state.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_text.dart';
 
 class ThemeRowDesign extends StatelessWidget {
   const ThemeRowDesign({super.key});

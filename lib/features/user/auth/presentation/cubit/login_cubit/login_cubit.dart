@@ -1,8 +1,8 @@
-import 'package:aslol/core/enum/user_type.dart';
+import 'package:taxito/core/enum/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:aslol/features/auth/domain/usecases/login_user_use_case.dart';
+import 'package:taxito/features/user/auth/domain/usecases/login_user_use_case.dart';
 
 import '../../../data/models/request/login_params.dart';
 

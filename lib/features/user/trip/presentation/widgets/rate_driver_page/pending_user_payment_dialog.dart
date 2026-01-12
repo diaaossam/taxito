@@ -1,19 +1,19 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/main/presentation/pages/main_layout.dart';
-import 'package:aslol/features/trip/data/models/trip_model.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
+import 'package:taxito/features/user/trip/data/models/trip_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../core/utils/app_constant.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/custom_button.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
-import '../../../../../widgets/loading/loading_widget.dart';
+import '../../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../../core/utils/app_constant.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/custom_button.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../widgets/loading/loading_widget.dart';
 import '../../bloc/trip_payment_user/trip_payment_user_cubit.dart';
 
 class PendingPaymentDialog extends StatelessWidget {

@@ -1,9 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_size.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
 
 class EmptyCartDesign extends StatelessWidget {
   const EmptyCartDesign({super.key});
@@ -12,7 +13,7 @@ class EmptyCartDesign extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: SizeConfig.bodyHeight*0.1,),
+        SizedBox(height: SizeConfig.bodyHeight * 0.1),
         Padding(
           padding: EdgeInsets.all(SizeConfig.bodyHeight * .12),
           child: AppImage.asset(
@@ -21,8 +22,9 @@ class EmptyCartDesign extends StatelessWidget {
           ),
         ),
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth * .1),
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.screenWidth * .1,
+          ),
           child: AppText(
             text: context.localizations.noCart,
             maxLines: 2,

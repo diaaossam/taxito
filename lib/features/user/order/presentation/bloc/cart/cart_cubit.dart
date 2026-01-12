@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:aslol/features/order/data/models/coupon_model.dart';
-import 'package:aslol/features/order/data/models/promo_code_params.dart';
-import 'package:aslol/features/order/domain/usecases/apply_promo_code_use_case.dart';
+import 'package:taxito/features/user/order/data/models/coupon_model.dart';
+import 'package:taxito/features/user/order/data/models/promo_code_params.dart';
+import 'package:taxito/features/user/order/domain/usecases/apply_promo_code_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

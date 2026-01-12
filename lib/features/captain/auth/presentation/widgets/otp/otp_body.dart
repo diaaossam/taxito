@@ -25,11 +25,12 @@ class OtpVerficationWidget extends StatefulWidget {
   final bool isLogin;
   final UserType userType;
 
-  const OtpVerficationWidget(
-      {super.key,
-      required this.phoneNumber,
-      required this.isLogin,
-      required this.userType});
+  const OtpVerficationWidget({
+    super.key,
+    required this.phoneNumber,
+    required this.isLogin,
+    required this.userType,
+  });
 
   @override
   State<OtpVerficationWidget> createState() => _OtpVerficationWidgetState();
@@ -46,10 +47,9 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
           if (state.data.isProfileCompleted == 1) {
             _handleNavigation(state.data);
           } else {
-            context.navigateTo(RegisterScreen(
-              isUpdate: false,
-              phone: widget.phoneNumber,
-            ));
+            context.navigateTo(
+              RegisterScreen(isUpdate: false, phone: widget.phoneNumber),
+            );
           }
         } else if (state is VerifyOtpFailureState) {
           AppConstant.showCustomSnakeBar(context, state.errorMsg, false);
@@ -68,9 +68,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                 height: SizeConfig.bodyHeight * .25,
                 width: SizeConfig.bodyHeight * .3,
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .12,
-              ),
+              SizedBox(height: SizeConfig.bodyHeight * .12),
               AppText(
                 text: "OTP",
                 fontWeight: FontWeight.bold,
@@ -78,9 +76,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                 textSize: 22,
                 color: context.colorScheme.onSurface,
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ),
+              SizedBox(height: SizeConfig.bodyHeight * .02),
               AppText(
                 text: context.localizations.verificationCode,
                 maxLines: 2,
@@ -131,11 +127,17 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
               ),
               SizedBox(height: SizeConfig.bodyHeight * .06),
               CustomButton(
-                  isActive: otp.length == 6,
-                  isLoading: state is VerifyOtpLoadingState,
-                  text: context.localizations.login,
-                  press: () => context.read<OtpBloc>().add(VerifyOtpCodeEvent(
-                      phone: widget.phoneNumber, otpCode: otp))),
+                isActive: otp.length == 6,
+                isLoading: state is VerifyOtpLoadingState,
+                text: context.localizations.login,
+                press: () => context.read<OtpBloc>().add(
+                  VerifyOtpCodeEvent(
+                    userType: UserType.driver,
+                    phone: widget.phoneNumber,
+                    otpCode: otp,
+                  ),
+                ),
+              ),
               SizedBox(height: SizeConfig.bodyHeight * .04),
               OtpTimerDesign(
                 userType: widget.userType,
@@ -151,19 +153,16 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
   void _handleNavigation(UserModel userModel) {
     if (userModel.driverType == "delivery_driver") {
       context.navigateToAndFinish(const DeliveryMainLayout());
-    }
-    else {
-      if (userModel.tripModel !=  null) {
+    } else {
+      if (userModel.tripModel != null) {
         TripModel tripModel = userModel.tripModel!;
-        if (tripModel.userSentRequestConfirmPayment == 1 && tripModel.driverAcceptConfirmation == 1) {
+        if (tripModel.userSentRequestConfirmPayment == 1 &&
+            tripModel.driverAcceptConfirmation == 1) {
           context.navigateToAndFinish(const DriverMainLayout());
         } else {
-          context.navigateToAndFinish( DriverMainLayout(
-            tripModel: tripModel,
-          ));
+          context.navigateToAndFinish(DriverMainLayout(tripModel: tripModel));
         }
-      }
-      else {
+      } else {
         context.navigateToAndFinish(const DriverMainLayout());
       }
     }

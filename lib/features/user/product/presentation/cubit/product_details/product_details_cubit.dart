@@ -1,9 +1,9 @@
-import 'package:aslol/features/order/data/models/cart_model.dart';
-import 'package:aslol/features/product/data/models/attributes_model.dart';
-import 'package:aslol/features/product/data/models/product_model.dart';
-import 'package:aslol/features/product/domain/usecases/get_product_details_use_case.dart';
-import 'package:aslol/features/product/domain/usecases/toggle_wishlist_use_case.dart';
-import 'package:aslol/features/product/product_helper.dart';
+import 'package:taxito/features/user/order/data/models/cart_model.dart';
+import 'package:taxito/features/user/product/data/models/attributes_model.dart';
+import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/features/user/product/domain/usecases/get_product_details_use_case.dart';
+import 'package:taxito/features/user/product/domain/usecases/toggle_wishlist_use_case.dart';
+import 'package:taxito/features/user/product/product_helper.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

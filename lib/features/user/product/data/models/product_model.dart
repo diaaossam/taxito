@@ -1,5 +1,5 @@
-import 'package:aslol/features/product/data/models/attributes_model.dart';
-import 'package:aslol/features/supplier/data/models/response/supplier_model.dart';
+import 'package:taxito/features/user/product/data/models/attributes_model.dart';
+import 'package:taxito/features/user/supplier/data/models/response/supplier_model.dart';
 
 class ProductModel {
   ProductModel({

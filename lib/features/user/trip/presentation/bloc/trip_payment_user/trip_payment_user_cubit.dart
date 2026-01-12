@@ -1,8 +1,8 @@
-import 'package:aslol/core/enum/payment_type.dart';
+import 'package:taxito/core/enum/payment_type.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../../core/services/socket/socket.dart';
+import '../../../../../../core/services/socket/socket.dart';
 import '../../../domain/usecases/send_payment_request_use_case.dart';
 
 part 'trip_payment_user_state.dart';

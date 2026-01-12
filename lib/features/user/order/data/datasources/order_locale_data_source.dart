@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../core/services/network/success_response.dart';
+import '../../../../../core/services/network/success_response.dart';
 import '../../../product/data/models/attributes_model.dart';
 import '../../../product/data/models/product_model.dart';
 import '../models/cart_model.dart';
@@ -18,10 +18,11 @@ abstract class OrderLocaleDataSource {
 
   Future<List<CartItem>> getCartList({required bool isRemote});
 
-  List<CartItem> setQuantity(
-      {required List<CartItem> cartProductList,
-      required String productId,
-      required bool isIncrease});
+  List<CartItem> setQuantity({
+    required List<CartItem> cartProductList,
+    required String productId,
+    required bool isIncrease,
+  });
 
   Future<ApiSuccessResponse> clearCartUseCase();
 }
@@ -30,7 +31,11 @@ abstract class OrderLocaleDataSource {
 class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
   final SharedPreferences sharedPreferences;
   final OrderRemoteDataSource remoteDataSource;
-  OrderLocaleDataSourceImpl({required this.sharedPreferences,required this.remoteDataSource});
+
+  OrderLocaleDataSourceImpl({
+    required this.sharedPreferences,
+    required this.remoteDataSource,
+  });
 
   @override
   Future<ApiSuccessResponse> clearCartUseCase() async {
@@ -41,8 +46,9 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
   }
 
   @override
-  Future<bool> addProductToCart(
-      {required List<CartItem> cartProductList}) async {
+  Future<bool> addProductToCart({
+    required List<CartItem> cartProductList,
+  }) async {
     List<String> carts = [];
     for (var cartModel in cartProductList) {
       final json = jsonEncode(cartModel.toJsonForLocaleDataBase());
@@ -65,23 +71,25 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
       cartList.add(data);
       productIds.add(data.productId!.toInt());
     }
-    if (productIds.isNotEmpty&& isRemote) {
-      final response = await remoteDataSource.checkProductAvilabilaty(productIds: productIds);
-      final result = await checkAndUpdateProductAvailability(cartProductList: cartList, availableProducts: response.data);
+    if (productIds.isNotEmpty && isRemote) {
+      final response = await remoteDataSource.checkProductAvilabilaty(
+        productIds: productIds,
+      );
+      final result = await checkAndUpdateProductAvailability(
+        cartProductList: cartList,
+        availableProducts: response.data,
+      );
       return result;
-
-    }else{
+    } else {
       return cartList;
     }
   }
-
 
   @override
   Future<bool> deleteProductToCart({
     required List<CartItem> cartProductList,
     required String id,
-  })
-  async {
+  }) async {
     cartProductList.removeWhere((cartItem) => cartItem.uniqueProductId == id);
     List<String> carts = [];
     for (var cartModel in cartProductList) {
@@ -92,23 +100,27 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
   }
 
   @override
-  List<CartItem> setQuantity(
-      {required List<CartItem> cartProductList,
-      required String productId,
-      required bool isIncrease}) {
-    final cartItemIndex = cartProductList
-        .indexWhere((cartItem) => cartItem.uniqueProductId == productId);
+  List<CartItem> setQuantity({
+    required List<CartItem> cartProductList,
+    required String productId,
+    required bool isIncrease,
+  }) {
+    final cartItemIndex = cartProductList.indexWhere(
+      (cartItem) => cartItem.uniqueProductId == productId,
+    );
     if (cartItemIndex != -1) {
       CartItem? cartItem = cartProductList[cartItemIndex];
       num qty = isIncrease ? (cartItem.qty! + 1) : (cartItem.qty! - 1);
       num price = qty * (cartItem.currentItemPrice ?? 1);
       cartItem = cartItem.copyWith(qty: qty, currentItemPrice: price);
       if (cartItem.qty == 0) {
-        cartProductList
-            .removeWhere((element) => element.uniqueProductId == productId);
+        cartProductList.removeWhere(
+          (element) => element.uniqueProductId == productId,
+        );
       } else {
-        cartProductList
-            .removeWhere((element) => element.uniqueProductId == productId);
+        cartProductList.removeWhere(
+          (element) => element.uniqueProductId == productId,
+        );
         cartProductList.insert(cartItemIndex, cartItem);
       }
       List<String> carts = [];
@@ -120,8 +132,6 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
 
     return cartProductList;
   }
-
-
 
   Future<List<CartItem>> checkAndUpdateProductAvailability({
     required List<CartItem> cartProductList,
@@ -193,10 +203,12 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
             break;
           }
 
-          validatedAttributes.add(ProductAttributes(
-            attribute: cartAttribute.attribute,
-            attributeValues: validAttributeValues,
-          ));
+          validatedAttributes.add(
+            ProductAttributes(
+              attribute: cartAttribute.attribute,
+              attributeValues: validAttributeValues,
+            ),
+          );
         }
       }
 
@@ -213,7 +225,7 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
       // حساب السعر الإجمالي للـ attributes
       num totalAttributePrice = 0;
       num? attributeStock;
-      
+
       if (validatedAttributes.isNotEmpty) {
         for (var attr in validatedAttributes) {
           var availableAttribute = availableProduct.attributes?.firstWhere(
@@ -226,7 +238,7 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
                 orElse: () => Values(),
               );
               totalAttributePrice += value?.price ?? 0;
-              
+
               // استخدم أقل qty من الـ attribute values
               if (value?.qty != null) {
                 final valueQty = value!.qty!;
@@ -254,7 +266,9 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
         qty: cartItem.qty,
         stock: finalStock,
         productId: availableProduct.id,
-        productAttributes: validatedAttributes.isNotEmpty ? validatedAttributes : null,
+        productAttributes: validatedAttributes.isNotEmpty
+            ? validatedAttributes
+            : null,
       );
 
       updatedCartList.add(updatedCartItem);
@@ -269,6 +283,4 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
 
     return updatedCartList;
   }
-
-
 }

@@ -1,5 +1,5 @@
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/features/order/data/models/payment_model.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import 'package:taxito/features/user/order/data/models/payment_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../payment/presentation/widgets/payment_method_type.dart';

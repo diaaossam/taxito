@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../core/utils/app_strings.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../core/utils/app_strings.dart';
 
 class SearchForDriverBottomText extends StatefulWidget {
   final VoidCallback callback;
@@ -47,20 +47,20 @@ class _SearchForDriverBottomTextState extends State<SearchForDriverBottomText> {
         TextSpan(
           children: [
             TextSpan(
-                text: context.localizations.searchingForDriverBody2,
-                style: mainTextStyle(context)),
+              text: context.localizations.searchingForDriverBody2,
+              style: mainTextStyle(context),
+            ),
             const WidgetSpan(
-                child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 2),
-            )),
+              child: Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
+            ),
             TextSpan(
-                text: '$minutes:${seconds.toString().padLeft(2, '0')}',
-                // نعرض الدقائق والثواني
-                style: termsTextStyle(context)),
+              text: '$minutes:${seconds.toString().padLeft(2, '0')}',
+              // نعرض الدقائق والثواني
+              style: termsTextStyle(context),
+            ),
             const WidgetSpan(
-                child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 2),
-            )),
+              child: Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
+            ),
             TextSpan(
               text: context.localizations.minute,
               style: mainTextStyle(context),
@@ -73,39 +73,37 @@ class _SearchForDriverBottomTextState extends State<SearchForDriverBottomText> {
 
   TextStyle mainTextStyle(BuildContext context) =>
       Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontFamily: AppStrings.arabicFont,
-          overflow: TextOverflow.ellipsis,
-          color: context.colorScheme.onSurface,
-          fontSize: 14,
-          fontWeight: FontWeight.w400);
+        fontFamily: AppStrings.arabicFont,
+        overflow: TextOverflow.ellipsis,
+        color: context.colorScheme.onSurface,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      );
 
   TextStyle termsTextStyle(BuildContext context) =>
       Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontFamily: AppStrings.arabicFont,
-            overflow: TextOverflow.ellipsis,
-            color: context.colorScheme.primary,
-            fontSize: 14,
-          );
+        fontFamily: AppStrings.arabicFont,
+        overflow: TextOverflow.ellipsis,
+        color: context.colorScheme.primary,
+        fontSize: 14,
+      );
 
   void startTimer() {
     const oneSecond = Duration(seconds: 1);
-    _timer = Timer.periodic(
-      oneSecond,
-      (Timer timer) {
-        setState(() {
-          if (_countdown <= 0) {
-            timer.cancel();
-            // Only call callback once and only when countdown reaches exactly 0
-            if (!_hasCallbackBeenCalled) {
-              _hasCallbackBeenCalled = true;
-              widget.callback();
-            }
-          } else {
-            _countdown--;
+    _timer = Timer.periodic(oneSecond, (Timer timer) {
+      setState(() {
+        if (_countdown <= 0) {
+          timer.cancel();
+          // Only call callback once and only when countdown reaches exactly 0
+          if (!_hasCallbackBeenCalled) {
+            _hasCallbackBeenCalled = true;
+            widget.callback();
           }
-        });
-      },
-    );
+        } else {
+          _countdown--;
+        }
+      });
+    });
   }
 
   void resetTimer() {

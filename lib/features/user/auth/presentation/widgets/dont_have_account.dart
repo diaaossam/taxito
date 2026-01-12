@@ -1,10 +1,9 @@
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/auth/presentation/pages/login_screen.dart';
-import 'package:aslol/features/auth/presentation/pages/register_screen.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/auth/presentation/pages/register_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_strings.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_strings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DontHaveAccountWidget extends StatelessWidget {
@@ -19,12 +18,12 @@ class DontHaveAccountWidget extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: context.localizations.dontHaveAccount,
-                  style: mainTextStyle(context)),
+                text: context.localizations.dontHaveAccount,
+                style: mainTextStyle(context),
+              ),
               const WidgetSpan(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 2),
-              )),
+                child: Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
+              ),
               TextSpan(
                 text: context.localizations.newRegister,
                 style: termsTextStyle(context),
@@ -38,18 +37,19 @@ class DontHaveAccountWidget extends StatelessWidget {
 
   TextStyle mainTextStyle(BuildContext context) =>
       Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontFamily: AppStrings.arabicFont,
-          overflow: TextOverflow.ellipsis,
-          color: context.colorScheme.shadow,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400);
+        fontFamily: AppStrings.arabicFont,
+        overflow: TextOverflow.ellipsis,
+        color: context.colorScheme.shadow,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      );
 
   TextStyle termsTextStyle(BuildContext context) =>
       Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontFamily: AppStrings.arabicFont,
-            overflow: TextOverflow.ellipsis,
-            color: context.colorScheme.primary,
-            fontWeight: FontWeight.bold,
-            fontSize: 12.sp,
-          );
+        fontFamily: AppStrings.arabicFont,
+        overflow: TextOverflow.ellipsis,
+        color: context.colorScheme.primary,
+        fontWeight: FontWeight.bold,
+        fontSize: 12.sp,
+      );
 }

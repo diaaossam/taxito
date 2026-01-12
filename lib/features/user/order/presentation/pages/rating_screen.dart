@@ -1,17 +1,17 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/core/extensions/widget_ext.dart';
-import 'package:aslol/features/order/data/models/orders.dart';
-import 'package:aslol/widgets/custom_app_bar.dart';
-import 'package:aslol/widgets/custom_button.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/core/extensions/widget_ext.dart';
+import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/widgets/custom_app_bar.dart';
+import 'package:taxito/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logger/logger.dart';
-import '../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../core/utils/app_constant.dart';
-import '../../../../core/utils/app_size.dart';
+import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/utils/app_constant.dart';
+import '../../../../../core/utils/app_size.dart';
 import '../../../main/presentation/pages/main_layout.dart';
 import '../bloc/rating/rating_cubit.dart';
 import '../widgets/order_details/order_details_product.dart';
@@ -23,11 +23,12 @@ class RatingScreen extends StatefulWidget {
   final String type;
   final String title;
 
-  const RatingScreen(
-      {super.key,
-      required this.orders,
-      required this.type,
-      required this.title});
+  const RatingScreen({
+    super.key,
+    required this.orders,
+    required this.type,
+    required this.title,
+  });
 
   @override
   State<RatingScreen> createState() => _RatingScreenState();
@@ -50,9 +51,7 @@ class _RatingScreenState extends State<RatingScreen> {
     return BlocProvider(
       create: (context) => sl<RatingCubit>(),
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: widget.title,
-        ),
+        appBar: CustomAppBar(title: widget.title),
         body: Padding(
           padding: screenPadding(),
           child: FormBuilder(
@@ -76,9 +75,7 @@ class _RatingScreenState extends State<RatingScreen> {
                     ratingResponse: (p0) => setState(() => map = p0),
                     orders: widget.orders,
                   ),
-                SizedBox(
-                  height: SizeConfig.bodyHeight * .06,
-                ),
+                SizedBox(height: SizeConfig.bodyHeight * .06),
                 BlocConsumer<RatingCubit, RatingState>(
                   listener: (context, state) {
                     if (state is SubmitRatingFailure) {
@@ -125,8 +122,7 @@ class _RatingScreenState extends State<RatingScreen> {
       map["rate_type"] = widget.type;
       map["rating"] = _rating.toString();
       map["id"] = widget.orders.id;
-    }
-    else {
+    } else {
       map["rate_type"] = "delivery";
       map["rating"] = _rating.toString();
       map["id"] = widget.orders.id;

@@ -1,12 +1,12 @@
-import 'package:aslol/features/notifications/domain/usecases/get_notification_count_use_case.dart';
+import 'package:taxito/features/user/notifications/domain/usecases/get_notification_count_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';
-import 'package:aslol/features/notifications/data/models/notification_model.dart';
-import 'package:aslol/features/notifications/domain/usecases/get_notification_list_use_case.dart';
-import 'package:aslol/features/notifications/domain/usecases/mark_all_as_read_use_case.dart';
+import 'package:taxito/features/user/notifications/data/models/notification_model.dart';
+import 'package:taxito/features/user/notifications/domain/usecases/get_notification_list_use_case.dart';
+import 'package:taxito/features/user/notifications/domain/usecases/mark_all_as_read_use_case.dart';
 
 part 'notifications_state.dart';
 

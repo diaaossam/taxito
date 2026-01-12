@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/auth/presentation/cubit/otp/otp_bloc.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../captain/auth/presentation/cubit/otp/otp_bloc.dart';
 
 class OtpTimerDesign extends StatefulWidget {
   final String phoneNumber;
@@ -37,11 +37,11 @@ class _OtpTimerDesignState extends State<OtpTimerDesign> {
   Widget build(BuildContext context) {
     return BlocBuilder<OtpBloc, OtpState>(
       builder: (context, state) {
-        if(_countdown < 1) {
+        if (_countdown < 1) {
           return Center(
             child: InkWell(
               onTap: () {
-               // context.read<OtpBloc>().add(R)
+                // context.read<OtpBloc>().add(R)
                 resetTimer();
               },
               child: AppText(
@@ -62,15 +62,13 @@ class _OtpTimerDesignState extends State<OtpTimerDesign> {
                 color: context.colorScheme.shadow,
                 fontWeight: FontWeight.w500,
               ),
-              const SizedBox(
-                width: 5,
-              ),
+              const SizedBox(width: 5),
 
               AppText(
                 text: "$_countdown",
                 color: context.colorScheme.shadow,
                 fontWeight: FontWeight.w600,
-              )
+              ),
             ],
           ),
         );
@@ -82,15 +80,13 @@ class _OtpTimerDesignState extends State<OtpTimerDesign> {
     const oneSecond = Duration(seconds: 1);
     _timer = Timer.periodic(
       oneSecond,
-      (Timer timer) => setState(
-        () {
-          if (_countdown < 1) {
-            timer.cancel();
-          } else {
-            _countdown--;
-          }
-        },
-      ),
+      (Timer timer) => setState(() {
+        if (_countdown < 1) {
+          timer.cancel();
+        } else {
+          _countdown--;
+        }
+      }),
     );
     setState(() {});
   }

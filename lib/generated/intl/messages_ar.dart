@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(currentSupplier, newSupplier) =>
+      "لديك منتجات من ${currentSupplier} في سلتك. هل تريد مسح السلة والإضافة من ${newSupplier} بدلاً من ذلك؟";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "IssueMessageValidation": MessageLookupByLibrary.simpleMessage(
@@ -94,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الصورة الخلفية للبطاقة الشخصية",
     ),
     "backShopping": MessageLookupByLibrary.simpleMessage("العودة للتسوق"),
+    "backToTrip": MessageLookupByLibrary.simpleMessage("العودة للرحلة"),
     "balance": MessageLookupByLibrary.simpleMessage("رصيدي"),
     "balanceAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم شحن المحفظة بنجاح",
@@ -113,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelOrderBody": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد من الغاء الطلب ؟",
     ),
+    "cancelTrip": MessageLookupByLibrary.simpleMessage("إلغاء الرحلة"),
     "cancelTripConfirm": MessageLookupByLibrary.simpleMessage("إلغاء الرحلة"),
     "cancelTripConfirmBody": MessageLookupByLibrary.simpleMessage(
       "هل أنت متاكد من إلغاء هذه الرحلة",
@@ -122,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "carModel": MessageLookupByLibrary.simpleMessage("ماركة السيارة"),
     "cart": MessageLookupByLibrary.simpleMessage("السلة"),
     "cash": MessageLookupByLibrary.simpleMessage("كاش عند الاستلام"),
+    "cash1": MessageLookupByLibrary.simpleMessage("كاش عند الوصول"),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "category": MessageLookupByLibrary.simpleMessage("القسم"),
     "category1": MessageLookupByLibrary.simpleMessage("الفئة"),
@@ -146,10 +152,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر نوع الاقتراح",
     ),
     "chooseYourLang": MessageLookupByLibrary.simpleMessage("اختر لغتك"),
+    "clearCartAndAdd": MessageLookupByLibrary.simpleMessage(
+      "مسح السلة والإضافة",
+    ),
     "clickToReplacePoints": MessageLookupByLibrary.simpleMessage(
       "اضغط هنا لاستبدال النقاط",
     ),
     "clientDelivered": MessageLookupByLibrary.simpleMessage("تم توصيل العميل"),
+    "coming": MessageLookupByLibrary.simpleMessage("القادمة"),
     "commercialName": MessageLookupByLibrary.simpleMessage("الاسم التجاري"),
     "commericalImage": MessageLookupByLibrary.simpleMessage(
       "صورة السجل التجاري",
@@ -179,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تأكيد الطلب وجارٍ التجهيز للإرسال",
     ),
     "confirmedTitle": MessageLookupByLibrary.simpleMessage("تم التأكيد"),
+    "contactDriver": MessageLookupByLibrary.simpleMessage("تواصل مع السائق"),
     "contactUs": MessageLookupByLibrary.simpleMessage(
       "تواصل معنا – دعم المبيعات",
     ),
@@ -192,6 +203,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
     "continueWith": MessageLookupByLibrary.simpleMessage("تابع باستخدام"),
+    "copiedToClipboard": MessageLookupByLibrary.simpleMessage(
+      "تم النسخ إلى الحافظة",
+    ),
+    "copy": MessageLookupByLibrary.simpleMessage("نسخ"),
     "copyGift": MessageLookupByLibrary.simpleMessage("نسخ"),
     "copySuccess": MessageLookupByLibrary.simpleMessage(
       "تم نسخ كود الهدية بنجاح",
@@ -204,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createNewAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
     "current1": MessageLookupByLibrary.simpleMessage("الحالية"),
     "current2": MessageLookupByLibrary.simpleMessage("تم تقديم الطلب"),
+    "currentBalance": MessageLookupByLibrary.simpleMessage("الرصيد الحالي"),
     "currentLocation": MessageLookupByLibrary.simpleMessage("الموقع الحالي"),
     "currentPoints": MessageLookupByLibrary.simpleMessage("النقاط الحالية"),
     "darkMode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
@@ -231,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "destinationPoint": MessageLookupByLibrary.simpleMessage("نقطة الوصول"),
     "develop": MessageLookupByLibrary.simpleMessage("تطوير"),
+    "differentSupplier": MessageLookupByLibrary.simpleMessage("متجر مختلف"),
+    "differentSupplierMessage": m0,
     "discount": MessageLookupByLibrary.simpleMessage("خصم"),
     "discountApplied": MessageLookupByLibrary.simpleMessage(
       " تهانينا , تم تطبيق الخصم بنجاح",
@@ -254,6 +272,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "doYouHaveHelpBody": MessageLookupByLibrary.simpleMessage(
       "نحن هنا لخدمتك! إذا كان لديك أي استفسار حول الطلبات أو المنتجات، لا تتردد في التواصل معنا عبر :",
+    ),
+    "doYouNeedToReport": MessageLookupByLibrary.simpleMessage(
+      "هل تريد ابلاغ عن مشكلة ؟",
     ),
     "doYouWantToDeleteAddress": MessageLookupByLibrary.simpleMessage(
       "هل تريد حذف هذا العنوان؟",
@@ -289,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "عنوان البريد الإلكتروني",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("موظف"),
+    "endPoint": MessageLookupByLibrary.simpleMessage("نقطة الوصول"),
     "endTrip": MessageLookupByLibrary.simpleMessage("وصلت إلي نقطة الوصول"),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "englishAttributeName": MessageLookupByLibrary.simpleMessage(
@@ -323,6 +345,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "foodPrepareHint": MessageLookupByLibrary.simpleMessage("30 دقيقة"),
     "foodRequest": MessageLookupByLibrary.simpleMessage("طلب طعام"),
     "freeDeleivery": MessageLookupByLibrary.simpleMessage("شحن مجانى"),
+    "freePointsCount": MessageLookupByLibrary.simpleMessage(
+      "عدد نقاط المجانية",
+    ),
+    "freePointsCount1": MessageLookupByLibrary.simpleMessage(
+      "يمكنك نسخ كود واستخدمه كـ كود خصم",
+    ),
     "from": MessageLookupByLibrary.simpleMessage("من"),
     "frontDrivingLicence": MessageLookupByLibrary.simpleMessage(
       "الصورة الامامية لرخصة القيادة",
@@ -342,6 +370,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "geographicalLocation": MessageLookupByLibrary.simpleMessage(
       "الموقع الجغرافي",
     ),
+    "gift1": MessageLookupByLibrary.simpleMessage("ستربح"),
+    "gift2": MessageLookupByLibrary.simpleMessage("نقطة عند الطلب"),
     "gifts": MessageLookupByLibrary.simpleMessage("الهدايا"),
     "goToCart": MessageLookupByLibrary.simpleMessage("الذهاب إلى السلة"),
     "goToCheckOut": MessageLookupByLibrary.simpleMessage("التوجه إلى الدفع"),
@@ -361,6 +391,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "history": MessageLookupByLibrary.simpleMessage("السجل"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
+    "howToFix": MessageLookupByLibrary.simpleMessage("كيفية حل المشكلة"),
     "iAgreeWith": MessageLookupByLibrary.simpleMessage("أوافق على"),
     "ifNotAcceptedWithin": MessageLookupByLibrary.simpleMessage(
       "إذا لم تقبل الطلب خلال",
@@ -388,13 +419,43 @@ class MessageLookup extends MessageLookupByLibrary {
     "locationPermissionDenied": MessageLookupByLibrary.simpleMessage(
       "صلاحية الموقع مطلوبة لاستخدام هذه الميزة. يرجى السماح بالوصول إلى الموقع للمتابعة.",
     ),
+    "locationPermissionDeniedBody": MessageLookupByLibrary.simpleMessage(
+      "نحتاج إلى صلاحية الوصول لموقعك لنتمكن من تقديم أفضل خدمة لك. من فضلك فعّل صلاحية الموقع من الإعدادات.",
+    ),
     "locationPermissionDeniedForever": MessageLookupByLibrary.simpleMessage(
       "صلاحية الموقع مرفوضة بشكل دائم. يرجى تفعيلها يدوياً من إعدادات التطبيق.",
+    ),
+    "locationPermissionDeniedTitle": MessageLookupByLibrary.simpleMessage(
+      "صلاحية الموقع مرفوضة",
+    ),
+    "locationPermissionStep1": MessageLookupByLibrary.simpleMessage(
+      "اضغط على زر \"فتح الإعدادات\" أدناه",
+    ),
+    "locationPermissionStep2": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن \"الموقع\" أو \"Location\" في إعدادات التطبيق",
+    ),
+    "locationPermissionStep3": MessageLookupByLibrary.simpleMessage(
+      "فعّل صلاحية الوصول للموقع واختر \"أثناء استخدام التطبيق\"",
     ),
     "locationPickedSuccessFully": MessageLookupByLibrary.simpleMessage(
       "تم إختيار الموقع بنجاح",
     ),
     "locationPicker": MessageLookupByLibrary.simpleMessage("تحديد الموقع"),
+    "locationServiceDisabledBody": MessageLookupByLibrary.simpleMessage(
+      "يبدو أن خدمة تحديد الموقع (GPS) معطلة على جهازك. من فضلك فعّلها للمتابعة.",
+    ),
+    "locationServiceDisabledTitle": MessageLookupByLibrary.simpleMessage(
+      "خدمة الموقع معطلة",
+    ),
+    "locationServiceStep1": MessageLookupByLibrary.simpleMessage(
+      "اضغط على زر \"فتح الإعدادات\" أدناه",
+    ),
+    "locationServiceStep2": MessageLookupByLibrary.simpleMessage(
+      "قم بتفعيل خدمة تحديد الموقع (GPS)",
+    ),
+    "locationServiceStep3": MessageLookupByLibrary.simpleMessage(
+      "ارجع للتطبيق واضغط \"أعد المحاولة\"",
+    ),
     "locationValidation": MessageLookupByLibrary.simpleMessage(
       "من فضلك قم بتحديد العنوان اولاً",
     ),
@@ -438,6 +499,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mostSelling": MessageLookupByLibrary.simpleMessage("الاكثر مبيعاً"),
     "myAccount": MessageLookupByLibrary.simpleMessage("حسابي"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "myPoints": MessageLookupByLibrary.simpleMessage("نقاطى"),
     "name": MessageLookupByLibrary.simpleMessage("الإسم"),
     "newOrders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
     "newRegister": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
@@ -490,6 +552,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "now": MessageLookupByLibrary.simpleMessage("الآن"),
+    "nows": MessageLookupByLibrary.simpleMessage("الأن"),
     "numberChar": MessageLookupByLibrary.simpleMessage("حروف - ارقام"),
     "oldProductPrice": MessageLookupByLibrary.simpleMessage(
       "سعر المنتج القديم",
@@ -576,6 +639,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pickerValidation": MessageLookupByLibrary.simpleMessage(
       "من فضلك اختر موقعك الحالي",
     ),
+    "picking_client": MessageLookupByLibrary.simpleMessage(
+      "السائق في الطريق إليك",
+    ),
     "placeName": MessageLookupByLibrary.simpleMessage("اسم المكان"),
     "placeOrder": MessageLookupByLibrary.simpleMessage("تنفيذ الطلب"),
     "plateNumbers": MessageLookupByLibrary.simpleMessage("ارقام اللوحة"),
@@ -638,6 +704,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recomndedProduct": MessageLookupByLibrary.simpleMessage(
       "لا يفوتك هذه الخيارات",
     ),
+    "redeemPointsBody": MessageLookupByLibrary.simpleMessage(
+      "يمكنك إستبدال النقاط المكتسبة من طلباتك السابقة بهدايا أو خصومات على طلباتك القادمة",
+    ),
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "registerBody": MessageLookupByLibrary.simpleMessage(
       "املأ البيانات لإنشاء حساب جديد",
@@ -660,6 +729,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "remaining": MessageLookupByLibrary.simpleMessage("متبقي"),
     "report": MessageLookupByLibrary.simpleMessage("الإبلاغ"),
     "reportOnIssue": MessageLookupByLibrary.simpleMessage("ابلاغ عن مشكلة"),
+    "reportProblemBody": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل بلاغك وسيتم مراجعته من فريق الدعم، وستصلك إشعارات بأي تحديث.",
+    ),
+    "reportProblemTitle": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال بلاغك بنجاح",
+    ),
     "requiredPapers": MessageLookupByLibrary.simpleMessage("الاوراق المطلوبة"),
     "requiredPapersBody": MessageLookupByLibrary.simpleMessage(
       "يرجي ارفاق الاوراق المطلوبة بالاسفل حتي يتم انضمامك الي فريق سائقي جولة سائح",
@@ -673,8 +748,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "saveLocation": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "saveNote": MessageLookupByLibrary.simpleMessage("حفظ الملاحظة"),
     "saveUpdates": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "schBody": MessageLookupByLibrary.simpleMessage(
+      "سوف يصلك إشعار في توقيت الرحلة المجدولة",
+    ),
+    "schTitle": MessageLookupByLibrary.simpleMessage("تم إنشاء رحلة بنجاح!"),
     "search": MessageLookupByLibrary.simpleMessage("Search ..."),
     "searchForDriver": MessageLookupByLibrary.simpleMessage("بحث عن سائق"),
+    "searchForSuppliers": MessageLookupByLibrary.simpleMessage(
+      "إبحث عن مطعم ...",
+    ),
     "searchHint": MessageLookupByLibrary.simpleMessage("ماذا تريد أن تطلب؟"),
     "searchingForDriverBody": MessageLookupByLibrary.simpleMessage(
       "قد يستغرق البحث بضع دقائق..",
@@ -727,7 +809,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "لم تجد أي إشعارات في الوقت الحالي. يمكنك التحقق لاحقاًً",
     ),
     "specialOffers": MessageLookupByLibrary.simpleMessage("العروض المميزة"),
+    "startAndEndPoint": MessageLookupByLibrary.simpleMessage(
+      "الانطلاق والوصول",
+    ),
     "startDelivery": MessageLookupByLibrary.simpleMessage("بدء التسليم"),
+    "startPoint": MessageLookupByLibrary.simpleMessage("نقطة الانطلاق"),
     "startTrip": MessageLookupByLibrary.simpleMessage("بدء الرحلة"),
     "statics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
     "student": MessageLookupByLibrary.simpleMessage("طالب"),
@@ -735,6 +821,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "subAttribute": MessageLookupByLibrary.simpleMessage("إضافة قيم التنوع"),
     "successRating": MessageLookupByLibrary.simpleMessage(
       "نحن ممتنون لتقييمك للسائق، ملاحظاتك تساعدنا في تحسين خدماتنا باستمرار.",
+    ),
+    "suggestedNote": MessageLookupByLibrary.simpleMessage(
+      "منتجات قد تعجبك من ",
     ),
     "suggestionBody": MessageLookupByLibrary.simpleMessage(
       "نود معرفة اقتراحاتك! أخبرنا كيف يمكننا تحسين تطبيق قصة الزواج من أجلك.",
@@ -769,10 +858,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "trackOrder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
     "transactionHistory": MessageLookupByLibrary.simpleMessage("سجل التحويلات"),
     "trip": MessageLookupByLibrary.simpleMessage("الرحلة"),
+    "tripDate": MessageLookupByLibrary.simpleMessage("تاريخ الرحلة"),
     "tripDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الرحلة"),
     "tripDistance": MessageLookupByLibrary.simpleMessage("مسافة الرحلة"),
     "tripDuration": MessageLookupByLibrary.simpleMessage("مدة الرحلة"),
     "tripHistory": MessageLookupByLibrary.simpleMessage("سجل الرحلات"),
+    "tripId": MessageLookupByLibrary.simpleMessage("رمز الرحلة"),
+    "tripTime": MessageLookupByLibrary.simpleMessage("وقت الرحلة"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
     "tryAgainLater": MessageLookupByLibrary.simpleMessage(
       "يرجى المحاولة لاحقاً",
@@ -790,6 +882,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateBody3": MessageLookupByLibrary.simpleMessage("تحديث الآن"),
     "updateLocation": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
+    "updateProfileData": MessageLookupByLibrary.simpleMessage(
+      "تعديل بياناتك الشخصية",
+    ),
     "updateTitle": MessageLookupByLibrary.simpleMessage("تحديث متاح"),
     "uploading": MessageLookupByLibrary.simpleMessage("جارٍ الرفع..."),
     "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
@@ -831,6 +926,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "في انتظار السائق لتأكيد طلب الدفع",
     ),
     "wallet": MessageLookupByLibrary.simpleMessage("محفظة رينجو"),
+    "wallet1": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "walletBalance": MessageLookupByLibrary.simpleMessage("رصيد محفظتي"),
     "welcome": MessageLookupByLibrary.simpleMessage("أهلاً وسهلاً"),
     "welcomeBody": MessageLookupByLibrary.simpleMessage(

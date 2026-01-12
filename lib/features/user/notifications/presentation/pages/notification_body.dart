@@ -1,11 +1,11 @@
-import 'package:aslol/features/notifications/data/models/notification_model.dart';
-import 'package:aslol/features/notifications/presentation/widgets/notification_item.dart';
+import 'package:taxito/features/user/notifications/data/models/notification_model.dart';
+import 'package:taxito/features/user/notifications/presentation/widgets/notification_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/notifications/presentation/cubit/notifications_cubit.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_failure.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/notifications/presentation/cubit/notifications_cubit.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_failure.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class NotificationBody extends StatefulWidget {
@@ -45,7 +45,7 @@ class _NotificationBodyState extends State<NotificationBody> {
                                     .read<NotificationsCubit>()
                                     .pagingController
                                     .refresh(),
-                                image: Assets.images.logo.path,
+                                image: Assets.images.logoCirclure.path,
                                 buttonText: context.localizations.tryAgain,
                                 title: context.localizations.noDataHere,
                               ),

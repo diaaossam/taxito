@@ -1,6 +1,6 @@
-import 'package:aslol/features/supplier/data/models/requests/suppliers_params.dart';
-import 'package:aslol/features/supplier/data/models/response/supplier_model.dart';
-import 'package:aslol/features/supplier/domain/usecases/get_supplier_category_use_case.dart';
+import 'package:taxito/features/user/supplier/data/models/requests/suppliers_params.dart';
+import 'package:taxito/features/user/supplier/data/models/response/supplier_model.dart';
+import 'package:taxito/features/user/supplier/domain/usecases/get_supplier_category_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

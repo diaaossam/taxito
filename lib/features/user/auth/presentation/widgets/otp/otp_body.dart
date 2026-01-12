@@ -1,21 +1,21 @@
-import 'package:aslol/core/enum/user_type.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/core/utils/app_constant.dart';
-import 'package:aslol/features/auth/data/models/response/user_model.dart';
-import 'package:aslol/features/auth/presentation/pages/register_screen.dart';
-import 'package:aslol/features/main/presentation/pages/main_layout.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/enum/user_type.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/core/utils/app_constant.dart';
+import 'package:taxito/features/user/auth/data/models/response/user_model.dart';
+import 'package:taxito/features/user/auth/presentation/pages/register_screen.dart';
+import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/widget_ext.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/widget_ext.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../../../core/enum/trip_status_enum.dart';
-import '../../../../../widgets/custom_button.dart';
+import '../../../../../../core/enum/trip_status_enum.dart';
+import '../../../../../../widgets/custom_button.dart';
 import '../../../../trip/data/models/trip_model.dart';
 import '../../../../trip/presentation/pages/request_trip_screen.dart';
 import '../../cubit/otp/otp_bloc.dart';
@@ -114,7 +114,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                     RegisterScreen(phone: state.userModel.phone),
                   );
                 }
-              }else if(state is VerifyOtpFailureState){
+              } else if (state is VerifyOtpFailureState) {
                 AppConstant.showCustomSnakeBar(context, state.errorMsg, false);
               }
             },
@@ -145,7 +145,8 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
     if (userModel.tripModel != null) {
       TripModel tripModel = userModel.tripModel!;
       if (tripModel.driver != null) {
-        if (tripModel.userSentRequestConfirmPayment == 1 && tripModel.driverAcceptConfirmation == 1) {
+        if (tripModel.userSentRequestConfirmPayment == 1 &&
+            tripModel.driverAcceptConfirmation == 1) {
           context.navigateToAndFinish(const MainLayout());
         } else {
           context.navigateToAndFinish(RequestTripScreen(tripModel: tripModel));
@@ -156,7 +157,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
         }
         context.navigateToAndFinish(const MainLayout());
       }
-    }else{
+    } else {
       context.navigateToAndFinish(MainLayout());
     }
   }

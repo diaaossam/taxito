@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/product/presentation/pages/all_products_screen.dart';
-import 'package:aslol/features/search/presentation/widgets/seach_ttf_design.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/product/presentation/pages/all_products_screen.dart';
+import 'package:taxito/features/user/search/presentation/widgets/seach_ttf_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/app_size.dart';
+import '../../../../../../core/utils/app_size.dart';
 import '../../../../order/data/models/product_params.dart';
 import '../../../../order/presentation/widgets/main_category_products.dart';
 import '../../../../product/presentation/cubit/product/product_cubit.dart';

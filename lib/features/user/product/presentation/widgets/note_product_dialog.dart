@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/custom_button.dart';
-import 'package:aslol/widgets/custom_text_form_field.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/custom_button.dart';
+import 'package:taxito/widgets/custom_text_form_field.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

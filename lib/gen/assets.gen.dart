@@ -38,6 +38,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_forward.svg
   String get arrowForward => 'assets/icons/arrow_forward.svg';
 
+  /// File path: assets/icons/calendar.svg
+  String get calendar => 'assets/icons/calendar.svg';
+
   /// File path: assets/icons/call.svg
   String get call => 'assets/icons/call.svg';
 
@@ -176,6 +179,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/radio_on.svg
   String get radioOn => 'assets/icons/radio_on.svg';
 
+  /// File path: assets/icons/rating.svg
+  String get rating => 'assets/icons/rating.svg';
+
   /// File path: assets/icons/sales.svg
   String get sales => 'assets/icons/sales.svg';
 
@@ -225,6 +231,7 @@ class $AssetsIconsGen {
     arrowBack,
     arrowDown,
     arrowForward,
+    calendar,
     call,
     callTrip,
     camera,
@@ -271,6 +278,7 @@ class $AssetsIconsGen {
     radioEmpty,
     radioOff,
     radioOn,
+    rating,
     sales,
     searchNormal,
     send,
@@ -360,6 +368,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/dummy_user.png
   AssetGenImage get dummyUser =>
       const AssetGenImage('assets/images/dummy_user.png');
+
+  /// File path: assets/images/email.png
+  AssetGenImage get email => const AssetGenImage('assets/images/email.png');
 
   /// File path: assets/images/empty_cart.png
   AssetGenImage get emptyCart =>
@@ -500,6 +511,7 @@ class $AssetsImagesGen {
     deliveryRating,
     destination,
     dummyUser,
+    email,
     emptyCart,
     emptySearch,
     foodBanner,

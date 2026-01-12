@@ -1,8 +1,8 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/order/data/models/cart_model.dart';
-import 'package:aslol/features/order/presentation/bloc/cart/cart_cubit.dart';
-import 'package:aslol/features/product/data/models/attributes_model.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/order/data/models/cart_model.dart';
+import 'package:taxito/features/user/order/presentation/bloc/cart/cart_cubit.dart';
+import 'package:taxito/features/user/product/data/models/attributes_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

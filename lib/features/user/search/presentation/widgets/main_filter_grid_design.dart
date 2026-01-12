@@ -1,21 +1,18 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/features/search/presentation/cubit/filter/filter_cubit.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/generated/l10n.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/features/user/search/presentation/cubit/filter/filter_cubit.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utils/app_size.dart';
-import '../../../../widgets/app_text.dart';
-import '../../../../widgets/image_picker/app_image.dart';
+import '../../../../../core/utils/app_size.dart';
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../main/data/models/banners_model.dart';
 
 class MainFilterGridDesign extends StatefulWidget {
-  const MainFilterGridDesign({
-    super.key,
-  });
+  const MainFilterGridDesign({super.key});
 
   @override
   State<MainFilterGridDesign> createState() => _MainFilterGridDesignState();
@@ -46,9 +43,7 @@ class _MainFilterGridDesignState extends State<MainFilterGridDesign> {
                 setState(() {
                   if (selectedFilterId == filter.id) {
                     selectedFilterId = null;
-                    bloc.params = ProductParams(
-                      pageKey: bloc.params.pageKey,
-                    );
+                    bloc.params = ProductParams(pageKey: bloc.params.pageKey);
                   } else {
                     selectedFilterId = filter.id;
                     bloc.params = ProductParams(
@@ -61,28 +56,28 @@ class _MainFilterGridDesignState extends State<MainFilterGridDesign> {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth * .03, vertical: 10),
+                  horizontal: SizeConfig.screenWidth * .03,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
+                  color: isSelected
+                      ? context.colorScheme.onPrimary
+                      : const Color(0xffF8F8F8),
+                  border: Border.all(
                     color: isSelected
-                        ? context.colorScheme.onPrimary
-                        : const Color(0xffF8F8F8),
-                    border: Border.all(
-                        color: isSelected
-                            ? context.colorScheme.primary
-                            : context.colorScheme.outline),
-                    borderRadius: BorderRadius.circular(14)),
+                        ? context.colorScheme.primary
+                        : context.colorScheme.outline,
+                  ),
+                  borderRadius: BorderRadius.circular(14),
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     8.horizontalSpace,
                     if (isSelected)
-                      AppImage.asset(
-                        Assets.icons.radio,
-                      )
+                      AppImage.asset(Assets.icons.radio)
                     else
-                      AppImage.asset(
-                        Assets.icons.radioEmpty,
-                      ),
+                      AppImage.asset(Assets.icons.radioEmpty),
                     10.horizontalSpace,
                     AppText(
                       text: filter.title ?? "",

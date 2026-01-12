@@ -4348,6 +4348,388 @@ class S {
       args: [],
     );
   }
+
+  // skipped getter for the 'current' key
+
+  /// `Location Permission Denied`
+  String get locationPermissionDeniedTitle {
+    return Intl.message(
+      'Location Permission Denied',
+      name: 'locationPermissionDeniedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We need access to your location to provide you with the best service. Please enable location permission from settings.`
+  String get locationPermissionDeniedBody {
+    return Intl.message(
+      'We need access to your location to provide you with the best service. Please enable location permission from settings.',
+      name: 'locationPermissionDeniedBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location Service Disabled`
+  String get locationServiceDisabledTitle {
+    return Intl.message(
+      'Location Service Disabled',
+      name: 'locationServiceDisabledTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It seems that your device's location service (GPS) is turned off. Please enable it to continue.`
+  String get locationServiceDisabledBody {
+    return Intl.message(
+      'It seems that your device\'s location service (GPS) is turned off. Please enable it to continue.',
+      name: 'locationServiceDisabledBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to Fix`
+  String get howToFix {
+    return Intl.message('How to Fix', name: 'howToFix', desc: '', args: []);
+  }
+
+  /// `Tap the "Open Settings" button below`
+  String get locationPermissionStep1 {
+    return Intl.message(
+      'Tap the "Open Settings" button below',
+      name: 'locationPermissionStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Look for "Location" in the app settings`
+  String get locationPermissionStep2 {
+    return Intl.message(
+      'Look for "Location" in the app settings',
+      name: 'locationPermissionStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable location access and choose "While Using the App"`
+  String get locationPermissionStep3 {
+    return Intl.message(
+      'Enable location access and choose "While Using the App"',
+      name: 'locationPermissionStep3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap the "Open Settings" button below`
+  String get locationServiceStep1 {
+    return Intl.message(
+      'Tap the "Open Settings" button below',
+      name: 'locationServiceStep1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable location service (GPS)`
+  String get locationServiceStep2 {
+    return Intl.message(
+      'Enable location service (GPS)',
+      name: 'locationServiceStep2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return to the app and tap "Try Again"`
+  String get locationServiceStep3 {
+    return Intl.message(
+      'Return to the app and tap "Try Again"',
+      name: 'locationServiceStep3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Driver is on the way to you`
+  String get picking_client {
+    return Intl.message(
+      'Driver is on the way to you',
+      name: 'picking_client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Starting point`
+  String get startPoint {
+    return Intl.message(
+      'Starting point',
+      name: 'startPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Destination point`
+  String get endPoint {
+    return Intl.message(
+      'Destination point',
+      name: 'endPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start and destination`
+  String get startAndEndPoint {
+    return Intl.message(
+      'Start and destination',
+      name: 'startAndEndPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trip date`
+  String get tripDate {
+    return Intl.message('Trip date', name: 'tripDate', desc: '', args: []);
+  }
+
+  /// `Now`
+  String get nows {
+    return Intl.message('Now', name: 'nows', desc: '', args: []);
+  }
+
+  /// `Trip time`
+  String get tripTime {
+    return Intl.message('Trip time', name: 'tripTime', desc: '', args: []);
+  }
+
+  /// `Trip ID`
+  String get tripId {
+    return Intl.message('Trip ID', name: 'tripId', desc: '', args: []);
+  }
+
+  /// `Cash on arrival`
+  String get cash1 {
+    return Intl.message('Cash on arrival', name: 'cash1', desc: '', args: []);
+  }
+
+  /// `Contact driver`
+  String get contactDriver {
+    return Intl.message(
+      'Contact driver',
+      name: 'contactDriver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming`
+  String get coming {
+    return Intl.message('Upcoming', name: 'coming', desc: '', args: []);
+  }
+
+  /// `Cancel trip`
+  String get cancelTrip {
+    return Intl.message('Cancel trip', name: 'cancelTrip', desc: '', args: []);
+  }
+
+  /// `Do you want to report a problem?`
+  String get doYouNeedToReport {
+    return Intl.message(
+      'Do you want to report a problem?',
+      name: 'doYouNeedToReport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your report has been submitted successfully`
+  String get reportProblemTitle {
+    return Intl.message(
+      'Your report has been submitted successfully',
+      name: 'reportProblemTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your report has been received and will be reviewed by our support team. You will be notified of any updates.`
+  String get reportProblemBody {
+    return Intl.message(
+      'Your report has been received and will be reviewed by our support team. You will be notified of any updates.',
+      name: 'reportProblemBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to trip`
+  String get backToTrip {
+    return Intl.message('Back to trip', name: 'backToTrip', desc: '', args: []);
+  }
+
+  /// `Trip created successfully!`
+  String get schTitle {
+    return Intl.message(
+      'Trip created successfully!',
+      name: 'schTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You’ll receive a notification at the scheduled trip time`
+  String get schBody {
+    return Intl.message(
+      'You’ll receive a notification at the scheduled trip time',
+      name: 'schBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Different store`
+  String get differentSupplier {
+    return Intl.message(
+      'Different store',
+      name: 'differentSupplier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have products from {currentSupplier} in your cart. Do you want to clear the cart and add from {newSupplier} instead?`
+  String differentSupplierMessage(Object currentSupplier, Object newSupplier) {
+    return Intl.message(
+      'You have products from $currentSupplier in your cart. Do you want to clear the cart and add from $newSupplier instead?',
+      name: 'differentSupplierMessage',
+      desc: '',
+      args: [currentSupplier, newSupplier],
+    );
+  }
+
+  /// `Clear cart and add`
+  String get clearCartAndAdd {
+    return Intl.message(
+      'Clear cart and add',
+      name: 'clearCartAndAdd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for a restaurant...`
+  String get searchForSuppliers {
+    return Intl.message(
+      'Search for a restaurant...',
+      name: 'searchForSuppliers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products you may like from `
+  String get suggestedNote {
+    return Intl.message(
+      'Products you may like from ',
+      name: 'suggestedNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My points`
+  String get myPoints {
+    return Intl.message('My points', name: 'myPoints', desc: '', args: []);
+  }
+
+  /// `You can redeem the points earned from your previous orders for gifts or discounts on future orders`
+  String get redeemPointsBody {
+    return Intl.message(
+      'You can redeem the points earned from your previous orders for gifts or discounts on future orders',
+      name: 'redeemPointsBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copied to clipboard`
+  String get copiedToClipboard {
+    return Intl.message(
+      'Copied to clipboard',
+      name: 'copiedToClipboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message('Copy', name: 'copy', desc: '', args: []);
+  }
+
+  /// `You’ll earn`
+  String get gift1 {
+    return Intl.message('You’ll earn', name: 'gift1', desc: '', args: []);
+  }
+
+  /// `point per order`
+  String get gift2 {
+    return Intl.message('point per order', name: 'gift2', desc: '', args: []);
+  }
+
+  /// `Current balance`
+  String get currentBalance {
+    return Intl.message(
+      'Current balance',
+      name: 'currentBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of free points`
+  String get freePointsCount {
+    return Intl.message(
+      'Number of free points',
+      name: 'freePointsCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can copy the code and use it as a discount code`
+  String get freePointsCount1 {
+    return Intl.message(
+      'You can copy the code and use it as a discount code',
+      name: 'freePointsCount1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wallet`
+  String get wallet1 {
+    return Intl.message('Wallet', name: 'wallet1', desc: '', args: []);
+  }
+
+  /// `Update your profile data`
+  String get updateProfileData {
+    return Intl.message(
+      'Update your profile data',
+      name: 'updateProfileData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

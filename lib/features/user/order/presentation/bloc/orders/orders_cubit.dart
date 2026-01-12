@@ -1,10 +1,10 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/features/order/data/models/orders.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/features/user/order/data/models/orders.dart';
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../../core/utils/app_strings.dart';
+import '../../../../../../core/utils/app_strings.dart';
 import '../../../domain/usecases/get_order_list_use_case.dart';
 
 part 'orders_state.dart';

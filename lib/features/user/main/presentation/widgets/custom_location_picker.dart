@@ -1,18 +1,20 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/utils/api_config.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/location/data/models/response/my_address.dart';
-import 'package:aslol/features/location/location_helper.dart';
-import 'package:aslol/features/settings/settings_helper.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/location/location_helper.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../captain/delivery_order/data/models/response/my_address.dart';
+import '../../../../captain/settings/settings_helper.dart';
+
 class CustomLocationPicker extends StatefulWidget {
-  final Function (MyAddress) onChangeLocation;
+  final Function(MyAddress) onChangeLocation;
+
   const CustomLocationPicker({super.key, required this.onChangeLocation});
 
   @override
@@ -24,20 +26,18 @@ class _CustomLocationPickerState extends State<CustomLocationPicker> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if(ApiConfig.isGuest == true){
+        if (ApiConfig.isGuest == true) {
           SettingsHelper().showGuestDialog(context);
           return;
         }
         LocationHelper().showLocationDailog(
-        context: context,
-        myAddress: widget.onChangeLocation,
-      );
+          context: context,
+          myAddress: widget.onChangeLocation,
+        );
       },
       child: Row(
         children: [
-          SizedBox(
-            width: SizeConfig.screenWidth * .1,
-          ),
+          SizedBox(width: SizeConfig.screenWidth * .1),
           AppImage.asset(Assets.icons.location2),
           10.horizontalSpace,
           Expanded(
@@ -53,7 +53,7 @@ class _CustomLocationPickerState extends State<CustomLocationPicker> {
           AppImage.asset(
             Assets.icons.arrowDown,
             color: context.colorScheme.tertiary,
-          )
+          ),
         ],
       ),
     );

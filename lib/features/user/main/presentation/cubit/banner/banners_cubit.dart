@@ -1,6 +1,6 @@
-import 'package:aslol/features/main/data/models/banners_model.dart';
-import 'package:aslol/features/main/domain/usecases/get_banners_use_case.dart';
-import 'package:aslol/features/main/domain/usecases/get_main_category_use_case.dart';
+import 'package:taxito/features/user/main/data/models/banners_model.dart';
+import 'package:taxito/features/user/main/domain/usecases/get_banners_use_case.dart';
+import 'package:taxito/features/user/main/domain/usecases/get_main_category_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';

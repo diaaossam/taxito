@@ -1,8 +1,8 @@
-import 'package:aslol/core/services/network/error/failures.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/features/product/data/datasources/product_remote_data_source.dart';
-import 'package:aslol/features/product/domain/repositories/product_repository.dart';
+import 'package:taxito/core/services/network/error/failures.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/features/user/product/data/datasources/product_remote_data_source.dart';
+import 'package:taxito/features/user/product/domain/repositories/product_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';

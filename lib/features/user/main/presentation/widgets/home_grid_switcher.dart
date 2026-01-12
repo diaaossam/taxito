@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aslol/core/utils/app_size.dart';
+import 'package:taxito/core/utils/app_size.dart';
 
 class HomeGridSwitcher extends StatefulWidget {
   final Widget gridView;

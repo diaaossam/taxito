@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../config/theme/theme_helper.dart';
+import '../../../../../../config/theme/theme_helper.dart';
 
 class CustomChatTextField extends StatelessWidget {
   final Function(String) onChange;
@@ -25,10 +25,16 @@ class CustomChatTextField extends StatelessWidget {
           floatingLabelAlignment: FloatingLabelAlignment.start,
           fillColor: context.colorScheme.inversePrimary,
           focusColor: context.colorScheme.surface,
-          suffixIconConstraints:
-              BoxConstraints(maxHeight: 40.h, minHeight: 10.h, minWidth: 40.w),
-          prefixIconConstraints:
-              BoxConstraints(maxHeight: 40.h, minHeight: 10.h, minWidth: 40.w),
+          suffixIconConstraints: BoxConstraints(
+            maxHeight: 40.h,
+            minHeight: 10.h,
+            minWidth: 40.w,
+          ),
+          prefixIconConstraints: BoxConstraints(
+            maxHeight: 40.h,
+            minHeight: 10.h,
+            minWidth: 40.w,
+          ),
           filled: true,
         ),
         keyboardType: TextInputType.multiline,

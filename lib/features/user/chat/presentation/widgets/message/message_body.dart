@@ -1,14 +1,14 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/custom_app_bar.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../../core/utils/app_strings.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/custom_app_bar.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
 import '../../../../trip/data/models/trip_model.dart';
 import '../../../data/models/message_model.dart';
 import '../../bloc/message/message_bloc.dart';
@@ -18,10 +18,7 @@ import 'text/message_bubble_design.dart';
 class MessageBody extends StatefulWidget {
   final TripModel tripModel;
 
-  const MessageBody({
-    super.key,
-    required this.tripModel,
-  });
+  const MessageBody({super.key, required this.tripModel});
 
   @override
   State<MessageBody> createState() => _MessageBodyState();
@@ -71,12 +68,10 @@ class _MessageBodyState extends State<MessageBody> {
                   noItemsFoundIndicatorBuilder: (context) =>
                       _buildNoChatFound(),
                 ),
-              )
+              ),
             ],
           ),
-          bottomNavigationBar: MessageBottomNav(
-            tripModel: widget.tripModel,
-          ),
+          bottomNavigationBar: MessageBottomNav(tripModel: widget.tripModel),
         );
       },
     );
@@ -84,13 +79,14 @@ class _MessageBodyState extends State<MessageBody> {
 
   Widget _buildNoChatFound() {
     return Opacity(
-        opacity: 0.2,
-        child: Padding(
-          padding: const EdgeInsets.all(120.0),
-          child: AppImage.asset(
-            color: context.colorScheme.primary,
-            Assets.icons.messageText,
-          ),
-        ));
+      opacity: 0.2,
+      child: Padding(
+        padding: const EdgeInsets.all(120.0),
+        child: AppImage.asset(
+          color: context.colorScheme.primary,
+          Assets.icons.messageText,
+        ),
+      ),
+    );
   }
 }

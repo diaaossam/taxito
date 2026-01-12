@@ -11,6 +11,7 @@ import 'package:taxito/features/user/trip/domain/usecases/get_trip_by_uuid_use_c
 import 'package:taxito/features/user/trip/domain/usecases/get_user_driver_use_case.dart';
 import 'package:taxito/features/user/trip/presentation/bloc/trip_info/trip_state.dart';
 import '../../../../../../core/services/location/map_helper.dart';
+import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../location/data/models/response/main_location_data.dart';
 import '../../../../location/domain/usecases/get_details_by_latlng_use_case.dart';
@@ -60,32 +61,28 @@ class TripBloc extends Cubit<TripState> {
           return;
         }
       }
-
-      startLocation = MainLocationData(
-        address: "",
-        latLng: locationResult.location,
-        place: "",
-      );
+      LatLng latLng = locationResult.location!;
+      startLocation = MainLocationData(address: "", latLng: latLng, place: "");
       emit(GetCurrentLocationSuccess2State());
-      final response = await getPlaceDetailsByLatlng(latlng: locationResult);
+      final response = await getPlaceDetailsByLatlng(latlng: latLng);
       response.fold(
         (l) => emit(GetCurrentLocationFailureState(errorMsg: l.msg)),
         (r) {
           startLocation = MainLocationData(
             address: r.data,
-            latLng: locationResult,
+            latLng: latLng,
             place: r.data,
           );
           markers.add(
             Marker(
               icon: BitmapDescriptor.bytes(markerIcon!),
               markerId: const MarkerId(AppStrings.origin),
-              position: locationResult,
+              position: latLng,
             ),
           );
           googleMapController?.animateCamera(
             CameraUpdate.newCameraPosition(
-              CameraPosition(target: locationResult, zoom: 14),
+              CameraPosition(target: latLng, zoom: 14),
             ),
           );
           emit(GetCurrentLocationSuccessState());

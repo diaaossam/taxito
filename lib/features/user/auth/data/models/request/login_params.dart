@@ -1,4 +1,4 @@
-import 'package:aslol/core/enum/user_type.dart';
+import 'package:taxito/core/enum/user_type.dart';
 
 class LoginParams {
   final String phone;

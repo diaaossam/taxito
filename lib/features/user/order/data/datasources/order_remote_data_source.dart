@@ -1,12 +1,12 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/core/services/network/end_points.dart';
-import 'package:aslol/core/utils/api_config.dart';
-import 'package:aslol/features/order/data/models/cart_model.dart';
-import 'package:aslol/features/order/data/models/coupon_model.dart';
-import 'package:aslol/features/order/data/models/orders.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/core/services/network/end_points.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/features/user/order/data/models/cart_model.dart';
+import 'package:taxito/features/user/order/data/models/coupon_model.dart';
+import 'package:taxito/features/user/order/data/models/orders.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/services/network/dio_consumer.dart';
-import '../../../../core/services/network/success_response.dart';
+import '../../../../../core/services/network/dio_consumer.dart';
+import '../../../../../core/services/network/success_response.dart';
 import '../../../product/data/models/product_model.dart';
 import '../models/promo_code_params.dart';
 
@@ -42,7 +42,7 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
     required CartModel placeOrderModel,
   }) async {
     final response = await dioConsumer.post(
-      path: EndPoints.orders,
+      path: EndPoints.userOrders,
       body: placeOrderModel.toJson(),
     );
     return ApiSuccessResponse(data: response['data']['id']);
@@ -66,7 +66,7 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
     required OrderType orderType,
   }) async {
     final response = await dioConsumer.get(
-      path: EndPoints.orders,
+      path: EndPoints.userOrders,
       params: {"page": pageKey, "status": orderType.name},
     );
     final List<Orders> list = response['data']
@@ -77,7 +77,7 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> getOrderDetails({required int id}) async {
-    final response = await dioConsumer.get(path: "${EndPoints.orders}/$id");
+    final response = await dioConsumer.get(path: "${EndPoints.userOrders}/$id");
     Orders orders = Orders.fromJson(response['data']);
     return ApiSuccessResponse(data: orders);
   }

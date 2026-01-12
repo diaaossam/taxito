@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_constant.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/data/models/favoutrite_response.dart';
-import 'package:aslol/features/product/data/models/product_model.dart';
-import 'package:aslol/features/product/presentation/cubit/favourite/favourite_cubit.dart';
-import 'package:aslol/features/supplier/presentation/widgets/supplier_product_grid.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_constant.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/data/models/favoutrite_response.dart';
+import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/features/user/product/presentation/cubit/favourite/favourite_cubit.dart';
+import 'package:taxito/features/user/supplier/presentation/widgets/supplier_product_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

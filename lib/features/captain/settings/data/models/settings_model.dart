@@ -23,6 +23,8 @@ class SettingsModel {
     this.fetchRequiredAndroidVersion,
     this.fetchRequiredIosVersion,
     this.showCopyright,
+    this.points_equivalent_to_iqd,
+
   });
 
   SettingsModel.fromJson(dynamic json) {
@@ -39,6 +41,7 @@ class SettingsModel {
     linkedinLink = json['linkedin_link'];
     snapchatLink = json['snapchat_link'];
     tiktokLink = json['tiktok_link'];
+    points_equivalent_to_iqd = json['points_equivalent_to_iqd'];
     youtubeLink = json['youtube_link'];
     telegramLink = json['telegram_link'];
     whatsappLink = json['whatsapp_link'];
@@ -65,6 +68,7 @@ class SettingsModel {
   String? snapchatLink;
   String? tiktokLink;
   String? youtubeLink;
+  num? points_equivalent_to_iqd;
   String? telegramLink;
   String? whatsappLink;
   String? pinterestLink;

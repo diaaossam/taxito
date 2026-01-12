@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
 
 class RatingBarDesign extends StatelessWidget {
   final num rating;

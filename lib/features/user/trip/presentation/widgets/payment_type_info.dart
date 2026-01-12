@@ -1,13 +1,13 @@
-import 'package:aslol/core/enum/payment_type.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/trip/data/models/trip_model.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/enum/payment_type.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/trip/data/models/trip_model.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../widgets/app_text.dart';
+import '../../../../../widgets/app_text.dart';
 
 class PaymentTypeInfo extends StatelessWidget {
   final TripModel trip;
@@ -19,36 +19,37 @@ class PaymentTypeInfo extends StatelessWidget {
     return Column(
       children: [
         Align(
-            alignment: AlignmentDirectional.topStart,
-            child: AppText(
-              text: context.localizations.paymentType,
-              fontWeight: FontWeight.bold,
-            )),
+          alignment: AlignmentDirectional.topStart,
+          child: AppText(
+            text: context.localizations.paymentType,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         10.verticalSpace,
         Container(
           decoration: BoxDecoration(color: context.colorScheme.onPrimary),
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: context.colorScheme.outline,
-                ),
-                color: context.colorScheme.inversePrimary),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: context.colorScheme.outline),
+              color: context.colorScheme.inversePrimary,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
                   fontWeight: FontWeight.w500,
-                    text: trip.paymentMethod.toString() == "cash"
-                        ? context.localizations.cash1
-                        : context.localizations.visa),
-                AppImage.asset(Assets.icons.coin)
+                  text: trip.paymentMethod.toString() == "cash"
+                      ? context.localizations.cash1
+                      : context.localizations.visa,
+                ),
+                AppImage.asset(Assets.icons.coin),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

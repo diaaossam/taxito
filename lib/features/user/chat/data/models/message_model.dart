@@ -1,4 +1,4 @@
-import 'package:aslol/features/auth/data/models/response/user_model.dart';
+import '../../../auth/data/models/response/user_model.dart';
 
 class MessageModel {
   MessageModel({
@@ -18,7 +18,9 @@ class MessageModel {
     isRead = json['is_read'] is num ? json['is_read'] == 1 : json['is_read'];
     user = json['user'] != null ? UserModel.fromJson(json['user']) : null;
     driver = json['driver'] != null ? UserModel.fromJson(json['driver']) : null;
-    createdAt = json['created_at'] != null ? DateTime.parse(json['created_at']) : null;
+    createdAt = json['created_at'] != null
+        ? DateTime.parse(json['created_at'])
+        : null;
   }
 
   num? id;

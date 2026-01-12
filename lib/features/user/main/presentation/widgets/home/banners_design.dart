@@ -1,5 +1,5 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/features/main/presentation/cubit/banner/banners_cubit.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/features/user/main/presentation/cubit/banner/banners_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../../core/utils/app_size.dart';
-import '../../../../../config/dependencies/injectable_dependencies.dart';
 
 class HomeBannersImage extends StatefulWidget {
   final double? height;

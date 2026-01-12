@@ -1,7 +1,7 @@
-import 'package:aslol/core/services/network/dio_consumer.dart';
-import 'package:aslol/core/services/network/end_points.dart';
-import 'package:aslol/core/services/network/success_response.dart';
-import 'package:aslol/features/main/data/models/banners_model.dart';
+import 'package:taxito/core/services/network/dio_consumer.dart';
+import 'package:taxito/core/services/network/end_points.dart';
+import 'package:taxito/core/services/network/success_response.dart';
+import 'package:taxito/features/user/main/data/models/banners_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,6 +1,6 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/search/presentation/pages/filter_screen.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/features/user/search/presentation/pages/filter_screen.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';

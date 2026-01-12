@@ -1,5 +1,5 @@
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/main/presentation/cubit/banner/banners_cubit.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/main/presentation/cubit/banner/banners_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

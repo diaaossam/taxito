@@ -1,11 +1,11 @@
-import 'package:aslol/features/app/data/models/generic_model.dart';
-import 'package:aslol/features/location/domain/usecases/get_governorates_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../domain/usecases/get_regions_use_case.dart';
+import '../../../../../captain/app/data/models/generic_model.dart';
+import '../../../../../captain/location/domain/usecases/get_governorates_use_case.dart';
+import '../../../../../vendor/location/domain/usecases/get_region_use_case.dart';
 
 part 'global_location_state.dart';
 
@@ -17,7 +17,7 @@ class GlobalLocationCubit extends Cubit<GlobalLocationState> {
   List<GenericModel> region = [];
 
   GlobalLocationCubit(this._getGovernoratesUseCase, this.getRegionUseCase)
-      : super(const GlobalLocationState()) {
+    : super(const GlobalLocationState()) {
     fetchGovernorates();
   }
 

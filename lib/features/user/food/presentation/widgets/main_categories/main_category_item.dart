@@ -1,13 +1,14 @@
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/main/data/models/banners_model.dart';
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/features/product/presentation/pages/all_products_screen.dart';
-import 'package:aslol/features/supplier/presentation/pages/all_suppliers_screen.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/main/data/models/banners_model.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/features/user/product/presentation/pages/all_products_screen.dart';
+import 'package:taxito/features/user/supplier/presentation/pages/all_suppliers_screen.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/app_size.dart';
+
+import '../../../../../../core/utils/app_size.dart';
 
 class MainCategoryItem extends StatelessWidget {
   final double? imageHeight;
@@ -15,19 +16,18 @@ class MainCategoryItem extends StatelessWidget {
   final bool isHome;
   final BannersModel bannersModel;
 
-  const MainCategoryItem(
-      {super.key,
-      required this.bannersModel,
-      this.imageHeight,
-      this.textSize,
-      this.isHome = false});
+  const MainCategoryItem({
+    super.key,
+    required this.bannersModel,
+    this.imageHeight,
+    this.textSize,
+    this.isHome = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.navigateTo(AllSuppliersScreen(
-        model: bannersModel,
-      )),
+      onTap: () => context.navigateTo(AllSuppliersScreen(model: bannersModel)),
       child: Column(
         children: [
           Container(
@@ -46,15 +46,17 @@ class MainCategoryItem extends StatelessWidget {
             ),
           ),
           Padding(
-              padding: EdgeInsetsDirectional.only(
-                  top: SizeConfig.bodyHeight * .01,
-                  start: SizeConfig.screenWidth * .02),
-              child: AppText(
-                align: TextAlign.center,
-                text: splitTitle(bannersModel.title ?? ""),
-                textSize: textSize ?? 12,
-                fontWeight: FontWeight.w400,
-              ))
+            padding: EdgeInsetsDirectional.only(
+              top: SizeConfig.bodyHeight * .01,
+              start: SizeConfig.screenWidth * .02,
+            ),
+            child: AppText(
+              align: TextAlign.center,
+              text: splitTitle(bannersModel.title ?? ""),
+              textSize: textSize ?? 12,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
         ],
       ),
     );

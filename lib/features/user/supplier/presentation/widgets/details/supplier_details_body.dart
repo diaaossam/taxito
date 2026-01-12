@@ -1,19 +1,19 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/sliver_padding.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/presentation/widgets/product_details/like_button.dart';
-import 'package:aslol/features/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
-import 'package:aslol/features/supplier/presentation/widgets/details/supplier_category_design.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/sliver_padding.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_details/like_button.dart';
+import 'package:taxito/features/user/supplier/presentation/cubit/supplier_details/supplier_details_bloc.dart';
+import 'package:taxito/features/user/supplier/presentation/widgets/details/supplier_category_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/back_widget.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
-import '../../../../../widgets/info_design_item.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/back_widget.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../widgets/info_design_item.dart';
 import '../../../../product/presentation/cubit/favourite/favourite_cubit.dart';
 import '../../../data/models/response/supplier_model.dart';
 import '../supplier_product_grid.dart';
@@ -30,29 +30,30 @@ class SupplierDetailsBody extends StatelessWidget {
       children: [
         Stack(
           children: [
-            SupplierCoverDesign(
-              supplierModel: supplierModel,
-            ),
+            SupplierCoverDesign(supplierModel: supplierModel),
             Positioned(
-              top: SizeConfig.bodyHeight*.1,
-              width:SizeConfig.screenWidth*.95,
+              top: SizeConfig.bodyHeight * .1,
+              width: SizeConfig.screenWidth * .95,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const BackArrowWidget(),
                   LikeButtonDesign(
-                      boxShadow: [
-                        BoxShadow(
-                            spreadRadius: 2,
-                            offset: const Offset(2, 2),
-                            blurRadius: 5,
-                            color:
-                                const Color(0xff2E3651).withValues(alpha: 0.15))
-                      ],
-                      onTapped: (p0) =>context
-                          .read<FavouriteCubit>()
-                          .toggleWishlist(type: "supplier", id: supplierModel.id!),
-                      isLiked: supplierModel.isAddedToFavourite ?? false),
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 2,
+                        offset: const Offset(2, 2),
+                        blurRadius: 5,
+                        color: const Color(0xff2E3651).withValues(alpha: 0.15),
+                      ),
+                    ],
+                    onTapped: (p0) =>
+                        context.read<FavouriteCubit>().toggleWishlist(
+                          type: "supplier",
+                          id: supplierModel.id!,
+                        ),
+                    isLiked: supplierModel.isAddedToFavourite ?? false,
+                  ),
                 ],
               ),
             ),
@@ -62,16 +63,14 @@ class SupplierDetailsBody extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
-              color: context.colorScheme.surface),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+            color: context.colorScheme.surface,
+          ),
           padding: screenPadding(),
           margin: EdgeInsets.only(top: SizeConfig.bodyHeight * .32),
           child: CustomScrollView(
             slivers: [
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ).toSliver,
+              SizedBox(height: SizeConfig.bodyHeight * .02).toSliver,
               SliverToBoxAdapter(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,23 +93,18 @@ class SupplierDetailsBody extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-
                           AppText(
                             text: supplierModel.name ?? "",
                             textSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
-                          SizedBox(
-                            height: SizeConfig.bodyHeight * .01,
-                          ),
+                          SizedBox(height: SizeConfig.bodyHeight * .01),
                           AppText.hint(
                             text: supplierModel.about ?? "",
                             fontWeight: FontWeight.w500,
                             maxLines: 3,
                           ),
-                          SizedBox(
-                            height: SizeConfig.bodyHeight * .01 ,
-                          ),
+                          SizedBox(height: SizeConfig.bodyHeight * .01),
                           InfoDesignItem(
                             icon: Assets.icons.star,
                             title:
@@ -122,13 +116,12 @@ class SupplierDetailsBody extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ).toSliver,
+              SizedBox(height: SizeConfig.bodyHeight * .02).toSliver,
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.screenWidth * .08),
+                    horizontal: SizeConfig.screenWidth * .08,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -147,13 +140,9 @@ class SupplierDetailsBody extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ).toSliver,
+              SizedBox(height: SizeConfig.bodyHeight * .02).toSliver,
               const SupplierCategoryDesign(),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ).toSliver,
+              SizedBox(height: SizeConfig.bodyHeight * .02).toSliver,
               BlocBuilder<SupplierDetailsBloc, SupplierDetailsState>(
                 builder: (context, state) {
                   if (context.read<SupplierDetailsBloc>().model != null) {
@@ -161,8 +150,7 @@ class SupplierDetailsBody extends StatelessWidget {
                       model: supplierModel,
                       category: context.read<SupplierDetailsBloc>().model!,
                     );
-                  }
-                  else {
+                  } else {
                     return const SizedBox.shrink().toSliver;
                   }
                 },

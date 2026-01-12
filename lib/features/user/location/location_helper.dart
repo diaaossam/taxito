@@ -1,10 +1,10 @@
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/features/location/data/models/response/my_address.dart';
-import 'package:aslol/widgets/app_text.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../captain/delivery_order/data/models/response/my_address.dart';
 import 'presentation/widgets/address_dialog_design.dart';
 
 class LocationHelper {
@@ -17,9 +17,7 @@ class LocationHelper {
       backgroundColor: Colors.transparent,
       builder: (context) => Padding(
         padding: EdgeInsets.only(top: 20.h),
-        child: AddressDialogDesign(
-          onChoose: myAddress,
-        ),
+        child: AddressDialogDesign(onChoose: myAddress),
       ),
     );
   }
@@ -48,10 +46,10 @@ class LocationHelper {
                     40.verticalSpace,
                     AppText(
                       text: context.localizations.waitLocation,
-                    fontWeight: FontWeight.w600,
-                      maxLines: 3,textSize: 11,
-                    )
-
+                      fontWeight: FontWeight.w600,
+                      maxLines: 3,
+                      textSize: 11,
+                    ),
                   ],
                 ),
               ),

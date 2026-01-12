@@ -1,13 +1,12 @@
-import 'package:aslol/config/dependencies/injectable_dependencies.dart';
-import 'package:aslol/core/extensions/sliver_padding.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/product/presentation/cubit/favourite/favourite_cubit.dart';
-import 'package:aslol/features/product/presentation/widgets/product_card_grid.dart';
+import 'package:taxito/config/dependencies/injectable_dependencies.dart';
+import 'package:taxito/core/extensions/sliver_padding.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/user/product/presentation/cubit/favourite/favourite_cubit.dart';
+import 'package:taxito/features/user/product/presentation/widgets/product_card_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
-import '../../../../core/utils/app_constant.dart';
+import '../../../../../core/utils/app_constant.dart';
 import '../../../product/data/models/product_model.dart';
 import 'empty_filter_design.dart';
 

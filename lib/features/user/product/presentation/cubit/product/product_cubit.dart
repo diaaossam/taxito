@@ -1,6 +1,6 @@
-import 'package:aslol/features/order/data/models/product_params.dart';
-import 'package:aslol/features/product/domain/usecases/get_products_use_case.dart';
-import 'package:aslol/features/product/domain/usecases/get_suppliers_product_use_case.dart';
+import 'package:taxito/features/user/order/data/models/product_params.dart';
+import 'package:taxito/features/user/product/domain/usecases/get_products_use_case.dart';
+import 'package:taxito/features/user/product/domain/usecases/get_suppliers_product_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';

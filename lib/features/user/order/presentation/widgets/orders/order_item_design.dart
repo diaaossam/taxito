@@ -1,17 +1,17 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/core/extensions/navigation.dart';
-import 'package:aslol/features/order/order_helper.dart';
-import 'package:aslol/features/order/presentation/pages/track_order.dart';
-import 'package:aslol/widgets/app_text.dart';
-import 'package:aslol/widgets/custom_button.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
-import 'package:aslol/widgets/loading/loading_widget.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/features/user/order/order_helper.dart';
+import 'package:taxito/features/user/order/presentation/pages/track_order.dart';
+import 'package:taxito/widgets/app_text.dart';
+import 'package:taxito/widgets/custom_button.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
+import 'package:taxito/widgets/loading/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../gen/assets.gen.dart';
 import '../../../data/models/orders.dart';
 
 class OrderItemDesign extends StatelessWidget {
@@ -32,23 +32,21 @@ class OrderItemDesign extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          horizontal: SizeConfig.screenWidth * .04,
-          vertical: SizeConfig.bodyHeight * .03),
+        horizontal: SizeConfig.screenWidth * .04,
+        vertical: SizeConfig.bodyHeight * .03,
+      ),
       margin: EdgeInsets.symmetric(vertical: SizeConfig.bodyHeight * .015),
       decoration: BoxDecoration(
-          border: Border.all(color: context.colorScheme.outline),
-          borderRadius: BorderRadius.circular(16)),
+        border: Border.all(color: context.colorScheme.outline),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppImage.asset(
-                getImage(),
-                height: 50.h,
-                width: 50.h,
-              ),
+              AppImage.asset(getImage(), height: 50.h, width: 50.h),
               10.horizontalSpace,
               Expanded(
                 child: Column(
@@ -84,19 +82,18 @@ class OrderItemDesign extends StatelessWidget {
                           color: context.colorScheme.shadow,
                           textSize: 12,
                           text: OrderHelper().formatDateTime(
-                              orders.createdAt ?? DateTime.now()),
+                            orders.createdAt ?? DateTime.now(),
+                          ),
                         ),
                       ],
                     ),
                     10.verticalSpace,
                   ],
                 ),
-              )
+              ),
             ],
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .01,
-          ),
+          SizedBox(height: SizeConfig.bodyHeight * .01),
           if (isLoading)
             const LoadingWidget()
           else
@@ -104,42 +101,45 @@ class OrderItemDesign extends StatelessWidget {
               children: [
                 Expanded(
                   child: CustomButton(
-                      height: 40.h,
-                      textSize: 11,
-                      radius: 12,
-                      text: context.localizations.orderDetails,
-                      press: () => context.navigateTo(TrackOrderScreen(
-                            id: orders.id ?? 0,
-                          ))),
+                    height: 40.h,
+                    textSize: 11,
+                    radius: 12,
+                    text: context.localizations.orderDetails,
+                    press: () => context.navigateTo(
+                      TrackOrderScreen(id: orders.id ?? 0),
+                    ),
+                  ),
                 ),
-                if (orders.status == OrderType.pending ) ...[
+                if (orders.status == OrderType.pending) ...[
                   10.horizontalSpace,
                   Expanded(
                     child: CustomButton(
-                        height: 40.h,
-                        textSize: 11,
-                        radius: 12,
-                        backgroundColor: Colors.transparent,
-                        textColor: context.colorScheme.error,
-                        borderColor: context.colorScheme.error,
-                        text: context.localizations.cancelOrder,
-                        press: onCancel ?? () {}),
+                      height: 40.h,
+                      textSize: 11,
+                      radius: 12,
+                      backgroundColor: Colors.transparent,
+                      textColor: context.colorScheme.error,
+                      borderColor: context.colorScheme.error,
+                      text: context.localizations.cancelOrder,
+                      press: onCancel ?? () {},
+                    ),
                   ),
                 ],
                 if (orders.status == OrderType.delivered) ...[
                   10.horizontalSpace,
                   Expanded(
                     child: CustomButton(
-                        height: 40.h,
-                        textSize: 11,
-                        radius: 12,
-                        backgroundColor: Colors.transparent,
-                        textColor: context.colorScheme.primary,
-                        borderColor: context.colorScheme.primary,
-                        text: context.localizations.cancelOrder,
-                        press: onCancel ?? () {}),
+                      height: 40.h,
+                      textSize: 11,
+                      radius: 12,
+                      backgroundColor: Colors.transparent,
+                      textColor: context.colorScheme.primary,
+                      borderColor: context.colorScheme.primary,
+                      text: context.localizations.cancelOrder,
+                      press: onCancel ?? () {},
+                    ),
                   ),
-                ]
+                ],
               ],
             ),
         ],

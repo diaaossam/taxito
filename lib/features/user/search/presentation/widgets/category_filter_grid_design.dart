@@ -1,6 +1,6 @@
-import 'package:aslol/features/food/presentation/widgets/main_categories/main_category_filter_design.dart';
-import 'package:aslol/features/search/presentation/cubit/filter/filter_cubit.dart';
-import 'package:aslol/widgets/loading/loading_widget.dart';
+import 'package:taxito/features/user/food/presentation/widgets/main_categories/main_category_filter_design.dart';
+import 'package:taxito/features/user/search/presentation/cubit/filter/filter_cubit.dart';
+import 'package:taxito/widgets/loading/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

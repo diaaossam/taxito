@@ -5,18 +5,21 @@ class OtpParams {
   final String phoneNumber;
   final String deviceToken;
   final String deviceType;
+  final UserType userType;
 
-  OtpParams(
-      {required this.otp,
-      required this.phoneNumber,
-      required this.deviceToken,
-      required this.deviceType});
+  OtpParams({
+    required this.otp,
+    required this.phoneNumber,
+    required this.deviceToken,
+    required this.deviceType,
+    required this.userType,
+  });
 
   Map<String, dynamic> toJson() => {
-        "phone": phoneNumber,
-        "otp_code": otp,
-        "device_type": deviceType,
-        "device_token": deviceToken,
-        "user_type": "driver"
-      };
+    "phone": phoneNumber,
+    "otp_code": otp,
+    "device_type": deviceType,
+    "device_token": deviceToken,
+    "user_type": userType.name,
+  };
 }

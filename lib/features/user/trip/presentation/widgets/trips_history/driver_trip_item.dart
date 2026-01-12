@@ -1,14 +1,14 @@
-import 'package:aslol/core/enum/trip_status_enum.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/extensions/color_extensions.dart';
-import 'package:aslol/gen/assets.gen.dart';
-import 'package:aslol/widgets/custom_button.dart';
-import 'package:aslol/widgets/image_picker/app_image.dart';
+import 'package:taxito/core/enum/trip_status_enum.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import 'package:taxito/widgets/custom_button.dart';
+import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../../../../core/utils/app_size.dart';
-import '../../../../../widgets/app_text.dart';
+import '../../../../../../core/utils/app_size.dart';
+import '../../../../../../widgets/app_text.dart';
 import '../../../data/models/trip_model.dart';
 import '../found_driver_page/trip_user_info_widget.dart';
 import '../trip_distance_info.dart';
@@ -42,23 +42,22 @@ class DriverTripItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          vertical: SizeConfig.bodyHeight * .02,
-          horizontal: SizeConfig.screenWidth * .02),
+        vertical: SizeConfig.bodyHeight * .02,
+        horizontal: SizeConfig.screenWidth * .02,
+      ),
       margin: EdgeInsets.only(top: 10.h),
       decoration: BoxDecoration(
-          border: Border.all(color: context.colorScheme.outline),
-          color: context.colorScheme.inversePrimary,
-          borderRadius: BorderRadius.circular(10)),
+        border: Border.all(color: context.colorScheme.outline),
+        color: context.colorScheme.inversePrimary,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              AppImage.asset(
-                Assets.images.taxi.path,
-                height: 35.h,
-              ),
+              AppImage.asset(Assets.images.taxi.path, height: 35.h),
               5.horizontalSpace,
               Expanded(
                 child: Column(
@@ -94,21 +93,21 @@ class DriverTripItem extends StatelessWidget {
               ),
               5.horizontalSpace,
               AppText(
-                  fontWeight: FontWeight.w600,
-                  color: _handleColor(context: context),
-                  textSize: 12,
-                  text: handleTripStatusEnumToString(
-                      tripStatusEnum: tripModel.status!))
+                fontWeight: FontWeight.w600,
+                color: _handleColor(context: context),
+                textSize: 12,
+                text: handleTripStatusEnumToString(
+                  tripStatusEnum: tripModel.status!,
+                ),
+              ),
             ],
           ),
           10.verticalSpace,
-          TripInfoWidget(
-            tripModel: tripModel,
-          ),
+          TripInfoWidget(tripModel: tripModel),
           20.verticalSpace,
           Row(
             children: [
-              if(onSearch != null)
+              if (onSearch != null)
                 Expanded(
                   child: CustomButton(
                     text: context.localizations.searchForDriver,
@@ -117,7 +116,7 @@ class DriverTripItem extends StatelessWidget {
                   ),
                 ),
               10.horizontalSpace,
-              if(onCancel != null)
+              if (onCancel != null)
                 Expanded(
                   child: CustomButton(
                     text: context.localizations.cancelTrip,
@@ -130,15 +129,14 @@ class DriverTripItem extends StatelessWidget {
             ],
           ),
           10.verticalSpace,
-          if (onGetDetails != null)...[
+          if (onGetDetails != null) ...[
             CustomButton(
               text: context.localizations.tripDetails,
               press: () => onGetDetails!(tripModel),
               height: 45.h,
             ),
-            10.verticalSpace
+            10.verticalSpace,
           ],
-
         ],
       ),
     );

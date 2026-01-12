@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aslol/core/utils/app_size.dart';
-import 'package:aslol/features/settings/presentation/bloc/settings_bloc.dart';
-import 'package:aslol/features/settings/settings_helper.dart';
-import 'package:aslol/gen/assets.gen.dart';
+import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/gen/assets.gen.dart';
+import '../../../../../captain/settings/presentation/bloc/settings_bloc.dart';
+import '../../../../../captain/settings/settings_helper.dart';
 import 'social_settings_button.dart';
 
 class SocialSettingsList extends StatelessWidget {
@@ -24,35 +24,31 @@ class SocialSettingsList extends StatelessWidget {
                 SocialSettingsButton(
                   icon: Assets.icons.arrowDown,
                   press: () => SettingsHelper.openInstagram(
-                      bloc.settingsModel?.instagramLink ?? ""),
+                    bloc.settingsModel?.instagramLink ?? "",
+                  ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 SocialSettingsButton(
                   icon: Assets.icons.arrowDown,
                   press: () => SettingsHelper.openTikTok(
-                      bloc.settingsModel?.tiktokLink ?? ""),
+                    bloc.settingsModel?.tiktokLink ?? "",
+                  ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 SocialSettingsButton(
                   icon: Assets.icons.arrowDown,
                   press: () => SettingsHelper.openFacebook(
-                      bloc.settingsModel?.facebookLink ?? ""),
+                    bloc.settingsModel?.facebookLink ?? "",
+                  ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 SocialSettingsButton(
                   icon: Assets.icons.arrowDown,
                   press: () => SettingsHelper.contactUsWithWhatsApp(
-                      phoneNumber: bloc.settingsModel?.whatsappPhone ?? ""),
+                    phoneNumber: bloc.settingsModel?.whatsappPhone ?? "",
+                  ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
               ],
             ),
           ],

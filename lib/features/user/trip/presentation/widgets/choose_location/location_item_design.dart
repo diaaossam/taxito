@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../gen/assets.gen.dart';
-import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
-import '../../../../../widgets/rotate.dart';
+import '../../../../../../gen/assets.gen.dart';
+import '../../../../../../widgets/app_text.dart';
+import '../../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../../widgets/rotate.dart';
 import '../../../../location/data/models/response/suggestion_model.dart';
 import '../../../../location/presentation/cubit/location_cubit.dart';
 

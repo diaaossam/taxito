@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/utils/api_config.dart';
-import '../../../../gen/assets.gen.dart';
-import '../../../../widgets/app_text.dart';
-import '../../../../widgets/image_picker/app_image.dart';
+import '../../../../../core/utils/api_config.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../../widgets/app_text.dart';
+import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../auth/data/models/response/user_model_helper.dart';
 import '../cubit/my_address/my_address_cubit.dart';
 
@@ -36,11 +36,13 @@ class _LocationInfoWidgetState extends State<LocationInfoWidget> {
               child: AppText.hint(
                 fontWeight: FontWeight.w500,
                 textSize: 12,
-                text: ApiConfig.myAddress?.address ?? "${UserDataService().getUserData()?.currentAddress?.address}",
+                text:
+                    ApiConfig.myAddress?.address ??
+                    "${UserDataService().getUserData()?.currentAddress?.address}",
               ),
             ),
             6.horizontalSpace,
-            AppImage.asset(Assets.icons.arrowDown)
+            AppImage.asset(Assets.icons.arrowDown),
           ],
         );
       },

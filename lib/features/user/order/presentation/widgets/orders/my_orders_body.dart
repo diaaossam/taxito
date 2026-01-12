@@ -1,6 +1,6 @@
-import 'package:aslol/core/enum/order_type.dart';
-import 'package:aslol/core/extensions/app_localizations_extension.dart';
-import 'package:aslol/core/utils/app_size.dart';
+import 'package:taxito/core/enum/order_type.dart';
+import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/orders/orders_cubit.dart';
