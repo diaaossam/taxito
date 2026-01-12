@@ -1,7 +1,7 @@
 import 'package:taxito/features/captain/driver_trip/driver_trip_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import '../../../driver_trip/data/models/trip_model.dart';
 import '../../../user/presentation/bloc/user_bloc.dart';
 import '../cubit/driver_home/driver_home_cubit.dart';

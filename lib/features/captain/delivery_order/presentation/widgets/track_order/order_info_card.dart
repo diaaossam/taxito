@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/order_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/features/captain/delivery_order/data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:taxito/features/captain/delivery_order/order_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

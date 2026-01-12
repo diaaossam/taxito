@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:taxito/features/captain/app/data/models/generic_model.dart';
 import '../../../../../captain/auth/domain/usecases/delete_account_use_case.dart';
-import '../../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../../../domain/usecases/get_supplier_category_use_case.dart';
 import '../../../domain/usecases/register_user_use_case.dart' show RegisterUserUseCase;
 

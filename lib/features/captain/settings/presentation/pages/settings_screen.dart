@@ -20,7 +20,7 @@ import '../../../../user/notifications/presentation/cubit/notifications_cubit.da
 import '../../../../user/notifications/presentation/pages/notification_screen.dart';
 import '../../../auth/presentation/cubit/logout/logout_cubit.dart';
 import '../../../auth/presentation/widgets/info_card.dart';
-import '../../../start/presentation/pages/welcome_screen.dart';
+import '../../../../common/start/presentation/pages/welcome_screen.dart';
 import '../bloc/settings_bloc.dart';
 import '../widgets/copywrite_widget.dart';
 import 'about_app_screen.dart';

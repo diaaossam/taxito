@@ -4,7 +4,7 @@ import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'comminucation_order.dart';
 
 class OrderPersonsInfo extends StatelessWidget {

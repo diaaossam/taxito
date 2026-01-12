@@ -9,7 +9,7 @@ import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/custom_text_form_field.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
-import '../../../data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 class SellerRatingWidget extends StatefulWidget {
   final Orders orders;

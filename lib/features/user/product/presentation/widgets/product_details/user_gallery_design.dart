@@ -1,6 +1,6 @@
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/features/user/product/presentation/widgets/image_view.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';

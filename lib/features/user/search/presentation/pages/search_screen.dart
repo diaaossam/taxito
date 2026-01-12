@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/image_picker/app_image.dart';
-import '../../../product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../../../product/presentation/cubit/product/product_cubit.dart';
 import '../widgets/filter_icon.dart';
 import '../widgets/search_body.dart';

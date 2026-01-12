@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/utils/app_constant.dart';
-import 'package:taxito/features/user/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/user/auth/presentation/pages/register_screen.dart';
 import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
 import 'package:taxito/gen/assets.gen.dart';
@@ -157,7 +157,8 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
         }
         context.navigateToAndFinish(const MainLayout());
       }
-    } else {
+    }
+    else {
       context.navigateToAndFinish(MainLayout());
     }
   }

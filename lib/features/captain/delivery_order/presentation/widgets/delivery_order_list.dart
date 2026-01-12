@@ -7,7 +7,7 @@ import 'package:taxito/widgets/app_text.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../../data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 class DeliveryOrderList extends StatelessWidget {
   final PagingController<int, Orders> pagingController;

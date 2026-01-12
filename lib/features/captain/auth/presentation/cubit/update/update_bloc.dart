@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../../../domain/usecases/register_user_use_case.dart';
 
 part 'update_event.dart';

@@ -9,7 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../auth/data/models/response/user_model_helper.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 
 part 'driver_trip_actions_state.dart';
 

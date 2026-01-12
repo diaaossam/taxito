@@ -5,6 +5,9 @@ import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:taxito/config/environment/environment_helper.dart' as env;
+import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_type_helper.dart';
+import 'package:taxito/core/enum/user_type.dart';
 
 @lazySingleton
 class SocketService {
@@ -30,15 +33,20 @@ class SocketService {
     _isConnecting = true;
     _currentToken = token;
 
-    _logger.i('Initializing socket connection with token: ${token.substring(0, 10)}...');
-
-    // Clean up existing socket
+    _logger.i(
+      'Initializing socket connection with token: ${token.substring(0, 10)}...',
+    );
     _cleanupSocket();
 
     try {
       _socket = io.io(env.Environment.socketUrl, <String, dynamic>{
         'transports': ['websocket'],
-        'query': {'token': token, "user_type":"driver"},
+        'query': {
+          'token': token,
+          "user_type": UserTypeService().getUserType() == UserType.delivery
+              ? "driver"
+              : UserTypeService().getUserType()?.name,
+        },
         'autoConnect': false, // We'll connect manually
         'reconnection': false, // We'll handle reconnection manually
         'timeout': const Duration(seconds: 20).inMilliseconds,
@@ -108,8 +116,9 @@ class SocketService {
     _stopHeartbeat();
     _heartbeatTimer = Timer.periodic(_heartbeatInterval, (timer) {
       if (_socket?.connected == true) {
-        _socket?.emit(
-            'ping', {'timestamp': DateTime.now().millisecondsSinceEpoch});
+        _socket?.emit('ping', {
+          'timestamp': DateTime.now().millisecondsSinceEpoch,
+        });
       }
     });
   }
@@ -152,10 +161,14 @@ class SocketService {
 
     _reconnectTimer?.cancel();
     final delay = Duration(
-      milliseconds: (_baseReconnectDelay.inMilliseconds * pow(2, _reconnectAttempts - 1)).toInt(),
+      milliseconds:
+          (_baseReconnectDelay.inMilliseconds * pow(2, _reconnectAttempts - 1))
+              .toInt(),
     );
 
-    _logger.i("SocketService: Scheduling reconnection attempt $_reconnectAttempts in ${delay.inSeconds}s");
+    _logger.i(
+      "SocketService: Scheduling reconnection attempt $_reconnectAttempts in ${delay.inSeconds}s",
+    );
 
     _reconnectTimer = Timer(delay, () {
       if (_currentToken != null && !_isConnecting) {

@@ -7,7 +7,7 @@ import 'package:logger/logger.dart';
 import '../../../../../core/services/socket/socket.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../data/models/request/delivery_order_params.dart';
-import '../../data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import '../../domain/usecases/get_all_delivery_orders_use_case.dart';
 
 part 'delivery_order_state.dart';

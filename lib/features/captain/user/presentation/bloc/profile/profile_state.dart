@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 
 @immutable
 sealed class ProfileState {}

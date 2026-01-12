@@ -4,7 +4,7 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/features/captain/auth/presentation/pages/login_screen.dart';
 import 'package:taxito/features/captain/settings/presentation/widgets/app_dialog_design.dart';
-import 'package:taxito/features/captain/start/presentation/pages/welcome_screen.dart';
+import 'package:taxito/features/common/start/presentation/pages/welcome_screen.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:taxito/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';

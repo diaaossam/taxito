@@ -3,11 +3,11 @@ import 'package:taxito/core/services/network/end_points.dart';
 import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/features/user/order/data/models/cart_model.dart';
 import 'package:taxito/features/user/order/data/models/coupon_model.dart';
-import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/success_response.dart';
-import '../../../product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../models/promo_code_params.dart';
 
 abstract class OrderRemoteDataSource {

@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/services/network/success_response.dart';
 import '../models/request/delivery_order_params.dart';
-import '../models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 abstract class DeliveryRemoteDataSource {
   Future<ApiSuccessResponse> getDeliveryOrder({required DeliveryParams params});

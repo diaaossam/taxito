@@ -3,17 +3,21 @@ import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/extensions/widget_ext.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/captain/auth/presentation/pages/driver_register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
+import 'package:taxito/features/vendor/main/presentation/pages/main_layout.dart';
+import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../core/utils/app_constant.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/app_text.dart';
 import '../../../../../../widgets/custom_button.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
+import '../../../../../user/trip/presentation/pages/request_trip_screen.dart';
 import '../../../../delivery_main/presentation/pages/delivery_main_layout.dart';
 import '../../../../driver_main/presentation/pages/driver_main_layout.dart';
 import '../../../../driver_trip/data/models/trip_model.dart';
@@ -123,6 +127,13 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                   animationDuration: const Duration(milliseconds: 300),
                   enableActiveFill: true,
                   onChanged: (String value) => setState(() => otp = value),
+                  onCompleted: (value) => context.read<OtpBloc>().add(
+                    VerifyOtpCodeEvent(
+                      userType: widget.userType,
+                      phone: widget.phoneNumber,
+                      otpCode: value,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: SizeConfig.bodyHeight * .06),
@@ -151,19 +162,43 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
   }
 
   void _handleNavigation(UserModel userModel) {
-    if (userModel.driverType == "delivery_driver") {
-      context.navigateToAndFinish(const DeliveryMainLayout());
-    } else {
-      if (userModel.tripModel != null) {
-        TripModel tripModel = userModel.tripModel!;
-        if (tripModel.userSentRequestConfirmPayment == 1 &&
-            tripModel.driverAcceptConfirmation == 1) {
-          context.navigateToAndFinish(const DriverMainLayout());
+    if (widget.userType == UserType.supplier) {
+      context.navigateToAndFinish(const SupplierMainLayout());
+    }
+    else if (widget.userType == UserType.user) {
+      if (userModel.userTripModel != null) {
+        var tripModel = userModel.userTripModel!;
+        if (tripModel.driver != null) {
+          if (tripModel.userSentRequestConfirmPayment == 1 && tripModel.driverAcceptConfirmation == 1) {
+            context.navigateToAndFinish(const MainLayout());
+          } else {
+            context.navigateToAndFinish(RequestTripScreen(tripModel: tripModel));
+          }
         } else {
-          context.navigateToAndFinish(DriverMainLayout(tripModel: tripModel));
+          if (tripModel.status == TripStatusEnum.waitingDriver) {
+            context.navigateToAndFinish(RequestTripScreen(tripModel: tripModel));
+          }
+          context.navigateToAndFinish(const MainLayout());
         }
+      }else{
+        context.navigateToAndFinish(MainLayout());
+      }
+    }
+    else {
+      if (userModel.driverType == "delivery_driver") {
+        context.navigateToAndFinish(const DeliveryMainLayout());
       } else {
-        context.navigateToAndFinish(const DriverMainLayout());
+        if (userModel.captainTripModel != null) {
+          TripModel? tripModel = userModel.captainTripModel;
+          if (tripModel!.userSentRequestConfirmPayment == 1 &&
+              tripModel.driverAcceptConfirmation == 1) {
+            context.navigateToAndFinish(const DriverMainLayout());
+          } else {
+            context.navigateToAndFinish(DriverMainLayout(tripModel: tripModel));
+          }
+        } else {
+          context.navigateToAndFinish(const DriverMainLayout());
+        }
       }
     }
   }

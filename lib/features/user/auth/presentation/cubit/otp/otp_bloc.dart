@@ -1,6 +1,6 @@
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/features/captain/auth/data/models/request/otp_params.dart';
-import 'package:taxito/features/user/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:taxito/config/helper/device_helper.dart';

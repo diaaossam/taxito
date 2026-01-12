@@ -1,5 +1,5 @@
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/features/user/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/user/trip/data/models/trip_model.dart';
 import 'package:taxito/features/user/trip/presentation/widgets/request_trip/comminucation_with_driver_widget.dart';
 import 'package:flutter/material.dart';

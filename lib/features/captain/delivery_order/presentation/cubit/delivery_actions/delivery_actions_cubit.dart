@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:taxito/features/captain/delivery_order/data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:taxito/features/captain/delivery_order/domain/usecases/get_order_details_use_case.dart';
 import 'package:taxito/features/captain/delivery_order/presentation/cubit/delivery_order_cubit.dart';
 import 'package:bloc/bloc.dart';

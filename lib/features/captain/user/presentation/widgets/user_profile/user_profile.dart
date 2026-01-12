@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_bloc.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_state.dart';
 import 'package:taxito/features/captain/user/presentation/widgets/user_profile/user_profile_body_details.dart';
 import 'package:taxito/widgets/app_failure.dart';
 import 'package:taxito/widgets/loading/loading_widget.dart';
 
-import '../../../../auth/data/models/response/user_model_helper.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 
 class UserProfileBody extends StatefulWidget {
   final UserModel? userModel;

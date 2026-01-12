@@ -1,5 +1,5 @@
 import 'package:taxito/features/user/order/data/models/product_params.dart';
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/features/user/product/presentation/cubit/favourite/favourite_cubit.dart';
 import 'package:taxito/features/user/product/presentation/cubit/product/product_cubit.dart';
 import 'package:taxito/features/user/product/presentation/widgets/product_card_grid.dart';

@@ -1,6 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:taxito/core/extensions/navigation.dart';
-import 'package:taxito/features/captain/start/presentation/pages/welcome_screen.dart';
+import 'package:taxito/features/common/start/presentation/pages/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

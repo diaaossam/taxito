@@ -6,7 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/services/socket/socket.dart';
-import '../../../../auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../../driver_trip/domain/usecases/get_trip_by_id_use_case.dart';
 import '../../../../driver_trip/domain/usecases/pending_trips_use_case.dart';

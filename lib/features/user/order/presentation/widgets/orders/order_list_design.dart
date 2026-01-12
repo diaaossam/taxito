@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../../../../../captain/settings/settings_helper.dart';
-import '../../../data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import '../../bloc/orders/orders_cubit.dart';
 import 'order_item_design.dart';
 

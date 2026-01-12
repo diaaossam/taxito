@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../core/utils/app_constant.dart';
 import '../../../../../core/utils/app_size.dart';
-import '../../data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../cubit/favourite/favourite_cubit.dart';
 import '../cubit/product_details/product_details_cubit.dart';
 import '../widgets/product_details/product_details_body.dart';

@@ -19,13 +19,13 @@ import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 import '../../../../../../core/enum/login_user_type.dart';
 import '../../../../../captain/auth/presentation/pages/login_screen.dart';
 import '../../../../../captain/auth/presentation/widgets/phone_field_widget.dart';
 import '../../../../../captain/settings/settings_helper.dart';
 import '../../../../location/presentation/pages/auth_location_screen.dart';
-import '../../../data/models/response/user_model_helper.dart';
-import '../../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../../cubit/update/update_bloc.dart';
 import '../already_have_account.dart';
 

@@ -5,7 +5,7 @@ import 'package:taxito/features/user/order/data/models/product_params.dart';
 import 'package:taxito/features/user/product/data/models/favoutrite_response.dart';
 import 'package:injectable/injectable.dart';
 import '../../../supplier/data/models/response/supplier_model.dart';
-import '../models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 
 abstract class ProductRemoteDataSource {
   Future<ApiSuccessResponse> toggleWishlist({

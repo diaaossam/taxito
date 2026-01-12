@@ -10,7 +10,7 @@ import '../../../../../../core/bloc/socket/socket_cubit.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../config/helper/context_helper.dart';
 import '../../../../../widgets/update_dialog.dart';
-import '../../../auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import '../../../driver_trip/data/models/trip_model.dart';
 import '../../../driver_trip/presentation/pages/driver_history_screen.dart';
 import '../../../settings/presentation/bloc/settings_bloc.dart';

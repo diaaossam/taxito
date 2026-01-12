@@ -1,5 +1,6 @@
+import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
-import 'package:taxito/features/captain/start/presentation/pages/welcome_screen.dart';
+import 'package:taxito/features/common/start/presentation/pages/welcome_screen.dart';
 import 'package:taxito/widgets/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,16 +28,18 @@ class RegisterScreen extends StatelessWidget {
       create: (context) => sl<CompleteRegisterBloc>(),
       child: Scaffold(
         body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) =>
-          [
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
             CustomSliverAppBar(
               actions: [
-                if(isUpdate)
+                if (isUpdate)
                   BlocConsumer<CompleteRegisterBloc, CompleteRegisterState>(
                     listener: (context, state) {
                       if (state is DeleteUserFailure) {
                         AppConstant.showCustomSnakeBar(
-                            context, state.errorMsg, false);
+                          context,
+                          state.errorMsg,
+                          false,
+                        );
                       } else if (state is DeleteUserSuccess) {
                         context.navigateToAndFinish(const WelcomeScreen());
                       }
@@ -49,7 +52,8 @@ class RegisterScreen extends StatelessWidget {
                             isAccept: (value) {
                               if (value) {
                                 context.read<CompleteRegisterBloc>().add(
-                                    DeleteAccountEvent());
+                                  DeleteAccountEvent(),
+                                );
                               }
                             },
                             title: context.localizations.deleteAccountBody,

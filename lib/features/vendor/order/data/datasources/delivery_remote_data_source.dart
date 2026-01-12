@@ -3,7 +3,7 @@ import 'package:taxito/core/services/network/end_points.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../models/request/delivery_order_params.dart';
-import '../models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import '../models/response/statics_model.dart';
 
 abstract class DeliveryRemoteDataSource {

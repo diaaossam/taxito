@@ -1,4 +1,4 @@
-import '../../../auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 
 class MessageModel {
   MessageModel({

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_model_helper.dart';
 import 'package:taxito/features/captain/auth/presentation/widgets/id_photo_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +16,7 @@ import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/widgets/custom_button.dart';
 import 'package:taxito/widgets/custom_text_form_field.dart';
 import '../../../../../../driver_account/presentation/widgets/driver_account_profile_image.dart';
-import '../../../../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../../../../cubit/complete_register/complete_register_bloc.dart';
 import '../../../governorate_widget.dart';
 import '../../../phone_field_widget.dart';

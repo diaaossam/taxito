@@ -4,7 +4,7 @@ import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../../../auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import '../../domain/entities/review_trip_params.dart';
 import '../../domain/entities/trip_params.dart';
 import '../models/trip_model.dart';

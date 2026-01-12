@@ -2,8 +2,8 @@ import 'package:taxito/features/captain/auth/domain/usecases/get_user_data_use_c
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/core/data/models/user_model_helper.dart';
 
 part 'user_event.dart';
 

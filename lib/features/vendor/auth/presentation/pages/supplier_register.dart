@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxito/core/enum/user_type.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../core/extensions/app_localizations_extension.dart';
 import '../../../../../core/extensions/navigation.dart';
 import '../../../../../core/utils/app_constant.dart';
 import '../../../../../widgets/custom_sliver_app_bar.dart';
+import '../../../../captain/auth/presentation/pages/login_screen.dart';
 import '../../../../captain/settings/settings_helper.dart';
 import '../../../location/presentation/cubit/governorate/governorate_bloc.dart';
 import '../cubit/complete_register/complete_register_bloc.dart';
 import '../widgets/complete_register_body.dart';
-import 'login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   final bool isUpdate;
@@ -45,7 +46,9 @@ class RegisterScreen extends StatelessWidget {
                           false,
                         );
                       } else if (state is DeleteUserSuccess) {
-                        context.navigateToAndFinish(const LoginScreen());
+                        context.navigateToAndFinish(
+                          const LoginScreen(userType: UserType.supplier),
+                        );
                       }
                     },
                     builder: (context, state) {

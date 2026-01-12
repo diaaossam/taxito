@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/data/models/user_model_helper.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
-import '../../../auth/data/models/response/user_model_helper.dart';
 import '../../../location/location_helper.dart';
 import '../../../location/presentation/widgets/location_info_widget.dart';
 

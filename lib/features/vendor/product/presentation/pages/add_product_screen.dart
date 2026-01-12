@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../attributes/presentation/cubit/attributes_cubit.dart';
 import '../../../categories/presentation/cubit/categories_cubit.dart';
-import '../../../order/data/models/response/product_model.dart'
+import 'package:taxito/core/data/models/product_model.dart'
     show ProductModel;
 import '../cubit/product_cubit.dart';
 import '../widgets/add_product/add_product_body.dart';

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/features/captain/settings/settings_helper.dart';
-import 'package:taxito/features/vendor/auth/presentation/pages/login_screen.dart'
-    hide LoginScreen;
+
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../core/bloc/global_cubit/global_cubit.dart';
 import '../../../../../core/bloc/global_cubit/global_state.dart';

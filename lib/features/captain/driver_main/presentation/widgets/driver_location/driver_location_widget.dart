@@ -9,7 +9,7 @@ import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../widgets/app_failure.dart';
 import '../../../../../../widgets/loading/loading_widget.dart';
-import '../../../../auth/data/models/response/user_model_helper.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../../location/presentation/cubit/driver_location/driver_location_cubit.dart';
 import '../../cubit/driver_home/driver_home_cubit.dart';
@@ -49,7 +49,7 @@ class _DriverLocationWidgetState extends State<DriverLocationWidget>
       case AppLifecycleState.resumed:
         context.read<DriverHomeCubit>().initTrip();
         widget.callbackAvailability(
-          UserDataService().getUserData()?.isAvailable ?? ChooseEnum.yes,
+          UserDataService().getUserData()?.isAvailableEnum ?? ChooseEnum.yes,
         );
        // _cubit.forceUpdateLocation();
       case AppLifecycleState.inactive:

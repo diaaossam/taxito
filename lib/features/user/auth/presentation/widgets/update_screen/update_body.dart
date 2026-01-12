@@ -6,7 +6,7 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/extensions/validitor_extention.dart';
 import 'package:taxito/core/utils/app_constant.dart';
 import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/user/auth/domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import 'package:taxito/features/user/auth/presentation/cubit/update/update_bloc.dart';
 import 'package:taxito/features/user/location/presentation/widgets/choose_governorate_and_region.dart';
 import 'package:taxito/widgets/app_text.dart';
@@ -16,13 +16,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/custom_text_form_field.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
 import '../../../../../captain/auth/presentation/pages/login_screen.dart';
 import '../../../../../captain/auth/presentation/widgets/phone_field_widget.dart';
 import '../../../../../captain/settings/settings_helper.dart';
-import '../../../data/models/response/user_model_helper.dart';
 
 class UpdateBody extends StatefulWidget {
   const UpdateBody({super.key});

@@ -1,4 +1,4 @@
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/features/user/supplier/data/models/response/supplier_model.dart';
 import 'package:taxito/features/user/supplier/domain/usecases/get_supplier_details_category_use_case.dart';
 import 'package:bloc/bloc.dart';

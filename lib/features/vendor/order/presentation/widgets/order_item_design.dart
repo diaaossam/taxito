@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import '../../order_helper.dart';
 import '../cubit/delivery_actions/delivery_actions_cubit.dart';
 

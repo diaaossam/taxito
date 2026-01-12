@@ -13,6 +13,7 @@ class AppStrings {
   /// Keys
   static const String onBoarding = "onBoarding";
   static const String userToken = "access_token";
+  static const String userType = "access_type";
   static const String locale = "locale";
   static const String theme = "theme";
   static const String light = "light";

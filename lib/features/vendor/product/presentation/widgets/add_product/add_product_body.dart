@@ -18,7 +18,7 @@ import '../../../../../../widgets/app_multi_select.dart';
 import '../../../../attributes/presentation/cubit/attributes_cubit.dart';
 import '../../../../attributes/presentation/pages/sub_attribute_screen.dart';
 import '../../../../categories/presentation/cubit/categories_cubit.dart';
-import '../../../../order/data/models/response/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../../../data/models/request/add_product_params.dart';
 import 'attribute_item_widget.dart';
 

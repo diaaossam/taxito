@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/order_type.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:taxito/features/user/order/order_helper.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import 'package:taxito/generated/l10n.dart';

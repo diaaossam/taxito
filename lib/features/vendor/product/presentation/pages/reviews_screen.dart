@@ -4,7 +4,7 @@ import 'package:taxito/widgets/custom_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../order/data/models/response/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../cubit/review/rating_cubit.dart';
 import '../widgets/reviews/reviews_body.dart';
 

@@ -1,6 +1,6 @@
 import 'package:taxito/features/user/order/data/models/cart_model.dart';
 import 'package:taxito/features/user/product/data/models/attributes_model.dart';
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/features/user/product/domain/usecases/get_product_details_use_case.dart';
 import 'package:taxito/features/user/product/domain/usecases/toggle_wishlist_use_case.dart';
 import 'package:taxito/features/user/product/product_helper.dart';

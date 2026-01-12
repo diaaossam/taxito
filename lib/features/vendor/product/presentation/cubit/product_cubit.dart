@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:taxito/features/vendor/product/data/models/request/add_product_params.dart';
 import 'package:taxito/features/vendor/product/data/repositories/product_repository.dart';
 
-import '../../../order/data/models/response/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 
 part 'product_state.dart';
 

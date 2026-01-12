@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../auth/data/models/response/user_model_helper.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 import '../../../../order/order_helper.dart';
 import '../../../../payment/presentation/bloc/wallet/wallet_cubit.dart';
 import '../../../../payment/presentation/pages/wallet_screen.dart';

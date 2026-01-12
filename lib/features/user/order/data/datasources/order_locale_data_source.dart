@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../product/data/models/attributes_model.dart';
-import '../../../product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../models/cart_model.dart';
 import 'order_remote_data_source.dart';
 

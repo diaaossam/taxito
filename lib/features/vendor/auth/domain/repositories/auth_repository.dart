@@ -2,7 +2,7 @@ import 'package:taxito/core/services/network/error/failures.dart';
 import 'package:taxito/core/services/network/success_response.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../captain/auth/data/models/request/otp_params.dart';
-import '../entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, ApiSuccessResponse>> logOut();

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_bloc.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_state.dart';
 import 'package:taxito/gen/assets.gen.dart';

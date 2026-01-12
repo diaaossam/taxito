@@ -6,7 +6,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 
 part 'product_state.dart';
 

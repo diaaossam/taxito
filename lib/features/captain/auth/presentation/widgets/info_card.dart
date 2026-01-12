@@ -4,14 +4,10 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/utils/api_config.dart';
 import '../../../../../core/utils/app_size.dart';
-import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
-import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../user/presentation/bloc/user_bloc.dart';
-import '../../data/models/response/user_model_helper.dart';
+import '../../../../../core/data/models/user_model_helper.dart';
 import '../pages/driver_register.dart';
 
 class InfoCardDesign extends StatelessWidget {
@@ -19,10 +15,7 @@ class InfoCardDesign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(UserDataService()
-        .getUserData()
-        ?.profileImage ??
-        "");
+    print(UserDataService().getUserData()?.profileImage ?? "");
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return Row(
@@ -42,51 +35,47 @@ class InfoCardDesign extends StatelessWidget {
                       ),
                     ),
                     child: ClipOval(
-                      child:  CachedNetworkImage(
-                              imageUrl: UserDataService().getUserData()?.profileImage ??
-                                  "",
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) =>
-                                  const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
-                            ),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            UserDataService().getUserData()?.profileImage ?? "",
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: SizeConfig.screenWidth * .03,
-                  ),
+                  SizedBox(width: SizeConfig.screenWidth * .03),
                   Expanded(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppText(
-                        text:
-                            "${UserDataService().getUserData()?.firstName} ${UserDataService().getUserData()?.lastName}",
-                        textSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      SizedBox(
-                        height: SizeConfig.bodyHeight * .01,
-                      ),
-                      Row(
-                        children: [
-                          Directionality(
-                            textDirection: TextDirection.ltr,
-                            child: AppText(
-                              text:
-                                  UserDataService().getUserData()?.phone ?? '',
-                              textSize: 13,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppText(
+                          text:
+                              "${UserDataService().getUserData()?.firstName} ${UserDataService().getUserData()?.lastName}",
+                          textSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        SizedBox(height: SizeConfig.bodyHeight * .01),
+                        Row(
+                          children: [
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: AppText(
+                                text:
+                                    UserDataService().getUserData()?.phone ??
+                                    '',
+                                textSize: 13,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: SizeConfig.bodyHeight * .01,
-                      ),
-                    ],
-                  )),
+                          ],
+                        ),
+                        SizedBox(height: SizeConfig.bodyHeight * .01),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -94,18 +83,21 @@ class InfoCardDesign extends StatelessWidget {
               onTap: () => context.navigateTo(
                 RegisterScreen(
                   isUpdate: true,
-                  phone: UserDataService().getUserData()?.phone??"",
+                  phone: UserDataService().getUserData()?.phone ?? "",
                 ),
                 callback: (data) {
                   UserDataService().reloadUserData(context: context);
                 },
               ),
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 20,
+                ),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: context.colorScheme.onSurface)),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: context.colorScheme.onSurface),
+                ),
                 child: AppText(text: context.localizations.edit),
               ),
             ),

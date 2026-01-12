@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/app_text.dart';
 import '../../../../../../widgets/custom_divider_design.dart';
-import '../../../data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 class PaymentPriceOrder extends StatelessWidget {
   final Orders orders;

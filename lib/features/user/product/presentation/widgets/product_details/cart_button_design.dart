@@ -6,7 +6,7 @@ import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
 import 'package:taxito/features/user/order/data/models/cart_model.dart';
 import 'package:taxito/features/user/order/order_helper.dart';
 import 'package:taxito/features/user/order/presentation/bloc/cart/cart_cubit.dart';
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/features/user/product/presentation/cubit/product_details/product_details_cubit.dart';
 import 'package:taxito/features/user/product/presentation/widgets/quantity_design.dart';
 import 'package:taxito/features/user/product/product_helper.dart';

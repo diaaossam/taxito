@@ -3,7 +3,7 @@ import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/features/user/order/data/models/cart_model.dart';
 import 'package:taxito/features/user/order/order_helper.dart';
-import 'package:taxito/features/user/product/data/models/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

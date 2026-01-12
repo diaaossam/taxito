@@ -4,7 +4,7 @@ import 'package:taxito/core/enum/user_type.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../captain/auth/data/models/request/otp_params.dart';
-import '../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_data_source.dart';
 import 'package:taxito/features/captain/auth/data/datasources/auth_remote_data_source.dart'

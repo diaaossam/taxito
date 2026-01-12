@@ -22,6 +22,7 @@ class ApiConfig {
     language = handleLanguageByString(code: stringLanguage);
     themeMode = mode == AppStrings.light ? ThemeMode.light : ThemeMode.dark;
 
+    if (sharedPreferences.containsKey(AppStrings.userType)) {}
     String? location = sharedPreferences.getString(AppStrings.location);
     if (location != null) {
       myAddress = MyAddress.fromJson(json.decode(location));

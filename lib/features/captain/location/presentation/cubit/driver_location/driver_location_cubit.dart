@@ -10,7 +10,7 @@ import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/services/location/location_permission_service.dart';
 import '../../../../../../core/services/location/polyline_helper.dart';
 import '../../../../../../core/services/socket/socket.dart';
-import '../../../../auth/data/models/response/user_model_helper.dart';
+import '../../../../../../core/data/models/user_model_helper.dart';
 import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../domain/usecases/update_driver_location_use_case.dart';
 

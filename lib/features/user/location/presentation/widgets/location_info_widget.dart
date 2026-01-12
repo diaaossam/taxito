@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/data/models/user_model_helper.dart';
 import '../../../../../core/utils/api_config.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
 import '../../../../../widgets/image_picker/app_image.dart';
-import '../../../auth/data/models/response/user_model_helper.dart';
 import '../cubit/my_address/my_address_cubit.dart';
 
 class LocationInfoWidget extends StatefulWidget {

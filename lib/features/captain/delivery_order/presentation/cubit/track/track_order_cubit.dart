@@ -1,4 +1,4 @@
-import 'package:taxito/features/captain/delivery_order/data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

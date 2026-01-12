@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../gen/assets.gen.dart';
-import '../../../data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 class OrderItemDesign extends StatelessWidget {
   final Orders orders;

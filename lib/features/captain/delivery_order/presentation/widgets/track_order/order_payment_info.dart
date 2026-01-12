@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/payment_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/features/captain/delivery_order/data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';

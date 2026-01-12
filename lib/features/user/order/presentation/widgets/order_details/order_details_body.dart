@@ -1,6 +1,6 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/utils/app_size.dart';
-import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../widgets/app_text.dart';
 import 'order_details_product.dart';

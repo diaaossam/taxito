@@ -1,4 +1,5 @@
 import 'package:taxito/config/helper/token_repository.dart';
+import 'package:taxito/core/data/models/user_type_helper.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -8,10 +9,10 @@ import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../../core/utils/api_config.dart';
-import '../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../models/request/otp_params.dart';
-import '../models/response/user_model.dart';
-import '../models/response/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_model.dart';
+import '../../../../../core/data/models/user_model_helper.dart';
 
 abstract class AuthRemoteDataSource {
   Future<ApiSuccessResponse> registerUser({
@@ -195,7 +196,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       path: EndPoints.loginUser,
       body: {
         "phone": phone,
-        "user_type": "driver",
+        "user_type": userType.name,
         "driver_type": userType == UserType.driver
             ? "taxi_driver"
             : "delivery_driver",

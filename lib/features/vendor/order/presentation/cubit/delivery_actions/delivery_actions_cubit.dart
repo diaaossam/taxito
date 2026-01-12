@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import '../../../../../../core/services/network/error/failures.dart';
 import '../../../../../../core/services/network/success_response.dart';
 import '../../../../../../core/services/socket/socket.dart';
-import '../../../data/models/response/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import '../../../domain/usecases/get_order_details_use_case.dart';
 import '../../../domain/usecases/update_delivery_order_use_case.dart';
 

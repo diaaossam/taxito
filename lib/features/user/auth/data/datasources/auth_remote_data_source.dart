@@ -9,11 +9,11 @@ import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/core/utils/app_strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/data/models/user_model_helper.dart';
 import '../../../../captain/auth/data/models/request/otp_params.dart';
-import '../../domain/entity/register_params.dart';
+import 'package:taxito/core/data/models/register_params.dart';
 import '../models/request/login_params.dart';
-import '../models/response/user_model.dart';
-import '../models/response/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<ApiSuccessResponse> verifyOtp({required OtpParams otpParams});

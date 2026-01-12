@@ -13,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-import '../../../../captain/auth/data/models/response/user_model_helper.dart';
+import '../../../../../core/data/models/user_model_helper.dart';
 import '../../../../captain/auth/presentation/widgets/phone_field_widget.dart';
 import '../../../../captain/delivery_order/data/models/response/my_address.dart';
 import '../../data/models/requests/location_params.dart';

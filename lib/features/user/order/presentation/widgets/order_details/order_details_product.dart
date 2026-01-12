@@ -9,7 +9,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/utils/app_size.dart';
-import '../../../data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 
 class OrderDetailsProduct extends StatefulWidget {
   final Orders orders;

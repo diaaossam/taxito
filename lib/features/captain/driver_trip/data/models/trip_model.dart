@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/payment_type.dart';
 import 'package:taxito/core/enum/trip_status_enum.dart';
 import 'package:taxito/features/captain/app/data/models/generic_model.dart';
-import 'package:taxito/features/captain/auth/data/models/response/user_model.dart';
+import 'package:taxito/core/data/models/user_model.dart';
 import 'package:taxito/features/captain/location/data/models/main_location_data.dart';
 import 'rate_model.dart';
 

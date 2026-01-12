@@ -15,7 +15,7 @@ import 'dart:io';
 import '../../../../../../widgets/image_picker/media_form_field.dart';
 import '../../../../../../widgets/image_picker/pick_image_sheet.dart';
 import '../../../../../captain/delivery_order/data/models/response/attributes_model.dart';
-import '../../../../order/data/models/response/product_model.dart';
+import 'package:taxito/core/data/models/product_model.dart';
 import '../../../data/models/attribute_model.dart';
 import '../../../data/models/sub_attribute_value_model.dart';
 

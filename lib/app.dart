@@ -9,7 +9,7 @@ import 'package:taxito/generated/l10n.dart';
 import 'core/bloc/app_bloc.dart';
 import 'config/theme/app_theme.dart';
 import 'core/utils/app_strings.dart';
-import 'features/captain/start/presentation/pages/splash_screen.dart';
+import 'features/common/start/presentation/pages/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

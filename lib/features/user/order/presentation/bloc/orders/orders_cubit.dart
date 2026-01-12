@@ -1,5 +1,5 @@
 import 'package:taxito/core/enum/order_type.dart';
-import 'package:taxito/features/user/order/data/models/orders.dart';
+import 'package:taxito/core/data/models/orders.dart';
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';

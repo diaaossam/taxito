@@ -26,40 +26,40 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) async {
-        if (state is SendOtpError) {
-          AppConstant.showCustomSnakeBar(context, state.msg, false);
-        } else if (state is SendOtpSuccess) {
-          context.navigateTo(OtpVerificationScreen(
-            userType: userType,
-            phoneNumber: state.phoneNumber,
-            isLogin: true,
-          ));
-        }
-      },
-      builder: (context, state) {
-        return FormBuilder(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const PhoneFieldWidget(),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ),
-              AppText(
-                text: context.localizations.phoneBody,
-                maxLines: 1,
-                textSize: 10,
-                fontWeight: FontWeight.w400,
-                color: context.colorScheme.shadow,
-              ),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .2,
-              ),
-              CustomButton(
+    return FormBuilder(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const PhoneFieldWidget(),
+          SizedBox(
+            height: SizeConfig.bodyHeight * .02,
+          ),
+          AppText(
+            text: context.localizations.phoneBody,
+            maxLines: 2,
+            textSize: 10,
+            fontWeight: FontWeight.w400,
+            color: context.colorScheme.shadow,
+          ),
+          SizedBox(
+            height: SizeConfig.bodyHeight * .2,
+          ),
+          BlocConsumer<LoginCubit, LoginState>(
+            listener: (context, state) {
+              if (state is SendOtpError) {
+                AppConstant.showCustomSnakeBar(context, state.msg, false);
+              } else if (state is SendOtpSuccess) {
+                context.navigateTo(OtpVerificationScreen(
+                  userType: userType,
+                  phoneNumber: state.phoneNumber,
+                  isLogin: true,
+                ));
+              }
+            },
+            builder: (context, state) {
+              return CustomButton(
                   isLoading: state is SendOtpLoading,
                   text: context.localizations.login,
                   press: () {
@@ -69,18 +69,18 @@ class LoginForm extends StatelessWidget {
                     context.read<LoginCubit>().sendOtp(
                         userType: userType,
                         phone: _formKey.fieldValue("phone"));
-                  }),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .04,
-              ),
-              const CopyWriteWidget(),
-              SizedBox(
-                height: SizeConfig.bodyHeight * .02,
-              ),
-            ],
+                  });
+            },
           ),
-        );
-      },
+          SizedBox(
+            height: SizeConfig.bodyHeight * .04,
+          ),
+          const CopyWriteWidget(),
+          SizedBox(
+            height: SizeConfig.bodyHeight * .02,
+          ),
+        ],
+      ),
     );
   }
 }
