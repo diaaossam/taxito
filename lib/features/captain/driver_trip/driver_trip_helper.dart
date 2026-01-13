@@ -2,14 +2,13 @@ import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import '../../../core/data/models/trip_model.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../widgets/app_text.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/image_picker/app_image.dart';
-import 'data/models/trip_model.dart';
 import 'presentation/widgets/confirmation_driver_payment_dialog.dart';
 import 'presentation/widgets/driver_trip.dart';
 
@@ -37,9 +36,9 @@ class DriverTripHelper {
       expand: false,
       builder: (context) {
         return PopScope(
-        canPop: false,
-        child: DriverTripWidget(tripModel: model, onCancel: onCancel),
-      );
+          canPop: false,
+          child: DriverTripWidget(tripModel: model, onCancel: onCancel),
+        );
       },
     );
   }

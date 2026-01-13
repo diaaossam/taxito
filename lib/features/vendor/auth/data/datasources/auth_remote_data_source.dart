@@ -81,7 +81,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
     }
     final response = await dioConsumer.post(
-      path: EndPoints.register,
+      path: EndPoints.register(registerParams.userTypeEnum!),
       data: formData,
     );
     UserModel userModel = UserModel.fromJson(response['data']);

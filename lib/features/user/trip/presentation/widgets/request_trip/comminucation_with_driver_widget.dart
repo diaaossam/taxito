@@ -2,11 +2,11 @@ import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
 import '../../../../../captain/settings/settings_helper.dart';
 import '../../../../chat/presentation/pages/message_screen.dart';
-import '../../../data/models/trip_model.dart';
 
 class ComminucationWithDriverWidget extends StatelessWidget {
   final TripModel tripModel;

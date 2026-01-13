@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:taxito/features/captain/driver_trip/driver_trip_helper.dart';
 import 'package:taxito/features/captain/settings/presentation/pages/settings_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +8,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../../../core/bloc/socket/socket_cubit.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../config/helper/context_helper.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../widgets/update_dialog.dart';
 import 'package:taxito/core/data/models/user_model.dart';
-import '../../../driver_trip/data/models/trip_model.dart';
 import '../../../driver_trip/presentation/pages/driver_history_screen.dart';
 import '../../../settings/presentation/bloc/settings_bloc.dart';
 import '../cubit/driver_home/driver_home_cubit.dart';
@@ -64,18 +63,18 @@ class _DriverMainLayoutState extends State<DriverMainLayout> {
       allowCancel: false,
       showStoreListing: (storeUrl) async {
         if (await canLaunchUrl(storeUrl)) {
-          await launchUrl(
-            storeUrl,
-            mode: LaunchMode.externalApplication,
-          );
+          await launchUrl(storeUrl, mode: LaunchMode.externalApplication);
         }
       },
       showForceUpdateAlert: (context, allowCancel) => showUpdateDialog(context),
       forceUpdateClient: ForceUpdateClient(
-          fetchRequiredVersion: () => Future.value(Platform.isIOS
+        fetchRequiredVersion: () => Future.value(
+          Platform.isIOS
               ? model?.fetchRequiredIosVersion ?? ""
-              : model?.fetchRequiredAndroidVersion ?? ""),
-          iosAppStoreId: "6754820055"),
+              : model?.fetchRequiredAndroidVersion ?? "",
+        ),
+        iosAppStoreId: "6754820055",
+      ),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => sl<DriverMainCubit>()),
@@ -88,7 +87,7 @@ class _DriverMainLayoutState extends State<DriverMainLayout> {
           listener: (context, state) {
             if (state is ReceiveTripRequestState) {
               if (_isBottomSheetOpen) return;
-      
+
               DriverTripHelper()
                   .showTripBottomNav(
                     context: context,
@@ -106,7 +105,8 @@ class _DriverMainLayoutState extends State<DriverMainLayout> {
                         }
                       });
                     },
-                  ).whenComplete(() {
+                  )
+                  .whenComplete(() {
                     if (mounted) {
                       setState(() {
                         _isBottomSheetOpen = false;
@@ -117,7 +117,6 @@ class _DriverMainLayoutState extends State<DriverMainLayout> {
               setState(() {
                 _isBottomSheetOpen = true;
                 currentTripModel = state.tripModel;
-      
               });
             }
           },

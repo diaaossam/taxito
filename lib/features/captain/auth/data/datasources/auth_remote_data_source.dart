@@ -4,6 +4,7 @@ import 'package:taxito/core/enum/user_type.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
+import 'package:taxito/features/vendor/product/data/models/response/review_model.dart';
 import '../../../../../config/helper/device_helper.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
@@ -151,7 +152,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
     }
     final response = await dioConsumer.post(
-      path: EndPoints.register,
+      path: EndPoints.register(registerParams.userTypeEnum!),
       data: formData,
     );
     UserModel userModel = UserModel.fromJson(response['data']);
@@ -168,6 +169,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     String accessToken = response['data']['access_token'];
     UserModel userModel = UserModel.fromJson(response['data']['auth']);
     UserDataService().setUserData(userModel);
+    UserTypeService().setUserType(userModel.userType!);
     await tokenRepository.saveToken(accessToken);
     await ApiConfig().init();
     return ApiSuccessResponse(data: userModel);
@@ -196,7 +198,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       path: EndPoints.loginUser,
       body: {
         "phone": phone,
-        "user_type": userType.name,
+        "user_type": userType == UserType.delivery
+            ? UserType.driver.name
+            : userType.name,
         "driver_type": userType == UserType.driver
             ? "taxi_driver"
             : "delivery_driver",
@@ -219,7 +223,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }) async {
     final response = await dioConsumer.post(
       path: EndPoints.verifyUser,
-      body: {"phone": phone, "user_type": userType.name},
+      body: {
+        "phone": phone,
+        "user_type": userType == UserType.delivery
+            ? UserType.driver.name
+            : userType.name,
+      },
     );
     return ApiSuccessResponse();
   }

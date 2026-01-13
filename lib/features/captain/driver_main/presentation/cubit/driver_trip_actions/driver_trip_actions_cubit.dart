@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:taxito/core/services/location/location_permission_service.dart';
 import 'package:taxito/core/services/socket/socket.dart';
-import 'package:taxito/features/captain/driver_trip/data/models/trip_model.dart';
 import 'package:taxito/features/captain/driver_trip/domain/usecases/accept_trip_use_case.dart';
 import 'package:taxito/features/captain/driver_trip/domain/usecases/reject_trip_use_case.dart';
 import 'package:bloc/bloc.dart';
@@ -9,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/data/models/user_model_helper.dart';
 
 part 'driver_trip_actions_state.dart';

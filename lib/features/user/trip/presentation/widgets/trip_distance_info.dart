@@ -1,12 +1,12 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/features/user/trip/data/models/trip_model.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/utils/app_size.dart';
 
 class TripDistanceInfo extends StatelessWidget {

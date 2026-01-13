@@ -10,12 +10,11 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../../../../../core/utils/app_constant.dart';
 import '../../../../../../core/utils/app_size.dart';
-import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/custom_button.dart';
 import '../../../../../../widgets/custom_text_form_field.dart';
 import '../../../../../../core/data/models/user_model_helper.dart';
 import 'package:taxito/core/data/models/register_params.dart';
-import '../../../../auth/presentation/cubit/update/update_bloc.dart';
+import '../../../../../user/auth/presentation/cubit/update/update_bloc.dart';
 import '../../../../auth/presentation/widgets/governorate_widget.dart';
 import '../../../../auth/presentation/widgets/id_photo_picker.dart';
 import '../../../../auth/presentation/widgets/phone_field_widget.dart';
@@ -149,7 +148,7 @@ class _DriverAccountInfoPageState extends State<DriverAccountInfoPage> {
                         backIdImage: backIdImage?.path,
                       );
                       context.read<UpdateBloc>().add(
-                        UpdateUserEvent(registerParams: registerParams),
+                        UpdateUserDataEvent(params: registerParams),
                       );
                     },
                   ),

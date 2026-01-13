@@ -5,9 +5,9 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/services/socket/socket.dart';
 import '../../../../../../core/utils/app_strings.dart';
-import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../data/models/message_model.dart';
 import '../../../domain/entities/send_chat_params.dart';
 import '../../../domain/usecases/get_chat_message_use_case.dart';
@@ -20,8 +20,9 @@ class MessageBloc extends Cubit<MessageState> {
   final SendChatUseCase sendChatUseCase;
   final GetChatMessagesUseCase getChatMessagesUseCase;
   final SharedPreferences sharedPreferences;
-  final PagingController<int, MessageModel> pagingController =
-      PagingController(firstPageKey: 1);
+  final PagingController<int, MessageModel> pagingController = PagingController(
+    firstPageKey: 1,
+  );
   final SocketService socketService;
   String chatUUid = "";
 
@@ -32,34 +33,33 @@ class MessageBloc extends Cubit<MessageState> {
     this.sharedPreferences,
   ) : super(MessageInitial());
 
-  Future<void> sendNewMessage(
-      {required SendChatParams params, String? loading}) async {
+  Future<void> sendNewMessage({
+    required SendChatParams params,
+    String? loading,
+  }) async {
     emit(SendMessageLoading());
     final response = await sendChatUseCase(sendChatParams: params);
-    response.fold(
-      (l) => emit(SendMessageFailure(errorMsg: l.msg)),
-      (r) {
-        if (r.data != null) {
-          if (!isClosed) {
-            pagingController.itemList?.insert(0, r.data);
+    response.fold((l) => emit(SendMessageFailure(errorMsg: l.msg)), (r) {
+      if (r.data != null) {
+        if (!isClosed) {
+          pagingController.itemList?.insert(0, r.data);
 
-            emit(SendMessageSuccess(model: r.data));
-          }
+          emit(SendMessageSuccess(model: r.data));
         }
-      },
-    );
+      }
+    });
   }
 
-  Future<void> initSocketEvents(
-      {required TripModel tripModel, required bool isSupport}) async {
+  Future<void> initSocketEvents({
+    required TripModel tripModel,
+    required bool isSupport,
+  }) async {
     if (isSupport) {
       return;
     }
     chatUUid = tripModel.uuid ?? "";
     sharedPreferences.setBool(AppStrings.notifications, true);
-    socketService.emitEvent("addUserToRoom", {
-      "chat_uuid": tripModel.uuid,
-    });
+    socketService.emitEvent("addUserToRoom", {"chat_uuid": tripModel.uuid});
     socketService.onEvent("newMessage.${tripModel.uuid}", (data) {
       Map<String, dynamic> body = data;
       MessageModel message = MessageModel.fromJson(body);
@@ -72,8 +72,10 @@ class MessageBloc extends Cubit<MessageState> {
     });
   }
 
-  Future<void> fetchPage(
-      {required int pageKey, required TripModel tripModel}) async {
+  Future<void> fetchPage({
+    required int pageKey,
+    required TripModel tripModel,
+  }) async {
     try {
       final newItems = await _getChats(pageKey: pageKey, tripModel: tripModel);
       final isLastPage = newItems.length < pageSize;
@@ -88,16 +90,23 @@ class MessageBloc extends Cubit<MessageState> {
     }
   }
 
-  Future<List<MessageModel>> _getChats(
-      {required int pageKey, required TripModel tripModel}) async {
+  Future<List<MessageModel>> _getChats({
+    required int pageKey,
+    required TripModel tripModel,
+  }) async {
     List<MessageModel> messageList = [];
-    final response =
-        await getChatMessagesUseCase(tripModel: tripModel, pageKey: pageKey);
-    response.fold((l) {
-      messageList = [];
-    }, (r) {
-      messageList = r.data as List<MessageModel>;
-    });
+    final response = await getChatMessagesUseCase(
+      tripModel: tripModel,
+      pageKey: pageKey,
+    );
+    response.fold(
+      (l) {
+        messageList = [];
+      },
+      (r) {
+        messageList = r.data as List<MessageModel>;
+      },
+    );
     return messageList;
   }
 

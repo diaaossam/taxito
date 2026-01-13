@@ -1,3 +1,5 @@
+import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/core/data/models/user_type_helper.dart';
 import 'package:taxito/core/services/network/dio_consumer.dart';
 import 'package:taxito/core/services/network/end_points.dart';
 import 'package:injectable/injectable.dart';
@@ -43,7 +45,9 @@ class DeliveryRemoteDataSourceImpl implements DeliveryRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> getStatics() async {
-    final response = await dioConsumer.get(path: EndPoints.statistics);
+    final response = await dioConsumer.get(
+      path: EndPoints.statistics(UserTypeService().getUserType()!),
+    );
     return ApiSuccessResponse(data: StaticsModel.fromJson(response['data']));
   }
 

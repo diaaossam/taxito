@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/loading/loading_widget.dart';
-import '../../../data/models/trip_model.dart';
 import '../../bloc/trip_history/trip_history_cubit.dart';
 import 'driver_trip_item.dart';
 import 'empty_trips_history.dart';
@@ -38,18 +37,18 @@ class _DriverTripsHistoryState extends State<DriverTripsHistory> {
     return SliverPadding(
       padding: screenPadding(),
       sliver: PagedSliverList(
-          pagingController: widget.pagingController,
-          builderDelegate: PagedChildBuilderDelegate(
-            firstPageProgressIndicatorBuilder: (context) =>
-                const LoadingWidget(),
-            noItemsFoundIndicatorBuilder: (context) =>
-                const EmptyTripsHistoryWidget(),
-            itemBuilder: (context, TripModel item, index) => DriverTripItem(
-              tripModel: item,
-              status: widget.status,
-              isDriver: true,
-            ),
-          )),
+        pagingController: widget.pagingController,
+        builderDelegate: PagedChildBuilderDelegate(
+          firstPageProgressIndicatorBuilder: (context) => const LoadingWidget(),
+          noItemsFoundIndicatorBuilder: (context) =>
+              const EmptyTripsHistoryWidget(),
+          itemBuilder: (context, TripModel item, index) => DriverTripItem(
+            tripModel: item,
+            status: widget.status,
+            isDriver: true,
+          ),
+        ),
+      ),
     );
   }
 }

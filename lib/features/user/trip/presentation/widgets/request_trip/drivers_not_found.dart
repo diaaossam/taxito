@@ -3,12 +3,12 @@ import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
 import 'package:flutter/material.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/app_text.dart';
 import '../../../../../../widgets/custom_button.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
-import '../../../data/models/trip_model.dart';
 
 class DriversNotFound extends StatelessWidget {
   final TripModel tripModel;

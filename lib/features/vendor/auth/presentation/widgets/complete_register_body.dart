@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../../core/enum/user_type.dart';
 import '../../../../../core/extensions/app_localizations_extension.dart';
 import '../../../../../core/extensions/navigation.dart';
 import '../../../../../core/extensions/sliver_padding.dart';
@@ -208,6 +209,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                       lon: locationEntity.lon,
                       address: locationEntity.address,
                       regionId: regionId.toString(),
+                      userTypeEnum: UserType.supplier,
                     );
 
                     context.read<CompleteRegisterBloc>().add(

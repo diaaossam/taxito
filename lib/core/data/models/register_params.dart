@@ -1,15 +1,17 @@
+import 'package:taxito/core/enum/user_type.dart';
+
 class RegisterParams {
   // Common fields
   final String? name;
   final String? email;
   final String? phone;
   final String? profileImage;
-  
+
   // User-specific fields
   final String? gender;
   final String? jobTitle;
   final String? imagePath;
-  
+
   // Vendor-specific fields
   final String? about;
   final List<int>? supplierCategories;
@@ -23,7 +25,7 @@ class RegisterParams {
   final String? address;
   final num? lat;
   final num? lon;
-  
+
   // Captain-specific fields
   final String? userType;
   final String? carPlateNumber;
@@ -40,6 +42,7 @@ class RegisterParams {
   final List<String>? carImages;
   final String? frontInsurancePhoto;
   final String? backInsurancePhoto;
+  final UserType? userTypeEnum;
 
   RegisterParams({
     // Common fields
@@ -47,12 +50,12 @@ class RegisterParams {
     this.email,
     this.phone,
     this.profileImage,
-    
+
     // User-specific fields
     this.gender,
     this.jobTitle,
     this.imagePath,
-    
+
     // Vendor-specific fields
     this.about,
     this.supplierCategories,
@@ -66,7 +69,7 @@ class RegisterParams {
     this.address,
     this.lat,
     this.lon,
-    
+
     // Captain-specific fields
     this.userType,
     this.carPlateNumber,
@@ -83,6 +86,7 @@ class RegisterParams {
     this.carImages,
     this.frontInsurancePhoto,
     this.backInsurancePhoto,
+    this.userTypeEnum,
   });
 
   factory RegisterParams.fromJson(Map<String, dynamic> json) {
@@ -92,15 +96,16 @@ class RegisterParams {
       email: json['email'] as String?,
       phone: json['phone'] as String?,
       profileImage: json['profile_image'] as String?,
-      
+
       // User-specific fields
       gender: json['gender'] as String?,
       jobTitle: json['job_title'] as String?,
-      
+
       // Vendor-specific fields
       about: json['about'] as String?,
-      supplierCategories:
-          (json['supplier_categories'] as List?)?.map((e) => e as int).toList(),
+      supplierCategories: (json['supplier_categories'] as List?)
+          ?.map((e) => e as int)
+          .toList(),
       provinceId: json['province_id'] as String?,
       regionId: json['region_id'] as String?,
       commercialRegistration: json['commercial_registration'] as String?,
@@ -111,7 +116,7 @@ class RegisterParams {
       address: json['address'] as String?,
       lat: json['lat'] as num?,
       lon: json['lng'] as num?,
-      
+
       // Captain-specific fields
       userType: json['user_type'] as String?,
       carPlateNumber: json['car_plate_number'] as String?,
@@ -123,16 +128,16 @@ class RegisterParams {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> map = {};
-    
+
     // Common fields
     if (name != null) map['name'] = name;
     if (email != null) map['email'] = email;
     if (phone != null) map['phone'] = phone;
-    
+
     // User-specific fields
     if (gender != null) map['gender'] = gender;
     if (jobTitle != null) map['job_title'] = jobTitle;
-    
+
     // Vendor-specific fields
     if (about != null) map['about'] = about;
     if (supplierCategories != null) {
@@ -143,22 +148,23 @@ class RegisterParams {
     if (provinceId != null) map['province_id'] = provinceId;
     if (regionId != null) map['region_id'] = regionId;
     if (logo != null) map['logo'] = logo;
-    if (foodPreparationTime != null) map['preparation_time'] = foodPreparationTime;
+    if (foodPreparationTime != null)
+      map['preparation_time'] = foodPreparationTime;
     if (deliveryTime != null) map['delivery_time'] = deliveryTime;
     if (lat != null) map['lat'] = lat;
     if (lon != null) map['lng'] = lon;
     if (address != null) map['address'] = address;
-    
+
     // Captain-specific fields
     if (firstName != null) map['first_name'] = firstName;
     if (lastName != null) map['last_name'] = lastName;
     if (userType != null) map['user_type'] = userType;
     if (carPlateNumber != null) map['car_plate_number'] = carPlateNumber;
     if (governorateId != null) map['province_id'] = governorateId;
-    
+
     // Remove null values
     map.removeWhere((key, value) => value == null);
-    
+
     return map;
   }
 
@@ -168,12 +174,12 @@ class RegisterParams {
     String? email,
     String? phone,
     String? profileImage,
-    
+
     // User-specific fields
     String? gender,
     String? jobTitle,
     String? imagePath,
-    
+
     // Vendor-specific fields
     String? about,
     List<int>? supplierCategories,
@@ -187,7 +193,7 @@ class RegisterParams {
     String? address,
     num? lat,
     num? lon,
-    
+
     // Captain-specific fields
     String? userType,
     String? carPlateNumber,
@@ -204,6 +210,7 @@ class RegisterParams {
     List<String>? carImages,
     String? frontInsurancePhoto,
     String? backInsurancePhoto,
+    UserType? userTypeEnum,
   }) {
     return RegisterParams(
       // Common fields
@@ -211,18 +218,19 @@ class RegisterParams {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       profileImage: profileImage ?? this.profileImage,
-      
+
       // User-specific fields
       gender: gender ?? this.gender,
       jobTitle: jobTitle ?? this.jobTitle,
       imagePath: imagePath ?? this.imagePath,
-      
+
       // Vendor-specific fields
       about: about ?? this.about,
       supplierCategories: supplierCategories ?? this.supplierCategories,
       provinceId: provinceId ?? this.provinceId,
       regionId: regionId ?? this.regionId,
-      commercialRegistration: commercialRegistration ?? this.commercialRegistration,
+      commercialRegistration:
+          commercialRegistration ?? this.commercialRegistration,
       logo: logo ?? this.logo,
       foodPreparationTime: foodPreparationTime ?? this.foodPreparationTime,
       deliveryTime: deliveryTime ?? this.deliveryTime,
@@ -230,7 +238,7 @@ class RegisterParams {
       address: address ?? this.address,
       lat: lat ?? this.lat,
       lon: lon ?? this.lon,
-      
+
       // Captain-specific fields
       userType: userType ?? this.userType,
       carPlateNumber: carPlateNumber ?? this.carPlateNumber,
@@ -247,6 +255,7 @@ class RegisterParams {
       carImages: carImages ?? this.carImages,
       frontInsurancePhoto: frontInsurancePhoto ?? this.frontInsurancePhoto,
       backInsurancePhoto: backInsurancePhoto ?? this.backInsurancePhoto,
+      userTypeEnum: userTypeEnum ?? this.userTypeEnum,
     );
   }
 }

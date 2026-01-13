@@ -54,7 +54,7 @@
   "noDataHere": "There is no data on this page",
   "noInternetConnection": "No Internet Connection",
   "welcomeTitle": "Welcome to ",
-  "welcomeBody": "Choose the service type you want to work with: taxi driver or delivery driver, and start your journey with Taxito",
+  "welcomeBody": "Choose the type of service you would like to work with (Taxi Driver, Delivery, User, or Service Provider), and start your journey with Taxito.",
   "createNewAccount": "Create new account",
   "loginAsGuest": "Login as guest",
   "loginBody": "Enter your phone number to login",

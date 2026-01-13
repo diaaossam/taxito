@@ -16,17 +16,13 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => sl<LoginCubit>(),
-      child: BlocBuilder<LoginCubit, LoginState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: const CustomAuthAppBar(
-              showBack: false,
-            ),
-            body: LoginBodyWidget(
-              userType: userType,
-            ),
-          );
-        },
+      child: Scaffold(
+        appBar: const CustomAuthAppBar(
+          showBack: false,
+        ),
+        body: LoginBodyWidget(
+          userType: userType,
+        ),
       ),
     );
   }

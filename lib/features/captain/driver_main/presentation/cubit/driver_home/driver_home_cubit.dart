@@ -4,13 +4,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/services/socket/socket.dart';
 import 'package:taxito/core/data/models/user_model.dart';
-import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../../driver_trip/domain/usecases/get_trip_by_id_use_case.dart';
 import '../../../../driver_trip/domain/usecases/pending_trips_use_case.dart';
-import '../../../../location/domain/usecases/update_driver_location_use_case.dart';
 
 part 'driver_home_state.dart';
 
@@ -33,7 +32,6 @@ class DriverHomeCubit extends Cubit<DriverHomeState> {
 
   Future<void> listenToTripsRequests({required ChooseEnum isAvailable}) async {
     if (isAvailable == ChooseEnum.yes) {
-
       socketService.onEvent("new-trip", (data) async {
         Logger().w("-------=-=${data}");
 

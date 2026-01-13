@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../widgets/app_failure.dart';
 import '../../../../../../widgets/loading/loading_widget.dart';
-import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../../location/presentation/cubit/driver_location/driver_location_cubit.dart';
 import '../../../../location/presentation/cubit/driver_location/driver_location_state.dart';
 import '../driver_main_layout/driver_home_actions.dart';

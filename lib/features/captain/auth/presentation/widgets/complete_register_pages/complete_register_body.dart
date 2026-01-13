@@ -8,9 +8,9 @@ import 'complete_register/complete_register_page1/complete_register_page_1.dart'
 import 'complete_register/complete_register_page2/complete_register_page_2.dart';
 import 'complete_register/complete_register_page3/complete_register_page_3.dart';
 
-class CompleteRegisterBody extends StatelessWidget {
+class DriverCompleteRegisterBody extends StatelessWidget {
   final bool isUpdate;
-  const CompleteRegisterBody({super.key, required this.isUpdate});
+  const DriverCompleteRegisterBody({super.key, required this.isUpdate});
 
   @override
   Widget build(BuildContext context) {

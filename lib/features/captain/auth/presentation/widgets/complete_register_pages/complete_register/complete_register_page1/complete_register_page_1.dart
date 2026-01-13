@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/data/models/user_model_helper.dart';
 import 'package:taxito/features/captain/auth/presentation/widgets/id_photo_picker.dart';
@@ -60,7 +61,8 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
                     initialValue: UserDataService().getUserData()?.firstName,
                     hintText: context.localizations.firstName,
                     validator: FormBuilderValidators.required(
-                        errorText: context.localizations.validation),
+                      errorText: context.localizations.validation,
+                    ),
                   ),
                 ),
                 20.horizontalSpace,
@@ -77,7 +79,8 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
                     ],
                     hintText: context.localizations.secondName,
                     validator: FormBuilderValidators.required(
-                        errorText: context.localizations.validation),
+                      errorText: context.localizations.validation,
+                    ),
                   ),
                 ),
               ],
@@ -94,12 +97,11 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
               title: context.localizations.emailAddress,
               hintText: context.localizations.emailAddress,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
             ).toSliverPadding(),
             20.verticalSpace.toSliver,
-            const GovernorateWidget(
-              showLabel: true,
-            ).toSliverPadding(),
+            const GovernorateWidget(showLabel: true).toSliverPadding(),
             20.verticalSpace.toSliver,
             IdPhotoPicker(
               name: "frontId",
@@ -107,7 +109,8 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
               height: SizeConfig.bodyHeight * .25,
               title: context.localizations.frontPhoto,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
             ).toSliverPadding(),
             20.verticalSpace.toSliver,
             IdPhotoPicker(
@@ -116,7 +119,8 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
               height: SizeConfig.bodyHeight * .25,
               title: context.localizations.backPhoto,
               validator: FormBuilderValidators.required(
-                  errorText: context.localizations.validation),
+                errorText: context.localizations.validation,
+              ),
             ).toSliverPadding(),
             20.verticalSpace.toSliver,
           ],
@@ -124,55 +128,61 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
       ),
       bottomNavigationBar:
           BlocBuilder<CompleteRegisterBloc, CompleteRegisterState>(
-        builder: (context, state) {
-          final bloc = context.read<CompleteRegisterBloc>();
-          return Padding(
-            padding: EdgeInsets.only(
-              left: SizeConfig.screenWidth * .04,
-              right: SizeConfig.screenWidth * .04,
-              bottom: SizeConfig.screenWidth * .04,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (widget.isUpdate) ...[
-                  CustomButton(
-                      text: context.localizations.next,
-                      backgroundColor: Colors.transparent,
-                      textColor: context.colorScheme.primary,
-                      press: () {
-                        bloc.add(OnPageChangedEvent(index: 1));
-                      }),
-                  10.verticalSpace,
-                ],
-                BlocConsumer<CompleteRegisterBloc, CompleteRegisterState>(
-                  listener: (context, state) {
-                    if (state is RegisterUserSuccess) {
-                      Navigator.pop(context);
-                    } else if (state is RegisterUserFailure) {
-                      AppConstant.showCustomSnakeBar(
-                          context, state.errorMsg, false);
-                    }
-                  },
-                  builder: (context, state) {
-                    return CustomButton(
-                        isLoading: state is RegisterUserLoading,
-                        text: widget.isUpdate
-                            ? context.localizations.update
-                            : context.localizations.next,
+            builder: (context, state) {
+              final bloc = context.read<CompleteRegisterBloc>();
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: SizeConfig.screenWidth * .04,
+                  right: SizeConfig.screenWidth * .04,
+                  bottom: SizeConfig.screenWidth * .04,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (widget.isUpdate) ...[
+                      CustomButton(
+                        text: context.localizations.next,
+                        backgroundColor: Colors.transparent,
+                        textColor: context.colorScheme.primary,
                         press: () {
-                          if (!_formKey.currentState!.saveAndValidate()) return;
-                          if (profilePath == null && !widget.isUpdate) {
-                            AppConstant.showCustomSnakeBar(
+                          bloc.add(OnPageChangedEvent(index: 1));
+                        },
+                      ),
+                      10.verticalSpace,
+                    ],
+                    BlocConsumer<CompleteRegisterBloc, CompleteRegisterState>(
+                      listener: (context, state) {
+                        if (state is RegisterUserSuccess) {
+                          Navigator.pop(context);
+                        } else if (state is RegisterUserFailure) {
+                          AppConstant.showCustomSnakeBar(
+                            context,
+                            state.errorMsg,
+                            false,
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        return CustomButton(
+                          isLoading: state is RegisterUserLoading,
+                          text: widget.isUpdate
+                              ? context.localizations.update
+                              : context.localizations.next,
+                          press: () {
+                            if (!_formKey.currentState!.saveAndValidate())
+                              return;
+                            if (profilePath == null && !widget.isUpdate) {
+                              AppConstant.showCustomSnakeBar(
                                 context,
                                 context.localizations.profileImageValidation,
-                                false);
-                            return;
-                          }
-                          final frontIdImage = _formKey.fieldValue("frontId");
-                          final backIdImage = _formKey.fieldValue("backId");
-                          RegisterParams registerParams = bloc.registerParams
-                              .copyWith(
+                                false,
+                              );
+                              return;
+                            }
+                            final frontIdImage = _formKey.fieldValue("frontId");
+                            final backIdImage = _formKey.fieldValue("backId");
+                            RegisterParams registerParams = bloc.registerParams
+                                .copyWith(userTypeEnum: UserType.driver,
                                   carPlateNumber: UserDataService()
                                       .getUserData()
                                       ?.carPlateNumber,
@@ -180,34 +190,41 @@ class _CompleteRegisterPage1State extends State<CompleteRegisterPage1> {
                                   firstName: _formKey.fieldValue("firstName"),
                                   lastName: _formKey.fieldValue("lastName"),
                                   email: _formKey.fieldValue("email"),
-                                  governorateId:
-                                      _formKey.fieldValue("governorate"),
+                                  governorateId: _formKey.fieldValue(
+                                    "governorate",
+                                  ),
                                   profileImage: profilePath,
                                   frontIdImage: frontIdImage is File
                                       ? _formKey.fieldValue("frontId").path
                                       : _formKey.fieldValue("frontId"),
                                   backIdImage: backIdImage is File
                                       ? _formKey.fieldValue("backId").path
-                                      : _formKey.fieldValue("backId"));
+                                      : _formKey.fieldValue("backId"),
+                                );
 
-                          if (widget.isUpdate) {
-                            context.read<CompleteRegisterBloc>().add(
+                            if (widget.isUpdate) {
+                              context.read<CompleteRegisterBloc>().add(
                                 CompleteRegisterSuccessEvent(
-                                    registerParams: registerParams));
-                          } else {
-                            context.read<CompleteRegisterBloc>().add(
+                                  registerParams: registerParams,
+                                ),
+                              );
+                            } else {
+                              context.read<CompleteRegisterBloc>().add(
                                 UpdateRegisterParamsEvent(
-                                    nextStep: 1,
-                                    registerParams: registerParams));
-                          }
-                        });
-                  },
+                                  nextStep: 1,
+                                  registerParams: registerParams,
+                                ),
+                              );
+                            }
+                          },
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        },
-      ),
+              );
+            },
+          ),
     );
   }
 }

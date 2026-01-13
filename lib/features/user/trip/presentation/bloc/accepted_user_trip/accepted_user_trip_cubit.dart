@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../core/services/socket/socket.dart';
-import '../../../data/models/trip_model.dart';
 import '../../../domain/usecases/get_trip_by_id_use_case.dart';
 
 part 'accepted_user_trip_state.dart';

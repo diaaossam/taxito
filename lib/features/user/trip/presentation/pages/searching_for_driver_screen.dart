@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/utils/app_constant.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -13,7 +14,6 @@ import '../../../../../widgets/app_text.dart';
 import '../../../../../widgets/custom_button.dart';
 import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../../../widgets/loading/loading_widget.dart';
-import '../../data/models/trip_model.dart';
 import '../bloc/searching_for_driver/searching_for_driver_bloc.dart';
 import '../widgets/search_for_driver/search_for_driver_bottom_text.dart';
 

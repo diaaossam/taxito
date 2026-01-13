@@ -1,9 +1,8 @@
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
-
+import '../../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../../core/utils/app_size.dart';
 import '../../../../../../../widgets/app_text.dart';
-import '../../../../../driver_trip/data/models/trip_model.dart';
 import '../../../../data/models/message_model.dart';
 
 class MessageBubbleDesign extends StatelessWidget {
@@ -35,12 +34,14 @@ class MessageBubbleDesign extends StatelessWidget {
                         topStart: Radius.circular(12),
                         topEnd: Radius.circular(12),
                         bottomStart: Radius.circular(4),
-                        bottomEnd: Radius.circular(12))
+                        bottomEnd: Radius.circular(12),
+                      )
                     : const BorderRadiusDirectional.only(
                         topStart: Radius.circular(12),
                         topEnd: Radius.circular(12),
                         bottomStart: Radius.circular(12),
-                        bottomEnd: Radius.circular(4)),
+                        bottomEnd: Radius.circular(4),
+                      ),
                 color: isSender
                     ? context.colorScheme.primary
                     : context.colorScheme.shadow.withValues(alpha: 0.1),
@@ -49,8 +50,9 @@ class MessageBubbleDesign extends StatelessWidget {
                 maxWidth: MediaQuery.of(context).size.width * .7,
               ),
               padding: EdgeInsets.symmetric(
-                  vertical: SizeConfig.bodyHeight * .01,
-                  horizontal: SizeConfig.screenWidth * .02),
+                vertical: SizeConfig.bodyHeight * .01,
+                horizontal: SizeConfig.screenWidth * .02,
+              ),
               child: AppText(
                 text: messageModel.message ?? "",
                 color: isSender ? Colors.white : Colors.black,

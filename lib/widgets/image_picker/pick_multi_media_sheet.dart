@@ -4,11 +4,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/widgets/image_picker/pick_image_sheet.dart';
 
+import '../../config/helper/secure_file_picker.dart';
+
 class PickMediaFileSheetMultiImages extends StatefulWidget {
-  const PickMediaFileSheetMultiImages({
-    super.key,
-    required this.onPickFile,
-  });
+  const PickMediaFileSheetMultiImages({super.key, required this.onPickFile});
 
   final Function(List<File>) onPickFile;
 
@@ -32,11 +31,14 @@ class _PickMediaFileSheetMultiImagesState
           InkWell(
             borderRadius: BorderRadius.circular(20),
             onTap: () async {
-              final XFile? images =
-                  await picker.pickImage(source: ImageSource.camera);
+              final XFile? images = await picker.pickImage(
+                source: ImageSource.camera,
+              );
               if (images != null) {
                 List<File> files = [];
-                files = [File(images.path)];
+                final imageFile = File(images.path);
+                final data = await SecureFilePicker.compressImage(imageFile);
+                files = [data];
                 widget.onPickFile(files);
               }
             },
@@ -49,13 +51,16 @@ class _PickMediaFileSheetMultiImagesState
               if (images.isNotEmpty) {
                 List<File> files = [];
                 for (var element in images) {
-                  files.add(File(element.path));
+                  final data = await SecureFilePicker.compressImage(
+                    File(element.path),
+                  );
+                  files.add(data);
                 }
                 widget.onPickFile(files);
               }
             },
             child: const ImageSheetButton(),
-          )
+          ),
         ],
       ),
     );

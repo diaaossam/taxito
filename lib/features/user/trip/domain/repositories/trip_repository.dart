@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
-import '../../data/models/trip_model.dart';
 import '../entities/review_trip_params.dart';
 import '../entities/trip_params.dart';
 

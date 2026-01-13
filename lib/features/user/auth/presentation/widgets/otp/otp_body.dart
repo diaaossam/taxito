@@ -14,9 +14,9 @@ import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../widgets/custom_button.dart';
-import '../../../../trip/data/models/trip_model.dart';
 import '../../../../trip/presentation/pages/request_trip_screen.dart';
 import '../../cubit/otp/otp_bloc.dart';
 import 'otp_counter.dart';
@@ -111,7 +111,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
                   _handleLogin(state.userModel);
                 } else {
                   context.navigateTo(
-                    RegisterScreen(phone: state.userModel.phone),
+                    UserRegisterScreen(phone: state.userModel.phone),
                   );
                 }
               } else if (state is VerifyOtpFailureState) {
@@ -157,8 +157,7 @@ class _OtpVerficationWidgetState extends State<OtpVerficationWidget> {
         }
         context.navigateToAndFinish(const MainLayout());
       }
-    }
-    else {
+    } else {
       context.navigateToAndFinish(MainLayout());
     }
   }

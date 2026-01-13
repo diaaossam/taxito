@@ -14,7 +14,7 @@ import '../../../../captain/app/data/models/generic_model.dart';
 import '../../../../captain/delivery_order/data/models/response/my_address.dart';
 import '../models/requests/location_params.dart';
 import '../models/response/location_details_model.dart';
-import '../models/response/main_location_data.dart';
+import '../../../../../core/data/models/main_location_data.dart';
 import '../models/response/suggestion_model.dart';
 
 abstract class LocationRemoteDataSource {

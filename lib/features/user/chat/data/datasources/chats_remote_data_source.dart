@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:injectable/injectable.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../../core/services/socket/socket.dart';
-import '../../../trip/data/models/trip_model.dart';
 import '../../domain/entities/send_chat_params.dart';
 import '../models/message_model.dart';
 

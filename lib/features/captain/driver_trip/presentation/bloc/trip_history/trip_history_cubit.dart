@@ -2,9 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
-import '../../../data/models/trip_model.dart';
 import '../../../domain/usecases/get_all_trips_history_use_case.dart';
 
 part 'trip_history_state.dart';

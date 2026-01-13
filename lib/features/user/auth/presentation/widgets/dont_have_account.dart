@@ -13,7 +13,7 @@ class DontHaveAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
-        onTap: () => context.navigateTo(const RegisterScreen()),
+        onTap: () => context.navigateTo(const UserRegisterScreen()),
         child: Text.rich(
           TextSpan(
             children: [

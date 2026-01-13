@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
@@ -14,7 +15,6 @@ import '../../../../../widgets/image_picker/app_image.dart';
 import '../../../driver_main/presentation/pages/driver_main_layout.dart';
 import '../../../settings/presentation/bloc/settings_bloc.dart';
 import '../../../settings/settings_helper.dart';
-import '../../data/models/trip_model.dart';
 import '../bloc/payment_driver_confirmation/payment_confirmation_cubit.dart';
 
 class ConfirmationPaymentDialog extends StatelessWidget {

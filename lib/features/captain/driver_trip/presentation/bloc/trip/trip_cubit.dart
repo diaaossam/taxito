@@ -1,9 +1,10 @@
 import 'package:taxito/core/services/socket/socket.dart';
-import 'package:taxito/features/captain/driver_trip/data/models/trip_model.dart';
 import 'package:taxito/features/captain/driver_trip/domain/usecases/get_trip_by_id_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+
+import '../../../../../../core/data/models/trip_model.dart';
 
 part 'trip_state.dart';
 
@@ -24,13 +25,12 @@ class TripCubit extends Cubit<TripState> {
   Future<void> getTripModelByUuid({required num id}) async {
     emit(GetTripByIdLoading());
     final response = await getTripByIdUseCase(id: id);
-    emit(response.fold(
-      (l) => GetTripByIdFailure(errorMsg: l.msg),
-      (r) {
+    emit(
+      response.fold((l) => GetTripByIdFailure(errorMsg: l.msg), (r) {
         tripModel = r.data;
         tripMap = r.response ?? {};
         return GetTripByIdSuccess(tripModel: r.data);
-      },
-    ));
+      }),
+    );
   }
 }

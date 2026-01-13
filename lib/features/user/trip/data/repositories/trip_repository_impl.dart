@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../domain/entities/review_trip_params.dart';
 import '../../domain/entities/trip_params.dart';
 import '../../domain/repositories/trip_repository.dart';
 import '../datasources/trip_remote_data_source.dart';
-import '../models/trip_model.dart';
 
 @Injectable(as: TripRepository)
 class TripRepositoryImpl implements TripRepository {

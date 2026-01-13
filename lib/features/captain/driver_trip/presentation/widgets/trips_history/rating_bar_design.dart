@@ -1,7 +1,7 @@
-import 'package:taxito/features/captain/driver_trip/data/models/rate_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../../../../../../core/data/models/rate_model.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
 

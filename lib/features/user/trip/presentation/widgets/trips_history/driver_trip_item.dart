@@ -7,11 +7,10 @@ import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/app_text.dart';
-import '../../../data/models/trip_model.dart';
 import '../found_driver_page/trip_user_info_widget.dart';
-import '../trip_distance_info.dart';
 
 class DriverTripItem extends StatelessWidget {
   final TripModel tripModel;

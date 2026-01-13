@@ -5,10 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/gen/assets.gen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import '../../core/extensions/color_extensions.dart';
+import '../../gen/assets.gen.dart';
 import 'app_image.dart';
 import 'pick_image_sheet.dart';
 
@@ -27,6 +27,7 @@ class MediaFormField extends StatefulWidget {
   final Widget? defaultImage;
   final Function(File) onDataReceived;
   final String? Function(dynamic)? validator;
+  final EdgeInsetsGeometry? padding;
 
   const MediaFormField({
     super.key,
@@ -42,6 +43,7 @@ class MediaFormField extends StatefulWidget {
     this.defaultImage,
     required this.onDataReceived,
     this.validator,
+    this.padding,
   });
 
   @override
@@ -61,29 +63,30 @@ class _MediaFormFieldState extends State<MediaFormField> {
           alignment: AlignmentDirectional.bottomStart,
           children: [
             GestureDetector(
-              onTap: !widget.isClickable
-                  ? null
-                  : () async {
-                      await showMaterialModalBottomSheet(
-                        context: context,
-                        builder: (context) => PickMediaFileSheet(
-                          mediaType: widget.mediaType,
-                          onPickFile: (file, thumbnail) {
-                            setState(() {
-                              _selectedFile = file;
-                            });
-                            widget.onImagePicked?.call();
-                            widget.onDataReceived(file);
-                          },
-                        ),
-                      );
+              onTap: () async {
+                await showMaterialModalBottomSheet(
+                  context: context,
+                  builder: (context) => PickMediaFileSheet(
+                    mediaType: widget.mediaType,
+                    onPickFile: (file, thumbnail) {
+                      setState(() {
+                        _selectedFile = file;
+                      });
+                      widget.onImagePicked?.call();
+                      widget.onDataReceived(file);
                     },
+                  ),
+                );
+              },
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  border: Border.all(color: context.colorScheme.primary),
+                  color: context.colorScheme.onPrimary,
                 ),
                 width: widget.width,
                 height: widget.height,
+                padding: widget.padding,
                 clipBehavior: Clip.antiAlias,
                 child: _setUpImage(_selectedFile, field),
               ),
@@ -109,11 +112,10 @@ class _MediaFormFieldState extends State<MediaFormField> {
               child: Container(
                 padding: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                    color: context.colorScheme.surface, shape: BoxShape.circle),
-                child: SvgPicture.asset(
-                  Assets.icons.edit,
-                  height: 30,
+                  color: context.colorScheme.surface,
+                  shape: BoxShape.circle,
                 ),
+                child: SvgPicture.asset(Assets.icons.edit, height: 23),
               ),
             ),
           ],
@@ -130,7 +132,7 @@ class _MediaFormFieldState extends State<MediaFormField> {
         height: widget.height,
       );
     } else {
-      if (widget.initialImage != null) {
+      if (widget.initialImage != null && widget.initialImage!.isNotEmpty) {
         if (widget.initialImage!.contains("assets")) {
           return AppImage.asset(
             widget.initialImage!,
@@ -145,10 +147,7 @@ class _MediaFormFieldState extends State<MediaFormField> {
           );
         }
       } else {
-        return widget.defaultImage ??
-            AppImage.asset(
-              Assets.images.dummyUser.path,
-            );
+        return AppImage.asset(Assets.images.logoCirclure.path);
       }
     }
   }

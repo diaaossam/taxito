@@ -6,12 +6,12 @@ import 'package:geolocator/geolocator.dart' as geo;
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/services/location/location_permission_service.dart';
 import '../../../../../../core/services/location/polyline_helper.dart';
 import '../../../../../../core/services/socket/socket.dart';
 import '../../../../../../core/data/models/user_model_helper.dart';
-import '../../../../driver_trip/data/models/trip_model.dart';
 import '../../../domain/usecases/update_driver_location_use_case.dart';
 
 @Injectable()
@@ -30,12 +30,15 @@ class DriverLocationCubit extends Cubit<DriverLocationState> {
   LatLng? currentLatLng;
   Set<Polyline> polyines = {};
 
-  final Completer<GoogleMapController> controller = Completer<GoogleMapController>();
+  final Completer<GoogleMapController> controller =
+      Completer<GoogleMapController>();
   StreamSubscription<geo.Position>? locationSubscription;
   BitmapDescriptor? icon;
 
   Future<void> getCurrentDriverLocation() async {
-    currentLatLng = (await LocationPermissionService().requestPermissionAndLocation()).location;
+    currentLatLng =
+        (await LocationPermissionService().requestPermissionAndLocation())
+            .location;
     emit(GetCurrentDriverLocation());
   }
 
@@ -89,8 +92,7 @@ class DriverLocationCubit extends Cubit<DriverLocationState> {
         "driverType": isDelivery ? "order" : "delivery",
         "location": {"lat": 0.0, "lng": 0.0},
       });
-    }
-    else {
+    } else {
       emit(GetCurrentLocationLoadingState());
       if (!isDelivery) {
         icon = await LocationPermissionService.initIcon();
@@ -173,7 +175,8 @@ class DriverLocationCubit extends Cubit<DriverLocationState> {
         updateLocation(
           lat: position.latitude,
           long: position.longitude,
-          isDelivery: UserDataService().getUserData()?.driverType != "taxi_driver",
+          isDelivery:
+              UserDataService().getUserData()?.driverType != "taxi_driver",
         );
       } catch (e) {
         // Handle error silently or log it

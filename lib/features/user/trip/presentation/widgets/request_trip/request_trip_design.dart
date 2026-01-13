@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../core/utils/app_constant.dart';
 import '../../../../../../core/utils/app_size.dart';
-import '../../../data/models/trip_model.dart';
 import '../../../trip_helper.dart';
 import '../../bloc/request_trip/request_trip_info_bloc.dart';
 import '../../bloc/trip_info/trip_bloc.dart';
@@ -265,7 +265,7 @@ class RequestTripDesignState extends State<RequestTripDesign>
         map: {},
       );
     } else {
-      if (model.remaining_price != 0 && model.remaining_price != null) {
+      if (model.remainingPrice != 0 && model.remainingPrice != null) {
         _hasShownPaymentDialog = true;
         TripHelper().showSendPendingPaymentDialog(
           globalKey: _alertKey,

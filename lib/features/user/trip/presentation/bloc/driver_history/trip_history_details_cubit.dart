@@ -3,11 +3,11 @@ import 'package:bloc/bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/services/location/map_helper.dart';
 import '../../../../../../core/services/location/polyline_helper.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../gen/assets.gen.dart';
-import '../../../data/models/trip_model.dart';
 
 part 'trip_history_details_state.dart';
 

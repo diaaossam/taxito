@@ -3,10 +3,10 @@ import 'package:taxito/core/enum/payment_type.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../core/services/socket/socket.dart';
 import '../../../../location/domain/usecases/update_driver_location_use_case.dart';
-import '../../../data/models/trip_model.dart';
 import '../../../domain/usecases/accept_driver_payment_request_use_case.dart';
 import '../../../domain/usecases/cancel_trip_use_case.dart';
 import '../../../domain/usecases/end_trip_use_case.dart';
@@ -130,8 +130,8 @@ class AcceptedDriverCubit extends Cubit<AcceptedDriverState> {
             },
           );
         } else {
-          if (tripModel.remaining_price != null &&
-              tripModel.remaining_price != 0) {
+          if (tripModel.remainingPrice != null &&
+              tripModel.remainingPrice != 0) {
             socketService.onEvent(
               "payment-confirmation.${tripModel.uuid}",
               (p0) {

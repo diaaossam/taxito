@@ -1,3 +1,5 @@
+import 'package:taxito/core/enum/user_type.dart';
+
 class EndPoints {
   ///////// Auth ////////////////////////
 
@@ -9,7 +11,7 @@ class EndPoints {
       "https://api.mapbox.com/geocoding/v5/mapbox.places";
   static const String profile = "profile/me";
 
-  static getUserByUid(String ulid) => 'auth/user/$ulid';
+  static String getUserByUid(String ulid) => 'auth/user/$ulid';
   static const String endTrip = "driver/end-trip/";
   static const String governorates = "provinces";
 
@@ -51,8 +53,8 @@ class EndPoints {
   static const String markAllAsRead = "mark-all-notifications-as-read";
 
   ///////// Register //////////////////
-
-  static const String register = "driver/profile";
+  static String register(UserType userType) =>
+      userType == UserType.supplier ? "supplier/profile" : "driver/profile";
 
   //////////////////// Users /////////////////////////////
   static user(String userId) => 'users/$userId';
@@ -71,7 +73,10 @@ class EndPoints {
   static String updateFcm = "profile/update-device-token";
   static String getTripById = "driver/trips";
   static String sendChat = "driver/chats";
-  static String statistics = "driver/statistics";
+
+  static String statistics(UserType userType) => userType == UserType.supplier
+      ? "supplier/statistics"
+      : "driver/statistics";
   static String acceptOrder = "driver/accept-order";
   static String rejectOrder = "driver/reject-order";
   static const String pendingTrips = "driver/current-trip";
@@ -86,20 +91,9 @@ class EndPoints {
   static const String supplierAttributes = "supplier/attributes";
   static const String products = "supplier/products";
 
-
-
-
-
-
-
-
   ///////// Auth ////////////////////////
 
   static const String update = "user/profile";
-
-
-
-
 
   //////////////////// Chats ///////////////////////
 
@@ -122,6 +116,7 @@ class EndPoints {
   static const String sendPaymentRequestToDriver = "user/pay-trip";
   static const String tripTypes = "trip-types";
   static const String userTrips = "user/trips";
+
   static String cancelUserTrip(num id) => "user/trips/$id/cancel";
   static const String rateTrip = "user/trips/";
   static const String sendProblem = "user/trips";
@@ -133,17 +128,4 @@ class EndPoints {
   static String chatMessage = "user/chats";
   static String searchForDriver = "user/search-for-drivers/";
   static String checkProduct = "user/check-products";
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

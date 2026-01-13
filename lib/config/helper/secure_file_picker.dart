@@ -13,7 +13,7 @@ import 'package:uuid/uuid.dart';
 
 class SecureFilePicker {
   static const filenameLengthLimit = 20;
-  static const imageFileSizeLimit = 4000000; // 4MB
+  static const imageFileSizeLimit = 2000000; // 4MB
   static const videoFileSizeLimit = 25000000; // 25MB
 
   static Future<File?> pickImage(
@@ -25,7 +25,7 @@ class SecureFilePicker {
     if (pickedFile == null) return null;
     final file = File(pickedFile.path);
 
-    final File compressedFile = await _compressImage(
+    final File compressedFile = await compressImage(
       file,
     );
 
@@ -45,7 +45,7 @@ class SecureFilePicker {
     return true;
   }
 
-  static Future<File> _compressImage(File sourceFile, {int? targetSize}) async {
+  static Future<File> compressImage(File sourceFile, {int? targetSize}) async {
     final dir = await getTemporaryDirectory();
     final targetPath = '${dir.absolute.path}/${const Uuid().v4()}.jpg';
 

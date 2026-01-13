@@ -1,3 +1,5 @@
+import 'package:taxito/features/vendor/product/data/models/response/review_model.dart';
+
 enum UserType {
   user('user'),
   supplier('supplier'),
@@ -7,6 +9,16 @@ enum UserType {
   final String name;
 
   const UserType(this.name);
+}
+
+UserType handleUserType({required String userType}) {
+  if (userType == "supplier") {
+    return UserType.supplier;
+  } else if (userType == "user") {
+    return UserType.user;
+  } else {
+    return UserType.driver;
+  }
 }
 
 List<UserType> usersType = [

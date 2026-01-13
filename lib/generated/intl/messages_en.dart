@@ -964,7 +964,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "walletBalance": MessageLookupByLibrary.simpleMessage("My wallet balance"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBody": MessageLookupByLibrary.simpleMessage(
-      "Choose the service type you want to work with: taxi driver or delivery driver, and start your journey with Taxito",
+      "Choose the type of service you would like to work with (Taxi Driver, Delivery, User, or Service Provider), and start your journey with Taxito.",
     ),
     "welcomeTitle": MessageLookupByLibrary.simpleMessage("Welcome to "),
     "whatDoWeOffer": MessageLookupByLibrary.simpleMessage("What do we offer?"),

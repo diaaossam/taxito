@@ -930,7 +930,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "walletBalance": MessageLookupByLibrary.simpleMessage("رصيد محفظتي"),
     "welcome": MessageLookupByLibrary.simpleMessage("أهلاً وسهلاً"),
     "welcomeBody": MessageLookupByLibrary.simpleMessage(
-      "اختر نوع الخدمة التي تود العمل بها : سائق تكسي أو توصيل طلبات ، وابدأ رحلتك مع تاكسيتو",
+      "اختر نوع الخدمة التي تود العمل بها (سائق تاكسي، توصيل طلبات، مستخدم، أو مزوّد خدمة)، وابدأ رحلتك مع تاكسيتو.",
     ),
     "welcomeTitle": MessageLookupByLibrary.simpleMessage("أهلاً بك في "),
     "whatDoWeOffer": MessageLookupByLibrary.simpleMessage("ماذا نقدم؟"),

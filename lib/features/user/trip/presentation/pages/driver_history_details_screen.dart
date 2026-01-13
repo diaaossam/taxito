@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../data/models/trip_model.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../widgets/payment_type_info.dart';
 import '../widgets/trip_distance_info.dart';
 import '../widgets/trip_rating_design.dart';
@@ -32,17 +32,17 @@ class DriverHistoryDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           final bloc = context.read<TripHistoryDetailsCubit>();
           return Scaffold(
-            appBar: CustomAppBar(title: context.localizations.tripDetails,),
+            appBar: CustomAppBar(title: context.localizations.tripDetails),
             body: Padding(
               padding: screenPadding(),
               child: Column(
                 children: [
                   Container(
-                    height: SizeConfig.bodyHeight*0.3,
+                    height: SizeConfig.bodyHeight * 0.3,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: context.colorScheme.outline)
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: context.colorScheme.outline),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
@@ -53,19 +53,22 @@ class DriverHistoryDetailsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  DriverTripItem(tripModel: tripModel,isDriver: false,),
+                  DriverTripItem(tripModel: tripModel, isDriver: false),
                   10.verticalSpace,
-                  TripDistanceInfo(tripModel: tripModel,),
+                  TripDistanceInfo(tripModel: tripModel),
                   20.verticalSpace,
-                  if(tripModel.driver != null)...[
-                    DriverInfoWidget(driver: tripModel.driver!, trip: tripModel),
+                  if (tripModel.driver != null) ...[
+                    DriverInfoWidget(
+                      driver: tripModel.driver!,
+                      trip: tripModel,
+                    ),
                     20.verticalSpace,
                   ],
 
-                  PaymentTypeInfo( trip: tripModel),
+                  PaymentTypeInfo(trip: tripModel),
                   20.verticalSpace,
-                  if(tripModel.status != TripStatusEnum.cancelled)
-                  TripRatingDesign(tripModel: tripModel,),
+                  if (tripModel.status != TripStatusEnum.cancelled)
+                    TripRatingDesign(tripModel: tripModel),
                   20.verticalSpace,
                 ],
               ).scrollable(),

@@ -74,8 +74,6 @@ import '../../features/captain/auth/presentation/cubit/logout/logout_cubit.dart'
     as _i1008;
 import '../../features/captain/auth/presentation/cubit/otp/otp_bloc.dart'
     as _i27;
-import '../../features/captain/auth/presentation/cubit/update/update_bloc.dart'
-    as _i230;
 import '../../features/captain/chat/data/datasources/chats_remote_data_source.dart'
     as _i581;
 import '../../features/captain/chat/data/repositories/chats_repository_impl.dart'
@@ -234,23 +232,23 @@ import '../../features/captain/settings/presentation/bloc/pages/pages_bloc.dart'
     as _i882;
 import '../../features/captain/settings/presentation/bloc/settings_bloc.dart'
     as _i990;
-import '../../features/common/start/data/datasources/init_remote_data_source.dart'
-    as _i389;
-import '../../features/common/start/data/repositories/init_repo_impl.dart'
-    as _i818;
-import '../../features/common/start/domain/repositories/init_repostory.dart'
-    as _i704;
-import '../../features/common/start/domain/usecases/get_intro_use_case.dart'
-    as _i200;
-import '../../features/common/start/domain/usecases/init_app_use_case.dart'
-    as _i8;
-import '../../features/common/start/presentation/cubit/boarding/on_boarding_cubit.dart'
-    as _i916;
-import '../../features/common/start/presentation/cubit/start/start_cubit.dart'
-    as _i906;
 import '../../features/captain/user/presentation/bloc/profile/profile_bloc.dart'
     as _i119;
 import '../../features/captain/user/presentation/bloc/user_bloc.dart' as _i544;
+import '../../features/common/start/data/datasources/init_remote_data_source.dart'
+    as _i1043;
+import '../../features/common/start/data/repositories/init_repo_impl.dart'
+    as _i740;
+import '../../features/common/start/domain/repositories/init_repostory.dart'
+    as _i983;
+import '../../features/common/start/domain/usecases/get_intro_use_case.dart'
+    as _i1048;
+import '../../features/common/start/domain/usecases/init_app_use_case.dart'
+    as _i598;
+import '../../features/common/start/presentation/cubit/boarding/on_boarding_cubit.dart'
+    as _i430;
+import '../../features/common/start/presentation/cubit/start/start_cubit.dart'
+    as _i129;
 import '../../features/user/auth/data/datasources/auth_remote_data_source.dart'
     as _i511;
 import '../../features/user/auth/data/repositories/auth_repo_impl.dart'
@@ -528,8 +526,6 @@ import '../../features/vendor/auth/presentation/cubit/complete_register/complete
     as _i734;
 import '../../features/vendor/auth/presentation/cubit/login_cubit/login_cubit.dart'
     as _i129;
-import '../../features/vendor/auth/presentation/cubit/update/update_bloc.dart'
-    as _i1045;
 import '../../features/vendor/categories/data/datasources/categories_remote_data_source.dart'
     as _i997;
 import '../../features/vendor/categories/data/repositories/categories_repository_impl.dart'
@@ -1328,6 +1324,14 @@ extension GetItInjectableX on _i174.GetIt {
         deliveryRemoteDataSource: gh<_i359.DeliveryRemoteDataSource>(),
       ),
     );
+    gh.lazySingleton<_i1043.InitRemoteDataSource>(
+      () => _i1043.RegisterRemoteDataSourceImpl(
+        dioConsumer: gh<_i82.DioConsumer>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+        tokenRepository: gh<_i734.TokenRepository>(),
+        authRemoteDataSource: gh<_i56.AuthRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i623.ChatsRepository>(
       () => _i618.ChatsRepositoryImpl(
         chatsRemoteDataSource: gh<_i31.ChatsRemoteDataSource>(),
@@ -1588,14 +1592,6 @@ extension GetItInjectableX on _i174.GetIt {
         orderRepository: gh<_i839.DeliveryOrdersRepository>(),
       ),
     );
-    gh.lazySingleton<_i389.InitRemoteDataSource>(
-      () => _i389.RegisterRemoteDataSourceImpl(
-        dioConsumer: gh<_i82.DioConsumer>(),
-        sharedPreferences: gh<_i460.SharedPreferences>(),
-        tokenRepository: gh<_i734.TokenRepository>(),
-        authRemoteDataSource: gh<_i56.AuthRemoteDataSource>(),
-      ),
-    );
     gh.lazySingleton<_i378.AcceptDeliveryOrderUseCase>(
       () => _i378.AcceptDeliveryOrderUseCase(
         repository: gh<_i765.DeliveryOrdersRepository>(),
@@ -1654,6 +1650,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i941.GetNotificationsCount>(),
       ),
     );
+    gh.lazySingleton<_i983.InitRepository>(
+      () => _i740.InitRepoImpl(
+        initRemoteDataSource: gh<_i1043.InitRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i331.SubAttributesCubit>(
       () => _i331.SubAttributesCubit(
         gh<_i1050.GetAttributesUseCase>(),
@@ -1663,10 +1664,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i129.LoginCubit>(
       () => _i129.LoginCubit(gh<_i919.LoginUserUseCase>()),
     );
-    gh.lazySingleton<_i704.InitRepository>(
-      () => _i818.InitRepoImpl(
-        initRemoteDataSource: gh<_i389.InitRemoteDataSource>(),
+    gh.lazySingleton<_i1048.GetIntroDataUseCase>(
+      () => _i1048.GetIntroDataUseCase(
+        initRepository: gh<_i983.InitRepository>(),
       ),
+    );
+    gh.lazySingleton<_i598.InitAppUseCase>(
+      () => _i598.InitAppUseCase(initRepository: gh<_i983.InitRepository>()),
     );
     gh.factory<_i586.ApplyPromoCodeUseCase>(
       () => _i586.ApplyPromoCodeUseCase(
@@ -1785,13 +1789,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i2.UpdateDeviceToken>(
       () => _i2.UpdateDeviceToken(gh<_i523.MainRepository>()),
     );
-    gh.lazySingleton<_i200.GetIntroDataUseCase>(
-      () =>
-          _i200.GetIntroDataUseCase(initRepository: gh<_i704.InitRepository>()),
-    );
-    gh.lazySingleton<_i8.InitAppUseCase>(
-      () => _i8.InitAppUseCase(initRepository: gh<_i704.InitRepository>()),
-    );
     gh.factory<_i106.DeleteAccountUseCase>(
       () => _i106.DeleteAccountUseCase(
         authRepository: gh<_i475.AuthRepository>(),
@@ -1826,9 +1823,6 @@ extension GetItInjectableX on _i174.GetIt {
         mainRepository: gh<_i381.DriverMainRepository>(),
       ),
     );
-    gh.factory<_i906.StartCubit>(
-      () => _i906.StartCubit(gh<_i8.InitAppUseCase>()),
-    );
     gh.factory<_i892.DeliveryMainCubit>(
       () => _i892.DeliveryMainCubit(gh<_i131.UpdateFcmUseCase>()),
     );
@@ -1847,14 +1841,17 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i985.SocketService>(),
       ),
     );
-    gh.factory<_i1045.UpdateBloc>(
-      () => _i1045.UpdateBloc(gh<_i466.RegisterUserUseCase>()),
-    );
     gh.factory<_i27.OtpBloc>(
       () => _i27.OtpBloc(
         gh<_i813.VerifyOtpUseCase>(),
         gh<_i620.DeviceHelper>(),
         gh<_i741.ResendOtpUseCase>(),
+      ),
+    );
+    gh.lazySingleton<_i430.OnBoardingCubit>(
+      () => _i430.OnBoardingCubit(
+        gh<_i1048.GetIntroDataUseCase>(),
+        gh<_i460.SharedPreferences>(),
       ),
     );
     gh.factory<_i119.ProfileBloc>(
@@ -1901,14 +1898,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i106.DeleteAccountUseCase>(),
       ),
     );
+    gh.factory<_i129.StartCubit>(
+      () => _i129.StartCubit(gh<_i598.InitAppUseCase>()),
+    );
     gh.factory<_i505.DeleteCubit>(
       () => _i505.DeleteCubit(gh<_i106.DeleteAccountUseCase>()),
     );
     gh.factory<_i1008.LogoutCubit>(
       () => _i1008.LogoutCubit(gh<_i1020.LogOutUseCase>()),
-    );
-    gh.factory<_i230.UpdateBloc>(
-      () => _i230.UpdateBloc(gh<_i1029.RegisterUserUseCase>()),
     );
     gh.factory<_i384.CompleteRegisterBloc>(
       () => _i384.CompleteRegisterBloc(
@@ -1942,12 +1939,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i163.DeliveryOrderCubit(
         gh<_i96.GetAllDeliveryOrdersUseCase>(),
         gh<_i985.SocketService>(),
-      ),
-    );
-    gh.lazySingleton<_i916.OnBoardingCubit>(
-      () => _i916.OnBoardingCubit(
-        gh<_i200.GetIntroDataUseCase>(),
-        gh<_i460.SharedPreferences>(),
       ),
     );
     gh.factory<_i312.StaticsCubit>(

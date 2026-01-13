@@ -1,8 +1,8 @@
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
+import '../../../../../../../core/data/models/trip_model.dart';
 import '../../../../../../../core/utils/app_size.dart';
 import '../../../../../../../widgets/app_text.dart';
-import '../../../../../trip/data/models/trip_model.dart';
 import '../../../../data/models/message_model.dart';
 
 class MessageBubbleDesign extends StatelessWidget {

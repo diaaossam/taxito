@@ -2,12 +2,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:taxito/config/environment/environment_helper.dart' as env;
 import 'package:uuid/uuid.dart';
+import '../../../../../core/data/models/main_location_data.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../app/data/models/generic_model.dart';
 import '../models/location_details_model.dart';
-import '../models/main_location_data.dart';
 import '../models/suggestion_model.dart';
 
 abstract class LocationRemoteDataSource {

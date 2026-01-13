@@ -81,7 +81,7 @@ class InfoCardDesign extends StatelessWidget {
             ),
             InkWell(
               onTap: () => context.navigateTo(
-                RegisterScreen(
+                DriverRegisterScreen(
                   isUpdate: true,
                   phone: UserDataService().getUserData()?.phone ?? "",
                 ),

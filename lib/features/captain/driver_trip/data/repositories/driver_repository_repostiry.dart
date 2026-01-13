@@ -2,11 +2,11 @@ import 'package:taxito/core/enum/trip_status_enum.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../domain/repositories/driver_repository.dart';
 import '../datasources/driver_trip_remote_data_source.dart';
-import '../models/trip_model.dart';
 
 @Injectable(as: DriverTripRepository)
 class DriverRepositoryRepository implements DriverTripRepository {

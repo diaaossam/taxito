@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../models/trip_model.dart';
 
 abstract class DriverTripRemoteDataSource {
   Future<ApiSuccessResponse> getTripById({required num id});

@@ -12,10 +12,10 @@ import '../../../location/presentation/cubit/governorate/governorate_bloc.dart';
 import '../cubit/complete_register/complete_register_bloc.dart';
 import '../widgets/complete_register_body.dart';
 
-class RegisterScreen extends StatelessWidget {
+class SupplierRegisterScreen extends StatelessWidget {
   final bool isUpdate;
 
-  const RegisterScreen({super.key, required this.isUpdate});
+  const SupplierRegisterScreen({super.key, required this.isUpdate});
 
   @override
   Widget build(BuildContext context) {

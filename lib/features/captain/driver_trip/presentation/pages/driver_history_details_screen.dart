@@ -4,7 +4,7 @@ import 'package:taxito/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../data/models/trip_model.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../bloc/driver_history/trip_history_details_cubit.dart';
 
 class DriverHistoryDetailsScreen extends StatelessWidget {

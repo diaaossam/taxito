@@ -449,10 +449,10 @@ class S {
     );
   }
 
-  /// `Choose the service type you want to work with: taxi driver or delivery driver, and start your journey with Taxito`
+  /// `Choose the type of service you would like to work with (Taxi Driver, Delivery, User, or Service Provider), and start your journey with Taxito.`
   String get welcomeBody {
     return Intl.message(
-      'Choose the service type you want to work with: taxi driver or delivery driver, and start your journey with Taxito',
+      'Choose the type of service you would like to work with (Taxi Driver, Delivery, User, or Service Provider), and start your journey with Taxito.',
       name: 'welcomeBody',
       desc: '',
       args: [],

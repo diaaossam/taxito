@@ -20,6 +20,8 @@ class OtpParams {
     "otp_code": otp,
     "device_type": deviceType,
     "device_token": deviceToken,
-    "user_type": userType.name,
+    "user_type": userType == UserType.delivery
+        ? UserType.driver.name
+        : userType.name,
   };
 }

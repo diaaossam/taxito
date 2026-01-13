@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/app_text.dart';
-import '../../data/models/trip_model.dart';
 import 'comminucation_with_driver_widget.dart';
 import 'trip_info_widget.dart';
 
@@ -24,16 +24,17 @@ class TripLocationInfo extends StatelessWidget {
   final Function(void) onCallBack;
   final bool showDate;
 
-  const TripLocationInfo(
-      {super.key,
-      required this.tripModel,
-      this.onCancelTrip,
-      required this.showActions,
-      required this.onCallBack,
-      this.color,
-      required this.showDistance,
-      this.currentLocation,
-      this.showDate = false});
+  const TripLocationInfo({
+    super.key,
+    required this.tripModel,
+    this.onCancelTrip,
+    required this.showActions,
+    required this.onCallBack,
+    this.color,
+    required this.showDistance,
+    this.currentLocation,
+    this.showDate = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +43,12 @@ class TripLocationInfo extends StatelessWidget {
           ? const EdgeInsets.symmetric(vertical: 14, horizontal: 10)
           : null,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: showActions
-              ? Border.all(
-                  color: context.colorScheme.outline,
-                )
-              : null,
-          color: showActions ? context.colorScheme.onPrimary : null),
+        borderRadius: BorderRadius.circular(12),
+        border: showActions
+            ? Border.all(color: context.colorScheme.outline)
+            : null,
+        color: showActions ? context.colorScheme.onPrimary : null,
+      ),
       child: Column(
         children: [
           Row(
@@ -57,79 +57,80 @@ class TripLocationInfo extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: context.colorScheme.primary)),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: context.colorScheme.primary),
+                ),
                 child: CircleAvatar(
                   maxRadius: 30,
-                  backgroundImage:
-                      NetworkImage(tripModel.user?.profileImage ?? ""),
+                  backgroundImage: NetworkImage(
+                    tripModel.user?.profileImage ?? "",
+                  ),
                   onBackgroundImageError: (exception, stackTrace) =>
                       AssetImage(Assets.images.dummyUser.path),
                 ),
               ),
               10.horizontalSpace,
               Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: SizeConfig.bodyHeight * .01,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppText(
-                              text: tripModel.user?.name ?? "",
-                              fontWeight: FontWeight.w600,
-                              textSize: 13,
-                            ),
-                            if (showDistance && currentLocation != null) ...[
-                              8.verticalSpace,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: SizeConfig.bodyHeight * .01),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               AppText(
-                                text: "${context.localizations.distance1}  ${LocationManager.calculateDistance(tripModel.from!.latLng, currentLocation!)}  ${context.localizations.km}",
+                                text: tripModel.user?.name ?? "",
                                 fontWeight: FontWeight.w600,
-                                textSize: 12,
-                                color: context.colorScheme.shadow,
+                                textSize: 13,
                               ),
+                              if (showDistance && currentLocation != null) ...[
+                                8.verticalSpace,
+                                AppText(
+                                  text:
+                                      "${context.localizations.distance1}  ${LocationManager.calculateDistance(tripModel.from!.latLng, currentLocation!)}  ${context.localizations.km}",
+                                  fontWeight: FontWeight.w600,
+                                  textSize: 12,
+                                  color: context.colorScheme.shadow,
+                                ),
+                              ],
+                              if (showDate && tripModel.createdAt != null) ...[
+                                8.verticalSpace,
+                                AppText(
+                                  text:
+                                      "${DateFormat.yMd().format(tripModel.createdAt!)} - ${DateFormat.jm().format(tripModel.createdAt!)}",
+                                  fontWeight: FontWeight.w600,
+                                  textSize: 12,
+                                  color: context.colorScheme.shadow,
+                                ),
+                              ],
                             ],
-                            if (showDate && tripModel.createdAt != null) ...[
-                              8.verticalSpace,
-                              AppText(
-                                text: "${DateFormat.yMd().format(tripModel.createdAt!)} - ${DateFormat.jm().format(tripModel.createdAt!)}",
-                                fontWeight: FontWeight.w600,
-                                textSize: 12,
-                                color: context.colorScheme.shadow,
-                              ),
-                            ],
-                          ],
+                          ),
                         ),
-                      ),
-                      if (showActions) ...{
-                        10.verticalSpace,
-                        ComminucationWithDriverWidget(
-                          tripModel: tripModel,
-                          onCallBack: onCallBack,
-                        ),
-                      },
+                        if (showActions) ...{
+                          10.verticalSpace,
+                          ComminucationWithDriverWidget(
+                            tripModel: tripModel,
+                            onCallBack: onCallBack,
+                          ),
+                        },
+                      ],
+                    ),
+                    TripInfoWidget(tripModel: tripModel),
+                    if (onCancelTrip != null) ...[
+                      20.verticalSpace,
+                      TripTimerDesign(callBack: onCancelTrip ?? (value) {}),
                     ],
-                  ),
-                  TripInfoWidget(
-                    tripModel: tripModel,
-                  ),
-                  if (onCancelTrip != null) ...[
-                    20.verticalSpace,
-                    TripTimerDesign(callBack: onCancelTrip ?? (value) {}),
+                    10.verticalSpace,
                   ],
-                  10.verticalSpace,
-                ],
-              )),
+                ),
+              ),
             ],
           ),
           TripDistanceInfo(

@@ -13,7 +13,7 @@ import 'package:taxito/features/user/trip/presentation/bloc/trip_info/trip_state
 import '../../../../../../core/services/location/map_helper.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../gen/assets.gen.dart';
-import '../../../../location/data/models/response/main_location_data.dart';
+import '../../../../../../core/data/models/main_location_data.dart';
 import '../../../../location/domain/usecases/get_details_by_latlng_use_case.dart';
 
 @Injectable()

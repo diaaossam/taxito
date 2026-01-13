@@ -1,6 +1,5 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/utils/app_constant.dart';
-import 'package:taxito/features/user/trip/data/models/trip_model.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:taxito/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/data/models/trip_model.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/custom_text_form_field.dart';
 import '../../domain/entities/review_trip_params.dart';

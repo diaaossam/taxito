@@ -11,22 +11,33 @@ class BackArrowWidget extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? color;
 
-  const BackArrowWidget(
-      {super.key, this.callback, this.padding, this.margin, this.color});
+  const BackArrowWidget({
+    super.key,
+    this.callback,
+    this.padding,
+    this.margin,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: callback ?? () => Navigator.pop(context),
+      onTap:
+          callback ??
+          () => Navigator.canPop(context) ? Navigator.pop(context) : null,
       child: Container(
         decoration: BoxDecoration(
-            color: context.colorScheme.surface,
-            shape: BoxShape.circle,
-            border: Border.all(color: context.colorScheme.outline)),
+          color: context.colorScheme.surface,
+          shape: BoxShape.circle,
+          border: Border.all(color: context.colorScheme.outline),
+        ),
         padding: padding ?? const EdgeInsets.all(8),
-        margin: margin ??
+        margin:
+            margin ??
             EdgeInsetsDirectional.symmetric(
-                horizontal: SizeConfig.bodyHeight * .02, vertical: 5),
+              horizontal: SizeConfig.bodyHeight * .02,
+              vertical: 5,
+            ),
         child: Rotate(
           child: SvgPicture.asset(
             Assets.icons.arrowBack,

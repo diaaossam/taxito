@@ -44,8 +44,7 @@ class _RegisterBodyState extends State<RegisterBody> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isUpdate =
-        UserDataService().getUserData()?.isProfileCompleted == 1;
+    final bool isUpdate = UserDataService().getUserData()?.isProfileCompleted == 1;
     return Padding(
       padding: screenPadding(),
       child: FormBuilder(
@@ -202,6 +201,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                       return;
                     }
                     RegisterParams params = RegisterParams(
+                      userTypeEnum: UserType.user,
                       name: _formKey.fieldValue("name"),
                       phone: widget.phone ?? _formKey.fieldValue("phone"),
                       email: _formKey.fieldValue("email"),

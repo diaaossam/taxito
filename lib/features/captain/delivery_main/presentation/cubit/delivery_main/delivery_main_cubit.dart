@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../../../core/data/models/trip_model.dart';
 import '../../../../auth/domain/usecases/update_fcm_use_case.dart';
-import '../../../../driver_trip/data/models/trip_model.dart';
-
 part 'delivery_main_state.dart';
 
 @Injectable()

@@ -10,13 +10,12 @@ import '../../../../../core/utils/app_constant.dart';
 import '../../../settings/settings_helper.dart';
 import '../cubit/complete_register/complete_register_bloc.dart';
 import '../widgets/complete_register_pages/complete_register_body.dart';
-import 'login_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
+class DriverRegisterScreen extends StatelessWidget {
   final bool isUpdate;
   final String phone;
 
-  const RegisterScreen({
+  const DriverRegisterScreen({
     super.key,
     required this.isUpdate,
     required this.phone,
@@ -70,7 +69,7 @@ class RegisterScreen extends StatelessWidget {
                   : context.localizations.createNewAccount,
             ),
           ],
-          body: CompleteRegisterBody(isUpdate: isUpdate),
+          body: DriverCompleteRegisterBody(isUpdate: isUpdate),
         ),
       ),
     );
