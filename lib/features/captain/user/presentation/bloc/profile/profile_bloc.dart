@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter/material.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 import 'package:taxito/features/captain/auth/domain/usecases/get_user_data_use_case.dart';
 import 'profile_state.dart';
 

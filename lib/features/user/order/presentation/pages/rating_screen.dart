@@ -1,7 +1,7 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/extensions/widget_ext.dart';
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 import 'package:taxito/widgets/custom_app_bar.dart';
 import 'package:taxito/widgets/custom_button.dart';
 import 'package:flutter/material.dart';

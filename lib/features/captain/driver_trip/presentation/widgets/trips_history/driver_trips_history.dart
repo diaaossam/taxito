@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/loading/loading_widget.dart';
 import '../../bloc/trip_history/trip_history_cubit.dart';

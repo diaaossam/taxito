@@ -5,7 +5,7 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/features/captain/driver_trip/presentation/widgets/trips_history/rating_bar_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/app_text.dart';
 import '../../pages/driver_history_details_screen.dart';

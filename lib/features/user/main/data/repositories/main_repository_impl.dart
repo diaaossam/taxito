@@ -32,16 +32,6 @@ class MainRepositoryImpl implements MainRepository {
   }
 
   @override
-  Future<Either<Failure, ApiSuccessResponse>> getProductsBrandUseCase() async {
-    try {
-      final response = await mainRemoteDataSource.getProductsBrandUseCase();
-      return right(response);
-    } catch (error) {
-      return left(ServerFailure(msg: error.toString()));
-    }
-  }
-
-  @override
   Future<Either<Failure, ApiSuccessResponse>> updateDeviceToken() async {
     try {
       final response = await mainRemoteDataSource.updateDeviceToken();

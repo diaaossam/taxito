@@ -7,8 +7,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../../../../../../../../core/utils/app_constant.dart';
 import '../../../../../../../../core/utils/app_size.dart';
 import '../../../../../../../../widgets/custom_button.dart';
-import '../../../../../../../../core/data/models/user_model_helper.dart';
-import 'package:taxito/core/data/models/register_params.dart';
+import '../../../../../../../common/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 import '../../../../cubit/complete_register/complete_register_bloc.dart';
 import '../../../../pages/waiting_for_review_screen.dart';
 

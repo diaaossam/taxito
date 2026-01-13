@@ -5,8 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:taxito/config/environment/environment_helper.dart' as env;
-import 'package:taxito/core/data/models/user_model_helper.dart';
-import 'package:taxito/core/data/models/user_type_helper.dart';
+import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/core/enum/user_type.dart';
 
 @lazySingleton

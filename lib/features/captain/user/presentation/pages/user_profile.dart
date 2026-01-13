@@ -1,10 +1,11 @@
-import 'package:taxito/core/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/config/dependencies/injectable_dependencies.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_bloc.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/profile/profile_state.dart';
 import 'package:taxito/features/captain/user/presentation/widgets/user_profile/user_profile.dart';
+
+import '../../../../common/models/user_model.dart';
 
 class UserProfileScreen extends StatelessWidget {
   final UserModel? userModel;

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';

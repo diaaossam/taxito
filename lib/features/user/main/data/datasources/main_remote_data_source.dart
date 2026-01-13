@@ -10,8 +10,6 @@ abstract class MainRemoteDataSource {
 
   Future<ApiSuccessResponse> getMainCategories();
 
-  Future<ApiSuccessResponse> getProductsBrandUseCase();
-
   Future<ApiSuccessResponse> updateDeviceToken();
 }
 
@@ -33,15 +31,6 @@ class MainRemoteDataSourceImpl implements MainRemoteDataSource {
   @override
   Future<ApiSuccessResponse> getMainCategories() async {
     final response = await dioConsumer.get(path: EndPoints.categories);
-    final res = response['data'].map<BannersModel>((element) {
-      return BannersModel.fromJson(element);
-    }).toList();
-    return ApiSuccessResponse(data: res as List<BannersModel>);
-  }
-
-  @override
-  Future<ApiSuccessResponse> getProductsBrandUseCase() async {
-    final response = await dioConsumer.get(path: EndPoints.brands);
     final res = response['data'].map<BannersModel>((element) {
       return BannersModel.fromJson(element);
     }).toList();

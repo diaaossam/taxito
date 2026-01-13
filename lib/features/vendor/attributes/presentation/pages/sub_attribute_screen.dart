@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../../../product/data/models/request/add_product_params.dart';
 import '../../../product/presentation/cubit/product_cubit.dart';
 import '../cubit/sub_attribute/sub_attributes_cubit.dart';

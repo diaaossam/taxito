@@ -1,11 +1,11 @@
-import 'package:taxito/core/data/models/user_model_helper.dart';
-import 'package:taxito/core/data/models/user_type_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/core/services/network/dio_consumer.dart';
 import 'package:taxito/core/services/network/end_points.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../models/request/delivery_order_params.dart';
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 import '../models/response/statics_model.dart';
 
 abstract class DeliveryRemoteDataSource {

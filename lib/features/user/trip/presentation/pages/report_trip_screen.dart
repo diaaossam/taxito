@@ -3,7 +3,7 @@ import 'package:taxito/features/user/trip/trip_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/utils/app_constant.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/custom_app_bar.dart';

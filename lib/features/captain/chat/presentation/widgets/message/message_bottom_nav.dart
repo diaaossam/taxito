@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/utils/app_size.dart';
 import 'custom_chat_text_form_field.dart';
 import 'text/send_chat_button.dart';

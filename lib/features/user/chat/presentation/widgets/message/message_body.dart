@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/custom_app_bar.dart';

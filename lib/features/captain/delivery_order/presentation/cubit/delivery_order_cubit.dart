@@ -1,7 +1,7 @@
 import 'package:taxito/core/enum/choose_enum.dart';
 import 'package:taxito/features/captain/delivery_order/data/models/request/delivery_order_params.dart';
 import 'package:taxito/core/enum/order_type.dart';
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 import 'package:taxito/features/captain/delivery_order/domain/usecases/get_all_delivery_orders_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

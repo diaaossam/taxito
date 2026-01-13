@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../../../../core/data/models/main_location_data.dart';
+import '../../../../../common/models/main_location_data.dart';
 
 abstract class TripState extends Equatable {
   const TripState();

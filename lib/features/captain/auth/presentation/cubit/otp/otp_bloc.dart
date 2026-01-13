@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 
 import '../../../../../../config/helper/device_helper.dart';
 import '../../../data/models/request/otp_params.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 import '../../../domain/usecases/resend_otp_use_case.dart';
 import '../../../domain/usecases/verify_otp_use_case.dart';
 

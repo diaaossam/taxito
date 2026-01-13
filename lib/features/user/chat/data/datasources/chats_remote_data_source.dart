@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../entities/send_chat_params.dart';

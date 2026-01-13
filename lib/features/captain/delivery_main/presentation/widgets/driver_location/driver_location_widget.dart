@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../widgets/app_failure.dart';

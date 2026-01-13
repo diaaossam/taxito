@@ -2,7 +2,7 @@ import 'package:taxito/core/services/network/dio_consumer.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../models/request/product_params.dart';
 import '../models/request/add_product_params.dart';
 import '../models/response/review_model.dart';

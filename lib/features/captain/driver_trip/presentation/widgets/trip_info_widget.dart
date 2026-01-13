@@ -2,7 +2,7 @@ import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';
 import '../../../../../widgets/image_picker/app_image.dart';

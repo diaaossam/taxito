@@ -1,4 +1,4 @@
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

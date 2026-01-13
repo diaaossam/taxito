@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:taxito/core/data/models/register_params.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 import 'package:taxito/features/user/auth/domain/usecases/delete_account_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';

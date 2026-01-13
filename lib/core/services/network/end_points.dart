@@ -1,5 +1,7 @@
 import 'package:taxito/core/enum/user_type.dart';
 
+import '../../../features/common/models/user_type_helper.dart';
+
 class EndPoints {
   ///////// Auth ////////////////////////
 
@@ -11,24 +13,19 @@ class EndPoints {
       "https://api.mapbox.com/geocoding/v5/mapbox.places";
   static const String profile = "profile/me";
 
-  static String getUserByUid(String ulid) => 'auth/user/$ulid';
   static const String endTrip = "driver/end-trip/";
-  static const String governorates = "provinces";
 
   static const String loginUser = "auth/login";
-  static const String socialLogin = "auth/social";
   static const String cancelTrip = "driver/cancel-trip/";
   static const String toggleAvailabilty = "driver/availability";
   static const String driverAcceptPayment = "driver/accept-payment-request/";
   static const String updateDriverLocation = "driver/current-location";
-  static const String orders = "driver/orders";
+  static final String orders = "${currentUser()}orders";
   static const String pendingOrders = "driver/pending-orders";
 
   static const String verifyUser = "auth/verify-otp";
   static const String acceptTrip = "driver/accept-trip";
   static const String rejectTrip = "driver/reject-trip";
-
-  static updateUserRegister(String ulid) => "auth/update/$ulid";
   static String logOut = "profile/logout";
   static String deleteUser = "profile/delete-account";
 
@@ -40,9 +37,6 @@ class EndPoints {
   static deleteImage(String uid) => "profile/delete-image$uid";
   static const String sliders = "banners";
   static const String categories = "supplier-categories";
-  static const String brands = "brands";
-  static const String skinProblem = "skin-problems";
-
   static const String provinces = "provinces";
   static const String region = "regions";
 
@@ -57,13 +51,8 @@ class EndPoints {
       userType == UserType.supplier ? "supplier/profile" : "driver/profile";
 
   //////////////////// Users /////////////////////////////
-  static user(String userId) => 'users/$userId';
   static const String language = "profile/language";
-  static const String explore = "explore";
   static const String deletionReasons = "deletion-reasons";
-
-  static const String block = "blocklists";
-  static const String report = "report-types";
 
   static pages(String id) => "pages/$id";
   static const String faqQuestions = "faq-questions";
@@ -78,18 +67,18 @@ class EndPoints {
       ? "supplier/statistics"
       : "driver/statistics";
   static String acceptOrder = "driver/accept-order";
-  static String rejectOrder = "driver/reject-order";
+  static String rejectOrder = "${currentUser()}reject-order";
   static const String pendingTrips = "driver/current-trip";
   static const String supportChat = "support-chat";
-
-  static const String supplierAcceptPayment =
-      "supplier/accept-payment-request/";
 
   //////////////////// Trip ///////////////////////
   static const String supplierCategories = "supplier-categories";
   static const String supplierCategoriesV2 = "supplier/categories";
   static const String supplierAttributes = "supplier/attributes";
-  static const String products = "supplier/products";
+  static final String products =
+      UserTypeService().getUserType() == UserType.supplier
+      ? "supplier/products"
+      : "home";
 
   ///////// Auth ////////////////////////
 
@@ -112,9 +101,7 @@ class EndPoints {
   static const String currentWallet = "user/current-wallet";
 
   //////////////////// Trip ///////////////////////
-  static const String tripPrice = "user/get-trip-price";
   static const String sendPaymentRequestToDriver = "user/pay-trip";
-  static const String tripTypes = "trip-types";
   static const String userTrips = "user/trips";
 
   static String cancelUserTrip(num id) => "user/trips/$id/cancel";
@@ -128,4 +115,19 @@ class EndPoints {
   static String chatMessage = "user/chats";
   static String searchForDriver = "user/search-for-drivers/";
   static String checkProduct = "user/check-products";
+}
+
+String currentUser() {
+  switch (UserTypeService().getUserType()) {
+    case null:
+      return "";
+    case UserType.user:
+      return "user/";
+    case UserType.supplier:
+      return "supplier/";
+    case UserType.driver:
+      return "driver/";
+    case UserType.delivery:
+      return "driver/";
+  }
 }

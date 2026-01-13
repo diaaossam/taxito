@@ -1,8 +1,8 @@
 import 'package:taxito/core/enum/order_type.dart';
 import 'package:taxito/core/enum/payment_type.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 import 'package:taxito/features/captain/delivery_order/data/models/response/my_address.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 
 class Orders {
   Orders({

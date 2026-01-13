@@ -7,7 +7,7 @@ import 'package:taxito/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 
 class MyPointsDialog extends StatelessWidget {
   const MyPointsDialog({super.key});

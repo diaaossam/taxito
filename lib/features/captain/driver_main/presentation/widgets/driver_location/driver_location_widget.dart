@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../widgets/app_failure.dart';
 import '../../../../../../widgets/loading/loading_widget.dart';
-import '../../../../../../core/data/models/user_model_helper.dart';
+import '../../../../../common/models/user_model_helper.dart';
 import '../../../../location/presentation/cubit/driver_location/driver_location_cubit.dart';
 import '../../cubit/driver_home/driver_home_cubit.dart';
 import '../driver_main_layout/driver_home_actions.dart';

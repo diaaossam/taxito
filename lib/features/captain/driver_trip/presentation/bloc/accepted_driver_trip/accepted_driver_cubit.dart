@@ -3,7 +3,7 @@ import 'package:taxito/core/enum/payment_type.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../../core/services/socket/socket.dart';
 import '../../../../location/domain/usecases/update_driver_location_use_case.dart';

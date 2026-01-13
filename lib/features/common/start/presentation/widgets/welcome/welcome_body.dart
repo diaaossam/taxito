@@ -1,4 +1,4 @@
-import 'package:taxito/core/data/models/user_type_helper.dart';
+import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';

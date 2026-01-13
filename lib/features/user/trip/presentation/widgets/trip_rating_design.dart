@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/custom_text_form_field.dart';
 import '../../domain/entities/review_trip_params.dart';

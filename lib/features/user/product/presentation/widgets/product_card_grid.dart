@@ -15,7 +15,7 @@ import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../pages/product_details.dart';
 
 class ProductCardGrid extends StatefulWidget {

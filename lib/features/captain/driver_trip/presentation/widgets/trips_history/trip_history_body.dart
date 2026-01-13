@@ -3,7 +3,7 @@ import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/enum/payment_type.dart';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/app_text.dart';

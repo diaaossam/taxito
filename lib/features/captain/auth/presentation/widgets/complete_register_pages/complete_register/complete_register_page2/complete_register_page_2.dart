@@ -1,6 +1,6 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
-import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
 import 'package:taxito/features/captain/auth/presentation/cubit/complete_register/complete_register_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../../../../../../core/utils/app_size.dart';
 import '../../../../../../../../widgets/custom_button.dart';
 import '../../../../../../../../widgets/custom_text_form_field.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 import '../../../id_photo_picker.dart';
 import 'complete_register_button.dart';
 

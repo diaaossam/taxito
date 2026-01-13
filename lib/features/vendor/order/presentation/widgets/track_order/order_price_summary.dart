@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/app_text.dart';
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 
 class OrderPriceSummary extends StatelessWidget {
   final Orders orders;

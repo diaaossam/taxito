@@ -4,10 +4,10 @@ import 'package:taxito/core/services/network/end_points.dart';
 import 'package:taxito/features/captain/delivery_order/data/models/response/statics_model.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/data/models/user_type_helper.dart';
+import '../../../../common/models/user_type_helper.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../models/request/delivery_order_params.dart';
-import 'package:taxito/core/data/models/orders.dart';
+import 'package:taxito/features/common/models/orders.dart';
 
 abstract class DeliveryRemoteDataSource {
   Future<ApiSuccessResponse> getDeliveryOrder({required DeliveryParams params});

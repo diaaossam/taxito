@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/internet_checker/netwok_info.dart';
 import '../../../../../core/services/network/success_response.dart';

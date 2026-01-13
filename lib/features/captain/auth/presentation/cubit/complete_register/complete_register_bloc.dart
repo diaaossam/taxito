@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 
-import 'package:taxito/core/data/models/register_params.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 import '../../../domain/usecases/register_user_use_case.dart';
 
 part 'complete_register_event.dart';

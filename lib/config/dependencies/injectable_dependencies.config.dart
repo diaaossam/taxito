@@ -326,8 +326,6 @@ import '../../features/user/main/domain/repositories/main_repository.dart'
     as _i523;
 import '../../features/user/main/domain/usecases/get_banners_use_case.dart'
     as _i609;
-import '../../features/user/main/domain/usecases/get_brand_use_case.dart'
-    as _i31;
 import '../../features/user/main/domain/usecases/get_main_category_use_case.dart'
     as _i45;
 import '../../features/user/main/domain/usecases/update_device_token.dart'
@@ -580,8 +578,6 @@ import '../../features/vendor/main/domain/repositories/main_repository.dart'
     as _i547;
 import '../../features/vendor/main/domain/usecases/toggle_availability_use_case.dart'
     as _i239;
-import '../../features/vendor/main/presentation/cubit/availitiablity/availitiablity_cubit.dart'
-    as _i1033;
 import '../../features/vendor/main/presentation/cubit/delivery_main/delivery_main_cubit.dart'
     as _i288;
 import '../../features/vendor/order/data/datasources/delivery_remote_data_source.dart'
@@ -1455,9 +1451,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i609.GetBannersUseCase>(
       () => _i609.GetBannersUseCase(mainRepository: gh<_i523.MainRepository>()),
     );
-    gh.lazySingleton<_i31.GetBrandUseCase>(
-      () => _i31.GetBrandUseCase(mainRepository: gh<_i523.MainRepository>()),
-    );
     gh.lazySingleton<_i45.GetMainCategoryUseCase>(
       () => _i45.GetMainCategoryUseCase(
         mainRepository: gh<_i523.MainRepository>(),
@@ -1625,9 +1618,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i333.GetGovernoratesUseCase>(),
         gh<_i230.GetRegionUseCase>(),
       ),
-    );
-    gh.factory<_i1033.AvailitiablityCubit>(
-      () => _i1033.AvailitiablityCubit(gh<_i239.ToggleAvailabilityUseCase>()),
     );
     gh.factory<_i181.AcceptedUserTripCubit>(
       () => _i181.AcceptedUserTripCubit(

@@ -7,7 +7,7 @@ import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../widgets/app_drop_down.dart';
 import '../../../../../widgets/app_text.dart';
 import '../../../location/presentation/cubit/governorate/governorate_bloc.dart';
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 
 class GovernorateWidget extends StatelessWidget {
   final bool showLabel;

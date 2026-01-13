@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:taxito/core/services/network/error/failures.dart';
 import 'package:taxito/core/services/network/success_response.dart';
 import 'package:taxito/features/captain/auth/data/models/request/otp_params.dart';
-import 'package:taxito/core/data/models/register_params.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 
 import '../../data/models/request/login_params.dart';
 

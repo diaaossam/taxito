@@ -16,7 +16,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../attributes/presentation/widgets/attribute_actions_modal.dart';
 import '../../../attributes/presentation/widgets/delete_confirmation_modal.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../cubit/product_cubit.dart';
 import '../pages/add_product_screen.dart';
 

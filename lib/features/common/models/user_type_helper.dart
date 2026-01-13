@@ -5,7 +5,7 @@ import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/user_bloc.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 
 class UserTypeService {
   static final UserTypeService _instance = UserTypeService._internal();

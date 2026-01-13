@@ -1,5 +1,5 @@
 import 'package:taxito/core/enum/payment_type.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 
 class CartModel {
   CartModel(

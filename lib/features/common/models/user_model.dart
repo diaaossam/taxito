@@ -1,4 +1,4 @@
-import 'package:taxito/core/data/models/trip_model.dart';
+import 'package:taxito/features/common/models/trip_model.dart';
 import 'package:taxito/core/enum/choose_enum.dart';
 import 'package:taxito/core/enum/gender.dart';
 import 'package:taxito/core/enum/user_type.dart';

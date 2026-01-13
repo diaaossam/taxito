@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 import '../../../../../core/utils/api_config.dart';
 import '../../../../../gen/assets.gen.dart';
 import '../../../../../widgets/app_text.dart';

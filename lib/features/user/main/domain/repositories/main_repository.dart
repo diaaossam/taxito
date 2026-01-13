@@ -6,7 +6,5 @@ abstract class MainRepository {
   Future<Either<Failure, ApiSuccessResponse>> getAllBanners();
 
   Future<Either<Failure, ApiSuccessResponse>> getMainCategories();
-
-  Future<Either<Failure, ApiSuccessResponse>> getProductsBrandUseCase();
   Future<Either<Failure, ApiSuccessResponse>> updateDeviceToken();
 }

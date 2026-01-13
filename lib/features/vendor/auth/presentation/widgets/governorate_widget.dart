@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 import '../../../../../core/extensions/app_localizations_extension.dart';
 import '../../../../../widgets/app_drop_down.dart';
 import '../../../../../widgets/app_text.dart';

@@ -6,7 +6,7 @@ import 'package:taxito/features/user/trip/domain/entities/review_trip_params.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/utils/app_constant.dart';
 import '../../../../../../core/utils/app_size.dart';
 import '../../../../../../widgets/app_text.dart';

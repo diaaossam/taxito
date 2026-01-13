@@ -2,7 +2,7 @@ import 'package:taxito/core/utils/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../core/data/models/trip_model.dart';
+import '../../../../common/models/trip_model.dart';
 import '../../../../../core/enum/trip_status_enum.dart';
 import '../bloc/trip/trip_cubit.dart';
 import 'accepted_driver_trip_design.dart';

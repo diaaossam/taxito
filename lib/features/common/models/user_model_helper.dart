@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/features/captain/user/presentation/bloc/user_bloc.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 
 class UserDataService {
   static final UserDataService _instance = UserDataService._internal();

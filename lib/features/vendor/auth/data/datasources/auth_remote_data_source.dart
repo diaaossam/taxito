@@ -3,13 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../config/helper/device_helper.dart';
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../../captain/app/data/models/generic_model.dart';
-import 'package:taxito/core/data/models/register_params.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/register_params.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<ApiSuccessResponse> registerUser({

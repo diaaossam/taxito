@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../../../../../../config/dependencies/injectable_dependencies.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../bloc/trip_actions_cubit.dart';
 import '../../bloc/trip_history/trip_history_cubit.dart';
 import '../../pages/driver_history_details_screen.dart';

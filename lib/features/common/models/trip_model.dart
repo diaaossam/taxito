@@ -1,9 +1,9 @@
-import 'package:taxito/core/data/models/rate_model.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/rate_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 
-import '../../../features/captain/app/data/models/generic_model.dart';
-import '../../enum/payment_type.dart';
-import '../../enum/trip_status_enum.dart';
+import '../../captain/app/data/models/generic_model.dart';
+import '../../../core/enum/payment_type.dart';
+import '../../../core/enum/trip_status_enum.dart';
 import 'main_location_data.dart';
 
 class TripModel {

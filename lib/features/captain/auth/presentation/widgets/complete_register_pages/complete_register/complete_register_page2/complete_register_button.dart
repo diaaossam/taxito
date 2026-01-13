@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/validitor_extention.dart';
-import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../../../../../../../core/utils/app_constant.dart';
 import '../../../../../../../../widgets/custom_button.dart';
-import 'package:taxito/core/data/models/register_params.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 import '../../../../cubit/complete_register/complete_register_bloc.dart';
 
 class CompleteRegisterButton extends StatelessWidget {

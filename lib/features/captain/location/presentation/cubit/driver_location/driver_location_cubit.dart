@@ -6,12 +6,12 @@ import 'package:geolocator/geolocator.dart' as geo;
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../../core/data/models/trip_model.dart';
+import '../../../../../common/models/trip_model.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../core/services/location/location_permission_service.dart';
 import '../../../../../../core/services/location/polyline_helper.dart';
 import '../../../../../../core/services/socket/socket.dart';
-import '../../../../../../core/data/models/user_model_helper.dart';
+import '../../../../../common/models/user_model_helper.dart';
 import '../../../domain/usecases/update_driver_location_use_case.dart';
 
 @Injectable()

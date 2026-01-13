@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-import '../../../core/data/models/trip_model.dart';
+import '../../common/models/trip_model.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../widgets/image_picker/app_image.dart';
-import '../../../core/data/models/main_location_data.dart';
+import '../../common/models/main_location_data.dart';
 import 'presentation/widgets/rate_driver_page/pending_user_payment_dialog.dart';
 import 'presentation/widgets/rate_driver_page/rating_success_dialog.dart';
 

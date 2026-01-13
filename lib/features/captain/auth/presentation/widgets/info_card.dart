@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/app_text.dart';
 import '../../../user/presentation/bloc/user_bloc.dart';
-import '../../../../../core/data/models/user_model_helper.dart';
+import '../../../../common/models/user_model_helper.dart';
 import '../pages/driver_register.dart';
 
 class InfoCardDesign extends StatelessWidget {

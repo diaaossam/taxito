@@ -1,7 +1,7 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/sliver_padding.dart';
-import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +9,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../../../../../../core/utils/app_size.dart';
 import '../../../../../../../../widgets/app_text.dart';
 import '../../../../../../../../widgets/loading/loading_widget.dart';
-import 'package:taxito/core/data/models/user_model.dart';
+import 'package:taxito/features/common/models/user_model.dart';
 import '../../../id_photo_picker.dart';
 import 'complete_register3_button.dart';
 import 'vehicle_image/images_list_design.dart';

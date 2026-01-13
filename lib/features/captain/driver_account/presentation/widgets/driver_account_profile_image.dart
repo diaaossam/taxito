@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:taxito/core/data/models/user_model_helper.dart';
+import 'package:taxito/features/common/models/user_model_helper.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';

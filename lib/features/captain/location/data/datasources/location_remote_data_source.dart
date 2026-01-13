@@ -2,7 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:taxito/config/environment/environment_helper.dart' as env;
 import 'package:uuid/uuid.dart';
-import '../../../../../core/data/models/main_location_data.dart';
+import '../../../../common/models/main_location_data.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
 import '../../../../../core/services/network/success_response.dart';
@@ -76,7 +76,7 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> getGovernorates() async {
-    final response = await dioConsumer.get(path: EndPoints.governorates);
+    final response = await dioConsumer.get(path: EndPoints.provinces);
     final List<GenericModel> list = response['data']
         .map<GenericModel>((element) => GenericModel.fromJson(element))
         .toList();

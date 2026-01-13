@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/services/network/error/failures.dart';
 import '../../../../../core/services/network/success_response.dart';
-import 'package:taxito/core/data/models/register_params.dart';
+import 'package:taxito/features/common/models/register_params.dart';
 import '../repositories/auth_repository.dart';
 
 @Injectable()

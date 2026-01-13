@@ -12,7 +12,7 @@ import 'dart:io';
 import '../../../../../../gen/assets.gen.dart';
 import '../../../../../../widgets/app_text.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../../../../product/data/models/request/add_product_params.dart';
 import '../../../../product/presentation/cubit/product_cubit.dart';
 import '../../../data/models/attribute_model.dart';

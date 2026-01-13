@@ -7,7 +7,7 @@ import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 
 import '../../../main/presentation/pages/statics_info_design.dart';
-import 'package:taxito/core/data/models/product_model.dart';
+import 'package:taxito/features/common/models/product_model.dart';
 import '../pages/reviews_screen.dart';
 
 class ProductItem extends StatelessWidget {

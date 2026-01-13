@@ -7,7 +7,7 @@ import '../../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../../core/bloc/socket/socket_cubit.dart';
 import '../../../../../../core/enum/choose_enum.dart';
 import '../../../../../../widgets/app_text.dart';
-import '../../../../../../core/data/models/user_model_helper.dart';
+import '../../../../../common/models/user_model_helper.dart';
 import '../../cubit/availitiablity/availitiablity_cubit.dart';
 
 class DriverToggleButton extends StatefulWidget {

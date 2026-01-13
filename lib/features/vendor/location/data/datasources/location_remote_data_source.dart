@@ -21,7 +21,7 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
 
   @override
   Future<ApiSuccessResponse> getGovernorates() async {
-    final response = await dioConsumer.get(path: EndPoints.governorates);
+    final response = await dioConsumer.get(path: EndPoints.provinces);
     final List<GenericModel> list = response['data']
         .map<GenericModel>((element) => GenericModel.fromJson(element))
         .toList();

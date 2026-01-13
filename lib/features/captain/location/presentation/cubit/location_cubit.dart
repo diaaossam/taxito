@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/data/models/main_location_data.dart';
+import '../../../../common/models/main_location_data.dart';
 import '../../data/models/saved_location_model.dart';
 import '../../data/models/suggestion_model.dart';
 import '../../domain/usecases/get_place_details_by_place_id_use_case.dart';
