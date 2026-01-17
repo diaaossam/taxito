@@ -33,7 +33,6 @@ class DeliveryOrderCubit extends Cubit<DeliveryOrderState> {
     if (isAvailable == ChooseEnum.yes) {
       print("🔌 Listening to trip requests...");
       socketService.onEvent("new-trip", (data) async {
-        Logger().w("---------=-==-${data}");
         if (data["sourceType"] == "order") {
           if (_isHandlingTrip) return;
           _isHandlingTrip = true;
