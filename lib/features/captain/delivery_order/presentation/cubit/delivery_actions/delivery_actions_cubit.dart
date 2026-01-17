@@ -103,7 +103,7 @@ class DeliveryActionsCubit extends Cubit<DeliveryActionsState> {
     print("✅ Order $orderId rejected manually");
   }
 
-  Future<void> updateOrder({String? status, required num id}) async {
+  Future<void> updateOrder({String? status, required num id ,required }) async {
     emit(UpdateOrderLoading());
     Either<Failure, ApiSuccessResponse> response;
     if (status == null) {
@@ -151,9 +151,11 @@ class DeliveryActionsCubit extends Cubit<DeliveryActionsState> {
     );
   }
 
+
+
+
   @override
   Future<void> close() {
-    // Cancel all active timers
     for (var timer in _pendingOrderTimers.values) {
       timer.cancel();
     }

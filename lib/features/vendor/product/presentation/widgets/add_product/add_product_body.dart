@@ -71,6 +71,8 @@ class _AddProductBodyState extends State<AddProductBody> {
   void _submitProduct() {
     if (_formKey.currentState?.saveAndValidate() ?? false) {
       final formData = _formKey.currentState!.value;
+      print("-------------");
+
 
       final params = AddProductParams(
         title: formData['name'],
@@ -181,6 +183,12 @@ class _AddProductBodyState extends State<AddProductBody> {
                       return MultiSelectDropdown(
                         initialSelectedItems: widget.productModel?.categories,
                         label: context.localizations.activityType,
+                        validator: (field) {
+                          if (field!.isEmpty) {
+                            return context.localizations.validation;
+                          }
+                          return null;
+                        },
                         items: bloc.categories,
                         onChanged: (selectedItems) {
                           field.didChange(
@@ -236,7 +244,6 @@ class _AddProductBodyState extends State<AddProductBody> {
                   );
                 },
               ),
-              SizedBox(height: SizeConfig.bodyHeight * .02),
               SizedBox(height: SizeConfig.bodyHeight * .02),
               _buildRadioGroup(
                 title: context.localizations.isAvailable,

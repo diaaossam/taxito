@@ -13,20 +13,34 @@ part 'orders_state.dart';
 class OrdersCubit extends Cubit<OrdersState> {
   final GetOrderListUseCase _getOrderListUseCase;
 
-  final PagingController<int, Orders> pagingControllerPending = PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerConfirmed = PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerInPrepareSupplier = PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerDonePrepare = PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerOutForDeleivery = PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerDelivered= PagingController(firstPageKey: 1);
-  final PagingController<int, Orders> pagingControllerCanceled = PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerAllProducts =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerPending =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerConfirmed =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerInPrepareSupplier =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerDonePrepare =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerOutForDeleivery =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerDelivered =
+      PagingController(firstPageKey: 1);
+  final PagingController<int, Orders> pagingControllerCanceled =
+      PagingController(firstPageKey: 1);
 
   OrdersCubit(this._getOrderListUseCase) : super(OrdersInitial());
 
-  Future<List<Orders>> fetchOrders(
-      {required int pageKey, required OrderType orderType}) async {
+  Future<List<Orders>> fetchOrders({
+    required int pageKey,
+    OrderType? orderType,
+  }) async {
     List<Orders> list = [];
-    final response = await _getOrderListUseCase(orderType: orderType, pageKey: pageKey);
+    final response = await _getOrderListUseCase(
+      orderType: orderType,
+      pageKey: pageKey,
+    );
     response.fold(
       (l) {
         list = [];
@@ -38,11 +52,16 @@ class OrdersCubit extends Cubit<OrdersState> {
     return list;
   }
 
-  Future<void> fetchPage(int pageKey, OrderType orderType,
-      PagingController<int, Orders> pagingController) async {
+  Future<void> fetchPage(
+    int pageKey,
+    OrderType? orderType,
+    PagingController<int, Orders> pagingController,
+  ) async {
     try {
-      final newItems =
-          await fetchOrders(pageKey: pageKey, orderType: orderType);
+      final newItems = await fetchOrders(
+        pageKey: pageKey,
+        orderType: orderType,
+      );
       final isLastPage = newItems.length < pageSize;
       if (isLastPage) {
         pagingController.appendLastPage(newItems);

@@ -18,8 +18,7 @@ class CopyWriteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible:
-          context.read<SettingsBloc>().settingsModel?.showCopyright == true,
+      visible: context.read<SettingsBloc>().settingsModel?.showCopyright == true,
       child: InkWell(
         onTap: () async => launchUrl(Uri.parse("https://jacksi.co.uk/")),
         child: Column(

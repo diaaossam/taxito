@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/dependencies/injectable_dependencies.dart';
+import '../../../../../core/utils/api_config.dart';
 import '../../../../../core/utils/app_constant.dart';
 import '../../../../../core/utils/app_size.dart';
 import 'package:taxito/features/common/models/product_model.dart';
+import '../../../../captain/settings/settings_helper.dart';
 import '../cubit/favourite/favourite_cubit.dart';
 import '../cubit/product_details/product_details_cubit.dart';
 import '../widgets/product_details/product_details_body.dart';
@@ -63,6 +65,10 @@ class ProductDetailsScreen extends StatelessWidget {
                   return LikeButtonDesign(
                     showBorder: true,
                     onTapped: (isLiked) {
+                      if(ApiConfig.isGuest == true){
+                        SettingsHelper().showGuestDialog(context);
+                        return false;
+                      }
                       productModel.isAddedToFavourite = isLiked;
                       context.read<FavouriteCubit>().toggleWishlist(
                         id: productModel.id ?? 0,

@@ -83,6 +83,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:310806066791:android:5afb796523e6ea953e46c2",
+        "android_client_info": {
+          "package_name": "co.uk.jacksi.taxitoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm7SPHrLcG_hjJXzubmer2WNlYLO10WWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:310806066791:android:b8461f0226966ab33e46c2",
         "android_client_info": {
           "package_name": "co.uk.jacksi.taxitosupplier"

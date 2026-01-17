@@ -1,4 +1,6 @@
 import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/features/captain/settings/settings_helper.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 import 'package:flutter/material.dart';

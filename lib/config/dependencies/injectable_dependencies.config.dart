@@ -96,6 +96,8 @@ import '../../features/captain/delivery_main/domain/usecases/toggle_availability
     as _i880;
 import '../../features/captain/delivery_main/presentation/cubit/availitiablity/availitiablity_cubit.dart'
     as _i44;
+import '../../features/captain/delivery_main/presentation/cubit/delivery_location/delivery_location_cubit.dart'
+    as _i891;
 import '../../features/captain/delivery_main/presentation/cubit/delivery_main/delivery_main_cubit.dart'
     as _i892;
 import '../../features/captain/delivery_order/data/datasources/delivery_remote_data_source.dart'
@@ -651,6 +653,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i864.FirebaseAnalyticsProvider(gh<_i398.FirebaseAnalytics>()),
     );
     gh.factory<_i620.DeviceHelper>(() => _i620.DeviceHelperImpl());
+    gh.factory<_i891.DeliveryLocationCubit>(
+      () => _i891.DeliveryLocationCubit(gh<_i985.SocketService>()),
+    );
     gh.factory<_i277.TripHistoryDetailsCubit>(
       () => _i277.TripHistoryDetailsCubit(gh<_i791.PolyLineHelper>()),
     );
@@ -1009,6 +1014,14 @@ extension GetItInjectableX on _i174.GetIt {
         paymentRepository: gh<_i236.PaymentRepository>(),
       ),
     );
+    gh.factory<_i56.AuthRemoteDataSource>(
+      () => _i56.AuthRemoteDataSourceImpl(
+        dioConsumer: gh<_i82.DioConsumer>(),
+        tokenRepository: gh<_i734.TokenRepository>(),
+        deviceHelper: gh<_i620.DeviceHelper>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
+    );
     gh.factory<_i23.WalletCubit>(
       () => _i23.WalletCubit(
         gh<_i303.GetTransactionUseCase>(),
@@ -1188,13 +1201,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i658.TripPaymentUserCubit(
         gh<_i985.SocketService>(),
         gh<_i13.SendUserPaymentRequestUseCase>(),
-      ),
-    );
-    gh.factory<_i56.AuthRemoteDataSource>(
-      () => _i56.AuthRemoteDataSourceImpl(
-        dioConsumer: gh<_i82.DioConsumer>(),
-        tokenRepository: gh<_i734.TokenRepository>(),
-        deviceHelper: gh<_i620.DeviceHelper>(),
       ),
     );
     gh.factory<_i910.ProductCubit>(
@@ -1740,6 +1746,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i121.TrackOrderCubit(
         gh<_i646.GetOrderDetailsUseCase>(),
         gh<_i507.DeleteOrderUseCase>(),
+        socketService: gh<_i985.SocketService>(),
+        tokenRepository: gh<_i734.TokenRepository>(),
       ),
     );
     gh.lazySingleton<_i77.RejectDeliveryOrderUseCase>(

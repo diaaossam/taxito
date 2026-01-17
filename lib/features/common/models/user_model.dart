@@ -83,7 +83,7 @@ class UserModel {
     defaultLang = json['default_lang'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    userType = handleUserType(userType: json['account_type']);
+    userType = json['account_type'] != null ? handleUserType(userType: json['account_type']) : null;
 
     // User-specific fields
     jobTitle = json['job_title'];

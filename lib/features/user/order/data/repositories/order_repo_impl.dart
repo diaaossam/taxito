@@ -22,7 +22,7 @@ class OrderRepoImpl implements OrderRepository {
   @override
   Future<Either<Failure, ApiSuccessResponse>> getOrderList({
     required int pageKey,
-    required OrderType orderType,
+    OrderType? orderType,
   }) async {
     try {
       final response = await orderRemoteDataSource.getOrderList(

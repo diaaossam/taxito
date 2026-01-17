@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address": MessageLookupByLibrary.simpleMessage("العناوين"),
     "address1": MessageLookupByLibrary.simpleMessage("العنوان"),
     "airPortInfo": MessageLookupByLibrary.simpleMessage("مطار أربيل الدولي"),
+    "allProduct": MessageLookupByLibrary.simpleMessage("كل الطلبات"),
     "allProducts": MessageLookupByLibrary.simpleMessage("كل المنتجات"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "لديك حساب من قبل ؟",
@@ -461,6 +462,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginAsGuest": MessageLookupByLibrary.simpleMessage("الدخول كزائر"),
+    "loginAsSupplier": MessageLookupByLibrary.simpleMessage("الدخول كمزود"),
+    "loginAsTaxi": MessageLookupByLibrary.simpleMessage(
+      "الدخول كسائق توصيل أو تكسي!",
+    ),
     "loginBody": MessageLookupByLibrary.simpleMessage(
       "أدخل رقم هاتفك لتسجيل الدخول",
     ),
@@ -564,7 +569,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اطلب طعامك واحتياجاتك المنزلية بسهولة، مع خيارات دفع آمنة لضمان تجربة تسوق مريحة",
     ),
     "onBoardingTitle1": MessageLookupByLibrary.simpleMessage(
-      "كل ما تحتاجه... في رينجو!",
+      "كل ما تحتاجه... في تاكسيتو!",
     ),
     "onBoardingTitle2": MessageLookupByLibrary.simpleMessage(
       "كل طلباتك في مكانٍ واحد!",

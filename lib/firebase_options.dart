@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBm7SPHrLcG_hjJXzubmer2WNlYLO10WWk',
-    appId: '1:310806066791:android:4f0643df527965083e46c2',
+    appId: '1:310806066791:android:5afb796523e6ea953e46c2',
     messagingSenderId: '310806066791',
     projectId: 'taxito-2e1ce',
     storageBucket: 'taxito-2e1ce.firebasestorage.app',

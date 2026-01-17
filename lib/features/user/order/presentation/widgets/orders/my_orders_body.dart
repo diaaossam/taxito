@@ -20,7 +20,7 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
 
   @override
   void initState() {
-    tabController = TabController(length: 7, vsync: this);
+    tabController = TabController(length: 8, vsync: this);
     super.initState();
   }
 
@@ -34,6 +34,9 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
             TabBarDesign(
               tabController: tabController,
               tabs: [
+                Tab(
+                  text: context.localizations.allProduct,
+                ),
                 Tab(
                   text: context.localizations.current2,
                 ),
@@ -61,6 +64,9 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
             Expanded(
               child: TabBarView(controller: tabController, children: [
                 OrderListDesign(
+                  pagingController: bloc.pagingControllerAllProducts,
+                  
+                ), OrderListDesign(
                   pagingController: bloc.pagingControllerPending,
                   orderType: OrderType.pending,
                 ),

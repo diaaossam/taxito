@@ -24,6 +24,31 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
+	    <key>NSCameraUsageDescription</key>
+        <string>Taxito needs access to your camera to allow you to take a profile photo.</string>
+
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Taxito uses your location to show the nearest teachers and institutions to students, even when the app is running in the background.</string>
+
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>Taxito uses your location to enable accurate and timely delivery, even when the app is not in use.</string>
+
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>Taxito uses your location to enable accurate and timely delivery, even when the app is not in use.</string>
+
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>Taxito uses your location to enable accurate and timely delivery, even when the app is not in use.</string>
+
+    	<key>UIApplicationSupportsIndirectInputEvents</key>
+    	<true/>
+    	<key>UIBackgroundModes</key>
+    	<array>
+    		<string>fetch</string>
+    		<string>remote-notification</string>
+    	</array>
+
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

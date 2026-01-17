@@ -47,58 +47,61 @@ class SettingsScreen extends StatelessWidget {
                 SizedBox(height: SizeConfig.bodyHeight * .04),
                 const InfoCardDesign(),
                 SizedBox(height: SizeConfig.bodyHeight * .04),
-                const SettingsHeaderDesign(),
-                SizedBox(height: SizeConfig.bodyHeight * .04),
-                BlocProvider(
-                  create: (context) =>
-                      sl<NotificationsCubit>()..getNotificationCount(),
-                  child: BlocBuilder<NotificationsCubit, NotificationsState>(
-                    builder: (context, state) {
-                      return SettingsItemDesign(
-                        settingsEntity: SettingsEntity(
-                          widget:
-                              state is GetCountNotificationsSuccess &&
-                                  state.count != 0
-                              ? Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: context.colorScheme.tertiary,
+                if(ApiConfig.isGuest == false)...[
+                  const SettingsHeaderDesign(),
+                  SizedBox(height: SizeConfig.bodyHeight * .04),
+                  BlocProvider(
+                    create: (context) =>
+                    sl<NotificationsCubit>()..getNotificationCount(),
+                    child: BlocBuilder<NotificationsCubit, NotificationsState>(
+                      builder: (context, state) {
+                        return SettingsItemDesign(
+                          settingsEntity: SettingsEntity(
+                            widget:
+                            state is GetCountNotificationsSuccess &&
+                                state.count != 0
+                                ? Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: context.colorScheme.tertiary,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "${state.count}",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
                                   ),
-                                  child: Center(
-                                    child: Text(
-                                      "${state.count}",
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                          id: 1,
-                          press: () => ApiConfig.isGuest == true
-                              ? null
-                              : context.navigateTo(
-                                  const NotificationScreen(),
-                                  callback: (p0) => context
-                                      .read<NotificationsCubit>()
-                                      .getNotificationCount(),
                                 ),
-                          title: context.localizations.notifications,
-                          image: Assets.icons.notification,
-                        ),
-                      );
-                    },
+                              ),
+                            )
+                                : const SizedBox.shrink(),
+                            id: 1,
+                            press: () => ApiConfig.isGuest == true
+                                ? null
+                                : context.navigateTo(
+                              const NotificationScreen(),
+                              callback: (p0) => context
+                                  .read<NotificationsCubit>()
+                                  .getNotificationCount(),
+                            ),
+                            title: context.localizations.notifications,
+                            image: Assets.icons.notification,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
+                ],
+
                 SizedBox(height: SizeConfig.bodyHeight * .01),
                 SettingsItemDesign(
                   settingsEntity: SettingsEntity(
                     id: 1,
                     press: () => ApiConfig.isGuest == true
-                        ? null
+                        ? SettingsHelper().showGuestDialog(context)
                         : context.navigateTo(const FavouriteScreen()),
                     title: context.localizations.favourites,
                     image: Assets.icons.heart,
@@ -110,7 +113,7 @@ class SettingsScreen extends StatelessWidget {
                     id: 1,
                     iconColor: Colors.blueAccent,
                     press: () => ApiConfig.isGuest == true
-                        ? null
+                        ? SettingsHelper().showGuestDialog(context)
                         : context.navigateTo(
                             AddressDialogDesign(
                               onChoose: (p0) {},
@@ -208,7 +211,6 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: SizeConfig.bodyHeight * .04),
-
                 CopyWriteWidget(),
                 SizedBox(height: SizeConfig.bodyHeight * .04),
               ],

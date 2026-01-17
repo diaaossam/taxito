@@ -16,7 +16,7 @@ abstract class OrderRepository {
   });
 
   Future<Either<Failure, ApiSuccessResponse>> getOrderList({
-    required OrderType orderType,
+    OrderType? orderType,
     required int pageKey,
   });
 

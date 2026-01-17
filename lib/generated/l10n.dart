@@ -1754,10 +1754,10 @@ class S {
     );
   }
 
-  /// `Everything you need... in Ringo!`
+  /// `Everything you need... in Taxito!`
   String get onBoardingTitle1 {
     return Intl.message(
-      'Everything you need... in Ringo!',
+      'Everything you need... in Taxito!',
       name: 'onBoardingTitle1',
       desc: '',
       args: [],
@@ -4729,6 +4729,31 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Login As Supplier`
+  String get loginAsSupplier {
+    return Intl.message(
+      'Login As Supplier',
+      name: 'loginAsSupplier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login As Taxi Driver , Deleivery`
+  String get loginAsTaxi {
+    return Intl.message(
+      'Login As Taxi Driver , Deleivery',
+      name: 'loginAsTaxi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Products`
+  String get allProduct {
+    return Intl.message('All Products', name: 'allProduct', desc: '', args: []);
   }
 }
 

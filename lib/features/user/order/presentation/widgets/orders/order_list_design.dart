@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+import 'package:taxito/core/bloc/socket/socket_cubit.dart';
 import 'package:taxito/core/enum/order_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/utils/app_constant.dart';
@@ -14,12 +16,12 @@ import 'order_item_design.dart';
 
 class OrderListDesign extends StatefulWidget {
   final PagingController<int, Orders> pagingController;
-  final OrderType orderType;
+  final OrderType? orderType;
 
   const OrderListDesign({
     super.key,
     required this.pagingController,
-    required this.orderType,
+    this.orderType,
   });
 
   @override
@@ -27,6 +29,8 @@ class OrderListDesign extends StatefulWidget {
 }
 
 class _OrderListDesignState extends State<OrderListDesign> {
+
+  Orders ?selectedTrackedOrder;
   @override
   void initState() {
     if (mounted) {
@@ -53,55 +57,69 @@ class _OrderListDesignState extends State<OrderListDesign> {
         }
       },
       builder: (context, state) {
-        return RefreshIndicator(
-          onRefresh: () async {
-            if (mounted) {
-              widget.pagingController.refresh();
-            }
+        return BlocConsumer<SocketCubit, SocketState>(
+          listener: (context, socketState) {
+           if(socketState is SocketConnected){
+             if(selectedTrackedOrder != null){
+               context.read<TrackOrderCubit>().trackOrder(orders: selectedTrackedOrder!);
+             }
+           }
           },
-          child: CustomScrollView(
-            slivers: [
-              SliverPadding(
-                padding: screenPadding(),
-                sliver: PagedSliverList(
-                  pagingController: widget.pagingController,
-                  builderDelegate: PagedChildBuilderDelegate(
-                    noItemsFoundIndicatorBuilder: (context) => Opacity(
-                      opacity: 0.4,
-                      child: AppFailureWidget(
-                        title: context.localizations.noOrders,
-                        body: context.localizations.noOrdersBody,
-                        buttonText: context.localizations.reload,
-                        callback: () => widget.pagingController.refresh(),
+          builder: (context, socketState) {
+            return RefreshIndicator(
+              onRefresh: () async {
+                if (mounted) {
+                  widget.pagingController.refresh();
+                }
+              },
+              child: CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: screenPadding(),
+                    sliver: PagedSliverList(
+                      pagingController: widget.pagingController,
+                      builderDelegate: PagedChildBuilderDelegate(
+                        noItemsFoundIndicatorBuilder: (context) => Opacity(
+                          opacity: 0.4,
+                          child: AppFailureWidget(
+                            title: context.localizations.noOrders,
+                            body: context.localizations.noOrdersBody,
+                            buttonText: context.localizations.reload,
+                            callback: () => widget.pagingController.refresh(),
+                          ),
+                        ),
+                        itemBuilder: (context, Orders item, index) =>
+                            OrderItemDesign(
+                              orders: item,
+                              isLoading: state is DeleteOrderLoading &&
+                                  state.id == item.id,
+                              onCancel: () {
+                                SettingsHelper().showAppDialog(
+                                  height: SizeConfig.bodyHeight * .33,
+                                  context: context,
+                                  title: context.localizations.cancelOrderBody,
+                                  isAccept: (p0) {
+                                    if (p0) {
+                                      context
+                                          .read<TrackOrderCubit>()
+                                          .deleteOrder(orderId: item.id ?? 0);
+                                    }
+                                  },
+                                );
+                              },
+                              onRepeat: () {},
+                              onTrack: () {
+                                setState(() => selectedTrackedOrder = item);
+                                context.read<SocketCubit>().initSocketConnection();
+                              },
+                            ),
                       ),
                     ),
-                    itemBuilder: (context, Orders item, index) =>
-                        OrderItemDesign(
-                          orders: item,
-                          isLoading:
-                              state is DeleteOrderLoading &&
-                              state.id == item.id,
-                          onCancel: () {
-                            SettingsHelper().showAppDialog(
-                              height: SizeConfig.bodyHeight * .33,
-                              context: context,
-                              title: context.localizations.cancelOrderBody,
-                              isAccept: (p0) {
-                                if (p0) {
-                                  context.read<TrackOrderCubit>().deleteOrder(
-                                    orderId: item.id ?? 0,
-                                  );
-                                }
-                              },
-                            );
-                          },
-                          onRepeat: () {},
-                        ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         );
       },
     );

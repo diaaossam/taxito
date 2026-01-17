@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "airPortInfo": MessageLookupByLibrary.simpleMessage(
       "Erbil International Airport",
     ),
+    "allProduct": MessageLookupByLibrary.simpleMessage("All Products"),
     "allProducts": MessageLookupByLibrary.simpleMessage("All Products"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
@@ -479,6 +480,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginAsGuest": MessageLookupByLibrary.simpleMessage("Login as guest"),
+    "loginAsSupplier": MessageLookupByLibrary.simpleMessage(
+      "Login As Supplier",
+    ),
+    "loginAsTaxi": MessageLookupByLibrary.simpleMessage(
+      "Login As Taxi Driver , Deleivery",
+    ),
     "loginBody": MessageLookupByLibrary.simpleMessage(
       "Enter your phone number to login",
     ),
@@ -578,7 +585,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Order your food and household essentials easily, with secure payment options to ensure a comfortable shopping experience",
     ),
     "onBoardingTitle1": MessageLookupByLibrary.simpleMessage(
-      "Everything you need... in Ringo!",
+      "Everything you need... in Taxito!",
     ),
     "onBoardingTitle2": MessageLookupByLibrary.simpleMessage(
       "All your orders in one place!",

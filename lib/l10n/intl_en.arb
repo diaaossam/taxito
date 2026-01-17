@@ -219,7 +219,7 @@
   "reload": "Reload",
   "noNetwork": "No Internet Connection",
   "noNetworkBody": "No internet connection. Please check your connection and try again.",
-  "onBoardingTitle1": "Everything you need... in Ringo!",
+  "onBoardingTitle1": "Everything you need... in Taxito!",
   "onBoardingBody1": "Order your food and household essentials easily, with secure payment options to ensure a comfortable shopping experience",
   "onBoardingTitle2": "All your orders in one place!",
   "onBoardingBody2": "Order your food and household essentials easily, with secure payment options to ensure a comfortable shopping experience",
@@ -574,7 +574,10 @@
   "freePointsCount": "Number of free points",
   "freePointsCount1": "You can copy the code and use it as a discount code",
   "wallet1": "Wallet",
-  "updateProfileData": "Update your profile data"
+  "updateProfileData": "Update your profile data",
+  "loginAsSupplier": "Login As Supplier",
+  "loginAsTaxi": "Login As Taxi Driver , Deleivery",
+  "allProduct": "All Products"
 }
 
 

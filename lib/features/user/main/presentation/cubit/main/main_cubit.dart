@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:taxito/features/user/main/presentation/pages/home_screen.dart';
 import 'package:taxito/features/user/settings/presentation/pages/settings_screen.dart';
 
+import '../../../../../../core/utils/api_config.dart';
 import '../../../domain/usecases/update_device_token.dart';
 
 part 'main_state.dart';
@@ -41,6 +42,9 @@ class MainCubit extends Cubit<MainState> {
   }
 
   Future<void> updateDeviceTokenState() async {
+    if (ApiConfig.isGuest == true) {
+      return;
+    }
     final response = await updateDeviceToken();
   }
 }

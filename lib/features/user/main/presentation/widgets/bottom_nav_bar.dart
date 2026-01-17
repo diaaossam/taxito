@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
+import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/features/user/main/presentation/cubit/main/main_cubit.dart';
 import 'package:taxito/gen/assets.gen.dart';
+
+import '../../../../captain/settings/settings_helper.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
@@ -17,8 +20,13 @@ class CustomBottomNavBar extends StatelessWidget {
         return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             useLegacyColorScheme: false,
-            onTap: (index) =>
-                bloc.changeCurrentBottomNavIndex(currentIndex: index),
+            onTap: (index) {
+              if((index ==3 || index ==1) && ApiConfig.isGuest == true){
+                  SettingsHelper().showGuestDialog(context);
+                  return ;
+              }
+              bloc.changeCurrentBottomNavIndex(currentIndex: index);
+            },
             currentIndex: bloc.index,
             items: [
               BottomNavigationBarItem(

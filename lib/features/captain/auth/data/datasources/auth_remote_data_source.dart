@@ -1,10 +1,11 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taxito/config/helper/token_repository.dart';
+import 'package:taxito/core/utils/app_strings.dart';
 import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
-import 'package:taxito/features/vendor/product/data/models/response/review_model.dart';
 import '../../../../../config/helper/device_helper.dart';
 import '../../../../../core/services/network/dio_consumer.dart';
 import '../../../../../core/services/network/end_points.dart';
@@ -44,6 +45,7 @@ abstract class AuthRemoteDataSource {
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final DioConsumer dioConsumer;
+  final SharedPreferences sharedPreferences;
   final TokenRepository tokenRepository;
   final DeviceHelper deviceHelper;
 
@@ -51,6 +53,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required this.dioConsumer,
     required this.tokenRepository,
     required this.deviceHelper,
+    required this.sharedPreferences,
   });
 
   @override
@@ -168,6 +171,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     );
     String accessToken = response['data']['access_token'];
     UserModel userModel = UserModel.fromJson(response['data']['auth']);
+    sharedPreferences.setBool(AppStrings.isGuest, false);
     UserDataService().setUserData(userModel);
     UserTypeService().setUserType(userModel.userType!);
     await tokenRepository.saveToken(accessToken);
@@ -185,6 +189,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<ApiSuccessResponse> logOut() async {
     final response = await dioConsumer.post(path: EndPoints.logOut);
+    await sharedPreferences.clear();
+  await  tokenRepository.deleteToken();
     await ApiConfig().init();
     return ApiSuccessResponse(message: response['result']);
   }
@@ -212,6 +218,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<ApiSuccessResponse> deleteUser({required int reason}) async {
     final response = await dioConsumer.delete(path: EndPoints.deleteUser);
+    await sharedPreferences.clear();
+    await  tokenRepository.deleteToken();
     await ApiConfig().init();
     return ApiSuccessResponse(message: response['result']);
   }

@@ -17,7 +17,7 @@ abstract class OrderRemoteDataSource {
 
   Future<ApiSuccessResponse> getOrderList({
     required int pageKey,
-    required OrderType orderType,
+    OrderType? orderType,
   });
 
   Future<ApiSuccessResponse> getOrderDetails({required int id});
@@ -63,11 +63,15 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
   @override
   Future<ApiSuccessResponse> getOrderList({
     required int pageKey,
-    required OrderType orderType,
+    OrderType? orderType,
   }) async {
+    final params = <String, dynamic>{"page": pageKey};
+    if (orderType != null) {
+      params["status"] = orderType.name;
+    }
     final response = await dioConsumer.get(
       path: EndPoints.userOrders,
-      params: {"page": pageKey, "status": orderType.name},
+      params: params,
     );
     final List<Orders> list = response['data']
         .map<Orders>((element) => Orders.fromJson(element))

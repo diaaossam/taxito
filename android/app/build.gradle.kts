@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 android {
-    namespace = "co.uk.jacksi.taxito"
+    namespace = "co.uk.jacksi.taxitoapp"
     compileSdk = 36
     ndkVersion = "29.0.13113456 rc1"
 
@@ -29,7 +29,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "co.uk.jacksi.taxito"
+        applicationId = "co.uk.jacksi.taxitoapp"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

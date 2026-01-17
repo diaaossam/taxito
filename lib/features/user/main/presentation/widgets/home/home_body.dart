@@ -1,7 +1,9 @@
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
+import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/captain/settings/settings_helper.dart';
 import 'package:taxito/features/user/order/presentation/bloc/cart/cart_cubit.dart';
 import 'package:taxito/features/user/product/presentation/cubit/product/product_cubit.dart';
 import 'package:taxito/gen/assets.gen.dart';
@@ -23,7 +25,6 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-
   @override
   void initState() {
     context.read<CartCubit>().getCartData(isRemote: false);
@@ -41,13 +42,9 @@ class _HomeBodyState extends State<HomeBody> {
                 padding: screenPadding(),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: SizeConfig.bodyHeight * .02,
-                    ),
+                    SizedBox(height: SizeConfig.bodyHeight * .02),
                     const HomeBannersImage(),
-                    SizedBox(
-                      height: SizeConfig.bodyHeight * .02,
-                    ),
+                    SizedBox(height: SizeConfig.bodyHeight * .02),
                     InkWell(
                       onTap: () => context.navigateTo(const FoodMainScreen()),
                       child: Stack(
@@ -60,9 +57,7 @@ class _HomeBodyState extends State<HomeBody> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                  height: SizeConfig.bodyHeight * .04,
-                                ),
+                                SizedBox(height: SizeConfig.bodyHeight * .04),
                                 AppText(
                                   text: context.localizations.banners1,
                                   textSize: 18,
@@ -71,30 +66,30 @@ class _HomeBodyState extends State<HomeBody> {
                                   maxLines: 2,
                                   align: TextAlign.center,
                                 ),
-                                SizedBox(
-                                  height: SizeConfig.bodyHeight * .02,
-                                ),
+                                SizedBox(height: SizeConfig.bodyHeight * .02),
                                 AbsorbPointer(
                                   absorbing: true,
                                   child: CustomButton(
-                                      height: 50,
-                                      backgroundColor: Colors.white,
-                                      textColor: context.colorScheme.primary,
-                                      text: context.localizations.orderNow,
-                                      press: () {}),
-                                )
+                                    height: 50,
+                                    backgroundColor: Colors.white,
+                                    textColor: context.colorScheme.primary,
+                                    text: context.localizations.orderNow,
+                                    press: () {},
+                                  ),
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: SizeConfig.bodyHeight * .02,
-                    ),
+                    SizedBox(height: SizeConfig.bodyHeight * .02),
                     InkWell(
-                      onTap: () =>
-                          context.navigateTo(const RequestTripScreen()),
+                      onTap: ApiConfig.isGuest == true
+                          ? () {
+                              SettingsHelper().showGuestDialog(context);
+                            }
+                          : () => context.navigateTo(const RequestTripScreen()),
                       child: Stack(
                         children: [
                           AppImage.asset(Assets.images.taxiBanner.path),
@@ -105,9 +100,7 @@ class _HomeBodyState extends State<HomeBody> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                  height: SizeConfig.bodyHeight * .04,
-                                ),
+                                SizedBox(height: SizeConfig.bodyHeight * .04),
                                 AppText(
                                   text: context.localizations.banners2,
                                   textSize: 18,
@@ -116,21 +109,20 @@ class _HomeBodyState extends State<HomeBody> {
                                   maxLines: 2,
                                   align: TextAlign.center,
                                 ),
-                                SizedBox(
-                                  height: SizeConfig.bodyHeight * .02,
-                                ),
+                                SizedBox(height: SizeConfig.bodyHeight * .02),
                                 AbsorbPointer(
                                   absorbing: true,
                                   child: CustomButton(
-                                      height: 50,
-                                      backgroundColor: Colors.white,
-                                      textColor: context.colorScheme.primary,
-                                      text: context.localizations.orderNow,
-                                      press: () {}),
-                                )
+                                    height: 50,
+                                    backgroundColor: Colors.white,
+                                    textColor: context.colorScheme.primary,
+                                    text: context.localizations.orderNow,
+                                    press: () {},
+                                  ),
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

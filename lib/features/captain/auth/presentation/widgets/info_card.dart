@@ -4,6 +4,8 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/gen/assets.gen.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/app_text.dart';
 import '../../../user/presentation/bloc/user_bloc.dart';
@@ -15,9 +17,50 @@ class InfoCardDesign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(UserDataService().getUserData()?.profileImage ?? "");
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
+        if (ApiConfig.isGuest == true) {
+          return Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Container(
+                      height: SizeConfig.bodyHeight * .1,
+                      width: SizeConfig.bodyHeight * .1,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: context.colorScheme.primary,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(Assets.images.logoCirclure.path),
+                      ),
+                    ),
+                    SizedBox(width: SizeConfig.screenWidth * .03),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            text: context.localizations.guest,
+                            textSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          SizedBox(height: SizeConfig.bodyHeight * .01),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        }
         return Row(
           children: [
             Expanded(
@@ -54,6 +97,7 @@ class InfoCardDesign extends StatelessWidget {
                       children: [
                         AppText(
                           text:
+                              UserDataService().getUserData()?.name ??
                               "${UserDataService().getUserData()?.firstName} ${UserDataService().getUserData()?.lastName}",
                           textSize: 16,
                           fontWeight: FontWeight.w600,

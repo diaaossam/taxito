@@ -9,8 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import '../../../../../core/utils/api_config.dart';
 import '../../../../../core/utils/app_constant.dart';
 import 'package:taxito/features/common/models/product_model.dart';
+import '../../../../captain/settings/settings_helper.dart';
 import '../../../product/presentation/cubit/favourite/favourite_cubit.dart';
 
 class MainCategoryProducts extends StatelessWidget {
@@ -99,6 +101,10 @@ class MainCategoryProducts extends StatelessWidget {
                                     productModel: item,
                                     isLiked: item.isAddedToFavourite ?? false,
                                     onTapped: (p0) {
+                                      if(ApiConfig.isGuest == true){
+                                        SettingsHelper().showGuestDialog(context);
+                                        return false;
+                                      }
                                       item.isAddedToFavourite = p0;
                                       return context
                                           .read<FavouriteCubit>()

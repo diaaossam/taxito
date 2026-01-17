@@ -12,9 +12,13 @@ class GetOrderListUseCase {
 
   GetOrderListUseCase({required this.orderRepository});
 
-  Future<Either<Failure, ApiSuccessResponse>> call(
-      {required int pageKey, required OrderType orderType}) async {
+  Future<Either<Failure, ApiSuccessResponse>> call({
+    required int pageKey,
+    OrderType? orderType,
+  }) async {
     return await orderRepository.getOrderList(
-        orderType: orderType, pageKey: pageKey);
+      orderType: orderType,
+      pageKey: pageKey,
+    );
   }
 }

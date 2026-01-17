@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/widget_ext.dart';
@@ -23,18 +24,27 @@ class LoginBodyWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppImage.asset(
-            Assets.images.login.path,
-            height: SizeConfig.bodyHeight * .3,
-            width: SizeConfig.bodyHeight * .3,
+            Assets.images.logoCirclure.path,
+            height: SizeConfig.bodyHeight * .15,
           ),
-          SizedBox(
-            height: SizeConfig.bodyHeight * .04,
-          ),
-          AppText(
-            text: context.localizations.login,
-            fontWeight: FontWeight.bold,
-            maxLines: 1,
-            textSize: 20,
+          SizedBox(height: SizeConfig.bodyHeight * .04),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppText(
+                text: context.localizations.welcomeTitle,
+                fontWeight: FontWeight.bold,
+                textSize: 20,
+              ),
+              2.horizontalSpace,
+              AppText(
+                text: "${context.localizations.appName} !",
+                fontWeight: FontWeight.bold,
+                color: context.colorScheme.primary,
+                textSize: 20,
+              ),
+            ],
           ),
           SizedBox(height: SizeConfig.bodyHeight * .02),
           AppText(

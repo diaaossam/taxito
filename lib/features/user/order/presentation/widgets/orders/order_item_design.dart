@@ -18,6 +18,7 @@ class OrderItemDesign extends StatelessWidget {
   final Orders orders;
   final VoidCallback? onCancel;
   final VoidCallback? onRepeat;
+  final VoidCallback? onTrack;
   final bool isLoading;
 
   const OrderItemDesign({
@@ -26,6 +27,7 @@ class OrderItemDesign extends StatelessWidget {
     this.onCancel,
     this.onRepeat,
     required this.isLoading,
+    this.onTrack,
   });
 
   @override
@@ -137,6 +139,21 @@ class OrderItemDesign extends StatelessWidget {
                       borderColor: context.colorScheme.primary,
                       text: context.localizations.cancelOrder,
                       press: onCancel ?? () {},
+                    ),
+                  ),
+                ],
+                if (orders.status == OrderType.outForDeleivery) ...[
+                  10.horizontalSpace,
+                  Expanded(
+                    child: CustomButton(
+                      height: 40.h,
+                      textSize: 11,
+                      radius: 12,
+                      backgroundColor: Colors.transparent,
+                      textColor: context.colorScheme.primary,
+                      borderColor: context.colorScheme.primary,
+                      text: context.localizations.trackOrder,
+                      press: onTrack ?? () {},
                     ),
                   ),
                 ],
