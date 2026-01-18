@@ -4,6 +4,7 @@ import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/widgets/image_picker/app_image.dart';
 
 import '../../../../../core/utils/api_config.dart';
+import '../../../../captain/settings/settings_helper.dart';
 import '../../../../common/models/user_model_helper.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../gen/assets.gen.dart';
@@ -17,10 +18,16 @@ class HomeUserDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => LocationHelper().showLocationDailog(
+      onTap: () {
+        if (ApiConfig.isGuest == true) {
+          SettingsHelper().showGuestDialog(context);
+          return;
+        }
+        LocationHelper().showLocationDailog(
         context: context,
         myAddress: (p0) {},
-      ),
+      );
+      },
       child: Row(
         children: [
           8.horizontalSpace,

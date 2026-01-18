@@ -3,8 +3,10 @@ import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/extensions/sliver_padding.dart';
+import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/core/utils/app_constant.dart';
 import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/captain/settings/settings_helper.dart';
 import 'package:taxito/features/user/order/order_helper.dart';
 import 'package:taxito/features/user/order/presentation/widgets/cart/cart_item_design.dart';
 import 'package:taxito/widgets/app_text.dart';
@@ -74,7 +76,13 @@ class _CartBodyState extends State<CartBody> {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 sliver: SliverToBoxAdapter(
                   child: InkWell(
-                    onTap: () => context.navigateTo(const CheckOutScreen()),
+                    onTap: () {
+                      if(ApiConfig.isGuest == true){
+                        SettingsHelper().showGuestDialog(context);
+                        return;
+                      }
+                      context.navigateTo(const CheckOutScreen());
+                    },
                     child: Container(
                       padding: EdgeInsets.symmetric(
                           vertical: SizeConfig.bodyHeight * .01, horizontal: 10),

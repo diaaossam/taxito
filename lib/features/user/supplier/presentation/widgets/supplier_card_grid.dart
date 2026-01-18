@@ -12,7 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SupplierCardGrid extends StatelessWidget {
   final SupplierModel supplierModel;
   final double? imageHeight, imageWidth;
-  final VoidCallback? onTap;
   final EdgeInsetsGeometry? margin;
   final num? supplierId;
   final bool isLiked;
@@ -23,7 +22,6 @@ class SupplierCardGrid extends StatelessWidget {
       required this.supplierModel,
       this.imageHeight,
       this.imageWidth,
-      this.onTap,
       this.margin,
       this.supplierId,
       required this.isLiked,
@@ -82,6 +80,8 @@ class SupplierCardGrid extends StatelessWidget {
       ),
       openBuilder: (context, action) => SupplierDetailsScreen(
         supplierModel: supplierModel,
+        onLikeToggeled: onTapped,
+
       ),
     );
   }

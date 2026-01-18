@@ -14,15 +14,19 @@ import '../../../../../../widgets/app_text.dart';
 import '../../../../../../widgets/back_widget.dart';
 import '../../../../../../widgets/image_picker/app_image.dart';
 import '../../../../../../widgets/info_design_item.dart';
-import '../../../../product/presentation/cubit/favourite/favourite_cubit.dart';
 import '../../../data/models/response/supplier_model.dart';
 import '../supplier_product_grid.dart';
 import 'supplier_cover_design.dart';
 
 class SupplierDetailsBody extends StatelessWidget {
   final SupplierModel supplierModel;
+  final Function(bool) onLikeToggeled;
 
-  const SupplierDetailsBody({super.key, required this.supplierModel});
+  const SupplierDetailsBody({
+    super.key,
+    required this.supplierModel,
+    required this.onLikeToggeled,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +43,7 @@ class SupplierDetailsBody extends StatelessWidget {
                 children: [
                   const BackArrowWidget(),
                   LikeButtonDesign(
+                    key: ValueKey("supplier_like_button_${supplierModel.id}"),
                     boxShadow: [
                       BoxShadow(
                         spreadRadius: 2,
@@ -47,11 +52,7 @@ class SupplierDetailsBody extends StatelessWidget {
                         color: const Color(0xff2E3651).withValues(alpha: 0.15),
                       ),
                     ],
-                    onTapped: (p0) =>
-                        context.read<FavouriteCubit>().toggleWishlist(
-                          type: "supplier",
-                          id: supplierModel.id!,
-                        ),
+                    onTapped: onLikeToggeled,
                     isLiked: supplierModel.isAddedToFavourite ?? false,
                   ),
                 ],

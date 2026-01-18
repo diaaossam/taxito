@@ -107,34 +107,33 @@ class Orders {
     List<Items>? items,
     List<StatusLogs>? statusLogs,
     bool? showTimer,
-  }) =>
-      Orders(
-        id: id ?? this.id,
-        orderNumber: orderNumber ?? this.orderNumber,
-        paymentMethod: paymentMethod ?? this.paymentMethod,
-        totalPrice: totalPrice ?? this.totalPrice,
-        totalQty: totalQty ?? this.totalQty,
-        discountAmount: discountAmount ?? this.discountAmount,
-        discountCode: discountCode ?? this.discountCode,
-        shippingCost: shippingCost ?? this.shippingCost,
-        finalPrice: finalPrice ?? this.finalPrice,
-        notes: notes ?? this.notes,
-        address: address ?? this.address,
-        status: status ?? this.status,
-        driver: driver ?? this.driver,
-        user: user ?? this.user,
-        supplier: supplier ?? this.supplier,
-        createdAt: createdAt ?? this.createdAt,
-        items: items ?? this.items,
-        statusLogs: statusLogs ?? this.statusLogs,
-        showTimer: showTimer ?? this.showTimer,
-      );
+  }) => Orders(
+    id: id ?? this.id,
+    orderNumber: orderNumber ?? this.orderNumber,
+    paymentMethod: paymentMethod ?? this.paymentMethod,
+    totalPrice: totalPrice ?? this.totalPrice,
+    totalQty: totalQty ?? this.totalQty,
+    discountAmount: discountAmount ?? this.discountAmount,
+    discountCode: discountCode ?? this.discountCode,
+    shippingCost: shippingCost ?? this.shippingCost,
+    finalPrice: finalPrice ?? this.finalPrice,
+    notes: notes ?? this.notes,
+    address: address ?? this.address,
+    status: status ?? this.status,
+    driver: driver ?? this.driver,
+    user: user ?? this.user,
+    supplier: supplier ?? this.supplier,
+    createdAt: createdAt ?? this.createdAt,
+    items: items ?? this.items,
+    statusLogs: statusLogs ?? this.statusLogs,
+    showTimer: showTimer ?? this.showTimer,
+  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['order_number'] = orderNumber;
-    map['payment_method'] = paymentMethod;
+    map['payment_method'] = paymentMethod?.name;
     map['total_price'] = totalPrice;
     map['total_qty'] = totalQty;
     map['discount_amount'] = discountAmount;
@@ -142,7 +141,7 @@ class Orders {
     map['shipping_cost'] = shippingCost;
     map['final_price'] = finalPrice;
     map['notes'] = notes;
-    if (address != null) {
+/*    if (address != null) {
       map['address'] = address?.toJson();
     }
     map['status'] = status;
@@ -161,17 +160,13 @@ class Orders {
     }
     if (statusLogs != null) {
       map['status_logs'] = statusLogs?.map((v) => v.toJson()).toList();
-    }
+    }*/
     return map;
   }
 }
 
 class StatusLogs {
-  StatusLogs({
-    this.id,
-    this.status,
-    this.createdAt,
-  });
+  StatusLogs({this.id, this.status, this.createdAt});
 
   StatusLogs.fromJson(dynamic json) {
     id = json['id'];
@@ -185,11 +180,7 @@ class StatusLogs {
   OrderType? status;
   DateTime? createdAt;
 
-  StatusLogs copyWith({
-    num? id,
-    OrderType? status,
-    DateTime? createdAt,
-  }) =>
+  StatusLogs copyWith({num? id, OrderType? status, DateTime? createdAt}) =>
       StatusLogs(
         id: id ?? this.id,
         status: status ?? this.status,
@@ -199,7 +190,7 @@ class StatusLogs {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['status'] = status;
+    map['status'] = status?.name;
     map['created_at'] = createdAt?.toIso8601String();
     return map;
   }
@@ -255,19 +246,18 @@ class Items {
     num? price,
     num? totalPrice,
     List<dynamic>? attributes,
-  }) =>
-      Items(
-        product: product ?? this.product,
-        isProductDeleted: isProductDeleted ?? this.isProductDeleted,
-        isProductActive: isProductActive ?? this.isProductActive,
-        isProductRated: isProductRated ?? this.isProductRated,
-        productRate: productRate ?? this.productRate,
-        notes: notes ?? this.notes,
-        qty: qty ?? this.qty,
-        price: price ?? this.price,
-        totalPrice: totalPrice ?? this.totalPrice,
-        attributes: attributes ?? this.attributes,
-      );
+  }) => Items(
+    product: product ?? this.product,
+    isProductDeleted: isProductDeleted ?? this.isProductDeleted,
+    isProductActive: isProductActive ?? this.isProductActive,
+    isProductRated: isProductRated ?? this.isProductRated,
+    productRate: productRate ?? this.productRate,
+    notes: notes ?? this.notes,
+    qty: qty ?? this.qty,
+    price: price ?? this.price,
+    totalPrice: totalPrice ?? this.totalPrice,
+    attributes: attributes ?? this.attributes,
+  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

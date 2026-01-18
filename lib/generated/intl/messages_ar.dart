@@ -767,7 +767,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "قد يستغرق البحث بضع دقائق..",
     ),
     "searchingForDriverBody2": MessageLookupByLibrary.simpleMessage(
-      "Please note that a cancellation fee will be applied unless the trip is canceled before",
+      "يرجي العلم انه سوف يتم اضافة غرامة الغاء الرحلة الا اذا الغيت الرحلة قبل",
     ),
     "searchingForDriverTitle": MessageLookupByLibrary.simpleMessage(
       "نبحث عن سائق مناسب لرحلتك, انتظر قليلاً",

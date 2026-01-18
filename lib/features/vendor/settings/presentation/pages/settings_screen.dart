@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/features/captain/settings/settings_helper.dart';
+import 'package:taxito/features/common/start/presentation/pages/welcome_screen.dart';
 
 import '../../../../../config/dependencies/injectable_dependencies.dart';
 import '../../../../../core/bloc/global_cubit/global_cubit.dart';
@@ -146,9 +147,7 @@ class SettingsScreen extends StatelessWidget {
                     child: BlocConsumer<LogoutCubit, LogoutState>(
                       listener: (context, state) {
                         if (state is LogoutUserSuccess) {
-                          context.navigateTo(
-                            LoginScreen(userType: UserType.supplier),
-                          );
+                          context.navigateTo(WelcomeScreen());
                         }
                         if (state is LogoutUserError) {
                           AppConstant.showCustomSnakeBar(

@@ -21,6 +21,8 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/bloc/global_cubit/global_cubit.dart' as _i913;
 import '../../core/bloc/socket/socket_cubit.dart' as _i771;
+import '../../core/services/location/driver_location_tracking_service.dart'
+    as _i2;
 import '../../core/services/location/polyline_helper.dart' as _i791;
 import '../../core/services/network/app_interceptors.dart' as _i181;
 import '../../core/services/network/dio_consumer.dart' as _i82;
@@ -380,6 +382,8 @@ import '../../features/user/order/domain/usecases/set_quantity_use_case.dart'
     as _i18;
 import '../../features/user/order/presentation/bloc/cart/cart_cubit.dart'
     as _i462;
+import '../../features/user/order/presentation/bloc/live_map_tracking/live_map_tracking_cubit.dart'
+    as _i1015;
 import '../../features/user/order/presentation/bloc/orders/orders_cubit.dart'
     as _i881;
 import '../../features/user/order/presentation/bloc/rating/rating_cubit.dart'
@@ -653,8 +657,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i864.FirebaseAnalyticsProvider(gh<_i398.FirebaseAnalytics>()),
     );
     gh.factory<_i620.DeviceHelper>(() => _i620.DeviceHelperImpl());
-    gh.factory<_i891.DeliveryLocationCubit>(
-      () => _i891.DeliveryLocationCubit(gh<_i985.SocketService>()),
+    gh.factory<_i1015.LiveMapTrackingCubit>(
+      () => _i1015.LiveMapTrackingCubit(gh<_i985.SocketService>()),
     );
     gh.factory<_i277.TripHistoryDetailsCubit>(
       () => _i277.TripHistoryDetailsCubit(gh<_i791.PolyLineHelper>()),
@@ -735,6 +739,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i10.CategoriesRepositoryImpl(
         remoteDataSource: gh<_i997.CategoriesRemoteDataSource>(),
       ),
+    );
+    gh.lazySingleton<_i2.DriverLocationTrackingService>(
+      () => _i2.DriverLocationTrackingService(gh<_i985.SocketService>()),
     );
     gh.factory<_i742.TripRepository>(
       () => _i359.TripRepositoryImpl(
@@ -1159,6 +1166,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i8.GovernorateBloc>(
       () => _i8.GovernorateBloc(gh<_i182.GetGovernoratesUseCase>()),
+    );
+    gh.factory<_i891.DeliveryLocationCubit>(
+      () =>
+          _i891.DeliveryLocationCubit(gh<_i2.DriverLocationTrackingService>()),
     );
     gh.lazySingleton<_i663.ChangeLangCodeUseCase>(
       () => _i663.ChangeLangCodeUseCase(

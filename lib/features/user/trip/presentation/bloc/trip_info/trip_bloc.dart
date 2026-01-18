@@ -42,7 +42,7 @@ class TripBloc extends Cubit<TripState> {
   Future<void> getCurrentLocation() async {
     final Uint8List? markerIcon = await MapHelper().getBytesFromAsset(
       path: Assets.images.origin.path,
-      width: 50,
+      width: 30,
     );
     emit(GetCurrentLocationLoadingState());
     try {
@@ -153,7 +153,7 @@ class TripBloc extends Cubit<TripState> {
   }) async {
     final Uint8List? markerIcon = await MapHelper().getBytesFromAsset(
       path: Assets.images.carTop.path,
-      width: 50,
+      width: 30,
     );
     double bearing = 0;
     if (markers.isNotEmpty) {
@@ -183,7 +183,7 @@ class TripBloc extends Cubit<TripState> {
     if (currentState == 0) {
       final Uint8List? markerIcon = await MapHelper().getBytesFromAsset(
         path: Assets.images.origin.path,
-        width: 50,
+        width: 30,
       );
       markers.add(
         Marker(
@@ -211,7 +211,7 @@ class TripBloc extends Cubit<TripState> {
     } else {
       final Uint8List? markerIcon = await MapHelper().getBytesFromAsset(
         path: Assets.images.destination.path,
-        width: 50,
+        width: 30,
       );
       markers.add(
         Marker(

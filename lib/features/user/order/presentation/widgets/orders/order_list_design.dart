@@ -2,9 +2,11 @@ import 'package:logger/logger.dart';
 import 'package:taxito/core/bloc/socket/socket_cubit.dart';
 import 'package:taxito/core/enum/order_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
+import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/utils/app_constant.dart';
 import 'package:taxito/core/utils/app_size.dart';
 import 'package:taxito/features/user/order/presentation/bloc/track/track_order_cubit.dart';
+import 'package:taxito/features/user/order/presentation/pages/live_map_tracking_screen.dart';
 import 'package:taxito/widgets/app_failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,8 +31,8 @@ class OrderListDesign extends StatefulWidget {
 }
 
 class _OrderListDesignState extends State<OrderListDesign> {
+  Orders? selectedTrackedOrder;
 
-  Orders ?selectedTrackedOrder;
   @override
   void initState() {
     if (mounted) {
@@ -59,11 +61,11 @@ class _OrderListDesignState extends State<OrderListDesign> {
       builder: (context, state) {
         return BlocConsumer<SocketCubit, SocketState>(
           listener: (context, socketState) {
-           if(socketState is SocketConnected){
-             if(selectedTrackedOrder != null){
-               context.read<TrackOrderCubit>().trackOrder(orders: selectedTrackedOrder!);
-             }
-           }
+            if (socketState is SocketConnected) {
+              if (selectedTrackedOrder != null) {
+                context.navigateTo(LiveMapTrackingScreen(order: selectedTrackedOrder!));
+              }
+            }
           },
           builder: (context, socketState) {
             return RefreshIndicator(
@@ -91,7 +93,8 @@ class _OrderListDesignState extends State<OrderListDesign> {
                         itemBuilder: (context, Orders item, index) =>
                             OrderItemDesign(
                               orders: item,
-                              isLoading: state is DeleteOrderLoading &&
+                              isLoading:
+                                  state is DeleteOrderLoading &&
                                   state.id == item.id,
                               onCancel: () {
                                 SettingsHelper().showAppDialog(
@@ -110,7 +113,9 @@ class _OrderListDesignState extends State<OrderListDesign> {
                               onRepeat: () {},
                               onTrack: () {
                                 setState(() => selectedTrackedOrder = item);
-                                context.read<SocketCubit>().initSocketConnection();
+                                context
+                                    .read<SocketCubit>()
+                                    .initSocketConnection();
                               },
                             ),
                       ),

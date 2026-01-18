@@ -14,14 +14,12 @@ import '../../../../../widgets/info_design_item.dart';
 
 class SupplierCardList extends StatelessWidget {
   final SupplierModel supplierModel;
-  final VoidCallback? onTap;
   final Function(bool) onTapped;
   final bool isLiked;
 
   const SupplierCardList({
     super.key,
     required this.supplierModel,
-    this.onTap,
     required this.onTapped,
     required this.isLiked,
   });
@@ -107,7 +105,7 @@ class SupplierCardList extends StatelessWidget {
         ),
       ),
       openBuilder: (context, action) =>
-          SupplierDetailsScreen(supplierModel: supplierModel),
+          SupplierDetailsScreen(supplierModel: supplierModel,onLikeToggeled: onTapped,),
     );
   }
 }

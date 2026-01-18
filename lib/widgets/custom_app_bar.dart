@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: BackArrowWidget(
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsetsDirectional.only(start: 10),
-              callback: pressIcon ?? () => Navigator.pop(context),
+              callback: pressIcon ?? () =>Navigator.canPop(context)? Navigator.pop(context): null,
             ),
           ),
       actions: actions,

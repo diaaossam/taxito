@@ -1,4 +1,5 @@
 import 'package:taxito/config/helper/token_repository.dart';
+import 'package:taxito/features/captain/auth/presentation/pages/login_screen.dart';
 import 'package:taxito/features/common/models/user_model.dart';
 import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/core/enum/user_type.dart';
@@ -12,8 +13,10 @@ import 'package:taxito/core/utils/app_strings.dart';
 import 'package:taxito/features/captain/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:taxito/features/common/start/data/models/intro_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taxito/features/user/auth/presentation/pages/register_screen.dart';
 import 'package:taxito/features/user/main/presentation/pages/main_layout.dart';
 import 'package:taxito/features/vendor/main/presentation/pages/main_layout.dart';
+import '../../../../user/location/presentation/pages/auth_location_screen.dart';
 import '../../../models/trip_model.dart';
 import '../../../../../core/enum/trip_status_enum.dart';
 import '../../../../../core/utils/api_config.dart';
@@ -101,6 +104,12 @@ class RegisterRemoteDataSourceImpl implements InitRemoteDataSource {
 
   ApiSuccessResponse _handleNormalUser(UserModel userModel) {
     final trip = userModel.userTripModel;
+    if (userModel.isProfileCompleted == 0) {
+      return ApiSuccessResponse(data: LoginScreen(userType: UserType.user));
+    }
+    if (userModel.isProfileCompleted == 1 && userModel.currentAddress == null) {
+      return ApiSuccessResponse(data: const AuthLocationScreen());
+    }
 
     if (trip == null) {
       return ApiSuccessResponse(data: MainLayout());
@@ -159,16 +168,13 @@ class RegisterRemoteDataSourceImpl implements InitRemoteDataSource {
 
     final trip = userModel.tripModel;
     if (trip == null) {
-      return  ApiSuccessResponse(data: DriverMainLayout());
+      return ApiSuccessResponse(data: DriverMainLayout());
     }
 
     if (_isTripConfirmed(trip)) {
-      return  ApiSuccessResponse(data: DriverMainLayout());
+      return ApiSuccessResponse(data: DriverMainLayout());
     }
 
-    return ApiSuccessResponse(
-      data: DriverMainLayout(tripModel: trip),
-    );
+    return ApiSuccessResponse(data: DriverMainLayout(tripModel: trip));
   }
-
 }

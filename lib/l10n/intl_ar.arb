@@ -250,7 +250,6 @@
   "searchingForDriverTitle": "نبحث عن سائق مناسب لرحلتك, انتظر قليلاً",
   "searchingForDriverBody": "قد يستغرق البحث بضع دقائق..",
   "cancelDriver": "إلغاء الرحلة",
-  "searchingForDriverBody2": "Please note that a cancellation fee will be applied unless the trip is canceled before",
   "sendMessage": "Send Message",
   "confirmStartPoint": "تأكيد نقطة الإنطلاق",
   "confirmArrivePoint": "تأكيد نقطة الوصول",
@@ -577,7 +576,7 @@
   "locationServiceStep3": "ارجع للتطبيق واضغط \"أعد المحاولة\"",
   "loginAsSupplier": "الدخول كمزود",
   "loginAsTaxi": "الدخول كسائق توصيل أو تكسي!",
-  "allProduct": "كل الطلبات"
-
+  "allProduct": "كل الطلبات",
+  "searchingForDriverBody2": "يرجي العلم انه سوف يتم اضافة غرامة الغاء الرحلة الا اذا الغيت الرحلة قبل"
 }
 

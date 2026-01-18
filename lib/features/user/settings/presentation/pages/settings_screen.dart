@@ -8,6 +8,7 @@ import 'package:taxito/core/extensions/navigation.dart';
 import 'package:taxito/core/utils/api_config.dart';
 import 'package:taxito/core/utils/app_constant.dart';
 import 'package:taxito/core/utils/app_size.dart';
+import 'package:taxito/features/common/start/presentation/pages/welcome_screen.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import 'package:taxito/widgets/app_text.dart';
 import 'package:flutter/material.dart';
@@ -193,7 +194,12 @@ class SettingsScreen extends StatelessWidget {
                       return SettingsItemDesign(
                         settingsEntity: SettingsEntity(
                           id: 1,
-                          press: () => SettingsHelper().showAppDialog(
+                          press: () {
+                            if(ApiConfig.isGuest == true){
+                              context.navigateTo(const WelcomeScreen());
+                              return;
+                            }
+                            SettingsHelper().showAppDialog(
                             context: context,
                             height: SizeConfig.bodyHeight * .34,
                             isAccept: (p0) async {
@@ -202,9 +208,11 @@ class SettingsScreen extends StatelessWidget {
                               }
                             },
                             title: context.localizations.logoutBody,
-                          ),
-                          title: context.localizations.logout,
+                          );
+                          },
+                          title: ApiConfig.isGuest == true ?context.localizations.login :context.localizations.logout,
                           image: Assets.icons.logout,
+                          iconColor: ApiConfig.isGuest == true ? context.colorScheme.tertiary:null
                         ),
                       );
                     },

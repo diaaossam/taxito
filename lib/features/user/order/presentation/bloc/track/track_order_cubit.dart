@@ -53,6 +53,7 @@ class TrackOrderCubit extends Cubit<TrackOrderState> {
   Map<String, Marker> markers = {};
   LatLng? currentLatLng;
   Set<Polyline> polyines = {};
+/*
 
   Future<void> trackOrder({required Orders orders}) async {
     socketService.emitEvent("addUserToOrder", {"orderId": orders.id});
@@ -60,7 +61,7 @@ class TrackOrderCubit extends Cubit<TrackOrderState> {
       Logger().w("$data");
     });
 
-    /*    LatLng newLatLng = LatLng(lat, long);
+        LatLng newLatLng = LatLng(lat, long);
     socketService.emitEvent("update-status", {
       "driverId": UserDataService().getUserData()?.id,
       "isOnline": true,
@@ -84,8 +85,9 @@ class TrackOrderCubit extends Cubit<TrackOrderState> {
     }
     else {
       currentLatLng = newLatLng;
-    }*/
+    }
   }
+*/
 
 
 }

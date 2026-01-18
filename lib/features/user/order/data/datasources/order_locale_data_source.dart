@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:taxito/core/utils/api_config.dart';
 import '../../../../../core/services/network/success_response.dart';
 import '../../../product/data/models/attributes_model.dart';
 import 'package:taxito/features/common/models/product_model.dart';
@@ -71,7 +72,7 @@ class OrderLocaleDataSourceImpl implements OrderLocaleDataSource {
       cartList.add(data);
       productIds.add(data.productId!.toInt());
     }
-    if (productIds.isNotEmpty && isRemote) {
+    if (productIds.isNotEmpty && isRemote && ApiConfig.isGuest == false) {
       final response = await remoteDataSource.checkProductAvilabilaty(
         productIds: productIds,
       );

@@ -74,7 +74,8 @@ class _RequestTripTimeState extends State<RequestTripTime> {
                             date: response,
                           );
                           setState(
-                            () => tripDateTime = tripDateTime.copyWith(
+                                () =>
+                            tripDateTime = tripDateTime.copyWith(
                               year: response.year,
                               month: response.month,
                               day: response.day,
@@ -135,32 +136,37 @@ class _RequestTripTimeState extends State<RequestTripTime> {
               ),
               SizedBox(height: SizeConfig.bodyHeight * .02),
               const Spacer(),
-              CustomButton(
-                text: getButtonText(bloc.currentState),
-                press: () {
-                  TripHelper().showPaymentMethods(
-                    context: context,
-                    paymentMethod: (p0) {
-                      int isSchedule = checkIfScheduled(tripDateTime);
-                      TripParams tripParams = TripParams(
-                        tripTypeId: 1,
-                        fromAddress: bloc.startLocation?.address,
-                        fromLat: bloc.startLocation?.latLng.latitude,
-                        fromLng: bloc.startLocation?.latLng.longitude,
-                        toAddress: bloc.endLocation?.address,
-                        isSchedule: isSchedule,
-                        toLat: bloc.endLocation?.latLng.latitude,
-                        toLng: bloc.endLocation?.latLng.longitude,
-                        paymentMethod: p0,
-                        tripDate: TripHelper().formatDateTimeToApi(
-                          tripDateTime,
-                        )['trip_date'],
-                        tripTime: TripHelper().formatDateTimeToApi(
-                          tripDateTime,
-                        )['trip_time'],
-                      );
-                      context.read<RequestTripBloc>().add(
-                        MakeTripRequestEvent(tripParams: tripParams),
+              BlocBuilder<RequestTripBloc, RequestTripState>(
+                builder: (context, requestState) {
+                  return CustomButton(
+                    text: getButtonText(bloc.currentState),
+                    isLoading: requestState is MakeTripRequestLoading,
+                    press: () {
+                      TripHelper().showPaymentMethods(
+                        context: context,
+                        paymentMethod: (p0) {
+                          int isSchedule = checkIfScheduled(tripDateTime);
+                          TripParams tripParams = TripParams(
+                            tripTypeId: 1,
+                            fromAddress: bloc.startLocation?.address,
+                            fromLat: bloc.startLocation?.latLng.latitude,
+                            fromLng: bloc.startLocation?.latLng.longitude,
+                            toAddress: bloc.endLocation?.address,
+                            isSchedule: isSchedule,
+                            toLat: bloc.endLocation?.latLng.latitude,
+                            toLng: bloc.endLocation?.latLng.longitude,
+                            paymentMethod: p0,
+                            tripDate: TripHelper().formatDateTimeToApi(
+                              tripDateTime,
+                            )['trip_date'],
+                            tripTime: TripHelper().formatDateTimeToApi(
+                              tripDateTime,
+                            )['trip_time'],
+                          );
+                          context.read<RequestTripBloc>().add(
+                            MakeTripRequestEvent(tripParams: tripParams),
+                          );
+                        },
                       );
                     },
                   );

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:taxito/features/common/models/orders.dart';
 import 'package:taxito/features/captain/delivery_order/domain/usecases/get_order_details_use_case.dart';
-import 'package:taxito/features/captain/delivery_order/presentation/cubit/delivery_order_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -103,7 +102,7 @@ class DeliveryActionsCubit extends Cubit<DeliveryActionsState> {
     print("✅ Order $orderId rejected manually");
   }
 
-  Future<void> updateOrder({String? status, required num id ,required }) async {
+  Future<void> updateOrder({String? status, required num id}) async {
     emit(UpdateOrderLoading());
     Either<Failure, ApiSuccessResponse> response;
     if (status == null) {

@@ -104,7 +104,8 @@ class _SuppliersBodyState extends State<SuppliersBody> {
                                 const EmptyFilterDesign(),
                             itemBuilder: (context, SupplierModel item, index) =>
                                 SupplierCardList(
-                                  isLiked: item.isAddedToFavourite == true,
+                                  isLiked:
+                                      item.isAddedToFavourite == true,
                                   supplierModel: item,
                                   onTapped: (p0) async {
                                     item.isAddedToFavourite = p0;

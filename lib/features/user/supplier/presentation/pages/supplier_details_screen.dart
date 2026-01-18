@@ -8,26 +8,26 @@ import '../widgets/details/supplier_details_body.dart';
 
 class SupplierDetailsScreen extends StatelessWidget {
   final SupplierModel supplierModel;
+  final Function(bool) onLikeToggeled;
 
-  const SupplierDetailsScreen({super.key, required this.supplierModel});
+  const SupplierDetailsScreen({
+    super.key,
+    required this.supplierModel,
+    required this.onLikeToggeled,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => sl<SupplierDetailsBloc>()
-            ..add(GetSupplierDetailsEvent(supplierModel: supplierModel)),
+          create: (context) =>
+              sl<SupplierDetailsBloc>()
+                ..add(GetSupplierDetailsEvent(supplierModel: supplierModel)),
         ),
-        BlocProvider(
-          create: (context) => sl<FavouriteCubit>(),
-        ),
+        BlocProvider(create: (context) => sl<FavouriteCubit>()),
       ],
-      child: Scaffold(
-        body: SupplierDetailsBody(
-          supplierModel: supplierModel,
-        ),
-      ),
+      child: Scaffold(body:  SupplierDetailsBody(supplierModel: supplierModel, onLikeToggeled: onLikeToggeled,)),
     );
   }
 }

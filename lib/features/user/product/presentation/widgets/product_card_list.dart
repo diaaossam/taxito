@@ -8,7 +8,7 @@ import '../../../../../widgets/app_text.dart';
 import 'package:taxito/features/common/models/product_model.dart';
 import '../pages/product_details.dart';
 
-class ProductCardList extends StatelessWidget {
+class ProductCardList extends StatefulWidget {
   final ProductModel productModel;
   final double? imageHeight, imageWidth;
   final VoidCallback? onTap;
@@ -26,12 +26,20 @@ class ProductCardList extends StatelessWidget {
   });
 
   @override
+  State<ProductCardList> createState() => _ProductCardListState();
+}
+
+class _ProductCardListState extends State<ProductCardList> {
+
+  bool ?isLiked;
+
+  @override
   Widget build(BuildContext context) {
     return OpenContainer(
       closedElevation: 0,
       openElevation: 0,
       closedBuilder: (context, action) => Container(
-        margin: margin,
+        margin: widget.margin,
         padding: EdgeInsets.symmetric(vertical: SizeConfig.bodyHeight * .02),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +51,7 @@ class ProductCardList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: AppImage.network(
-                  remoteImage: productModel.images?.first.url,
+                  remoteImage: widget.productModel.images?.first.url,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -56,13 +64,14 @@ class ProductCardList extends StatelessWidget {
                     children: [
                       Expanded(
                         child: AppText(
-                          text: productModel.title ?? "",
+                          text: widget.productModel.title ?? "",
                           textSize: 12,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       10.horizontalSpace,
                       LikeButtonDesign(
+                        key: ValueKey(widget.productModel.id.toString()),
                         boxShadow: [
                           BoxShadow(
                             spreadRadius: 2,
@@ -74,7 +83,7 @@ class ProductCardList extends StatelessWidget {
                           ),
                         ],
                         onTapped: (p0) {},
-                        isLiked: productModel.isAddedToFavourite ?? false,
+                        isLiked: isLiked ??widget.productModel.isAddedToFavourite ?? false,
                       ),
                     ],
                   ),
@@ -85,7 +94,9 @@ class ProductCardList extends StatelessWidget {
         ),
       ),
       openBuilder: (context, action) =>
-          ProductDetailsScreen(productModel: productModel),
+          ProductDetailsScreen(productModel: widget.productModel,onFavouriteToggled: (data) =>setState(() {
+            isLiked = data;
+          }),),
     );
   }
 }

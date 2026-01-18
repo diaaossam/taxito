@@ -21,12 +21,14 @@ class ProductDetailsScreen extends StatelessWidget {
   final ProductModel productModel;
   final num? productId;
   final num? supplierId;
+  final Function(bool) onFavouriteToggled;
 
   const ProductDetailsScreen({
     super.key,
     required this.productModel,
     this.productId,
     this.supplierId,
+    required this.onFavouriteToggled,
   });
 
   @override
@@ -65,10 +67,11 @@ class ProductDetailsScreen extends StatelessWidget {
                   return LikeButtonDesign(
                     showBorder: true,
                     onTapped: (isLiked) {
-                      if(ApiConfig.isGuest == true){
+                      if (ApiConfig.isGuest == true) {
                         SettingsHelper().showGuestDialog(context);
                         return false;
                       }
+                      onFavouriteToggled(isLiked);
                       productModel.isAddedToFavourite = isLiked;
                       context.read<FavouriteCubit>().toggleWishlist(
                         id: productModel.id ?? 0,

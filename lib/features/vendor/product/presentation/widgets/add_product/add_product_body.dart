@@ -71,8 +71,6 @@ class _AddProductBodyState extends State<AddProductBody> {
   void _submitProduct() {
     if (_formKey.currentState?.saveAndValidate() ?? false) {
       final formData = _formKey.currentState!.value;
-      print("-------------");
-
 
       final params = AddProductParams(
         title: formData['name'],

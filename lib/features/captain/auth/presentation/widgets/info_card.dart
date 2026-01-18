@@ -1,3 +1,4 @@
+import 'package:taxito/core/enum/user_type.dart';
 import 'package:taxito/core/extensions/app_localizations_extension.dart';
 import 'package:taxito/core/extensions/color_extensions.dart';
 import 'package:taxito/core/extensions/navigation.dart';
@@ -5,9 +6,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxito/core/utils/api_config.dart';
+import 'package:taxito/features/common/models/user_type_helper.dart';
 import 'package:taxito/gen/assets.gen.dart';
 import '../../../../../core/utils/app_size.dart';
 import '../../../../../widgets/app_text.dart';
+import '../../../../user/auth/presentation/pages/register_screen.dart';
+import '../../../../vendor/auth/presentation/pages/supplier_register.dart';
 import '../../../user/presentation/bloc/user_bloc.dart';
 import '../../../../common/models/user_model_helper.dart';
 import '../pages/driver_register.dart';
@@ -80,12 +84,14 @@ class InfoCardDesign extends StatelessWidget {
                     child: ClipOval(
                       child: CachedNetworkImage(
                         imageUrl:
-                            UserDataService().getUserData()?.profileImage ?? "",
+                        UserDataService()
+                            .getUserData()
+                            ?.profileImage ?? "",
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
+                        const CircularProgressIndicator(),
                         errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                        const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -97,8 +103,14 @@ class InfoCardDesign extends StatelessWidget {
                       children: [
                         AppText(
                           text:
-                              UserDataService().getUserData()?.name ??
-                              "${UserDataService().getUserData()?.firstName} ${UserDataService().getUserData()?.lastName}",
+                          UserDataService()
+                              .getUserData()
+                              ?.name ??
+                              "${UserDataService()
+                                  .getUserData()
+                                  ?.firstName} ${UserDataService()
+                                  .getUserData()
+                                  ?.lastName}",
                           textSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -109,7 +121,9 @@ class InfoCardDesign extends StatelessWidget {
                               textDirection: TextDirection.ltr,
                               child: AppText(
                                 text:
-                                    UserDataService().getUserData()?.phone ??
+                                UserDataService()
+                                    .getUserData()
+                                    ?.phone ??
                                     '',
                                 textSize: 13,
                               ),
@@ -124,15 +138,41 @@ class InfoCardDesign extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => context.navigateTo(
-                DriverRegisterScreen(
-                  isUpdate: true,
-                  phone: UserDataService().getUserData()?.phone ?? "",
-                ),
-                callback: (data) {
-                  UserDataService().reloadUserData(context: context);
-                },
-              ),
+              onTap: () {
+                switch (UserTypeService().getUserType()) {
+                  case null:
+                  case UserType.user:
+                  context.navigateTo(
+                    const UserRegisterScreen(),
+                    callback: (data) {
+                      UserDataService().reloadUserData(context: context);
+                    },
+                  );
+                  case UserType.supplier:
+                    context.navigateTo(
+                      SupplierRegisterScreen(
+                        isUpdate: true,
+                      ),
+                      callback: (data) {
+                        UserDataService().reloadUserData(context: context);
+                      },
+                    );
+                  case UserType.driver:
+                  case UserType.delivery:
+                    context.navigateTo(
+                      DriverRegisterScreen(
+                        isUpdate: true,
+                        phone: UserDataService()
+                            .getUserData()
+                            ?.phone ?? "",
+                      ),
+                      callback: (data) {
+                        UserDataService().reloadUserData(context: context);
+                      },
+                    );
+                    return;
+                }
+              },
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   vertical: 8,

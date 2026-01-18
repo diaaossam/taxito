@@ -180,9 +180,10 @@ class _DeliveryOrderBodyState extends State<DeliveryOrderBody>
                                 pagingController:
                                     orderBloc.pagingControllerDonePrepare,
                                 onChangeStatus: (p0) {
+                                  // Start tracking driver location for this order
                                   context
                                       .read<DeliveryLocationCubit>()
-                                      .getDriverStreamLocation(order: p0);
+                                      .startTrackingOrder(order: p0);
                                   bloc.updateOrder(
                                     id: p0.id ?? 0,
                                     status:
@@ -198,10 +199,16 @@ class _DeliveryOrderBodyState extends State<DeliveryOrderBody>
                           DeliveryOrderList(
                             pagingController:
                                 orderBloc.pagingControllerWithDelegate,
-                            onChangeStatus: (p0) => bloc.updateOrder(
-                              id: p0.id ?? 0,
-                              status: "delivery_completed",
-                            ),
+                            onChangeStatus: (p0) {
+                              // Stop tracking when delivery is completed
+                              context
+                                  .read<DeliveryLocationCubit>()
+                                  .stopTrackingOrder();
+                              bloc.updateOrder(
+                                id: p0.id ?? 0,
+                                status: "delivery_completed",
+                              );
+                            },
                             statusText: context.localizations.deliveryToAddress,
                             onGetDetails: (p0) => context.navigateTo(
                               TrackOrderScreen(id: p0.id ?? 0),
